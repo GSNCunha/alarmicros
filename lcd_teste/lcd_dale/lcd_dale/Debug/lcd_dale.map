@@ -2,13 +2,25 @@ Archive member included to satisfy reference by file (symbol)
 
 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
                               D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o (exit)
+d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+                              teclado.o (__do_copy_data)
 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
-                              timers.o (__do_clear_bss)
+                              teclado.o (__do_clear_bss)
+
+Allocating common symbols
+Common symbol       size              file
+
+possivelTecla       0x1               teclado.o
+tecla               0x1               teclado.o
+binColuna           0x1               teclado.o
 
 Discarded input sections
 
  .data          0x00000000        0x0 D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
  .bss           0x00000000        0x0 D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .text          0x00000000        0x0 teclado.o
+ .data          0x00000000        0x0 teclado.o
+ .bss           0x00000000        0x0 teclado.o
  .text          0x00000000        0x0 lcdio.o
  .data          0x00000000        0x0 lcdio.o
  .bss           0x00000000        0x0 lcdio.o
@@ -23,7 +35,7 @@ Discarded input sections
  .data          0x00000000        0x0 timers.o
  .bss           0x00000000        0x0 timers.o
  .text.onda_800hzint
-                0x00000000       0x22 timers.o
+                0x00000000       0x1e timers.o
  .text.onda_400hzint
                 0x00000000       0x1e timers.o
  .text.onda_2hzint
@@ -34,8 +46,6 @@ Discarded input sections
                 0x00000000       0x1e timers.o
  .text.onda_2hz
                 0x00000000       0x20 timers.o
- .bss.qual_delay
-                0x00000000        0x1 timers.o
  .text          0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  .data          0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  .bss           0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
@@ -52,6 +62,22 @@ Discarded input sections
                 0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  .text.libgcc.fixed
                 0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+ .text          0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+ .data          0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+ .bss           0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc.mul
+                0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc.div
+                0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc   0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc.prologue
+                0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc.builtins
+                0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc.fmul
+                0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+ .text.libgcc.fixed
+                0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
  .text          0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
  .data          0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
  .bss           0x00000000        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
@@ -85,6 +111,7 @@ Linker script and memory map
 
 Address of section .data set to 0x800200
 LOAD D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
+LOAD teclado.o
 LOAD lcdio.o
 LOAD main.o
 LOAD timers.o
@@ -197,7 +224,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0x2ba
+.text           0x00000000      0x492
  *(.vectors)
  .vectors       0x00000000       0xe4 D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
                 0x00000000                __vector_default
@@ -238,8 +265,10 @@ END GROUP
  *(.init3)
  *(.init3)
  *(.init4)
- .init4         0x000000f4       0x10 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
-                0x000000f4                __do_clear_bss
+ .init4         0x000000f4       0x1a d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_copy_data.o)
+                0x000000f4                __do_copy_data
+ .init4         0x0000010e       0x10 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_clear_bss.o)
+                0x0000010e                __do_clear_bss
  *(.init4)
  *(.init5)
  *(.init5)
@@ -250,109 +279,123 @@ END GROUP
  *(.init8)
  *(.init8)
  *(.init9)
- .init9         0x00000104        0x4 D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
+ .init9         0x0000011e        0x4 D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
  *(.init9)
  *(.text)
- .text          0x00000108        0x2 D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
-                0x00000108                __vector_38
-                0x00000108                __vector_22
-                0x00000108                __vector_28
-                0x00000108                __vector_1
-                0x00000108                __vector_32
-                0x00000108                __vector_34
-                0x00000108                __vector_24
-                0x00000108                __vector_12
-                0x00000108                __vector_55
-                0x00000108                __vector_46
-                0x00000108                __bad_interrupt
-                0x00000108                __vector_6
-                0x00000108                __vector_31
-                0x00000108                __vector_39
-                0x00000108                __vector_3
-                0x00000108                __vector_23
-                0x00000108                __vector_30
-                0x00000108                __vector_25
-                0x00000108                __vector_11
-                0x00000108                __vector_54
-                0x00000108                __vector_13
-                0x00000108                __vector_17
-                0x00000108                __vector_19
-                0x00000108                __vector_56
-                0x00000108                __vector_7
-                0x00000108                __vector_49
-                0x00000108                __vector_41
-                0x00000108                __vector_43
-                0x00000108                __vector_27
-                0x00000108                __vector_5
-                0x00000108                __vector_33
-                0x00000108                __vector_47
-                0x00000108                __vector_52
-                0x00000108                __vector_37
-                0x00000108                __vector_4
-                0x00000108                __vector_44
-                0x00000108                __vector_51
-                0x00000108                __vector_9
-                0x00000108                __vector_2
-                0x00000108                __vector_21
-                0x00000108                __vector_15
-                0x00000108                __vector_36
-                0x00000108                __vector_29
-                0x00000108                __vector_40
-                0x00000108                __vector_8
-                0x00000108                __vector_26
-                0x00000108                __vector_48
-                0x00000108                __vector_14
-                0x00000108                __vector_53
-                0x00000108                __vector_10
-                0x00000108                __vector_50
-                0x00000108                __vector_16
-                0x00000108                __vector_18
-                0x00000108                __vector_42
-                0x0000010a                . = ALIGN (0x2)
+ .text          0x00000122        0x2 D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
+                0x00000122                __vector_38
+                0x00000122                __vector_22
+                0x00000122                __vector_28
+                0x00000122                __vector_1
+                0x00000122                __vector_32
+                0x00000122                __vector_34
+                0x00000122                __vector_24
+                0x00000122                __vector_12
+                0x00000122                __vector_55
+                0x00000122                __vector_46
+                0x00000122                __bad_interrupt
+                0x00000122                __vector_6
+                0x00000122                __vector_31
+                0x00000122                __vector_39
+                0x00000122                __vector_3
+                0x00000122                __vector_23
+                0x00000122                __vector_30
+                0x00000122                __vector_25
+                0x00000122                __vector_54
+                0x00000122                __vector_13
+                0x00000122                __vector_17
+                0x00000122                __vector_19
+                0x00000122                __vector_56
+                0x00000122                __vector_7
+                0x00000122                __vector_49
+                0x00000122                __vector_41
+                0x00000122                __vector_43
+                0x00000122                __vector_27
+                0x00000122                __vector_5
+                0x00000122                __vector_33
+                0x00000122                __vector_47
+                0x00000122                __vector_52
+                0x00000122                __vector_37
+                0x00000122                __vector_4
+                0x00000122                __vector_44
+                0x00000122                __vector_51
+                0x00000122                __vector_9
+                0x00000122                __vector_2
+                0x00000122                __vector_21
+                0x00000122                __vector_15
+                0x00000122                __vector_36
+                0x00000122                __vector_29
+                0x00000122                __vector_40
+                0x00000122                __vector_8
+                0x00000122                __vector_26
+                0x00000122                __vector_48
+                0x00000122                __vector_14
+                0x00000122                __vector_53
+                0x00000122                __vector_10
+                0x00000122                __vector_50
+                0x00000122                __vector_16
+                0x00000122                __vector_18
+                0x00000122                __vector_42
+                0x00000124                . = ALIGN (0x2)
  *(.text.*)
+ .text.ligaLinhas
+                0x00000124       0xaa teclado.o
+                0x00000124                ligaLinhas
+ .text.procuraLinhas
+                0x000001ce       0x44 teclado.o
+                0x000001ce                procuraLinhas
+ .text.procuraTecla
+                0x00000212       0x24 teclado.o
+                0x00000212                procuraTecla
  .text.config_delay_timer0_CTC
-                0x0000010a        0xa lcdio.o
-                0x0000010a                config_delay_timer0_CTC
+                0x00000236        0xa lcdio.o
+                0x00000236                config_delay_timer0_CTC
  .text.delay_CTC
-                0x00000114       0x12 lcdio.o
-                0x00000114                delay_CTC
+                0x00000240       0x12 lcdio.o
+                0x00000240                delay_CTC
  .text.config_porta_avr
-                0x00000126        0xa lcdio.o
-                0x00000126                config_porta_avr
+                0x00000252        0xa lcdio.o
+                0x00000252                config_porta_avr
  .text.trigger_EN
-                0x00000130       0x16 lcdio.o
-                0x00000130                trigger_EN
+                0x0000025c       0x16 lcdio.o
+                0x0000025c                trigger_EN
  .text.send_data
-                0x00000146       0x32 lcdio.o
-                0x00000146                send_data
+                0x00000272       0x32 lcdio.o
+                0x00000272                send_data
  .text.send_command
-                0x00000178       0x32 lcdio.o
-                0x00000178                send_command
+                0x000002a4       0x32 lcdio.o
+                0x000002a4                send_command
  .text.limpa_reseta_cursor
-                0x000001aa        0xc lcdio.o
-                0x000001aa                limpa_reseta_cursor
+                0x000002d6        0xc lcdio.o
+                0x000002d6                limpa_reseta_cursor
  .text.config_lcd_padrao
-                0x000001b6       0x20 lcdio.o
-                0x000001b6                config_lcd_padrao
- .text.main     0x000001d6       0x1a main.o
-                0x000001d6                main
- .text.delay_1s
-                0x000001f0       0x20 timers.o
-                0x000001f0                delay_1s
+                0x000002e2       0x20 lcdio.o
+                0x000002e2                config_lcd_padrao
+ .text.main     0x00000302       0x4a main.o
+                0x00000302                main
+ .text.__vector_11
+                0x0000034c       0x5c main.o
+                0x0000034c                __vector_11
  .text.__vector_20
-                0x00000210       0x38 timers.o
-                0x00000210                __vector_20
+                0x000003a8       0x38 main.o
+                0x000003a8                __vector_20
  .text.__vector_35
-                0x00000248       0x38 timers.o
-                0x00000248                __vector_35
+                0x000003e0       0x38 main.o
+                0x000003e0                __vector_35
  .text.__vector_45
-                0x00000280       0x36 timers.o
-                0x00000280                __vector_45
-                0x000002b6                . = ALIGN (0x2)
+                0x00000418       0x36 main.o
+                0x00000418                __vector_45
+ .text.delay_1s
+                0x0000044e       0x20 timers.o
+                0x0000044e                delay_1s
+ .text.delay_1ms
+                0x0000046e       0x20 timers.o
+                0x0000046e                delay_1ms
+                0x0000048e                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x000002b6        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
-                0x000002b6                _exit
-                0x000002b6                exit
+ .fini9         0x0000048e        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+                0x0000048e                _exit
+                0x0000048e                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -371,36 +414,42 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x000002b6        0x4 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+ .fini0         0x0000048e        0x4 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x000002ba                _etext = .
+                0x00000492                _etext = .
 
-.data           0x00800200        0x0 load address 0x000002ba
-                [!provide]                PROVIDE (__data_start, .)
+.data           0x00800200       0x10 load address 0x00000492
+                0x00800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
+ .data.teclado  0x00800200       0x10 teclado.o
+                0x00800200                teclado
  *(.gnu.linkonce.d*)
  *(.rodata)
  *(.rodata*)
  *(.gnu.linkonce.r*)
-                0x00800200                . = ALIGN (0x2)
-                0x00800200                _edata = .
-                [!provide]                PROVIDE (__data_end, .)
+                0x00800210                . = ALIGN (0x2)
+                0x00800210                _edata = .
+                0x00800210                PROVIDE (__data_end, .)
 
-.bss            0x00800200        0x0
-                0x00800200                PROVIDE (__bss_start, .)
+.bss            0x00800210        0x3
+                0x00800210                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
  *(COMMON)
-                0x00800200                PROVIDE (__bss_end, .)
-                0x000002ba                __data_load_start = LOADADDR (.data)
-                0x000002ba                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800210        0x3 teclado.o
+                0x00800210                possivelTecla
+                0x00800211                tecla
+                0x00800212                binColuna
+                0x00800213                PROVIDE (__bss_end, .)
+                0x00000492                __data_load_start = LOADADDR (.data)
+                0x000004a2                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800200        0x0
+.noinit         0x00800213        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800200                _end = .
+                0x00800213                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -442,8 +491,9 @@ END GROUP
 
 .comment        0x00000000       0x30
  *(.comment)
- .comment       0x00000000       0x30 lcdio.o
+ .comment       0x00000000       0x30 teclado.o
                                  0x31 (size before relaxing)
+ .comment       0x00000030       0x31 lcdio.o
  .comment       0x00000030       0x31 main.o
  .comment       0x00000030       0x31 timers.o
 
@@ -467,59 +517,68 @@ END GROUP
 .debug_sfnames
  *(.debug_sfnames)
 
-.debug_aranges  0x00000000       0xf0
+.debug_aranges  0x00000000      0x130
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x68 lcdio.o
+                0x00000000       0x30 teclado.o
  .debug_aranges
-                0x00000068       0x20 main.o
+                0x00000030       0x68 lcdio.o
  .debug_aranges
-                0x00000088       0x68 timers.o
+                0x00000098       0x40 main.o
+ .debug_aranges
+                0x000000d8       0x58 timers.o
 
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x1173
+.debug_info     0x00000000     0x1471
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_info    0x00000bbc      0x311 lcdio.o
- .debug_info    0x00000ecd      0x140 main.o
- .debug_info    0x0000100d      0x166 timers.o
+ .debug_info    0x00000bbc      0x229 teclado.o
+ .debug_info    0x00000de5      0x311 lcdio.o
+ .debug_info    0x000010f6      0x25b main.o
+ .debug_info    0x00001351      0x120 timers.o
 
-.debug_abbrev   0x00000000      0xd25
+.debug_abbrev   0x00000000      0xe5c
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0xb1a D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_abbrev  0x00000b1a      0x107 lcdio.o
- .debug_abbrev  0x00000c21       0x8c main.o
- .debug_abbrev  0x00000cad       0x78 timers.o
+ .debug_abbrev  0x00000b1a       0xfe teclado.o
+ .debug_abbrev  0x00000c18      0x107 lcdio.o
+ .debug_abbrev  0x00000d1f       0xee main.o
+ .debug_abbrev  0x00000e0d       0x4f timers.o
 
-.debug_line     0x00000000      0x76b
+.debug_line     0x00000000      0x9e5
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x1fa D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_line    0x000001fa      0x27d lcdio.o
- .debug_line    0x00000477       0x7e main.o
- .debug_line    0x000004f5      0x276 timers.o
+ .debug_line    0x000001fa      0x191 teclado.o
+ .debug_line    0x0000038b      0x27d lcdio.o
+ .debug_line    0x00000608      0x1c1 main.o
+ .debug_line    0x000007c9      0x21c timers.o
 
-.debug_frame    0x00000000      0x1f4
+.debug_frame    0x00000000      0x2b0
  *(.debug_frame)
- .debug_frame   0x00000000       0xd0 lcdio.o
- .debug_frame   0x000000d0       0x24 main.o
- .debug_frame   0x000000f4      0x100 timers.o
+ .debug_frame   0x00000000       0x54 teclado.o
+ .debug_frame   0x00000054       0xd0 lcdio.o
+ .debug_frame   0x00000124       0xf8 main.o
+ .debug_frame   0x0000021c       0x94 timers.o
 
-.debug_str      0x00000000      0x659
+.debug_str      0x00000000      0x727
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_str     0x000003e6      0x1cc lcdio.o
+ .debug_str     0x000003e6      0x1bb teclado.o
+                                0x1f4 (size before relaxing)
+ .debug_str     0x000005a1       0xde lcdio.o
                                 0x214 (size before relaxing)
- .debug_str     0x000005b2       0x1a main.o
-                                0x1b1 (size before relaxing)
- .debug_str     0x000005cc       0x8d timers.o
-                                0x1ec (size before relaxing)
+ .debug_str     0x0000067f       0x53 main.o
+                                0x248 (size before relaxing)
+ .debug_str     0x000006d2       0x55 timers.o
+                                0x1d7 (size before relaxing)
 
-.debug_loc      0x00000000      0x1e8
+.debug_loc      0x00000000      0x45c
  *(.debug_loc)
- .debug_loc     0x00000000       0xf3 lcdio.o
- .debug_loc     0x000000f3       0xf5 timers.o
+ .debug_loc     0x00000000      0x1a9 teclado.o
+ .debug_loc     0x000001a9       0xf3 lcdio.o
+ .debug_loc     0x0000029c      0x1c0 main.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -539,11 +598,12 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000       0xc0
+.debug_ranges   0x00000000       0xf0
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x58 lcdio.o
- .debug_ranges  0x00000058       0x10 main.o
- .debug_ranges  0x00000068       0x58 timers.o
+ .debug_ranges  0x00000000       0x20 teclado.o
+ .debug_ranges  0x00000020       0x58 lcdio.o
+ .debug_ranges  0x00000078       0x30 main.o
+ .debug_ranges  0x000000a8       0x48 timers.o
 
 .debug_macro
  *(.debug_macro)

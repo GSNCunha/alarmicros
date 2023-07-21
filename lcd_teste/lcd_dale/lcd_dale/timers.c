@@ -17,7 +17,6 @@ void onda_800hzint(){
 	TCCR1B = 0x1; //sem prescaler
 	TCNT1 = 55536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 10000 contagens p bater meio periodo da onda de 800hz
 	TIMSK1 = 1;
-	qual_delay = 1;
 }
 void onda_400hzint(){
 	sei();
@@ -66,23 +65,10 @@ void delay_1s(){
 	while((TIFR5 & (1<<0)) == 0); //espera overflow
 }
 
-
-ISR(TIMER1_OVF_vect){
-	TCCR1A = 0; //modo normal
-	TCCR1B = 0x1; //sem prescaler
-	TCNT1 = 55536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 10000 contagens p bater meio periodo da onda de 800hz
-	TIFR1 = 1;
-}
-ISR(TIMER3_OVF_vect){
-	TCCR3A = 0; //modo normal
-	TCCR3B = 0x1; //sem prescaler
-	TCNT3 = 45536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 20000 contagens p bater meio periodo da onda de 400hz
-	TIFR3 = 1;
-}
-
-ISR(TIMER4_OVF_vect){
-	TCCR4A = 0; //modo normal
-	TCCR4B = 0x3; //prescaler de 64
-	TCNT4 = 3036; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
-	TIFR4 = 1;
+void delay_1ms() {
+	TCCR5A = 0; // Modo normal
+	TCCR5B = 0x4; // Prescaler de 256
+	TCNT5 = 65024;
+	TIFR5 = (1<<0); //limpa flag
+	while((TIFR5 & (1<<0)) == 0); //espera overflow
 }
