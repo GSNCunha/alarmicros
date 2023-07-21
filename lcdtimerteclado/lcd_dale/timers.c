@@ -11,6 +11,7 @@
 //OBS.: TIMERS SEM INTERRUPÇAO NO TIMER 5
 
 //versão com interrupção:
+
 void onda_800hzint(){
 	sei();
 	TCCR1A = 0; //modo normal

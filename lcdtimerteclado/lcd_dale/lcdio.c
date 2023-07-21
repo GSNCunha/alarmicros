@@ -54,9 +54,12 @@
 		//coloca HIGH
 		PORTC |= (1<<6);
 		delay_CTC();
-		
+		delay_CTC();
+		delay_CTC();
 		//coloca LOW
 		PORTC &= ~(1<<6);
+		delay_CTC();
+		delay_CTC();
 		delay_CTC();
 	}
 
@@ -136,7 +139,9 @@
 		PORTC &= ~(1<<7);
 		PORTA = 0x28;
 		trigger_EN();
-		
+		delay_CTC();
+		delay_CTC();
+		delay_CTC();
 		
 		
 		//ENTRY MODE SET:
@@ -160,4 +165,7 @@
 	
 	void proxima_linha(){
 		send_command(0xC0);
+		delay_CTC();
+		delay_CTC();
+		delay_CTC();
 		}

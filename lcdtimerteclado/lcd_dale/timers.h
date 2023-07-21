@@ -11,5 +11,4 @@ void onda_2hz();
 void delay_1s();
 void delay_1ms();
 
-
 #endif

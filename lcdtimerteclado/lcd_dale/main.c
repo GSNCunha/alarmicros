@@ -3,6 +3,7 @@
 #include "lcdio.h"
 #include "timers.h"
 #include "teclado.h"
+
 int main(void)
 {
 	//------------- organizacao das interrupçoes do teclado:
@@ -11,39 +12,65 @@ int main(void)
 	PORTK = 0b00001111; //pull up do input ativado
 	sei(); //set enable interrupts -- seta 1 no bit I do status register
 	PCICR |= 0b00000100; //ativa interrupção dos pinos PCINT16 ao PCINT23 = K0 ao K7
-	PCMSK2 |= 0x01; //ínterrupção só no pino K0;
+	PCMSK2 |= 0x0F; //ínterrupção só no pino K0;
 	//-------------------------------
-	
 	config_porta_avr();
 	config_lcd_padrao();
 	limpa_reseta_cursor();
 	delay_1s();
-	send_data(0x30);
-	send_command(0xC0);
-	send_data(0x41);
 	send_data(0x21);
-	send_data(0x21);
-	send_data(0x21);
-    while (1) 
-    {
-		tecla = procuraTecla();
-		if (tecla == '1'){
-			send_data(0x2A);
-		}
+    while (1){
 	}
-}
-
+	}
 ISR(PCINT2_vect){ //pinos K0 até K7
 	tecla = procuraTecla();
-	if (tecla == 'A'){
-		send_data(0x41);
+	
+	if ((tecla == '1')){
+		send_data(0b00110001);
 	}
-	PCIFR = (1<<2); //reseta flag da interrupção
-	delay_1ms(); //resolve bug de n conseguir enviar as outras teclas dps
+	if ((tecla == '2')){
+		send_data(0b00110010);
+	}
+	if ((tecla == '3')){
+		send_data(0b00110011);
+	}
+	if ((tecla == '4')){
+		send_data(0b00110100);
+	}
+	if ((tecla == '5')){
+		send_data(0b00110101);
+	}
+	if ((tecla == '6')){
+		send_data(0b00110110);
+	}
+	if ((tecla == '7')){
+		send_data(0b00110111);
+	}
+	if ((tecla == '8')){
+		send_data(0b00111000);
+	}
+	if ((tecla == '9')){
+		send_data(0b00111001);
+	}
+	if ((tecla == 'A')){
+		send_data(0b01000001);
+	}
+	if ((tecla == 'B')){
+		send_data(0b01000010);
+	}
+	if ((tecla == 'C')){
+		send_data(0b01000011);
+	}
+	if ((tecla == 'D')){
+		send_data(0b01000100);
+	}
+	
+	//PCIFR = (1<<2); //reseta flag da interrupção
+	delay_1s(); //resolve bug de n conseguir enviar as outras teclas dps
 }
 ISR(TIMER1_OVF_vect){
 	TCCR1A = 0; //modo normal
-	TCCR1B = 0x1; //sem prescaler
+	TCCR1B = 0x1; //sem prescaler //se botar em 0 para o timer
 	TCNT1 = 55536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 10000 contagens p bater meio periodo da onda de 800hz
 	TIFR1 = 1;
 }
