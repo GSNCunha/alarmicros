@@ -6,6 +6,7 @@
 int main(void)
 {
 	//------------- organizacao das interrupçoes do teclado:
+	DDRB = 0xFF;
 	DDRK = 0b11110000; //  (1) PORTK(0-3) output / (0) PORTK(4-7) input
 	PORTK = 0b00001111; //pull up do input ativado
 	sei(); //set enable interrupts -- seta 1 no bit I do status register
@@ -20,6 +21,8 @@ int main(void)
 	send_data(0x30);
 	send_command(0xC0);
 	send_data(0x41);
+	send_data(0x21);
+	send_data(0x21);
 	send_data(0x21);
     while (1) 
     {
@@ -36,6 +39,7 @@ ISR(PCINT2_vect){ //pinos K0 até K7
 		send_data(0x41);
 	}
 	PCIFR = (1<<2); //reseta flag da interrupção
+	delay_1ms(); //resolve bug de n conseguir enviar as outras teclas dps
 }
 ISR(TIMER1_OVF_vect){
 	TCCR1A = 0; //modo normal

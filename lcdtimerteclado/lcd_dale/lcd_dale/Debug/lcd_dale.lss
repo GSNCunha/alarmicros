@@ -3,31 +3,31 @@ lcd_dale.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000010  00800200  00000492  00000526  2**0
+  0 .data         00000010  00800200  000004a0  00000534  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000492  00000000  00000000  00000094  2**1
+  1 .text         000004a0  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          00000003  00800210  00800210  00000536  2**0
+  2 .bss          00000003  00800210  00800210  00000544  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000536  2**0
+  3 .comment      00000030  00000000  00000000  00000544  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000568  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000574  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 00000130  00000000  00000000  000005a8  2**0
+  5 .debug_aranges 00000130  00000000  00000000  000005b4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   00001471  00000000  00000000  000006d8  2**0
+  6 .debug_info   000014af  00000000  00000000  000006e4  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 00000e5c  00000000  00000000  00001b49  2**0
+  7 .debug_abbrev 00000e5c  00000000  00000000  00001b93  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000009e5  00000000  00000000  000029a5  2**0
+  8 .debug_line   000009fd  00000000  00000000  000029ef  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  000002b0  00000000  00000000  0000338c  2**2
+  9 .debug_frame  000002b0  00000000  00000000  000033ec  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000727  00000000  00000000  0000363c  2**0
+ 10 .debug_str    000006f8  00000000  00000000  0000369c  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    0000045c  00000000  00000000  00003d63  2**0
+ 11 .debug_loc    0000045c  00000000  00000000  00003d94  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 000000f0  00000000  00000000  000041bf  2**0
+ 12 .debug_ranges 000000f0  00000000  00000000  000041f0  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -55,7 +55,7 @@ Disassembly of section .text:
   26:	00 00       	nop
   28:	7c c0       	rjmp	.+248    	; 0x122 <__bad_interrupt>
   2a:	00 00       	nop
-  2c:	8f c1       	rjmp	.+798    	; 0x34c <__vector_11>
+  2c:	95 c1       	rjmp	.+810    	; 0x358 <__vector_11>
   2e:	00 00       	nop
   30:	78 c0       	rjmp	.+240    	; 0x122 <__bad_interrupt>
   32:	00 00       	nop
@@ -73,7 +73,7 @@ Disassembly of section .text:
   4a:	00 00       	nop
   4c:	6a c0       	rjmp	.+212    	; 0x122 <__bad_interrupt>
   4e:	00 00       	nop
-  50:	ab c1       	rjmp	.+854    	; 0x3a8 <__vector_20>
+  50:	b2 c1       	rjmp	.+868    	; 0x3b6 <__vector_20>
   52:	00 00       	nop
   54:	66 c0       	rjmp	.+204    	; 0x122 <__bad_interrupt>
   56:	00 00       	nop
@@ -103,7 +103,7 @@ Disassembly of section .text:
   86:	00 00       	nop
   88:	4c c0       	rjmp	.+152    	; 0x122 <__bad_interrupt>
   8a:	00 00       	nop
-  8c:	a9 c1       	rjmp	.+850    	; 0x3e0 <__vector_35>
+  8c:	b0 c1       	rjmp	.+864    	; 0x3ee <__vector_35>
   8e:	00 00       	nop
   90:	48 c0       	rjmp	.+144    	; 0x122 <__bad_interrupt>
   92:	00 00       	nop
@@ -123,7 +123,7 @@ Disassembly of section .text:
   ae:	00 00       	nop
   b0:	38 c0       	rjmp	.+112    	; 0x122 <__bad_interrupt>
   b2:	00 00       	nop
-  b4:	b1 c1       	rjmp	.+866    	; 0x418 <__vector_45>
+  b4:	b8 c1       	rjmp	.+880    	; 0x426 <__vector_45>
   b6:	00 00       	nop
   b8:	34 c0       	rjmp	.+104    	; 0x122 <__bad_interrupt>
   ba:	00 00       	nop
@@ -162,7 +162,7 @@ Disassembly of section .text:
   f4:	12 e0       	ldi	r17, 0x02	; 2
   f6:	a0 e0       	ldi	r26, 0x00	; 0
   f8:	b2 e0       	ldi	r27, 0x02	; 2
-  fa:	e2 e9       	ldi	r30, 0x92	; 146
+  fa:	e0 ea       	ldi	r30, 0xA0	; 160
   fc:	f4 e0       	ldi	r31, 0x04	; 4
   fe:	00 e0       	ldi	r16, 0x00	; 0
  100:	0b bf       	out	0x3b, r16	; 59
@@ -187,7 +187,7 @@ Disassembly of section .text:
  11a:	b2 07       	cpc	r27, r18
  11c:	e1 f7       	brne	.-8      	; 0x116 <.do_clear_bss_loop>
  11e:	f1 d0       	rcall	.+482    	; 0x302 <main>
- 120:	b6 c1       	rjmp	.+876    	; 0x48e <_exit>
+ 120:	bd c1       	rjmp	.+890    	; 0x49c <_exit>
 
 00000122 <__bad_interrupt>:
  122:	6e cf       	rjmp	.-292    	; 0x0 <__vectors>
@@ -209,7 +209,7 @@ char ligaLinhas(int bitColuna, int indColuna)//coluna = numero correspondente da
  12e:	8f e7       	ldi	r24, 0x7F	; 127
  130:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 	delay_1ms();
- 134:	9c d1       	rcall	.+824    	; 0x46e <delay_1ms>
+ 134:	a3 d1       	rcall	.+838    	; 0x47c <delay_1ms>
 
 	if ((PINK & (1 << bitColuna)) == 0){
  136:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
@@ -232,7 +232,7 @@ char ligaLinhas(int bitColuna, int indColuna)//coluna = numero correspondente da
  154:	8f eb       	ldi	r24, 0xBF	; 191
  156:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 	delay_1ms();
- 15a:	89 d1       	rcall	.+786    	; 0x46e <delay_1ms>
+ 15a:	90 d1       	rcall	.+800    	; 0x47c <delay_1ms>
 
 	if ((PINK & (1 << bitColuna)) == 0){
  15c:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
@@ -256,7 +256,7 @@ char ligaLinhas(int bitColuna, int indColuna)//coluna = numero correspondente da
  17a:	8f ed       	ldi	r24, 0xDF	; 223
  17c:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 	delay_1ms();
- 180:	76 d1       	rcall	.+748    	; 0x46e <delay_1ms>
+ 180:	7d d1       	rcall	.+762    	; 0x47c <delay_1ms>
 
 	if ((PINK & (1 << bitColuna)) == 0){
  182:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
@@ -279,7 +279,7 @@ char ligaLinhas(int bitColuna, int indColuna)//coluna = numero correspondente da
  1a0:	8f ee       	ldi	r24, 0xEF	; 239
  1a2:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 	delay_1ms();
- 1a6:	63 d1       	rcall	.+710    	; 0x46e <delay_1ms>
+ 1a6:	6a d1       	rcall	.+724    	; 0x47c <delay_1ms>
 	
 	if ((PINK & (1 << bitColuna)) == 0){
  1a8:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
@@ -371,7 +371,7 @@ char procuraTecla()
  212:	8f e0       	ldi	r24, 0x0F	; 15
  214:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 	delay_1ms();
- 218:	2a d1       	rcall	.+596    	; 0x46e <delay_1ms>
+ 218:	31 d1       	rcall	.+610    	; 0x47c <delay_1ms>
 	
 	while(PINK != 0b00001111);
  21a:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
@@ -393,6 +393,12 @@ char procuraTecla()
  234:	08 95       	ret
 
 00000236 <config_delay_timer0_CTC>:
+		
+		while(*string != 0){
+			send_data(*string);
+			string++;
+		}
+	}
  236:	92 e0       	ldi	r25, 0x02	; 2
  238:	94 bd       	out	0x24, r25	; 36
  23a:	87 bd       	out	0x27, r24	; 39
@@ -485,292 +491,338 @@ char procuraTecla()
  2d4:	08 95       	ret
 
 000002d6 <limpa_reseta_cursor>:
+	
+	
+	void limpa_reseta_cursor(){
+		//Limpa display e reseta posição do cursor
+		send_command(0x01);
  2d6:	81 e0       	ldi	r24, 0x01	; 1
  2d8:	e5 df       	rcall	.-54     	; 0x2a4 <send_command>
+		delay_CTC();
  2da:	b2 df       	rcall	.-156    	; 0x240 <delay_CTC>
+		delay_CTC();
  2dc:	b1 df       	rcall	.-158    	; 0x240 <delay_CTC>
  2de:	b0 cf       	rjmp	.-160    	; 0x240 <delay_CTC>
+		delay_CTC();
  2e0:	08 95       	ret
 
 000002e2 <config_lcd_padrao>:
  2e2:	88 b1       	in	r24, 0x08	; 8
  2e4:	8f 7d       	andi	r24, 0xDF	; 223
+		
+		//FUNCTION SET:
+		//Interface 4 bits
+		//2 linhas
+		//Caracteres 5x10
+		PORTC &= ~(1<<5);
  2e6:	88 b9       	out	0x08, r24	; 8
+		PORTC &= ~(1<<7);
  2e8:	88 b1       	in	r24, 0x08	; 8
  2ea:	8f 77       	andi	r24, 0x7F	; 127
  2ec:	88 b9       	out	0x08, r24	; 8
+		PORTA = 0x28;
  2ee:	88 e2       	ldi	r24, 0x28	; 40
  2f0:	82 b9       	out	0x02, r24	; 2
+		trigger_EN();
  2f2:	b4 df       	rcall	.-152    	; 0x25c <trigger_EN>
+		
+		
+		
+		//ENTRY MODE SET:
+		//Incrementa posição do cursor
+		send_command(0x06);
  2f4:	86 e0       	ldi	r24, 0x06	; 6
  2f6:	d6 df       	rcall	.-84     	; 0x2a4 <send_command>
+		
+		
+		//CURSOR/DISPLAY SHIFT:
+		//Cursor move
+		//Para direita
+		send_command(0x14);
  2f8:	84 e1       	ldi	r24, 0x14	; 20
  2fa:	d4 df       	rcall	.-88     	; 0x2a4 <send_command>
+		
+		//DISPLAY CONTROL:
+		//Display ligado
+		//Cursor ligado
+		//Cursor não pisca
+		send_command(0x0E);
  2fc:	8e e0       	ldi	r24, 0x0E	; 14
  2fe:	d2 cf       	rjmp	.-92     	; 0x2a4 <send_command>
  300:	08 95       	ret
 
 00000302 <main>:
- 302:	80 ef       	ldi	r24, 0xF0	; 240
+ 302:	8f ef       	ldi	r24, 0xFF	; 255
 #include "timers.h"
 #include "teclado.h"
 int main(void)
 {
 	//------------- organizacao das interrupçoes do teclado:
+	DDRB = 0xFF;
+ 304:	84 b9       	out	0x04, r24	; 4
 	DDRK = 0b11110000; //  (1) PORTK(0-3) output / (0) PORTK(4-7) input
- 304:	80 93 07 01 	sts	0x0107, r24	; 0x800107 <__TEXT_REGION_LENGTH__+0x7c0107>
+ 306:	80 ef       	ldi	r24, 0xF0	; 240
+ 308:	80 93 07 01 	sts	0x0107, r24	; 0x800107 <__TEXT_REGION_LENGTH__+0x7c0107>
 	PORTK = 0b00001111; //pull up do input ativado
- 308:	8f e0       	ldi	r24, 0x0F	; 15
- 30a:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
+ 30c:	8f e0       	ldi	r24, 0x0F	; 15
+ 30e:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 	sei(); //set enable interrupts -- seta 1 no bit I do status register
- 30e:	78 94       	sei
+ 312:	78 94       	sei
 	PCICR |= 0b00000100; //ativa interrupção dos pinos PCINT16 ao PCINT23 = K0 ao K7
- 310:	e8 e6       	ldi	r30, 0x68	; 104
- 312:	f0 e0       	ldi	r31, 0x00	; 0
- 314:	80 81       	ld	r24, Z
- 316:	84 60       	ori	r24, 0x04	; 4
- 318:	80 83       	st	Z, r24
+ 314:	e8 e6       	ldi	r30, 0x68	; 104
+ 316:	f0 e0       	ldi	r31, 0x00	; 0
+ 318:	80 81       	ld	r24, Z
+ 31a:	84 60       	ori	r24, 0x04	; 4
+ 31c:	80 83       	st	Z, r24
 	PCMSK2 |= 0x01; //ínterrupção só no pino K0;
- 31a:	ed e6       	ldi	r30, 0x6D	; 109
- 31c:	f0 e0       	ldi	r31, 0x00	; 0
- 31e:	80 81       	ld	r24, Z
- 320:	81 60       	ori	r24, 0x01	; 1
- 322:	80 83       	st	Z, r24
+ 31e:	ed e6       	ldi	r30, 0x6D	; 109
+ 320:	f0 e0       	ldi	r31, 0x00	; 0
+ 322:	80 81       	ld	r24, Z
+ 324:	81 60       	ori	r24, 0x01	; 1
+ 326:	80 83       	st	Z, r24
 	//-------------------------------
 	
 	config_porta_avr();
- 324:	96 df       	rcall	.-212    	; 0x252 <config_porta_avr>
+ 328:	94 df       	rcall	.-216    	; 0x252 <config_porta_avr>
 	config_lcd_padrao();
- 326:	dd df       	rcall	.-70     	; 0x2e2 <config_lcd_padrao>
+ 32a:	db df       	rcall	.-74     	; 0x2e2 <config_lcd_padrao>
 	limpa_reseta_cursor();
- 328:	d6 df       	rcall	.-84     	; 0x2d6 <limpa_reseta_cursor>
+ 32c:	d4 df       	rcall	.-88     	; 0x2d6 <limpa_reseta_cursor>
 	delay_1s();
- 32a:	91 d0       	rcall	.+290    	; 0x44e <delay_1s>
+ 32e:	96 d0       	rcall	.+300    	; 0x45c <delay_1s>
 	send_data(0x30);
- 32c:	80 e3       	ldi	r24, 0x30	; 48
- 32e:	a1 df       	rcall	.-190    	; 0x272 <send_data>
+ 330:	80 e3       	ldi	r24, 0x30	; 48
+ 332:	9f df       	rcall	.-194    	; 0x272 <send_data>
 	send_command(0xC0);
- 330:	80 ec       	ldi	r24, 0xC0	; 192
+ 334:	80 ec       	ldi	r24, 0xC0	; 192
+ 336:	b6 df       	rcall	.-148    	; 0x2a4 <send_command>
 	send_data(0x41);
- 332:	b8 df       	rcall	.-144    	; 0x2a4 <send_command>
- 334:	81 e4       	ldi	r24, 0x41	; 65
- 336:	9d df       	rcall	.-198    	; 0x272 <send_data>
-	send_data(0x21);
- 338:	81 e2       	ldi	r24, 0x21	; 33
+ 338:	81 e4       	ldi	r24, 0x41	; 65
  33a:	9b df       	rcall	.-202    	; 0x272 <send_data>
+	send_data(0x21);
+ 33c:	81 e2       	ldi	r24, 0x21	; 33
+ 33e:	99 df       	rcall	.-206    	; 0x272 <send_data>
+ 340:	81 e2       	ldi	r24, 0x21	; 33
+	send_data(0x21);
+ 342:	97 df       	rcall	.-210    	; 0x272 <send_data>
+ 344:	81 e2       	ldi	r24, 0x21	; 33
+	send_data(0x21);
+ 346:	95 df       	rcall	.-214    	; 0x272 <send_data>
+ 348:	64 df       	rcall	.-312    	; 0x212 <procuraTecla>
+ 34a:	80 93 11 02 	sts	0x0211, r24	; 0x800211 <tecla>
     while (1) 
     {
 		tecla = procuraTecla();
- 33c:	6a df       	rcall	.-300    	; 0x212 <procuraTecla>
- 33e:	80 93 11 02 	sts	0x0211, r24	; 0x800211 <tecla>
- 342:	81 33       	cpi	r24, 0x31	; 49
+ 34e:	81 33       	cpi	r24, 0x31	; 49
+ 350:	d9 f7       	brne	.-10     	; 0x348 <main+0x46>
+ 352:	8a e2       	ldi	r24, 0x2A	; 42
 		if (tecla == '1'){
- 344:	d9 f7       	brne	.-10     	; 0x33c <main+0x3a>
- 346:	8a e2       	ldi	r24, 0x2A	; 42
-			send_data(0x2A);
- 348:	94 df       	rcall	.-216    	; 0x272 <send_data>
- 34a:	f8 cf       	rjmp	.-16     	; 0x33c <main+0x3a>
+ 354:	8e df       	rcall	.-228    	; 0x272 <send_data>
+ 356:	f8 cf       	rjmp	.-16     	; 0x348 <main+0x46>
 
-0000034c <__vector_11>:
- 34c:	1f 92       	push	r1
- 34e:	0f 92       	push	r0
+00000358 <__vector_11>:
+			send_data(0x2A);
+ 358:	1f 92       	push	r1
+ 35a:	0f 92       	push	r0
+ 35c:	0f b6       	in	r0, 0x3f	; 63
+ 35e:	0f 92       	push	r0
 		}
 	}
 }
 
 ISR(PCINT2_vect){ //pinos K0 até K7
- 350:	0f b6       	in	r0, 0x3f	; 63
- 352:	0f 92       	push	r0
- 354:	11 24       	eor	r1, r1
- 356:	0b b6       	in	r0, 0x3b	; 59
- 358:	0f 92       	push	r0
- 35a:	2f 93       	push	r18
- 35c:	3f 93       	push	r19
- 35e:	4f 93       	push	r20
- 360:	5f 93       	push	r21
- 362:	6f 93       	push	r22
- 364:	7f 93       	push	r23
- 366:	8f 93       	push	r24
- 368:	9f 93       	push	r25
- 36a:	af 93       	push	r26
- 36c:	bf 93       	push	r27
- 36e:	ef 93       	push	r30
- 370:	ff 93       	push	r31
+ 360:	11 24       	eor	r1, r1
+ 362:	0b b6       	in	r0, 0x3b	; 59
+ 364:	0f 92       	push	r0
+ 366:	2f 93       	push	r18
+ 368:	3f 93       	push	r19
+ 36a:	4f 93       	push	r20
+ 36c:	5f 93       	push	r21
+ 36e:	6f 93       	push	r22
+ 370:	7f 93       	push	r23
+ 372:	8f 93       	push	r24
+ 374:	9f 93       	push	r25
+ 376:	af 93       	push	r26
+ 378:	bf 93       	push	r27
+ 37a:	ef 93       	push	r30
+ 37c:	ff 93       	push	r31
 	tecla = procuraTecla();
- 372:	4f df       	rcall	.-354    	; 0x212 <procuraTecla>
- 374:	80 93 11 02 	sts	0x0211, r24	; 0x800211 <tecla>
+ 37e:	49 df       	rcall	.-366    	; 0x212 <procuraTecla>
+ 380:	80 93 11 02 	sts	0x0211, r24	; 0x800211 <tecla>
 	if (tecla == 'A'){
- 378:	81 34       	cpi	r24, 0x41	; 65
+ 384:	81 34       	cpi	r24, 0x41	; 65
 		send_data(0x41);
- 37a:	09 f4       	brne	.+2      	; 0x37e <__vector_11+0x32>
- 37c:	7a df       	rcall	.-268    	; 0x272 <send_data>
+ 386:	09 f4       	brne	.+2      	; 0x38a <__vector_11+0x32>
+ 388:	74 df       	rcall	.-280    	; 0x272 <send_data>
 	}
 	PCIFR = (1<<2); //reseta flag da interrupção
- 37e:	84 e0       	ldi	r24, 0x04	; 4
- 380:	8b bb       	out	0x1b, r24	; 27
+ 38a:	84 e0       	ldi	r24, 0x04	; 4
+	delay_1ms();
+ 38c:	8b bb       	out	0x1b, r24	; 27
+ 38e:	76 d0       	rcall	.+236    	; 0x47c <delay_1ms>
 }
- 382:	ff 91       	pop	r31
- 384:	ef 91       	pop	r30
- 386:	bf 91       	pop	r27
- 388:	af 91       	pop	r26
- 38a:	9f 91       	pop	r25
- 38c:	8f 91       	pop	r24
- 38e:	7f 91       	pop	r23
- 390:	6f 91       	pop	r22
- 392:	5f 91       	pop	r21
- 394:	4f 91       	pop	r20
- 396:	3f 91       	pop	r19
- 398:	2f 91       	pop	r18
- 39a:	0f 90       	pop	r0
- 39c:	0b be       	out	0x3b, r0	; 59
- 39e:	0f 90       	pop	r0
- 3a0:	0f be       	out	0x3f, r0	; 63
- 3a2:	0f 90       	pop	r0
- 3a4:	1f 90       	pop	r1
- 3a6:	18 95       	reti
+ 390:	ff 91       	pop	r31
+ 392:	ef 91       	pop	r30
+ 394:	bf 91       	pop	r27
+ 396:	af 91       	pop	r26
+ 398:	9f 91       	pop	r25
+ 39a:	8f 91       	pop	r24
+ 39c:	7f 91       	pop	r23
+ 39e:	6f 91       	pop	r22
+ 3a0:	5f 91       	pop	r21
+ 3a2:	4f 91       	pop	r20
+ 3a4:	3f 91       	pop	r19
+ 3a6:	2f 91       	pop	r18
+ 3a8:	0f 90       	pop	r0
+ 3aa:	0b be       	out	0x3b, r0	; 59
+ 3ac:	0f 90       	pop	r0
+ 3ae:	0f be       	out	0x3f, r0	; 63
+ 3b0:	0f 90       	pop	r0
+ 3b2:	1f 90       	pop	r1
+ 3b4:	18 95       	reti
 
-000003a8 <__vector_20>:
+000003b6 <__vector_20>:
 ISR(TIMER1_OVF_vect){
- 3a8:	1f 92       	push	r1
- 3aa:	0f 92       	push	r0
- 3ac:	0f b6       	in	r0, 0x3f	; 63
- 3ae:	0f 92       	push	r0
- 3b0:	11 24       	eor	r1, r1
- 3b2:	2f 93       	push	r18
- 3b4:	3f 93       	push	r19
- 3b6:	8f 93       	push	r24
+ 3b6:	1f 92       	push	r1
+ 3b8:	0f 92       	push	r0
+ 3ba:	0f b6       	in	r0, 0x3f	; 63
+ 3bc:	0f 92       	push	r0
+ 3be:	11 24       	eor	r1, r1
+ 3c0:	2f 93       	push	r18
+ 3c2:	3f 93       	push	r19
+ 3c4:	8f 93       	push	r24
 	TCCR1A = 0; //modo normal
- 3b8:	10 92 80 00 	sts	0x0080, r1	; 0x800080 <__TEXT_REGION_LENGTH__+0x7c0080>
+ 3c6:	10 92 80 00 	sts	0x0080, r1	; 0x800080 <__TEXT_REGION_LENGTH__+0x7c0080>
 	TCCR1B = 0x1; //sem prescaler
- 3bc:	81 e0       	ldi	r24, 0x01	; 1
- 3be:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__TEXT_REGION_LENGTH__+0x7c0081>
+ 3ca:	81 e0       	ldi	r24, 0x01	; 1
+ 3cc:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__TEXT_REGION_LENGTH__+0x7c0081>
 	TCNT1 = 55536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 10000 contagens p bater meio periodo da onda de 800hz
- 3c2:	20 ef       	ldi	r18, 0xF0	; 240
- 3c4:	38 ed       	ldi	r19, 0xD8	; 216
- 3c6:	30 93 85 00 	sts	0x0085, r19	; 0x800085 <__TEXT_REGION_LENGTH__+0x7c0085>
- 3ca:	20 93 84 00 	sts	0x0084, r18	; 0x800084 <__TEXT_REGION_LENGTH__+0x7c0084>
+ 3d0:	20 ef       	ldi	r18, 0xF0	; 240
+ 3d2:	38 ed       	ldi	r19, 0xD8	; 216
+ 3d4:	30 93 85 00 	sts	0x0085, r19	; 0x800085 <__TEXT_REGION_LENGTH__+0x7c0085>
+ 3d8:	20 93 84 00 	sts	0x0084, r18	; 0x800084 <__TEXT_REGION_LENGTH__+0x7c0084>
 	TIFR1 = 1;
- 3ce:	86 bb       	out	0x16, r24	; 22
+ 3dc:	86 bb       	out	0x16, r24	; 22
 }
- 3d0:	8f 91       	pop	r24
- 3d2:	3f 91       	pop	r19
- 3d4:	2f 91       	pop	r18
- 3d6:	0f 90       	pop	r0
- 3d8:	0f be       	out	0x3f, r0	; 63
- 3da:	0f 90       	pop	r0
- 3dc:	1f 90       	pop	r1
- 3de:	18 95       	reti
+ 3de:	8f 91       	pop	r24
+ 3e0:	3f 91       	pop	r19
+ 3e2:	2f 91       	pop	r18
+ 3e4:	0f 90       	pop	r0
+ 3e6:	0f be       	out	0x3f, r0	; 63
+ 3e8:	0f 90       	pop	r0
+ 3ea:	1f 90       	pop	r1
+ 3ec:	18 95       	reti
 
-000003e0 <__vector_35>:
+000003ee <__vector_35>:
 ISR(TIMER3_OVF_vect){
- 3e0:	1f 92       	push	r1
- 3e2:	0f 92       	push	r0
- 3e4:	0f b6       	in	r0, 0x3f	; 63
- 3e6:	0f 92       	push	r0
- 3e8:	11 24       	eor	r1, r1
- 3ea:	2f 93       	push	r18
- 3ec:	3f 93       	push	r19
- 3ee:	8f 93       	push	r24
+ 3ee:	1f 92       	push	r1
+ 3f0:	0f 92       	push	r0
+ 3f2:	0f b6       	in	r0, 0x3f	; 63
+ 3f4:	0f 92       	push	r0
+ 3f6:	11 24       	eor	r1, r1
+ 3f8:	2f 93       	push	r18
+ 3fa:	3f 93       	push	r19
+ 3fc:	8f 93       	push	r24
 	TCCR3A = 0; //modo normal
- 3f0:	10 92 90 00 	sts	0x0090, r1	; 0x800090 <__TEXT_REGION_LENGTH__+0x7c0090>
+ 3fe:	10 92 90 00 	sts	0x0090, r1	; 0x800090 <__TEXT_REGION_LENGTH__+0x7c0090>
 	TCCR3B = 0x1; //sem prescaler
- 3f4:	81 e0       	ldi	r24, 0x01	; 1
- 3f6:	80 93 91 00 	sts	0x0091, r24	; 0x800091 <__TEXT_REGION_LENGTH__+0x7c0091>
+ 402:	81 e0       	ldi	r24, 0x01	; 1
+ 404:	80 93 91 00 	sts	0x0091, r24	; 0x800091 <__TEXT_REGION_LENGTH__+0x7c0091>
 	TCNT3 = 45536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 20000 contagens p bater meio periodo da onda de 400hz
- 3fa:	20 ee       	ldi	r18, 0xE0	; 224
- 3fc:	31 eb       	ldi	r19, 0xB1	; 177
- 3fe:	30 93 95 00 	sts	0x0095, r19	; 0x800095 <__TEXT_REGION_LENGTH__+0x7c0095>
- 402:	20 93 94 00 	sts	0x0094, r18	; 0x800094 <__TEXT_REGION_LENGTH__+0x7c0094>
+ 408:	20 ee       	ldi	r18, 0xE0	; 224
+ 40a:	31 eb       	ldi	r19, 0xB1	; 177
+ 40c:	30 93 95 00 	sts	0x0095, r19	; 0x800095 <__TEXT_REGION_LENGTH__+0x7c0095>
+ 410:	20 93 94 00 	sts	0x0094, r18	; 0x800094 <__TEXT_REGION_LENGTH__+0x7c0094>
 	TIFR3 = 1;
- 406:	88 bb       	out	0x18, r24	; 24
+ 414:	88 bb       	out	0x18, r24	; 24
 }
- 408:	8f 91       	pop	r24
- 40a:	3f 91       	pop	r19
- 40c:	2f 91       	pop	r18
- 40e:	0f 90       	pop	r0
- 410:	0f be       	out	0x3f, r0	; 63
- 412:	0f 90       	pop	r0
- 414:	1f 90       	pop	r1
- 416:	18 95       	reti
+ 416:	8f 91       	pop	r24
+ 418:	3f 91       	pop	r19
+ 41a:	2f 91       	pop	r18
+ 41c:	0f 90       	pop	r0
+ 41e:	0f be       	out	0x3f, r0	; 63
+ 420:	0f 90       	pop	r0
+ 422:	1f 90       	pop	r1
+ 424:	18 95       	reti
 
-00000418 <__vector_45>:
+00000426 <__vector_45>:
 ISR(TIMER4_OVF_vect){
- 418:	1f 92       	push	r1
- 41a:	0f 92       	push	r0
- 41c:	0f b6       	in	r0, 0x3f	; 63
- 41e:	0f 92       	push	r0
- 420:	11 24       	eor	r1, r1
- 422:	8f 93       	push	r24
- 424:	9f 93       	push	r25
+ 426:	1f 92       	push	r1
+ 428:	0f 92       	push	r0
+ 42a:	0f b6       	in	r0, 0x3f	; 63
+ 42c:	0f 92       	push	r0
+ 42e:	11 24       	eor	r1, r1
+ 430:	8f 93       	push	r24
+ 432:	9f 93       	push	r25
 	TCCR4A = 0; //modo normal
- 426:	10 92 a0 00 	sts	0x00A0, r1	; 0x8000a0 <__TEXT_REGION_LENGTH__+0x7c00a0>
+ 434:	10 92 a0 00 	sts	0x00A0, r1	; 0x8000a0 <__TEXT_REGION_LENGTH__+0x7c00a0>
 	TCCR4B = 0x3; //prescaler de 64
- 42a:	83 e0       	ldi	r24, 0x03	; 3
- 42c:	80 93 a1 00 	sts	0x00A1, r24	; 0x8000a1 <__TEXT_REGION_LENGTH__+0x7c00a1>
+ 438:	83 e0       	ldi	r24, 0x03	; 3
+ 43a:	80 93 a1 00 	sts	0x00A1, r24	; 0x8000a1 <__TEXT_REGION_LENGTH__+0x7c00a1>
 	TCNT4 = 3036; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
- 430:	8c ed       	ldi	r24, 0xDC	; 220
- 432:	9b e0       	ldi	r25, 0x0B	; 11
- 434:	90 93 a5 00 	sts	0x00A5, r25	; 0x8000a5 <__TEXT_REGION_LENGTH__+0x7c00a5>
- 438:	80 93 a4 00 	sts	0x00A4, r24	; 0x8000a4 <__TEXT_REGION_LENGTH__+0x7c00a4>
+ 43e:	8c ed       	ldi	r24, 0xDC	; 220
+ 440:	9b e0       	ldi	r25, 0x0B	; 11
+ 442:	90 93 a5 00 	sts	0x00A5, r25	; 0x8000a5 <__TEXT_REGION_LENGTH__+0x7c00a5>
+ 446:	80 93 a4 00 	sts	0x00A4, r24	; 0x8000a4 <__TEXT_REGION_LENGTH__+0x7c00a4>
 	TIFR4 = 1;
- 43c:	81 e0       	ldi	r24, 0x01	; 1
- 43e:	89 bb       	out	0x19, r24	; 25
- 440:	9f 91       	pop	r25
- 442:	8f 91       	pop	r24
- 444:	0f 90       	pop	r0
- 446:	0f be       	out	0x3f, r0	; 63
- 448:	0f 90       	pop	r0
- 44a:	1f 90       	pop	r1
- 44c:	18 95       	reti
+ 44a:	81 e0       	ldi	r24, 0x01	; 1
+ 44c:	89 bb       	out	0x19, r24	; 25
+ 44e:	9f 91       	pop	r25
+ 450:	8f 91       	pop	r24
+ 452:	0f 90       	pop	r0
+ 454:	0f be       	out	0x3f, r0	; 63
+ 456:	0f 90       	pop	r0
+ 458:	1f 90       	pop	r1
+ 45a:	18 95       	reti
 
-0000044e <delay_1s>:
+0000045c <delay_1s>:
 	while((TIFR5 & (1<<0)) == 0); //espera overflow
 }
 
 //esse delay acho q n vai precisar interrupção
 void delay_1s(){
 	TCCR5A = 0; //modo normal
- 44e:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <__TEXT_REGION_LENGTH__+0x7c0120>
+ 45c:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <__TEXT_REGION_LENGTH__+0x7c0120>
 	TCCR5B = 0x4; //prescaler de 256
- 452:	84 e0       	ldi	r24, 0x04	; 4
- 454:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
+ 460:	84 e0       	ldi	r24, 0x04	; 4
+ 462:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
 	TCNT5 = 3036; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
- 458:	8c ed       	ldi	r24, 0xDC	; 220
- 45a:	9b e0       	ldi	r25, 0x0B	; 11
- 45c:	90 93 25 01 	sts	0x0125, r25	; 0x800125 <__TEXT_REGION_LENGTH__+0x7c0125>
- 460:	80 93 24 01 	sts	0x0124, r24	; 0x800124 <__TEXT_REGION_LENGTH__+0x7c0124>
+ 466:	8c ed       	ldi	r24, 0xDC	; 220
+ 468:	9b e0       	ldi	r25, 0x0B	; 11
+ 46a:	90 93 25 01 	sts	0x0125, r25	; 0x800125 <__TEXT_REGION_LENGTH__+0x7c0125>
+ 46e:	80 93 24 01 	sts	0x0124, r24	; 0x800124 <__TEXT_REGION_LENGTH__+0x7c0124>
 	TIFR5 = (1<<0); //limpa flag
- 464:	81 e0       	ldi	r24, 0x01	; 1
- 466:	8a bb       	out	0x1a, r24	; 26
+ 472:	81 e0       	ldi	r24, 0x01	; 1
+ 474:	8a bb       	out	0x1a, r24	; 26
 	while((TIFR5 & (1<<0)) == 0); //espera overflow
- 468:	d0 9b       	sbis	0x1a, 0	; 26
- 46a:	fe cf       	rjmp	.-4      	; 0x468 <delay_1s+0x1a>
+ 476:	d0 9b       	sbis	0x1a, 0	; 26
+ 478:	fe cf       	rjmp	.-4      	; 0x476 <delay_1s+0x1a>
 }
- 46c:	08 95       	ret
+ 47a:	08 95       	ret
 
-0000046e <delay_1ms>:
+0000047c <delay_1ms>:
 
 void delay_1ms() {
 	TCCR5A = 0; // Modo normal
- 46e:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <__TEXT_REGION_LENGTH__+0x7c0120>
+ 47c:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <__TEXT_REGION_LENGTH__+0x7c0120>
 	TCCR5B = 0x4; // Prescaler de 256
- 472:	84 e0       	ldi	r24, 0x04	; 4
- 474:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
+ 480:	84 e0       	ldi	r24, 0x04	; 4
+ 482:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
 	TCNT5 = 65024;
- 478:	80 e0       	ldi	r24, 0x00	; 0
- 47a:	9e ef       	ldi	r25, 0xFE	; 254
- 47c:	90 93 25 01 	sts	0x0125, r25	; 0x800125 <__TEXT_REGION_LENGTH__+0x7c0125>
- 480:	80 93 24 01 	sts	0x0124, r24	; 0x800124 <__TEXT_REGION_LENGTH__+0x7c0124>
+ 486:	80 e0       	ldi	r24, 0x00	; 0
+ 488:	9e ef       	ldi	r25, 0xFE	; 254
+ 48a:	90 93 25 01 	sts	0x0125, r25	; 0x800125 <__TEXT_REGION_LENGTH__+0x7c0125>
+ 48e:	80 93 24 01 	sts	0x0124, r24	; 0x800124 <__TEXT_REGION_LENGTH__+0x7c0124>
 	TIFR5 = (1<<0); //limpa flag
- 484:	81 e0       	ldi	r24, 0x01	; 1
- 486:	8a bb       	out	0x1a, r24	; 26
+ 492:	81 e0       	ldi	r24, 0x01	; 1
+ 494:	8a bb       	out	0x1a, r24	; 26
 	while((TIFR5 & (1<<0)) == 0); //espera overflow
- 488:	d0 9b       	sbis	0x1a, 0	; 26
- 48a:	fe cf       	rjmp	.-4      	; 0x488 <delay_1ms+0x1a>
- 48c:	08 95       	ret
+ 496:	d0 9b       	sbis	0x1a, 0	; 26
+ 498:	fe cf       	rjmp	.-4      	; 0x496 <delay_1ms+0x1a>
+ 49a:	08 95       	ret
 
-0000048e <_exit>:
- 48e:	f8 94       	cli
+0000049c <_exit>:
+ 49c:	f8 94       	cli
 
-00000490 <__stop_program>:
- 490:	ff cf       	rjmp	.-2      	; 0x490 <__stop_program>
+0000049e <__stop_program>:
+ 49e:	ff cf       	rjmp	.-2      	; 0x49e <__stop_program>

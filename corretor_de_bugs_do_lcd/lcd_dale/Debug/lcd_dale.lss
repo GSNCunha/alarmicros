@@ -1,0 +1,481 @@
+
+lcd_dale.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .data         00000000  00800200  00800200  00000306  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  1 .text         000002b2  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  2 .comment      00000030  00000000  00000000  00000306  2**0
+                  CONTENTS, READONLY
+  3 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000338  2**2
+                  CONTENTS, READONLY
+  4 .debug_aranges 000000f0  00000000  00000000  00000378  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_info   0000117a  00000000  00000000  00000468  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_abbrev 00000d14  00000000  00000000  000015e2  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_line   000007ea  00000000  00000000  000022f6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_frame  000001f4  00000000  00000000  00002ae0  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    0000064e  00000000  00000000  00002cd4  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 10 .debug_loc    000001e8  00000000  00000000  00003322  2**0
+                  CONTENTS, READONLY, DEBUGGING
+ 11 .debug_ranges 000000c0  00000000  00000000  0000350a  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	71 c0       	rjmp	.+226    	; 0xe4 <__ctors_end>
+   2:	00 00       	nop
+   4:	79 c0       	rjmp	.+242    	; 0xf8 <__bad_interrupt>
+   6:	00 00       	nop
+   8:	77 c0       	rjmp	.+238    	; 0xf8 <__bad_interrupt>
+   a:	00 00       	nop
+   c:	75 c0       	rjmp	.+234    	; 0xf8 <__bad_interrupt>
+   e:	00 00       	nop
+  10:	73 c0       	rjmp	.+230    	; 0xf8 <__bad_interrupt>
+  12:	00 00       	nop
+  14:	71 c0       	rjmp	.+226    	; 0xf8 <__bad_interrupt>
+  16:	00 00       	nop
+  18:	6f c0       	rjmp	.+222    	; 0xf8 <__bad_interrupt>
+  1a:	00 00       	nop
+  1c:	6d c0       	rjmp	.+218    	; 0xf8 <__bad_interrupt>
+  1e:	00 00       	nop
+  20:	6b c0       	rjmp	.+214    	; 0xf8 <__bad_interrupt>
+  22:	00 00       	nop
+  24:	69 c0       	rjmp	.+210    	; 0xf8 <__bad_interrupt>
+  26:	00 00       	nop
+  28:	67 c0       	rjmp	.+206    	; 0xf8 <__bad_interrupt>
+  2a:	00 00       	nop
+  2c:	65 c0       	rjmp	.+202    	; 0xf8 <__bad_interrupt>
+  2e:	00 00       	nop
+  30:	63 c0       	rjmp	.+198    	; 0xf8 <__bad_interrupt>
+  32:	00 00       	nop
+  34:	61 c0       	rjmp	.+194    	; 0xf8 <__bad_interrupt>
+  36:	00 00       	nop
+  38:	5f c0       	rjmp	.+190    	; 0xf8 <__bad_interrupt>
+  3a:	00 00       	nop
+  3c:	5d c0       	rjmp	.+186    	; 0xf8 <__bad_interrupt>
+  3e:	00 00       	nop
+  40:	5b c0       	rjmp	.+182    	; 0xf8 <__bad_interrupt>
+  42:	00 00       	nop
+  44:	59 c0       	rjmp	.+178    	; 0xf8 <__bad_interrupt>
+  46:	00 00       	nop
+  48:	57 c0       	rjmp	.+174    	; 0xf8 <__bad_interrupt>
+  4a:	00 00       	nop
+  4c:	55 c0       	rjmp	.+170    	; 0xf8 <__bad_interrupt>
+  4e:	00 00       	nop
+  50:	db c0       	rjmp	.+438    	; 0x208 <__vector_20>
+  52:	00 00       	nop
+  54:	51 c0       	rjmp	.+162    	; 0xf8 <__bad_interrupt>
+  56:	00 00       	nop
+  58:	4f c0       	rjmp	.+158    	; 0xf8 <__bad_interrupt>
+  5a:	00 00       	nop
+  5c:	4d c0       	rjmp	.+154    	; 0xf8 <__bad_interrupt>
+  5e:	00 00       	nop
+  60:	4b c0       	rjmp	.+150    	; 0xf8 <__bad_interrupt>
+  62:	00 00       	nop
+  64:	49 c0       	rjmp	.+146    	; 0xf8 <__bad_interrupt>
+  66:	00 00       	nop
+  68:	47 c0       	rjmp	.+142    	; 0xf8 <__bad_interrupt>
+  6a:	00 00       	nop
+  6c:	45 c0       	rjmp	.+138    	; 0xf8 <__bad_interrupt>
+  6e:	00 00       	nop
+  70:	43 c0       	rjmp	.+134    	; 0xf8 <__bad_interrupt>
+  72:	00 00       	nop
+  74:	41 c0       	rjmp	.+130    	; 0xf8 <__bad_interrupt>
+  76:	00 00       	nop
+  78:	3f c0       	rjmp	.+126    	; 0xf8 <__bad_interrupt>
+  7a:	00 00       	nop
+  7c:	3d c0       	rjmp	.+122    	; 0xf8 <__bad_interrupt>
+  7e:	00 00       	nop
+  80:	3b c0       	rjmp	.+118    	; 0xf8 <__bad_interrupt>
+  82:	00 00       	nop
+  84:	39 c0       	rjmp	.+114    	; 0xf8 <__bad_interrupt>
+  86:	00 00       	nop
+  88:	37 c0       	rjmp	.+110    	; 0xf8 <__bad_interrupt>
+  8a:	00 00       	nop
+  8c:	d9 c0       	rjmp	.+434    	; 0x240 <__vector_35>
+  8e:	00 00       	nop
+  90:	33 c0       	rjmp	.+102    	; 0xf8 <__bad_interrupt>
+  92:	00 00       	nop
+  94:	31 c0       	rjmp	.+98     	; 0xf8 <__bad_interrupt>
+  96:	00 00       	nop
+  98:	2f c0       	rjmp	.+94     	; 0xf8 <__bad_interrupt>
+  9a:	00 00       	nop
+  9c:	2d c0       	rjmp	.+90     	; 0xf8 <__bad_interrupt>
+  9e:	00 00       	nop
+  a0:	2b c0       	rjmp	.+86     	; 0xf8 <__bad_interrupt>
+  a2:	00 00       	nop
+  a4:	29 c0       	rjmp	.+82     	; 0xf8 <__bad_interrupt>
+  a6:	00 00       	nop
+  a8:	27 c0       	rjmp	.+78     	; 0xf8 <__bad_interrupt>
+  aa:	00 00       	nop
+  ac:	25 c0       	rjmp	.+74     	; 0xf8 <__bad_interrupt>
+  ae:	00 00       	nop
+  b0:	23 c0       	rjmp	.+70     	; 0xf8 <__bad_interrupt>
+  b2:	00 00       	nop
+  b4:	e1 c0       	rjmp	.+450    	; 0x278 <__vector_45>
+  b6:	00 00       	nop
+  b8:	1f c0       	rjmp	.+62     	; 0xf8 <__bad_interrupt>
+  ba:	00 00       	nop
+  bc:	1d c0       	rjmp	.+58     	; 0xf8 <__bad_interrupt>
+  be:	00 00       	nop
+  c0:	1b c0       	rjmp	.+54     	; 0xf8 <__bad_interrupt>
+  c2:	00 00       	nop
+  c4:	19 c0       	rjmp	.+50     	; 0xf8 <__bad_interrupt>
+  c6:	00 00       	nop
+  c8:	17 c0       	rjmp	.+46     	; 0xf8 <__bad_interrupt>
+  ca:	00 00       	nop
+  cc:	15 c0       	rjmp	.+42     	; 0xf8 <__bad_interrupt>
+  ce:	00 00       	nop
+  d0:	13 c0       	rjmp	.+38     	; 0xf8 <__bad_interrupt>
+  d2:	00 00       	nop
+  d4:	11 c0       	rjmp	.+34     	; 0xf8 <__bad_interrupt>
+  d6:	00 00       	nop
+  d8:	0f c0       	rjmp	.+30     	; 0xf8 <__bad_interrupt>
+  da:	00 00       	nop
+  dc:	0d c0       	rjmp	.+26     	; 0xf8 <__bad_interrupt>
+  de:	00 00       	nop
+  e0:	0b c0       	rjmp	.+22     	; 0xf8 <__bad_interrupt>
+	...
+
+000000e4 <__ctors_end>:
+  e4:	11 24       	eor	r1, r1
+  e6:	1f be       	out	0x3f, r1	; 63
+  e8:	cf ef       	ldi	r28, 0xFF	; 255
+  ea:	d1 e2       	ldi	r29, 0x21	; 33
+  ec:	de bf       	out	0x3e, r29	; 62
+  ee:	cd bf       	out	0x3d, r28	; 61
+  f0:	00 e0       	ldi	r16, 0x00	; 0
+  f2:	0c bf       	out	0x3c, r16	; 60
+  f4:	6f d0       	rcall	.+222    	; 0x1d4 <main>
+  f6:	db c0       	rjmp	.+438    	; 0x2ae <_exit>
+
+000000f8 <__bad_interrupt>:
+  f8:	83 cf       	rjmp	.-250    	; 0x0 <__vectors>
+
+000000fa <config_delay_timer0_CTC>:
+		
+		while(*string != 0){
+			send_data(*string);
+			string++;
+		}
+	}
+  fa:	92 e0       	ldi	r25, 0x02	; 2
+  fc:	94 bd       	out	0x24, r25	; 36
+  fe:	87 bd       	out	0x27, r24	; 39
+ 100:	95 bb       	out	0x15, r25	; 21
+ 102:	08 95       	ret
+
+00000104 <delay_CTC>:
+ 104:	16 bc       	out	0x26, r1	; 38
+ 106:	82 e0       	ldi	r24, 0x02	; 2
+ 108:	85 bb       	out	0x15, r24	; 21
+ 10a:	81 e0       	ldi	r24, 0x01	; 1
+ 10c:	85 bd       	out	0x25, r24	; 37
+ 10e:	a9 9b       	sbis	0x15, 1	; 21
+ 110:	fe cf       	rjmp	.-4      	; 0x10e <delay_CTC+0xa>
+ 112:	15 bc       	out	0x25, r1	; 37
+ 114:	08 95       	ret
+
+00000116 <config_porta_avr>:
+ 116:	8f ef       	ldi	r24, 0xFF	; 255
+ 118:	81 b9       	out	0x01, r24	; 1
+ 11a:	80 ee       	ldi	r24, 0xE0	; 224
+ 11c:	87 b9       	out	0x07, r24	; 7
+ 11e:	08 95       	ret
+
+00000120 <trigger_EN>:
+ 120:	8f ef       	ldi	r24, 0xFF	; 255
+ 122:	eb df       	rcall	.-42     	; 0xfa <config_delay_timer0_CTC>
+ 124:	88 b1       	in	r24, 0x08	; 8
+ 126:	80 64       	ori	r24, 0x40	; 64
+ 128:	88 b9       	out	0x08, r24	; 8
+ 12a:	ec df       	rcall	.-40     	; 0x104 <delay_CTC>
+ 12c:	eb df       	rcall	.-42     	; 0x104 <delay_CTC>
+ 12e:	ea df       	rcall	.-44     	; 0x104 <delay_CTC>
+ 130:	88 b1       	in	r24, 0x08	; 8
+ 132:	8f 7b       	andi	r24, 0xBF	; 191
+ 134:	88 b9       	out	0x08, r24	; 8
+ 136:	e6 df       	rcall	.-52     	; 0x104 <delay_CTC>
+ 138:	e5 df       	rcall	.-54     	; 0x104 <delay_CTC>
+ 13a:	e4 cf       	rjmp	.-56     	; 0x104 <delay_CTC>
+ 13c:	08 95       	ret
+
+0000013e <send_data>:
+ 13e:	cf 93       	push	r28
+ 140:	c8 2f       	mov	r28, r24
+ 142:	8f ef       	ldi	r24, 0xFF	; 255
+ 144:	da df       	rcall	.-76     	; 0xfa <config_delay_timer0_CTC>
+ 146:	88 b1       	in	r24, 0x08	; 8
+ 148:	80 68       	ori	r24, 0x80	; 128
+ 14a:	88 b9       	out	0x08, r24	; 8
+ 14c:	8c 2f       	mov	r24, r28
+ 14e:	80 7f       	andi	r24, 0xF0	; 240
+ 150:	82 b9       	out	0x02, r24	; 2
+ 152:	e6 df       	rcall	.-52     	; 0x120 <trigger_EN>
+ 154:	d7 df       	rcall	.-82     	; 0x104 <delay_CTC>
+ 156:	d6 df       	rcall	.-84     	; 0x104 <delay_CTC>
+ 158:	d5 df       	rcall	.-86     	; 0x104 <delay_CTC>
+ 15a:	20 e1       	ldi	r18, 0x10	; 16
+ 15c:	c2 9f       	mul	r28, r18
+ 15e:	c0 01       	movw	r24, r0
+ 160:	11 24       	eor	r1, r1
+ 162:	82 b9       	out	0x02, r24	; 2
+ 164:	dd df       	rcall	.-70     	; 0x120 <trigger_EN>
+ 166:	ce df       	rcall	.-100    	; 0x104 <delay_CTC>
+ 168:	cd df       	rcall	.-102    	; 0x104 <delay_CTC>
+ 16a:	cc df       	rcall	.-104    	; 0x104 <delay_CTC>
+ 16c:	cf 91       	pop	r28
+ 16e:	08 95       	ret
+
+00000170 <send_command>:
+ 170:	cf 93       	push	r28
+ 172:	c8 2f       	mov	r28, r24
+ 174:	8f ef       	ldi	r24, 0xFF	; 255
+ 176:	c1 df       	rcall	.-126    	; 0xfa <config_delay_timer0_CTC>
+ 178:	88 b1       	in	r24, 0x08	; 8
+ 17a:	8f 77       	andi	r24, 0x7F	; 127
+ 17c:	88 b9       	out	0x08, r24	; 8
+ 17e:	8c 2f       	mov	r24, r28
+ 180:	80 7f       	andi	r24, 0xF0	; 240
+ 182:	82 b9       	out	0x02, r24	; 2
+ 184:	cd df       	rcall	.-102    	; 0x120 <trigger_EN>
+ 186:	be df       	rcall	.-132    	; 0x104 <delay_CTC>
+ 188:	bd df       	rcall	.-134    	; 0x104 <delay_CTC>
+ 18a:	bc df       	rcall	.-136    	; 0x104 <delay_CTC>
+ 18c:	20 e1       	ldi	r18, 0x10	; 16
+ 18e:	c2 9f       	mul	r28, r18
+ 190:	c0 01       	movw	r24, r0
+ 192:	11 24       	eor	r1, r1
+ 194:	82 b9       	out	0x02, r24	; 2
+ 196:	c4 df       	rcall	.-120    	; 0x120 <trigger_EN>
+ 198:	b5 df       	rcall	.-150    	; 0x104 <delay_CTC>
+ 19a:	b4 df       	rcall	.-152    	; 0x104 <delay_CTC>
+ 19c:	b3 df       	rcall	.-154    	; 0x104 <delay_CTC>
+ 19e:	cf 91       	pop	r28
+ 1a0:	08 95       	ret
+
+000001a2 <limpa_reseta_cursor>:
+	
+	
+	void limpa_reseta_cursor(){
+		//Limpa display e reseta posição do cursor
+		send_command(0x01);
+ 1a2:	81 e0       	ldi	r24, 0x01	; 1
+ 1a4:	e5 df       	rcall	.-54     	; 0x170 <send_command>
+		delay_CTC();
+ 1a6:	ae df       	rcall	.-164    	; 0x104 <delay_CTC>
+		delay_CTC();
+ 1a8:	ad df       	rcall	.-166    	; 0x104 <delay_CTC>
+ 1aa:	ac cf       	rjmp	.-168    	; 0x104 <delay_CTC>
+		delay_CTC();
+ 1ac:	08 95       	ret
+
+000001ae <config_lcd_padrao>:
+ 1ae:	88 b1       	in	r24, 0x08	; 8
+ 1b0:	8f 7d       	andi	r24, 0xDF	; 223
+		
+		//FUNCTION SET:
+		//Interface 4 bits
+		//2 linhas
+		//Caracteres 5x10
+		PORTC &= ~(1<<5);
+ 1b2:	88 b9       	out	0x08, r24	; 8
+		PORTC &= ~(1<<7);
+ 1b4:	88 b1       	in	r24, 0x08	; 8
+ 1b6:	8f 77       	andi	r24, 0x7F	; 127
+ 1b8:	88 b9       	out	0x08, r24	; 8
+		PORTA = 0x28;
+ 1ba:	88 e2       	ldi	r24, 0x28	; 40
+ 1bc:	82 b9       	out	0x02, r24	; 2
+		trigger_EN();
+ 1be:	b0 df       	rcall	.-160    	; 0x120 <trigger_EN>
+		delay_CTC();
+ 1c0:	a1 df       	rcall	.-190    	; 0x104 <delay_CTC>
+		delay_CTC();
+ 1c2:	a0 df       	rcall	.-192    	; 0x104 <delay_CTC>
+		delay_CTC();
+ 1c4:	9f df       	rcall	.-194    	; 0x104 <delay_CTC>
+		
+		
+		//ENTRY MODE SET:
+		//Incrementa posição do cursor
+		send_command(0x06);
+ 1c6:	86 e0       	ldi	r24, 0x06	; 6
+ 1c8:	d3 df       	rcall	.-90     	; 0x170 <send_command>
+		
+		
+		//CURSOR/DISPLAY SHIFT:
+		//Cursor move
+		//Para direita
+		send_command(0x14);
+ 1ca:	84 e1       	ldi	r24, 0x14	; 20
+ 1cc:	d1 df       	rcall	.-94     	; 0x170 <send_command>
+ 1ce:	8e e0       	ldi	r24, 0x0E	; 14
+		
+		//DISPLAY CONTROL:
+		//Display ligado
+		//Cursor ligado
+		//Cursor não pisca
+		send_command(0x0E);
+ 1d0:	cf cf       	rjmp	.-98     	; 0x170 <send_command>
+ 1d2:	08 95       	ret
+
+000001d4 <main>:
+ 1d4:	8f ef       	ldi	r24, 0xFF	; 255
+ 1d6:	84 b9       	out	0x04, r24	; 4
+#include "lcdio.h"
+#include "timers.h"
+int main(void)
+{
+	DDRB = 0xFF;
+	PORTB = 0xFF;
+ 1d8:	85 b9       	out	0x05, r24	; 5
+	config_porta_avr();
+ 1da:	9d df       	rcall	.-198    	; 0x116 <config_porta_avr>
+	config_lcd_padrao();
+ 1dc:	e8 df       	rcall	.-48     	; 0x1ae <config_lcd_padrao>
+	limpa_reseta_cursor();
+ 1de:	e1 df       	rcall	.-62     	; 0x1a2 <limpa_reseta_cursor>
+	delay_1s();
+ 1e0:	03 d0       	rcall	.+6      	; 0x1e8 <delay_1s>
+ 1e2:	80 e3       	ldi	r24, 0x30	; 48
+	send_data(0x30);
+ 1e4:	ac df       	rcall	.-168    	; 0x13e <send_data>
+ 1e6:	ff cf       	rjmp	.-2      	; 0x1e6 <main+0x12>
+
+000001e8 <delay_1s>:
+ 1e8:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <__TEXT_REGION_LENGTH__+0x7c0120>
+}
+
+//esse delay acho q n vai precisar interrupção
+void delay_1s(){
+	TCCR5A = 0; //modo normal
+	TCCR5B = 0x4; //prescaler de 256
+ 1ec:	84 e0       	ldi	r24, 0x04	; 4
+ 1ee:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
+	TCNT5 = 3036; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
+ 1f2:	8c ed       	ldi	r24, 0xDC	; 220
+ 1f4:	9b e0       	ldi	r25, 0x0B	; 11
+ 1f6:	90 93 25 01 	sts	0x0125, r25	; 0x800125 <__TEXT_REGION_LENGTH__+0x7c0125>
+ 1fa:	80 93 24 01 	sts	0x0124, r24	; 0x800124 <__TEXT_REGION_LENGTH__+0x7c0124>
+	TIFR5 = (1<<0); //limpa flag
+ 1fe:	81 e0       	ldi	r24, 0x01	; 1
+ 200:	8a bb       	out	0x1a, r24	; 26
+	while((TIFR5 & (1<<0)) == 0); //espera overflow
+ 202:	d0 9b       	sbis	0x1a, 0	; 26
+ 204:	fe cf       	rjmp	.-4      	; 0x202 <delay_1s+0x1a>
+}
+ 206:	08 95       	ret
+
+00000208 <__vector_20>:
+
+
+ISR(TIMER1_OVF_vect){
+ 208:	1f 92       	push	r1
+ 20a:	0f 92       	push	r0
+ 20c:	0f b6       	in	r0, 0x3f	; 63
+ 20e:	0f 92       	push	r0
+ 210:	11 24       	eor	r1, r1
+ 212:	2f 93       	push	r18
+ 214:	3f 93       	push	r19
+ 216:	8f 93       	push	r24
+	TCCR1A = 0; //modo normal
+ 218:	10 92 80 00 	sts	0x0080, r1	; 0x800080 <__TEXT_REGION_LENGTH__+0x7c0080>
+	TCCR1B = 0x1; //sem prescaler
+ 21c:	81 e0       	ldi	r24, 0x01	; 1
+ 21e:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__TEXT_REGION_LENGTH__+0x7c0081>
+	TCNT1 = 55536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 10000 contagens p bater meio periodo da onda de 800hz
+ 222:	20 ef       	ldi	r18, 0xF0	; 240
+ 224:	38 ed       	ldi	r19, 0xD8	; 216
+ 226:	30 93 85 00 	sts	0x0085, r19	; 0x800085 <__TEXT_REGION_LENGTH__+0x7c0085>
+ 22a:	20 93 84 00 	sts	0x0084, r18	; 0x800084 <__TEXT_REGION_LENGTH__+0x7c0084>
+	TIFR1 = 1;
+ 22e:	86 bb       	out	0x16, r24	; 22
+}
+ 230:	8f 91       	pop	r24
+ 232:	3f 91       	pop	r19
+ 234:	2f 91       	pop	r18
+ 236:	0f 90       	pop	r0
+ 238:	0f be       	out	0x3f, r0	; 63
+ 23a:	0f 90       	pop	r0
+ 23c:	1f 90       	pop	r1
+ 23e:	18 95       	reti
+
+00000240 <__vector_35>:
+ISR(TIMER3_OVF_vect){
+ 240:	1f 92       	push	r1
+ 242:	0f 92       	push	r0
+ 244:	0f b6       	in	r0, 0x3f	; 63
+ 246:	0f 92       	push	r0
+ 248:	11 24       	eor	r1, r1
+ 24a:	2f 93       	push	r18
+ 24c:	3f 93       	push	r19
+ 24e:	8f 93       	push	r24
+	TCCR3A = 0; //modo normal
+ 250:	10 92 90 00 	sts	0x0090, r1	; 0x800090 <__TEXT_REGION_LENGTH__+0x7c0090>
+	TCCR3B = 0x1; //sem prescaler
+ 254:	81 e0       	ldi	r24, 0x01	; 1
+ 256:	80 93 91 00 	sts	0x0091, r24	; 0x800091 <__TEXT_REGION_LENGTH__+0x7c0091>
+	TCNT3 = 45536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 20000 contagens p bater meio periodo da onda de 400hz
+ 25a:	20 ee       	ldi	r18, 0xE0	; 224
+ 25c:	31 eb       	ldi	r19, 0xB1	; 177
+ 25e:	30 93 95 00 	sts	0x0095, r19	; 0x800095 <__TEXT_REGION_LENGTH__+0x7c0095>
+ 262:	20 93 94 00 	sts	0x0094, r18	; 0x800094 <__TEXT_REGION_LENGTH__+0x7c0094>
+	TIFR3 = 1;
+ 266:	88 bb       	out	0x18, r24	; 24
+}
+ 268:	8f 91       	pop	r24
+ 26a:	3f 91       	pop	r19
+ 26c:	2f 91       	pop	r18
+ 26e:	0f 90       	pop	r0
+ 270:	0f be       	out	0x3f, r0	; 63
+ 272:	0f 90       	pop	r0
+ 274:	1f 90       	pop	r1
+ 276:	18 95       	reti
+
+00000278 <__vector_45>:
+
+ISR(TIMER4_OVF_vect){
+ 278:	1f 92       	push	r1
+ 27a:	0f 92       	push	r0
+ 27c:	0f b6       	in	r0, 0x3f	; 63
+ 27e:	0f 92       	push	r0
+ 280:	11 24       	eor	r1, r1
+ 282:	8f 93       	push	r24
+ 284:	9f 93       	push	r25
+	TCCR4A = 0; //modo normal
+ 286:	10 92 a0 00 	sts	0x00A0, r1	; 0x8000a0 <__TEXT_REGION_LENGTH__+0x7c00a0>
+	TCCR4B = 0x3; //prescaler de 64
+ 28a:	83 e0       	ldi	r24, 0x03	; 3
+ 28c:	80 93 a1 00 	sts	0x00A1, r24	; 0x8000a1 <__TEXT_REGION_LENGTH__+0x7c00a1>
+	TCNT4 = 3036; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
+ 290:	8c ed       	ldi	r24, 0xDC	; 220
+ 292:	9b e0       	ldi	r25, 0x0B	; 11
+ 294:	90 93 a5 00 	sts	0x00A5, r25	; 0x8000a5 <__TEXT_REGION_LENGTH__+0x7c00a5>
+ 298:	80 93 a4 00 	sts	0x00A4, r24	; 0x8000a4 <__TEXT_REGION_LENGTH__+0x7c00a4>
+	TIFR4 = 1;
+ 29c:	81 e0       	ldi	r24, 0x01	; 1
+ 29e:	89 bb       	out	0x19, r24	; 25
+}
+ 2a0:	9f 91       	pop	r25
+ 2a2:	8f 91       	pop	r24
+ 2a4:	0f 90       	pop	r0
+ 2a6:	0f be       	out	0x3f, r0	; 63
+ 2a8:	0f 90       	pop	r0
+ 2aa:	1f 90       	pop	r1
+ 2ac:	18 95       	reti
+
+000002ae <_exit>:
+ 2ae:	f8 94       	cli
+
+000002b0 <__stop_program>:
+ 2b0:	ff cf       	rjmp	.-2      	; 0x2b0 <__stop_program>
