@@ -3,28 +3,32 @@
 #include "lcdio.h"
 #include "timers.h"
 #include "teclado.h"
+#include "validacao_senhas.h"
 
 int main(void)
 {
 	//------------- organizacao das interrupçoes do teclado:
-	DDRB = 0xFF;
+	//DDRB = 0xFF;
 	DDRK = 0b11110000; //  (1) PORTK(0-3) output / (0) PORTK(4-7) input
 	PORTK = 0b00001111; //pull up do input ativado
 	sei(); //set enable interrupts -- seta 1 no bit I do status register
 	PCICR |= 0b00000100; //ativa interrupção dos pinos PCINT16 ao PCINT23 = K0 ao K7
-	PCMSK2 |= 0x0F; //ínterrupção só no pino K0;
+	PCMSK2 |= 0x0F; //ínterrupção nos pinos K0 até K7;
+	
+	DDRL = 0x03; //L0 led e L1 buzzer como saida
+	PORTL = 0x00;
 	//-------------------------------
 	config_porta_avr();
 	config_lcd_padrao();
 	limpa_reseta_cursor();
-	delay_1s();
-	send_data(0x21);
+	//send_data(0x21);
     while (1){
 	}
 	}
 ISR(PCINT2_vect){ //pinos K0 até K7
 	tecla = procuraTecla();
 	
+	/*
 	if ((tecla == '1')){
 		send_data(0b00110001);
 	}
@@ -63,6 +67,24 @@ ISR(PCINT2_vect){ //pinos K0 até K7
 	}
 	if ((tecla == 'D')){
 		send_data(0b01000100);
+	}
+	*/
+	if (tecla == 'A'){
+		
+		limpa_reseta_cursor();
+		for (int i = 0; i < 5; i++) {
+			senha[i] = '\0';
+		}
+		nr_digitados = 0;
+		
+	}else if(tecla != 'A'){
+		if(nr_digitados < 5){
+			lendo_senha(tecla);
+	
+		}
+		if(nr_digitados == 5){
+			resultado_validacao();
+		}
 	}
 	
 	//PCIFR = (1<<2); //reseta flag da interrupção

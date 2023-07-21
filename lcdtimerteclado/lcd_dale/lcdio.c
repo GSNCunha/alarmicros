@@ -1,4 +1,5 @@
 #include "lcdio.h"
+#include "timers.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
@@ -125,6 +126,7 @@
 		delay_CTC();
 		delay_CTC();
 		delay_CTC();
+		delay_1s();
 	}
 	
 	void config_lcd_padrao(){

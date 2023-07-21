@@ -10,3 +10,5 @@ main.c
 
 timers.c
 
+validacao_senhas.c
+

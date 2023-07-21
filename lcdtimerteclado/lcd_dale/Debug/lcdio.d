@@ -1,4 +1,4 @@
-lcdio.d lcdio.o: .././lcdio.c .././lcdio.h \
+lcdio.d lcdio.o: .././lcdio.c .././lcdio.h .././timers.h \
  d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -13,6 +13,8 @@ lcdio.d lcdio.o: .././lcdio.c .././lcdio.h \
  d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h
 
 .././lcdio.h:
+
+.././timers.h:
 
 d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
