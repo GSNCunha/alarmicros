@@ -24,31 +24,31 @@ char ligaLinhas(int bitColuna, int indColuna)//coluna = numero correspondente da
 {
 	
 	PORTK = 0b01111111;
-	delay_1ms();
+	//delay_1ms();
 
 	if ((PINK & (1 << bitColuna)) == 0){
 	return teclado[0][indColuna];}
 
 	PORTK = 0b10111111;
-	delay_1ms();
+	//delay_1ms();
 
 	if ((PINK & (1 << bitColuna)) == 0){
 		
 	return teclado[1][indColuna];}
 
 	PORTK = 0b11011111;
-	delay_1ms();
+	//delay_1ms();
 
 	if ((PINK & (1 << bitColuna)) == 0){
 	return teclado[2][indColuna];}
 
 	PORTK = 0b11101111;
-	delay_1ms();
+	//delay_1ms();
 	
 	if ((PINK & (1 << bitColuna)) == 0){
 	return teclado[3][indColuna];}
 	
-	return 'K';
+	return '\0';
 }
 
 char procuraLinhas(uint8_t coluna)
@@ -69,14 +69,13 @@ char procuraLinhas(uint8_t coluna)
 	{
 		return ligaLinhas(0, 3);
 	}
-	return 'K';
+	return '\0';
 }
 
 char procuraTecla()
 {
-	
 	PORTK = 0b00001111;//pull up do input ativado
-	delay_1ms();
+	//delay_1ms();
 	
 	while(PINK == 0b00001111);//0000 1011
 	
