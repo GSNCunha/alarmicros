@@ -47,6 +47,25 @@ void lendo_senha(char tecla){
 	
 }
 
+const char* subRotinaTrocaSenha()
+{	
+	for (int i = 0; i < 5; i++) {
+		senha[i] = '\0';
+	}
+	nr_digitados = 0;
+
+	while(nr_digitados < 5)
+	{
+		if(tecla != 'A'){
+			if(nr_digitados < 5){
+				lendo_senha(tecla);
+			}
+		}
+	}
+	return senha;
+}
+
+
 const char* validar_senha(){
 	if(!strcmp(senha,senhas.usuario1)){
 		return "usuario1";

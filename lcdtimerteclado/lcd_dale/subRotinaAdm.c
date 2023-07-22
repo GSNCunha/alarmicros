@@ -109,7 +109,8 @@ void subRotinaAdm()
 				{
 					limpa_reseta_cursor();
 					send_string("NOVA SENHA:");
-					//novaSenha = SUBROTINA TROCA SENHA
+					proxima_linha();
+					novaSenha = subRotinaTrocaSenha();
 					if(instrucaoDigitada == '1')//usuario 1
 					{
 						strcpy(senhas.usuario1, novaSenha);
@@ -184,6 +185,7 @@ void subRotinaAdm()
 								if(instrucaoDigitada == '#')
 								{
 									sair = 1;
+									limpa_reseta_cursor();
 									break;
 								}
 							}break;
