@@ -77,6 +77,7 @@ char procuraTecla()
 	PORTK = 0b00001111;//pull up do input ativado
 	//delay_1ms();
 	
+	//while(!(PINK == 0b00001111));
 	while(PINK == 0b00001111);//0000 1011
 	
 	binColuna = PINK;

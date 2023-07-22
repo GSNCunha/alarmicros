@@ -4,14 +4,15 @@
  * Created: 21/07/2023 14:41:58
  *  Author: Vini
  */ 
-
+#include <avr/io.h>
+#include <avr/interrupt.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "teclado.h"
 #include "lcdio.h"
 #include "timers.h"
-#include "subRotinaAdm.h";
+#include "subRotinaAdm.h"
 
 int nr_digitados = 0;
 char senha[6] = {'\0', '\0', '\0', '\0', '\0', '\0'};
@@ -56,11 +57,12 @@ const char* subRotinaTrocaSenha()
 
 	while(nr_digitados < 5)
 	{
-		if(tecla != 'A'){
 			if(nr_digitados < 5){
+				tecla = procuraTecla();
+				delay_1s();
+				PORTK = 0b00001111;
 				lendo_senha(tecla);
 			}
-		}
 	}
 	return senha;
 }

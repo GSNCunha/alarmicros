@@ -1,7 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+#include <avr/io.h>
+#include <avr/interrupt.h>
 #include "teclado.h"
 #include "lcdio.h"
 #include "validacao_senhas.h"
@@ -93,7 +94,7 @@ void subRotinaAdm()
 	
 	tela1();// troca senhas ou mais opcoes
 	sair = 0;
-	
+	PCMSK2 = 0x01;
 	while(!sair)
 	{
 		instrucaoDigitada = procuraTecla();
@@ -110,7 +111,9 @@ void subRotinaAdm()
 					limpa_reseta_cursor();
 					send_string("NOVA SENHA:");
 					proxima_linha();
-					novaSenha = subRotinaTrocaSenha();
+					
+					strcpy(novaSenha,subRotinaTrocaSenha());
+					
 					if(instrucaoDigitada == '1')//usuario 1
 					{
 						strcpy(senhas.usuario1, novaSenha);

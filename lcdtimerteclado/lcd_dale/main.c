@@ -4,6 +4,7 @@
 #include "timers.h"
 #include "teclado.h"
 #include "validacao_senhas.h"
+#include "subRotinaAdm.h"
 
 char alarme_ativo = 1;
 char intruso_detectado = 0;
@@ -26,23 +27,7 @@ int main(void)
 	config_lcd_padrao();
 	limpa_reseta_cursor();
     while (1){
-		if (alarme_ativo && intruso_detectado){
-			for(long i = 0; i<(tempo_TA*4); i++){
-				onda_2hz();
-				PORTL ^= (1 << 0); //bipa o led em 2hz
-			}
-			while(alarme_ativo && intruso_detectado){
-				for (long i = 0; i<400 ; i++){
-					onda_400hz();
-					PORTL ^= (1 << 1); //bipa o buzzer em 400hz por 1s
-				}
-				for (long i = 0; i<800 ; i++){
-					onda_800hz();
-					PORTL ^= (1 << 1); //bipa o buzzer em 800hz por 1s
-				}
-			}
-		}
-		
+		subRotinaAdm();		
 	}
 }
 	

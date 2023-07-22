@@ -29,7 +29,7 @@ void lendo_senha(char tecla);
 const char* validar_senha();
 
 int resultado_validacao();
-
+const char* subRotinaTrocaSenha();
 
 
 
