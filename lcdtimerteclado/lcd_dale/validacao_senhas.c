@@ -11,6 +11,7 @@
 #include "teclado.h"
 #include "lcdio.h"
 #include "timers.h"
+#include "subRotinaAdm.h";
 
 int nr_digitados = 0;
 char senha[6] = {'\0', '\0', '\0', '\0', '\0', '\0'};
@@ -80,7 +81,7 @@ int resultado_validacao(){
 		send_string("senha correta");
 		if(!strcmp(validacao,"adm"))
 		{
-			//subrotina
+			subRotinaAdm();
 		}
 		
 		return 1;
