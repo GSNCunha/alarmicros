@@ -4,6 +4,8 @@
 
 deteccao_intruso.c
 
+subRotinaAdm.c
+
 teclado.c
 
 lcdio.c

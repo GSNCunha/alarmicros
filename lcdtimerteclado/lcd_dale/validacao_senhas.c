@@ -13,6 +13,7 @@
 #include "lcdio.h"
 #include "timers.h"
 #include "deteccao_intruso.h"
+#include "subRotinaAdm.h"
 
 int nr_digitados = 0;
 char senha[6] = {'\0', '\0', '\0', '\0', '\0', '\0'};
@@ -46,6 +47,25 @@ void lendo_senha(char tecla){
 	send_data(0x2A);
 	nr_digitados++;
 	
+}
+
+const char* subRotinaTrocaSenha()
+{
+	for (int i = 0; i < 5; i++) {
+		senha[i] = '\0';
+	}
+	nr_digitados = 0;
+
+	while(nr_digitados < 5)
+	{
+		if(nr_digitados < 5){
+			tecla = procuraTecla();
+			delay_1s();
+			PORTK = 0b00001111;
+			lendo_senha(tecla);
+		}
+	}
+	return senha;
 }
 
 const char* validar_senha(){
@@ -83,7 +103,10 @@ int resultado_validacao(){
 		limpa_reseta_cursor();
 		nr_digitados = 0;
 		send_string("senha correta");
-		if(alarme_ativo == 0){
+		if (strcmp(validacao, "adm") == 0){
+			subRotinaAdm();
+			limpa_reseta_cursor();
+		}else if(alarme_ativo == 0){
 			TCCR1B = 0x05;
 		}
 		return 1;

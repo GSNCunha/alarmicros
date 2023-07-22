@@ -30,6 +30,8 @@ const char* validar_senha();
 
 int resultado_validacao();
 
+const char* subRotinaTrocaSenha();
+
 
 
 

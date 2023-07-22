@@ -5,6 +5,7 @@
 #include "teclado.h"
 #include "validacao_senhas.h"
 #include "deteccao_intruso.h"
+#include "subRotinaAdm.h"
 
 int main(void)
 {
@@ -94,7 +95,7 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 				limpa_reseta_cursor();
 				send_string("INTRUSO");
 				intruso_detectado = 1;
-			}else if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9')){
+			}/*else if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9')){
 				if(nr_digitados < 5){
 					lendo_senha(tecla);
 				}
@@ -104,8 +105,8 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 						intruso_detectado = 0;
 					}
 				}
-			}
-		}else if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9')){
+			}*/
+		}else if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9') || (tecla == '0')){
 		if(nr_digitados < 5){
 			lendo_senha(tecla);
 		}

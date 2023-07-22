@@ -38,6 +38,7 @@ SUBDIRS :=
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
 ../deteccao_intruso.c \
+../subRotinaAdm.c \
 ../teclado.c \
 ../lcdio.c \
 ../main.c \
@@ -53,6 +54,7 @@ ASM_SRCS +=
 
 OBJS +=  \
 deteccao_intruso.o \
+subRotinaAdm.o \
 teclado.o \
 lcdio.o \
 main.o \
@@ -61,6 +63,7 @@ validacao_senhas.o
 
 OBJS_AS_ARGS +=  \
 deteccao_intruso.o \
+subRotinaAdm.o \
 teclado.o \
 lcdio.o \
 main.o \
@@ -69,6 +72,7 @@ validacao_senhas.o
 
 C_DEPS +=  \
 deteccao_intruso.d \
+subRotinaAdm.d \
 teclado.d \
 lcdio.d \
 main.d \
@@ -77,6 +81,7 @@ validacao_senhas.d
 
 C_DEPS_AS_ARGS +=  \
 deteccao_intruso.d \
+subRotinaAdm.d \
 teclado.d \
 lcdio.d \
 main.d \
@@ -98,6 +103,13 @@ LINKER_SCRIPT_DEP+=
 
 # AVR32/GNU C Compiler
 ./deteccao_intruso.o: .././deteccao_intruso.c
+	@echo Building file: $<
+	@echo Invoking: AVR/GNU C Compiler : 5.4.0
+	$(QUOTE)D:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "D:\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
+	@echo Finished building: $<
+	
+
+./subRotinaAdm.o: .././subRotinaAdm.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)D:\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"D:\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\include"  -Og -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -mrelax -g2 -Wall -mmcu=atmega2560 -B "D:\Atmel\Studio\7.0\Packs\atmel\ATmega_DFP\1.7.374\gcc\dev\atmega2560" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 

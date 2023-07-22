@@ -138,6 +138,12 @@
     <Compile Include="deteccao_intruso.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="subRotinaAdm.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="subRotinaAdm.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="teclado.c">
       <SubType>compile</SubType>
     </Compile>
