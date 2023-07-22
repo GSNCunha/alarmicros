@@ -373,8 +373,6 @@ char procuraTecla()
 	delay_1ms();
  218:	4f d1       	rcall	.+670    	; 0x4b8 <delay_1ms>
 	
-	//while(PINK != 0b00001111);
-	
 	while(PINK == 0b00001111);//0000 1011
  21a:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
  21e:	8f 30       	cpi	r24, 0x0F	; 15
@@ -383,7 +381,11 @@ char procuraTecla()
 	binColuna = PINK;
  222:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
  226:	80 93 8e 02 	sts	0x028E, r24	; 0x80028e <binColuna>
-	
+	/*possivelSenha = procuraLinhas(binColuna);
+	delay_1ms();
+	if(possivelSenha == procuraLinhas(binColuna)){
+		return possivelSenha;
+	}*/
 	return procuraLinhas(binColuna);
  22a:	d1 cf       	rjmp	.-94     	; 0x1ce <procuraLinhas>
  22c:	08 95       	ret
