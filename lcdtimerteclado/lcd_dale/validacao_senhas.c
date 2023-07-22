@@ -4,13 +4,15 @@
  * Created: 21/07/2023 14:41:58
  *  Author: Vini
  */ 
-
+#include <avr/io.h>
+#include <avr/interrupt.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 #include "teclado.h"
 #include "lcdio.h"
 #include "timers.h"
+#include "deteccao_intruso.h"
 
 int nr_digitados = 0;
 char senha[6] = {'\0', '\0', '\0', '\0', '\0', '\0'};
@@ -73,11 +75,17 @@ int resultado_validacao(){
 		limpa_reseta_cursor();
 		nr_digitados = 0;
 		send_string("senha incorreta ");
+		delay_1s();
+		delay_1s();
+		limpa_reseta_cursor();
 		return 0;
 	}else{
 		limpa_reseta_cursor();
 		nr_digitados = 0;
 		send_string("senha correta");
+		if(alarme_ativo == 0){
+			TCCR1B = 0x05;
+		}
 		return 1;
 	}	
 }

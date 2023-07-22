@@ -12,6 +12,17 @@
 
 //versão com interrupção:
 
+int nr_ciclos_timer1 = 0;
+
+void config_timer1(){
+	sei();
+	TCCR1A = 0; //modo normal
+	TCNT1 = 26743; //40 vezes esse ciclo dá 80 segundos
+	TIMSK1 = 1;
+	TIFR1 = 1;
+}
+
+
 void onda_800hzint(){
 	sei();
 	TCCR1A = 0; //modo normal

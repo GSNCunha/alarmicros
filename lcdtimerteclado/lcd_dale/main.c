@@ -17,6 +17,7 @@ int main(void)
 	PCMSK2 |= 0x0F; //ínterrupção nos pinos K0 até K7;
 	sei(); //set enable interrupts -- seta 1 no bit I do status register
 	//-------------------------------
+	config_timer1();
 	config_porta_avr();
 	config_lcd_padrao();
 	limpa_reseta_cursor();
@@ -30,70 +31,91 @@ int main(void)
 }
 	
 ISR(PCINT2_vect){ //pinos K0 até K4
+	PORTL = 0; //so p nao dar bip no buzzer
 	if(chamada == 0){
 		chamada = 1;
 		tecla = procuraTecla();
 		if ((tecla == '1')){
-			send_data(0b00110001);
+			//send_data(0b00110001);
 		}
 		if ((tecla == '2')){
-			send_data(0b00110010);
+			//send_data(0b00110010);
 		}
 		if ((tecla == '3')){
-			send_data(0b00110011);
+			//send_data(0b00110011);
 		}
 		if ((tecla == '4')){
-			send_data(0b00110100);
+			//send_data(0b00110100);
 		}
 		if ((tecla == '5')){
-			send_data(0b00110101);
+			//send_data(0b00110101);
 		}
 		if ((tecla == '6')){
-			send_data(0b00110110);
+			//send_data(0b00110110);
 		}
 		if ((tecla == '7')){
-			send_data(0b00110111);
+			//send_data(0b00110111);
 		}
 		if ((tecla == '8')){
-			send_data(0b00111000);
+			//send_data(0b00111000);
 		}
 		if ((tecla == '9')){
-			send_data(0b00111001);
+			//send_data(0b00111001);
 		}
-		if ((tecla == 'A')){
+		/*if ((tecla == 'A')){
 			send_data(0b01000001);
+			if(alarme_ativo){
+				intruso_detectado = 1;
+			}
 		}
 		if ((tecla == 'B')){
 			send_data(0b01000010);
+			if(alarme_ativo){
+				intruso_detectado = 1;
+			}
 		}
 		if ((tecla == 'C')){
 			send_data(0b01000011);
 			intruso_detectado = 1;
+			if(alarme_ativo){
+				intruso_detectado = 1;
+			}
 		}
 		if ((tecla == 'D')){
 			send_data(0b01000100);
-			intruso_detectado = 0;
+			if(alarme_ativo){
+				intruso_detectado = 1;
+			}
 		}
-		/*
-		if (tecla == 'A'){
+		*/
 		
-			limpa_reseta_cursor();
-			for (int i = 0; i < 5; i++) {
-				senha[i] = '\0';
+		if(alarme_ativo){
+			if ((tecla == 'A') || (tecla == 'B') || (tecla == 'C') || (tecla == 'D')){
+				limpa_reseta_cursor();
+				send_string("INTRUSO");
+				intruso_detectado = 1;
+			}else if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9')){
+				if(nr_digitados < 5){
+					lendo_senha(tecla);
+				}
+				if(nr_digitados == 5){
+					if (resultado_validacao() == 1){
+						alarme_ativo = 0; //o timer liga o alarme dps
+						intruso_detectado = 0;
+					}
+				}
 			}
-			nr_digitados = 0;
-		
-		}*//*else if(tecla != 'A'){
-			if(nr_digitados < 5){
-				lendo_senha(tecla);
-	
+		}else if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9')){
+		if(nr_digitados < 5){
+			lendo_senha(tecla);
+		}
+		if(nr_digitados == 5){
+			if (resultado_validacao() == 1){
+				alarme_ativo = 0; //o timer liga o alarme dps
+				intruso_detectado = 0;
 			}
-			if(nr_digitados == 5){
-				resultado_validacao();
-			}
-		}*/
-	
-		//PCIFR = (1<<2); //reseta flag da interrupção
+		}
+	}
 		delay_1s();
 	}else{
 		chamada = 0;
@@ -102,10 +124,22 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 }
 
 ISR(TIMER1_OVF_vect){
-	TCCR1A = 0; //modo normal
-	TCCR1B = 0x1; //sem prescaler //se botar em 0 para o timer
-	TCNT1 = 55536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 10000 contagens p bater meio periodo da onda de 800hz
-	TIFR1 = 1;
+	if(nr_ciclos_timer1 == 1){
+		
+		//ativa_alarme
+		limpa_reseta_cursor();
+		send_string("ALARME ATIVO");
+		alarme_ativo = 1;
+		//desliga timer
+		TCCR1B = 0x00;
+		//limpa flag
+		TIFR1 = 1;
+		
+		nr_ciclos_timer1 = 0;
+		}else{
+		nr_ciclos_timer1++;
+		
+	}
 }
 ISR(TIMER3_OVF_vect){
 	TCCR3A = 0; //modo normal

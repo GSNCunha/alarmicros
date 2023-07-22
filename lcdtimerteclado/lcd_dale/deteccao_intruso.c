@@ -7,7 +7,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include "timers.h"
-char alarme_ativo = 1;
+char alarme_ativo = 0;
 char intruso_detectado = 0;
 char chamada = 0;
 long tempo_TA = 5; //tempo de delay com o led piscando
