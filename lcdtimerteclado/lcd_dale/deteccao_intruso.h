@@ -16,6 +16,7 @@ long tempo_TA; //tempo de delay com o led piscando
 
 void delay_piscaled();
 void ativa_buzzer();
+void desativa_buzzer();
 
 
 #endif /* DETECCAO_INTRUSO_H_ */

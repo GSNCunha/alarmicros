@@ -43,10 +43,10 @@ Discarded input sections
  .bss           0x00000000        0x0 timers.o
  .text.onda_800hzint
                 0x00000000       0x1e timers.o
- .text.onda_400hzint
+ .text.onda_800hz
                 0x00000000       0x1e timers.o
- .text.onda_2hzint
-                0x00000000       0x20 timers.o
+ .text.onda_400hz
+                0x00000000       0x1e timers.o
  .text.delay_1ms
                 0x00000000       0x20 timers.o
  .text          0x00000000        0x0 validacao_senhas.o
@@ -239,7 +239,7 @@ END GROUP
 .rela.plt
  *(.rela.plt)
 
-.text           0x00000000      0xa08
+.text           0x00000000      0xb14
  *(.vectors)
  .vectors       0x00000000       0xe4 D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
                 0x00000000                __vector_default
@@ -311,6 +311,7 @@ END GROUP
                 0x00000122                __bad_interrupt
                 0x00000122                __vector_6
                 0x00000122                __vector_31
+                0x00000122                __vector_35
                 0x00000122                __vector_39
                 0x00000122                __vector_3
                 0x00000122                __vector_23
@@ -354,119 +355,119 @@ END GROUP
                 0x00000124                . = ALIGN (0x2)
  *(.text.*)
  .text.delay_piscaled
-                0x00000124       0x5a deteccao_intruso.o
+                0x00000124       0x52 deteccao_intruso.o
                 0x00000124                delay_piscaled
  .text.ativa_buzzer
-                0x0000017e       0x78 deteccao_intruso.o
-                0x0000017e                ativa_buzzer
- .text.tela1    0x000001f6       0x12 subRotinaAdm.o
-                0x000001f6                tela1
- .text.tela2    0x00000208       0x12 subRotinaAdm.o
-                0x00000208                tela2
- .text.tela3    0x0000021a       0x12 subRotinaAdm.o
-                0x0000021a                tela3
- .text.tela4    0x0000022c       0x2e subRotinaAdm.o
-                0x0000022c                tela4
+                0x00000176        0xa deteccao_intruso.o
+                0x00000176                ativa_buzzer
+ .text.desativa_buzzer
+                0x00000180        0xe deteccao_intruso.o
+                0x00000180                desativa_buzzer
+ .text.tela1    0x0000018e       0x12 subRotinaAdm.o
+                0x0000018e                tela1
+ .text.tela2    0x000001a0       0x12 subRotinaAdm.o
+                0x000001a0                tela2
+ .text.tela3    0x000001b2       0x12 subRotinaAdm.o
+                0x000001b2                tela3
+ .text.tela4    0x000001c4       0x2e subRotinaAdm.o
+                0x000001c4                tela4
  .text.telaTrocaSenhas
-                0x0000025a       0x12 subRotinaAdm.o
-                0x0000025a                telaTrocaSenhas
+                0x000001f2       0x12 subRotinaAdm.o
+                0x000001f2                telaTrocaSenhas
  .text.telaDeStatusUsuario
-                0x0000026c       0x4a subRotinaAdm.o
-                0x0000026c                telaDeStatusUsuario
+                0x00000204       0x4a subRotinaAdm.o
+                0x00000204                telaDeStatusUsuario
  .text.subRotinaAdm
-                0x000002b6      0x14e subRotinaAdm.o
-                0x000002b6                subRotinaAdm
+                0x0000024e      0x14e subRotinaAdm.o
+                0x0000024e                subRotinaAdm
  .text.ligaLinhas
-                0x00000404       0x9c teclado.o
-                0x00000404                ligaLinhas
+                0x0000039c       0x9c teclado.o
+                0x0000039c                ligaLinhas
  .text.procuraLinhas
-                0x000004a0       0x44 teclado.o
-                0x000004a0                procuraLinhas
+                0x00000438       0x44 teclado.o
+                0x00000438                procuraLinhas
  .text.procuraTecla
-                0x000004e4       0x1a teclado.o
-                0x000004e4                procuraTecla
+                0x0000047c       0x1a teclado.o
+                0x0000047c                procuraTecla
  .text.config_delay_timer0_CTC
-                0x000004fe        0xa lcdio.o
-                0x000004fe                config_delay_timer0_CTC
+                0x00000496        0xa lcdio.o
+                0x00000496                config_delay_timer0_CTC
  .text.delay_CTC
-                0x00000508       0x12 lcdio.o
-                0x00000508                delay_CTC
+                0x000004a0       0x12 lcdio.o
+                0x000004a0                delay_CTC
  .text.config_porta_avr
-                0x0000051a        0xa lcdio.o
-                0x0000051a                config_porta_avr
+                0x000004b2        0xa lcdio.o
+                0x000004b2                config_porta_avr
  .text.trigger_EN
-                0x00000524       0x1e lcdio.o
-                0x00000524                trigger_EN
+                0x000004bc       0x1e lcdio.o
+                0x000004bc                trigger_EN
  .text.send_data
-                0x00000542       0x32 lcdio.o
-                0x00000542                send_data
+                0x000004da       0x32 lcdio.o
+                0x000004da                send_data
  .text.send_command
-                0x00000574       0x32 lcdio.o
-                0x00000574                send_command
+                0x0000050c       0x32 lcdio.o
+                0x0000050c                send_command
  .text.send_string
-                0x000005a6       0x18 lcdio.o
-                0x000005a6                send_string
+                0x0000053e       0x18 lcdio.o
+                0x0000053e                send_string
  .text.limpa_reseta_cursor
-                0x000005be        0xe lcdio.o
-                0x000005be                limpa_reseta_cursor
+                0x00000556        0xe lcdio.o
+                0x00000556                limpa_reseta_cursor
  .text.config_lcd_padrao
-                0x000005cc       0x26 lcdio.o
-                0x000005cc                config_lcd_padrao
+                0x00000564       0x26 lcdio.o
+                0x00000564                config_lcd_padrao
  .text.proxima_linha
-                0x000005f2        0xc lcdio.o
-                0x000005f2                proxima_linha
- .text.main     0x000005fe       0x46 main.o
-                0x000005fe                main
+                0x0000058a        0xc lcdio.o
+                0x0000058a                proxima_linha
+ .text.main     0x00000596       0x60 main.o
+                0x00000596                main
  .text.__vector_11
-                0x00000644       0xc2 main.o
-                0x00000644                __vector_11
+                0x000005f6      0x130 main.o
+                0x000005f6                __vector_11
  .text.__vector_20
-                0x00000706       0x82 main.o
-                0x00000706                __vector_20
- .text.__vector_35
-                0x00000788       0x38 main.o
-                0x00000788                __vector_35
+                0x00000726       0x8a main.o
+                0x00000726                __vector_20
  .text.__vector_45
-                0x000007c0       0x36 main.o
-                0x000007c0                __vector_45
+                0x000007b0      0x136 main.o
+                0x000007b0                __vector_45
  .text.config_timer1
-                0x000007f6       0x1c timers.o
-                0x000007f6                config_timer1
- .text.onda_800hz
-                0x00000812       0x1e timers.o
-                0x00000812                onda_800hz
- .text.onda_400hz
-                0x00000830       0x1e timers.o
-                0x00000830                onda_400hz
- .text.onda_2hz
-                0x0000084e       0x20 timers.o
-                0x0000084e                onda_2hz
+                0x000008e6       0x1c timers.o
+                0x000008e6                config_timer1
+ .text.onda_400hzint
+                0x00000902       0x1e timers.o
+                0x00000902                onda_400hzint
+ .text.led2hz_int
+                0x00000920       0x24 timers.o
+                0x00000920                led2hz_int
+ .text.delay_250ms
+                0x00000944       0x20 timers.o
+                0x00000944                delay_250ms
  .text.delay_1s
-                0x0000086e       0x20 timers.o
-                0x0000086e                delay_1s
+                0x00000964       0x20 timers.o
+                0x00000964                delay_1s
  .text.lendo_senha
-                0x0000088e       0x26 validacao_senhas.o
-                0x0000088e                lendo_senha
+                0x00000984       0x26 validacao_senhas.o
+                0x00000984                lendo_senha
  .text.subRotinaTrocaSenha
-                0x000008b4       0x4c validacao_senhas.o
-                0x000008b4                subRotinaTrocaSenha
+                0x000009aa       0x4c validacao_senhas.o
+                0x000009aa                subRotinaTrocaSenha
  .text.validar_senha
-                0x00000900       0x6a validacao_senhas.o
-                0x00000900                validar_senha
+                0x000009f6       0x6a validacao_senhas.o
+                0x000009f6                validar_senha
  .text.resultado_validacao
-                0x0000096a       0x7a validacao_senhas.o
-                0x0000096a                resultado_validacao
+                0x00000a60       0x90 validacao_senhas.o
+                0x00000a60                resultado_validacao
  .text.avr-libc
-                0x000009e4       0x12 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strcmp.o)
-                0x000009e4                strcmp
+                0x00000af0       0x12 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strcmp.o)
+                0x00000af0                strcmp
  .text.avr-libc
-                0x000009f6        0xe d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strcpy.o)
-                0x000009f6                strcpy
-                0x00000a04                . = ALIGN (0x2)
+                0x00000b02        0xe d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/../../../../avr/lib/avr6\libc.a(strcpy.o)
+                0x00000b02                strcpy
+                0x00000b10                . = ALIGN (0x2)
  *(.fini9)
- .fini9         0x00000a04        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
-                0x00000a04                _exit
-                0x00000a04                exit
+ .fini9         0x00000b10        0x0 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+                0x00000b10                _exit
+                0x00000b10                exit
  *(.fini9)
  *(.fini8)
  *(.fini8)
@@ -485,11 +486,11 @@ END GROUP
  *(.fini1)
  *(.fini1)
  *(.fini0)
- .fini0         0x00000a04        0x4 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
+ .fini0         0x00000b10        0x4 d:/atmel/studio/7.0/toolchain/avr8/avr8-gnu-toolchain/bin/../lib/gcc/avr/5.4.0/avr6\libgcc.a(_exit.o)
  *(.fini0)
-                0x00000a08                _etext = .
+                0x00000b14                _etext = .
 
-.data           0x00800200      0x144 load address 0x00000a08
+.data           0x00800200      0x160 load address 0x00000b14
                 0x00800200                PROVIDE (__data_start, .)
  *(.data)
  *(.data*)
@@ -520,51 +521,63 @@ END GROUP
  .rodata.str1.1
                 0x0080023c       0x9e subRotinaAdm.o
  .rodata.str1.1
-                0x008002da       0x15 main.o
+                0x008002da       0x31 main.o
+                                 0x38 (size before relaxing)
  .rodata.str1.1
-                0x008002ef       0x55 validacao_senhas.o
+                0x0080030b       0x54 validacao_senhas.o
+                                 0x5b (size before relaxing)
  *(.gnu.linkonce.r*)
-                0x00800344                . = ALIGN (0x2)
-                0x00800344                _edata = .
-                0x00800344                PROVIDE (__data_end, .)
+                0x00800360                . = ALIGN (0x2)
+ *fill*         0x0080035f        0x1 
+                0x00800360                _edata = .
+                0x00800360                PROVIDE (__data_end, .)
 
-.bss            0x00800344       0x11
-                0x00800344                PROVIDE (__bss_start, .)
+.bss            0x00800360       0x18
+                0x00800360                PROVIDE (__bss_start, .)
  *(.bss)
  *(.bss*)
- .bss.chamada   0x00800344        0x1 deteccao_intruso.o
-                0x00800344                chamada
+ .bss.chamada   0x00800360        0x1 deteccao_intruso.o
+                0x00800360                chamada
  .bss.intruso_detectado
-                0x00800345        0x1 deteccao_intruso.o
-                0x00800345                intruso_detectado
+                0x00800361        0x1 deteccao_intruso.o
+                0x00800361                intruso_detectado
  .bss.alarme_ativo
-                0x00800346        0x1 deteccao_intruso.o
-                0x00800346                alarme_ativo
+                0x00800362        0x1 deteccao_intruso.o
+                0x00800362                alarme_ativo
  .bss.instrucaoDigitada
-                0x00800347        0x1 subRotinaAdm.o
-                0x00800347                instrucaoDigitada
+                0x00800363        0x1 subRotinaAdm.o
+                0x00800363                instrucaoDigitada
+ .bss.onda      0x00800364        0x1 timers.o
+                0x00800364                onda
+ .bss.ciclos_buzzer
+                0x00800365        0x4 timers.o
+                0x00800365                ciclos_buzzer
+ .bss.buzzer    0x00800369        0x1 timers.o
+                0x00800369                buzzer
+ .bss.led2hz    0x0080036a        0x1 timers.o
+                0x0080036a                led2hz
  .bss.nr_ciclos_timer1
-                0x00800348        0x2 timers.o
-                0x00800348                nr_ciclos_timer1
- .bss.senha     0x0080034a        0x6 validacao_senhas.o
-                0x0080034a                senha
+                0x0080036b        0x2 timers.o
+                0x0080036b                nr_ciclos_timer1
+ .bss.senha     0x0080036d        0x6 validacao_senhas.o
+                0x0080036d                senha
  .bss.nr_digitados
-                0x00800350        0x2 validacao_senhas.o
-                0x00800350                nr_digitados
+                0x00800373        0x2 validacao_senhas.o
+                0x00800373                nr_digitados
  *(COMMON)
- COMMON         0x00800352        0x3 subRotinaAdm.o
-                0x00800352                possivelTecla
-                0x00800353                tecla
-                0x00800354                binColuna
-                0x00800355                PROVIDE (__bss_end, .)
-                0x00000a08                __data_load_start = LOADADDR (.data)
-                0x00000b4c                __data_load_end = (__data_load_start + SIZEOF (.data))
+ COMMON         0x00800375        0x3 subRotinaAdm.o
+                0x00800375                possivelTecla
+                0x00800376                tecla
+                0x00800377                binColuna
+                0x00800378                PROVIDE (__bss_end, .)
+                0x00000b14                __data_load_start = LOADADDR (.data)
+                0x00000c74                __data_load_end = (__data_load_start + SIZEOF (.data))
 
-.noinit         0x00800355        0x0
+.noinit         0x00800378        0x0
                 [!provide]                PROVIDE (__noinit_start, .)
  *(.noinit*)
                 [!provide]                PROVIDE (__noinit_end, .)
-                0x00800355                _end = .
+                0x00800378                _end = .
                 [!provide]                PROVIDE (__heap_start, .)
 
 .eeprom         0x00810000        0x0
@@ -638,15 +651,15 @@ END GROUP
 .debug_aranges  0x00000000      0x1e8
  *(.debug_aranges)
  .debug_aranges
-                0x00000000       0x28 deteccao_intruso.o
+                0x00000000       0x30 deteccao_intruso.o
  .debug_aranges
-                0x00000028       0x50 subRotinaAdm.o
+                0x00000030       0x50 subRotinaAdm.o
  .debug_aranges
-                0x00000078       0x30 teclado.o
+                0x00000080       0x30 teclado.o
  .debug_aranges
-                0x000000a8       0x68 lcdio.o
+                0x000000b0       0x68 lcdio.o
  .debug_aranges
-                0x00000110       0x40 main.o
+                0x00000118       0x38 main.o
  .debug_aranges
                 0x00000150       0x60 timers.o
  .debug_aranges
@@ -655,75 +668,75 @@ END GROUP
 .debug_pubnames
  *(.debug_pubnames)
 
-.debug_info     0x00000000     0x2484
+.debug_info     0x00000000     0x27dc
  *(.debug_info .gnu.linkonce.wi.*)
  .debug_info    0x00000000      0xbbc D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_info    0x00000bbc      0x189 deteccao_intruso.o
- .debug_info    0x00000d45      0x73b subRotinaAdm.o
- .debug_info    0x00001480      0x204 teclado.o
- .debug_info    0x00001684      0x39b lcdio.o
- .debug_info    0x00001a1f      0x3ff main.o
- .debug_info    0x00001e1e      0x147 timers.o
- .debug_info    0x00001f65      0x51f validacao_senhas.o
+ .debug_info    0x00000bbc      0x1bc deteccao_intruso.o
+ .debug_info    0x00000d78      0x783 subRotinaAdm.o
+ .debug_info    0x000014fb      0x24c teclado.o
+ .debug_info    0x00001747      0x3e3 lcdio.o
+ .debug_info    0x00001b2a      0x57f main.o
+ .debug_info    0x000020a9      0x196 timers.o
+ .debug_info    0x0000223f      0x59d validacao_senhas.o
 
-.debug_abbrev   0x00000000     0x11c0
+.debug_abbrev   0x00000000     0x11e7
  *(.debug_abbrev)
  .debug_abbrev  0x00000000      0xb1a D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_abbrev  0x00000b1a       0xa0 deteccao_intruso.o
- .debug_abbrev  0x00000bba      0x126 subRotinaAdm.o
- .debug_abbrev  0x00000ce0       0xdf teclado.o
- .debug_abbrev  0x00000dbf      0x114 lcdio.o
- .debug_abbrev  0x00000ed3      0x11b main.o
- .debug_abbrev  0x00000fee       0x60 timers.o
- .debug_abbrev  0x0000104e      0x172 validacao_senhas.o
+ .debug_abbrev  0x00000b1a       0xc7 deteccao_intruso.o
+ .debug_abbrev  0x00000be1      0x126 subRotinaAdm.o
+ .debug_abbrev  0x00000d07       0xdf teclado.o
+ .debug_abbrev  0x00000de6      0x114 lcdio.o
+ .debug_abbrev  0x00000efa      0x11b main.o
+ .debug_abbrev  0x00001015       0x60 timers.o
+ .debug_abbrev  0x00001075      0x172 validacao_senhas.o
 
-.debug_line     0x00000000     0x124d
+.debug_line     0x00000000     0x133f
  *(.debug_line .debug_line.* .debug_line_end)
  .debug_line    0x00000000      0x1fa D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_line    0x000001fa      0x15d deteccao_intruso.o
- .debug_line    0x00000357      0x3b5 subRotinaAdm.o
- .debug_line    0x0000070c      0x169 teclado.o
- .debug_line    0x00000875      0x2cc lcdio.o
- .debug_line    0x00000b41      0x276 main.o
- .debug_line    0x00000db7      0x24b timers.o
- .debug_line    0x00001002      0x24b validacao_senhas.o
+ .debug_line    0x000001fa      0x127 deteccao_intruso.o
+ .debug_line    0x00000321      0x3b5 subRotinaAdm.o
+ .debug_line    0x000006d6      0x169 teclado.o
+ .debug_line    0x0000083f      0x2cc lcdio.o
+ .debug_line    0x00000b0b      0x37f main.o
+ .debug_line    0x00000e8a      0x252 timers.o
+ .debug_line    0x000010dc      0x263 validacao_senhas.o
 
-.debug_frame    0x00000000      0x42c
+.debug_frame    0x00000000      0x410
  *(.debug_frame)
- .debug_frame   0x00000000       0x5c deteccao_intruso.o
- .debug_frame   0x0000005c       0x8c subRotinaAdm.o
- .debug_frame   0x000000e8       0x44 teclado.o
- .debug_frame   0x0000012c       0xd0 lcdio.o
- .debug_frame   0x000001fc      0x124 main.o
- .debug_frame   0x00000320       0xa4 timers.o
- .debug_frame   0x000003c4       0x68 validacao_senhas.o
+ .debug_frame   0x00000000       0x58 deteccao_intruso.o
+ .debug_frame   0x00000058       0x8c subRotinaAdm.o
+ .debug_frame   0x000000e4       0x44 teclado.o
+ .debug_frame   0x00000128       0xd0 lcdio.o
+ .debug_frame   0x000001f8      0x10c main.o
+ .debug_frame   0x00000304       0xa4 timers.o
+ .debug_frame   0x000003a8       0x68 validacao_senhas.o
 
-.debug_str      0x00000000      0x8c4
+.debug_str      0x00000000      0x8d7
  *(.debug_str)
  .debug_str     0x00000000      0x3e6 D:/Atmel/Studio/7.0/Packs/atmel/ATmega_DFP/1.7.374/gcc/dev/atmega2560/avr6/crtatmega2560.o
- .debug_str     0x000003e6      0x1c3 deteccao_intruso.o
-                                0x1fc (size before relaxing)
- .debug_str     0x000005a9      0x172 subRotinaAdm.o
-                                0x2f8 (size before relaxing)
- .debug_str     0x0000071b       0x43 teclado.o
-                                0x1f8 (size before relaxing)
- .debug_str     0x0000075e       0x81 lcdio.o
-                                0x240 (size before relaxing)
- .debug_str     0x000007df       0x78 main.o
-                                0x359 (size before relaxing)
- .debug_str     0x00000857       0x40 timers.o
-                                0x1f3 (size before relaxing)
- .debug_str     0x00000897       0x2d validacao_senhas.o
-                                0x324 (size before relaxing)
+ .debug_str     0x000003e6      0x1e3 deteccao_intruso.o
+                                0x230 (size before relaxing)
+ .debug_str     0x000005c9      0x169 subRotinaAdm.o
+                                0x319 (size before relaxing)
+ .debug_str     0x00000732       0x43 teclado.o
+                                0x219 (size before relaxing)
+ .debug_str     0x00000775       0x81 lcdio.o
+                                0x261 (size before relaxing)
+ .debug_str     0x000007f6       0x78 main.o
+                                0x398 (size before relaxing)
+ .debug_str     0x0000086e       0x3c timers.o
+                                0x21b (size before relaxing)
+ .debug_str     0x000008aa       0x2d validacao_senhas.o
+                                0x366 (size before relaxing)
 
-.debug_loc      0x00000000      0x645
+.debug_loc      0x00000000      0x588
  *(.debug_loc)
- .debug_loc     0x00000000      0x10e deteccao_intruso.o
- .debug_loc     0x0000010e       0x3a subRotinaAdm.o
- .debug_loc     0x00000148      0x123 teclado.o
- .debug_loc     0x0000026b       0xf3 lcdio.o
- .debug_loc     0x0000035e      0x235 main.o
- .debug_loc     0x00000593       0xb2 validacao_senhas.o
+ .debug_loc     0x00000000       0x73 deteccao_intruso.o
+ .debug_loc     0x00000073       0x3a subRotinaAdm.o
+ .debug_loc     0x000000ad      0x123 teclado.o
+ .debug_loc     0x000001d0       0xf3 lcdio.o
+ .debug_loc     0x000002c3      0x213 main.o
+ .debug_loc     0x000004d6       0xb2 validacao_senhas.o
 
 .debug_macinfo
  *(.debug_macinfo)
@@ -743,15 +756,15 @@ END GROUP
 .debug_pubtypes
  *(.debug_pubtypes)
 
-.debug_ranges   0x00000000      0x190
+.debug_ranges   0x00000000      0x178
  *(.debug_ranges)
- .debug_ranges  0x00000000       0x30 deteccao_intruso.o
- .debug_ranges  0x00000030       0x40 subRotinaAdm.o
- .debug_ranges  0x00000070       0x20 teclado.o
- .debug_ranges  0x00000090       0x58 lcdio.o
- .debug_ranges  0x000000e8       0x30 main.o
- .debug_ranges  0x00000118       0x50 timers.o
- .debug_ranges  0x00000168       0x28 validacao_senhas.o
+ .debug_ranges  0x00000000       0x20 deteccao_intruso.o
+ .debug_ranges  0x00000020       0x40 subRotinaAdm.o
+ .debug_ranges  0x00000060       0x20 teclado.o
+ .debug_ranges  0x00000080       0x58 lcdio.o
+ .debug_ranges  0x000000d8       0x28 main.o
+ .debug_ranges  0x00000100       0x50 timers.o
+ .debug_ranges  0x00000150       0x28 validacao_senhas.o
 
 .debug_macro
  *(.debug_macro)

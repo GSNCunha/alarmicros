@@ -22,21 +22,29 @@ int main(void)
 	config_porta_avr();
 	config_lcd_padrao();
 	limpa_reseta_cursor();
+	send_string("---ALARMICROS---");
+	proxima_linha();
+	send_string("SENHA:");
     while (1){
 		if (alarme_ativo && intruso_detectado){
 			delay_piscaled();
 			ativa_buzzer();
+		}else{
+			desativa_buzzer();
+			TIMSK5 = 0x00;
+			TCCR5B = 0x00;
+			
 		}
 		
 	}
 }
 	
 ISR(PCINT2_vect){ //pinos K0 até K4
-	PORTL = 0; //so p nao dar bip no buzzer
+	PORTB = 0; //so p nao dar bip no buzzer
 	if(chamada == 0){
 		chamada = 1;
 		tecla = procuraTecla();
-		if ((tecla == '1')){
+		/*if ((tecla == '1')){
 			//send_data(0b00110001);
 		}
 		if ((tecla == '2')){
@@ -63,7 +71,7 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 		if ((tecla == '9')){
 			//send_data(0b00111001);
 		}
-		/*if ((tecla == 'A')){
+		if ((tecla == 'A')){
 			send_data(0b01000001);
 			if(alarme_ativo){
 				intruso_detectado = 1;
@@ -94,18 +102,34 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 			if ((tecla == 'A') || (tecla == 'B') || (tecla == 'C') || (tecla == 'D')){
 				limpa_reseta_cursor();
 				send_string("INTRUSO");
+				proxima_linha();
+				send_string("SENHA:");
 				intruso_detectado = 1;
-			}/*else if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9')){
+			}
+			if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9') || (tecla == '0')){
 				if(nr_digitados < 5){
 					lendo_senha(tecla);
 				}
 				if(nr_digitados == 5){
 					if (resultado_validacao() == 1){
-						alarme_ativo = 0; //o timer liga o alarme dps
+						alarme_ativo = 0;
 						intruso_detectado = 0;
-					}
+						TCCR1B = 0x00;
+						TIMSK1 = 0x00;
+						TIMSK4 = 0x00;
+						TCCR4B = 0x00;
+						desativa_buzzer();
+						limpa_reseta_cursor();
+						send_string("ALARME OFF");
+						delay_1s();
+						limpa_reseta_cursor();
+						send_string("---ALARMICROS---");
+						proxima_linha();
+						send_string("SENHA:");
+						}
 				}
-			}*/
+			}
+		
 		}else if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9') || (tecla == '0')){
 		if(nr_digitados < 5){
 			lendo_senha(tecla);
@@ -117,7 +141,7 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 			}
 		}
 	}
-		delay_1s();
+		delay_250ms();
 	}else{
 		chamada = 0;
 		PORTK = 0b00001111; //reseta a porta pra proxima leitura
@@ -130,6 +154,8 @@ ISR(TIMER1_OVF_vect){
 		//ativa_alarme
 		limpa_reseta_cursor();
 		send_string("ALARME ATIVO");
+		proxima_linha();
+		send_string("SENHA:");
 		alarme_ativo = 1;
 		//desliga timer
 		TCCR1B = 0x00;
@@ -142,15 +168,46 @@ ISR(TIMER1_OVF_vect){
 		
 	}
 }
-ISR(TIMER3_OVF_vect){
+/*ISR(TIMER3_OVF_vect){
 	TCCR3A = 0; //modo normal
 	TCCR3B = 0x1; //sem prescaler
 	TCNT3 = 45536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 20000 contagens p bater meio periodo da onda de 400hz
 	TIFR3 = 1;
-}
+}*/
 ISR(TIMER4_OVF_vect){
-	TCCR4A = 0; //modo normal
-	TCCR4B = 0x3; //prescaler de 64
-	TCNT4 = 3036; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
-	TIFR4 = 1;
+	//timer p 1s
+	if(led2hz == 1){
+		TCCR4A = 0; //modo normal
+		TCCR4B = 0x3; //prescaler de 256
+		TCNT4 = 3036; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
+		TIFR4 = 1;
+		PORTB ^= (1 << 7);
+	}
+	if(buzzer == 1){
+		if(onda == 0){
+			TCCR4A = 0; //modo normal
+			TCCR4B = 0x1; //sem prescaler
+			TCNT4 = 45536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 20000 contagens p bater meio periodo da onda de 400hz
+			TIFR4 = 1;
+			PORTB ^= (1 << 6);
+			ciclos_buzzer++;
+			if(ciclos_buzzer == 400){
+				ciclos_buzzer = 0;
+				onda = 1;
+			}
+		}
+		if(onda == 1){
+			TCCR4A = 0; //modo normal
+			TCCR4B = 0x1; //sem prescaler
+			TCNT4 = 55536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 10000 contagens p bater meio periodo da onda de 800hz
+			TIFR4 = 1;
+			PORTB ^= (1 << 6);
+			ciclos_buzzer++;
+			if(ciclos_buzzer == 800){
+				ciclos_buzzer = 0;
+				onda = 0;
+			}
+		}
+		
+	}
 }

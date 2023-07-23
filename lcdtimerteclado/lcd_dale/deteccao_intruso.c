@@ -15,21 +15,22 @@ long tempo_TA = 5; //tempo de delay com o led piscando
 
 void delay_piscaled(){
 	DDRB = 0xFF;
-	for(long i = 0; i<(tempo_TA*4); i++){
-		onda_2hz();
-		PORTB ^= (1 << 7); //bipa o led em 2hz
+	led2hz_int();
+	for(long i = 0; i<(tempo_TA); i++){
+		delay_1s();
 	}
+	led2hz = 0;
+	TCCR4B = 0x00; //desliga timer 4
+	TIMSK4 = 0x00;
 }
 
 void ativa_buzzer(){
-	while(alarme_ativo && intruso_detectado){
-		for (long i = 0; i<400 ; i++){
-			onda_400hz();
-			PORTB ^= (1 << 6); //bipa o buzzer em 400hz por 1s
-		}
-		for (long i = 0; i<800 ; i++){
-			onda_800hz();
-			PORTB ^= (1 << 6); //bipa o buzzer em 800hz por 1s
-		}
-	}
+	onda_400hzint();
+	buzzer = 1;
+}
+
+void desativa_buzzer(){
+	buzzer = 0;
+	TCCR4B = 0x00; //desliga timer 4
+	TIMSK4 = 0x00;
 }

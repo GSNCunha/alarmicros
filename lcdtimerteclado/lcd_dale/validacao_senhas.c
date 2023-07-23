@@ -60,7 +60,7 @@ const char* subRotinaTrocaSenha()
 	{
 		if(nr_digitados < 5){
 			tecla = procuraTecla();
-			delay_1s();
+			delay_250ms();
 			PORTK = 0b00001111;
 			lendo_senha(tecla);
 		}
@@ -94,20 +94,23 @@ int resultado_validacao(){
 	if( !strcmp(validacao,"senha incorreta")){
 		limpa_reseta_cursor();
 		nr_digitados = 0;
-		send_string("senha incorreta ");
-		delay_1s();
-		delay_1s();
-		limpa_reseta_cursor();
+		send_string("SENHA INCORRETA");
+		proxima_linha();
+		send_string("SENHA:");
+		delay_250ms();
 		return 0;
 	}else{
 		limpa_reseta_cursor();
 		nr_digitados = 0;
-		send_string("senha correta");
+		send_string("SENHA CORRETA");
 		if (strcmp(validacao, "adm") == 0){
 			subRotinaAdm();
 			limpa_reseta_cursor();
 		}else if(alarme_ativo == 0){
 			TCCR1B = 0x05;
+			TIMSK1 = 1;
+		}else if(alarme_ativo == 1){
+			desativa_buzzer();
 		}
 		return 1;
 	}	
