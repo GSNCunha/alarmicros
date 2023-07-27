@@ -72,6 +72,15 @@ void delay_250ms(){
 	while((TIFR5 & (1<<0)) == 0); //espera overflow
 }
 
+void delay_200ms(){
+	TCCR5A = 0; //modo normal
+	TCCR5B = 0x3; //prescaler de 64
+	TCNT5 = 15536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 3200000/64=50000 contagens p bater o timer do delay de 200ms
+	TIFR5 = (1<<0); //limpa flag
+	while((TIFR5 & (1<<0)) == 0); //espera overflow
+}
+
+
 //esse delay acho q n vai precisar interrupção
 void delay_1s(){
 	TCCR5A = 0; //modo normal

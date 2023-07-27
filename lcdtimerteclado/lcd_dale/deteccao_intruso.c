@@ -10,7 +10,7 @@
 char alarme_ativo = 0;
 char intruso_detectado = 0;
 char chamada = 0;
-long tempo_TA = 5; //tempo de delay com o led piscando
+long tempo_TA = 5; //tempo de delay com o led piscando ---- tem q mudar pra 25s
 
 
 void delay_piscaled(){

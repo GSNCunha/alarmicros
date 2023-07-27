@@ -17,5 +17,6 @@ char possivelTecla;
 char ligaLinhas(int bitColuna, int indColuna);
 char procuraLinhas(uint8_t coluna);
 char procuraTecla();
+char procuraTecla1x();
 
 #endif /* TECLADO_H_ */

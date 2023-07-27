@@ -18,6 +18,7 @@ void delay_250ms();
 void delay_1s();
 void delay_1ms();
 void led2hz_int();
+void delay_200ms();
 
 
 #endif
