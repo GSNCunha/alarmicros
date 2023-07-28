@@ -16,7 +16,8 @@ subRotinaAdm.d subRotinaAdm.o: .././subRotinaAdm.c \
  d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- .././teclado.h .././lcdio.h .././validacao_senhas.h .././timers.h
+ .././teclado.h .././lcdio.h .././validacao_senhas.h .././timers.h \
+ .././serial.h .././timerRelogio.h
 
 d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdio.h:
 
@@ -59,3 +60,7 @@ d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.
 .././validacao_senhas.h:
 
 .././timers.h:
+
+.././serial.h:
+
+.././timerRelogio.h:

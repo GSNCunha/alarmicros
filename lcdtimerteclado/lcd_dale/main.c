@@ -8,6 +8,7 @@
 #include "deteccao_intruso.h"
 #include "subRotinaAdm.h"
 #include "serial.h"
+#include "timerRelogio.h"
 
 int main(void)
 {
@@ -23,7 +24,7 @@ int main(void)
 	serialInicializar();
 	serialAtivarInterrupt();
 	
-	
+	config_timer_ok();
 	config_timer1();
 	config_porta_avr();
 	config_lcd_padrao();
@@ -37,6 +38,7 @@ int main(void)
 			ativa_buzzer();
 			PORTB = 0;
 		}
+		subRotinaAdm();
 	}
 }
 	
@@ -113,26 +115,14 @@ ISR(TIMER1_OVF_vect){
 }
 
 ISR(TIMER3_OVF_vect){
-	if(nr_ciclos_timer1 == 19){
-		//ativa_alarme
-		limpa_reseta_cursor();
-		send_string("ALARME ATIVO");
-		proxima_linha();
-		send_string("SENHA:");
-		alarme_ativo = 1;
-		//desliga timer
-		TCCR1B = 0x00;
-		TIMSK1 = 0x00;
-		//limpa flag
-		TIFR1 = 1;
-		nr_ciclos_timer1 = 0;
-		}else{
-		nr_ciclos_timer1++;
+	if (nr_ciclos_relogio == 13){//14-1
+		nr_ciclos_relogio=0;
+		min++;
+		conversaoMinHr();
+	}else{
+		nr_ciclos_relogio++;
 	}
 }
-
-
-
 
 ISR(USART0_RX_vect)//usamos
 {
@@ -149,35 +139,35 @@ ISR(USART0_RX_vect)//usamos
 		c = serialReceberByte(); // Dia.
 		uint8_t c2 = serialReceberByte(); // Hora.
 		uint8_t c3 = serialReceberByte(); // Minuto.
-		
-		limpa_reseta_cursor();
-		send_data(c);
-		send_data(c2);
-		send_data(c3);
+		configRelogio();
+		//send_data(c2);
+		dia = c;
+		hora = c2;
+		min = c3;
 		
 		
 		//relogioSincronizar(c, c2, c3);
 		
 		// Resposta de confirma  o.
-		serialEnviarString("AH");
+		if(!pediHorario){
+			serialEnviarString("AH");
+		}
+		pediHorario = 0;
+		
 	}
 	else if (c == 'S' || c == 'M') {
 		// confirmacao de mensagem recebida
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
+ISR(TIMER4_OVF_vect){
+	if (nr_ciclos_ok == 3){//14-1
+		nr_ciclos_ok=0;
+		serialEnviarString("AO"); //envia OK
+		}else{
+		nr_ciclos_ok++;
+	}
+}
 
 
 

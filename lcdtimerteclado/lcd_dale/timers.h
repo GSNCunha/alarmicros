@@ -3,6 +3,7 @@
 #define TIMERS_H_
 
 int nr_ciclos_timer1;
+int nr_ciclos_ok;
 char led2hz;
 char buzzer;
 long ciclos_buzzer;
@@ -19,6 +20,7 @@ void delay_1s();
 void delay_1ms();
 void led2hz_int();
 void delay_200ms();
+void config_timer_ok();
 
 
 #endif

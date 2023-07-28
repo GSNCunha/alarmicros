@@ -22,6 +22,7 @@ uint8_t serialByteRecebido();
 void serialEnviarByte(uint8_t ch);
 uint8_t serialReceberByte(void);
 void serialEnviarString(const char *str);
+int pediHorario;
 
 
 #endif /* SERIAL_H_ */

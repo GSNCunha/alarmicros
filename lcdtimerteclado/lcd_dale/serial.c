@@ -21,6 +21,9 @@
 // a execu  o do programa sem gerar um timeout.
 #define SERIAL_TIMEOUT 3000
 
+int pediHorario = 0;
+
+
 void serialAtivarInterrupt() {//usamos
 	// Ativa o interrupt de recebimento completo.
 	UCSR0B |= (1 << RXCIE0);
@@ -51,6 +54,7 @@ void serialInicializar()//usamos
 
 uint8_t serialByteDisponivelEnvio() {//usamos
 	// Checa se o buffer de transmiss o estar livre para envio.
+	//send_data((UCSR0A & (1 << UDRE0))+0x30);
 	return UCSR0A & (1 << UDRE0);
 }
 
@@ -60,7 +64,7 @@ uint8_t serialByteRecebido() {//usamos
 }
 
 void serialEnviarByte(uint8_t ch) {//usamos
-	// Carrega o caractere a ser mandado quando o envio estive dispon vel.
+	// Carrega o caractere a ser mandado quando o envio estive disponivel.
 	while (!serialByteDisponivelEnvio());
 	UDR0 = ch;
 }

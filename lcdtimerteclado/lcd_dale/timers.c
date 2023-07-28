@@ -8,6 +8,7 @@
 //versão com interrupção:
 
 int nr_ciclos_timer1 = 0;
+int nr_ciclos_ok = 0;
 
 char led2hz = 0;
 
@@ -47,7 +48,6 @@ void led2hz_int(){
 	TIMSK4 = 1;
 	led2hz = 1;
 }
-
 
 //versão sem interrupção:
 void onda_800hz(){
@@ -96,4 +96,12 @@ void delay_1ms() {
 	TCNT5 = 65024;
 	TIFR5 = (1<<0); //limpa flag
 	while((TIFR5 & (1<<0)) == 0); //espera overflow
+}
+
+void config_timer_ok(){
+	sei();
+	TCCR4A = 0; //modo normal
+	TCCR4B = 0x5; //prescaler de 1024
+	TCNT4 = 0; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
+	TIMSK4 = 1;
 }

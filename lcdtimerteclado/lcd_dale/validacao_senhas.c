@@ -98,7 +98,7 @@ int resultado_validacao(){
 	
 	validacao = validar_senha();
 	
-	if( !strcmp(validacao,"senha incorreta")){
+	if(!strcmp(validacao,"senha incorreta")){
 		limpa_reseta_cursor();
 		nr_digitados = 0;
 		send_string("SENHA INCORRETA");
@@ -110,7 +110,7 @@ int resultado_validacao(){
 		nr_digitados = 0;
 		send_string("SENHA CORRETA");
 		if (strcmp(validacao, "adm") == 0){
-			subRotinaAdm();
+			//subRotinaAdm();
 			limpa_reseta_cursor();
 			send_string("---ALARMICROS---");
 			proxima_linha();
