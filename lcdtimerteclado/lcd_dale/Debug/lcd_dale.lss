@@ -3,31 +3,31 @@ lcd_dale.elf:     file format elf32-avr
 
 Sections:
 Idx Name          Size      VMA       LMA       File off  Algn
-  0 .data         00000160  00800200  00000b4e  00000be2  2**0
+  0 .data         00000170  00800200  00000a8a  00000b1e  2**0
                   CONTENTS, ALLOC, LOAD, DATA
-  1 .text         00000b4e  00000000  00000000  00000094  2**1
+  1 .text         00000a8a  00000000  00000000  00000094  2**1
                   CONTENTS, ALLOC, LOAD, READONLY, CODE
-  2 .bss          0000001a  00800360  00800360  00000d42  2**0
+  2 .bss          00000011  00800370  00800370  00000c8e  2**0
                   ALLOC
-  3 .comment      00000030  00000000  00000000  00000d42  2**0
+  3 .comment      00000030  00000000  00000000  00000c8e  2**0
                   CONTENTS, READONLY
-  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000d74  2**2
+  4 .note.gnu.avr.deviceinfo 00000040  00000000  00000000  00000cc0  2**2
                   CONTENTS, READONLY
-  5 .debug_aranges 000001f8  00000000  00000000  00000db4  2**0
+  5 .debug_aranges 000001e8  00000000  00000000  00000d00  2**0
                   CONTENTS, READONLY, DEBUGGING
-  6 .debug_info   0000285b  00000000  00000000  00000fac  2**0
+  6 .debug_info   00002827  00000000  00000000  00000ee8  2**0
                   CONTENTS, READONLY, DEBUGGING
-  7 .debug_abbrev 000011f9  00000000  00000000  00003807  2**0
+  7 .debug_abbrev 000011d0  00000000  00000000  0000370f  2**0
                   CONTENTS, READONLY, DEBUGGING
-  8 .debug_line   000013ba  00000000  00000000  00004a00  2**0
+  8 .debug_line   0000131d  00000000  00000000  000048df  2**0
                   CONTENTS, READONLY, DEBUGGING
-  9 .debug_frame  00000430  00000000  00000000  00005dbc  2**2
+  9 .debug_frame  00000408  00000000  00000000  00005bfc  2**2
                   CONTENTS, READONLY, DEBUGGING
- 10 .debug_str    00000910  00000000  00000000  000061ec  2**0
+ 10 .debug_str    000008d7  00000000  00000000  00006004  2**0
                   CONTENTS, READONLY, DEBUGGING
- 11 .debug_loc    00000588  00000000  00000000  00006afc  2**0
+ 11 .debug_loc    000005d5  00000000  00000000  000068db  2**0
                   CONTENTS, READONLY, DEBUGGING
- 12 .debug_ranges 00000188  00000000  00000000  00007084  2**0
+ 12 .debug_ranges 00000190  00000000  00000000  00006eb0  2**0
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -55,7 +55,7 @@ Disassembly of section .text:
   26:	00 00       	nop
   28:	7c c0       	rjmp	.+248    	; 0x122 <__bad_interrupt>
   2a:	00 00       	nop
-  2c:	f1 c2       	rjmp	.+1506   	; 0x610 <__vector_11>
+  2c:	3d c3       	rjmp	.+1658   	; 0x6a8 <__vector_11>
   2e:	00 00       	nop
   30:	78 c0       	rjmp	.+240    	; 0x122 <__bad_interrupt>
   32:	00 00       	nop
@@ -73,7 +73,7 @@ Disassembly of section .text:
   4a:	00 00       	nop
   4c:	6a c0       	rjmp	.+212    	; 0x122 <__bad_interrupt>
   4e:	00 00       	nop
-  50:	77 c3       	rjmp	.+1774   	; 0x740 <__vector_20>
+  50:	c2 c3       	rjmp	.+1924   	; 0x7d6 <__vector_20>
   52:	00 00       	nop
   54:	66 c0       	rjmp	.+204    	; 0x122 <__bad_interrupt>
   56:	00 00       	nop
@@ -123,7 +123,7 @@ Disassembly of section .text:
   ae:	00 00       	nop
   b0:	38 c0       	rjmp	.+112    	; 0x122 <__bad_interrupt>
   b2:	00 00       	nop
-  b4:	8a c3       	rjmp	.+1812   	; 0x7ca <__vector_45>
+  b4:	36 c0       	rjmp	.+108    	; 0x122 <__bad_interrupt>
   b6:	00 00       	nop
   b8:	34 c0       	rjmp	.+104    	; 0x122 <__bad_interrupt>
   ba:	00 00       	nop
@@ -162,20 +162,20 @@ Disassembly of section .text:
   f4:	13 e0       	ldi	r17, 0x03	; 3
   f6:	a0 e0       	ldi	r26, 0x00	; 0
   f8:	b2 e0       	ldi	r27, 0x02	; 2
-  fa:	ee e4       	ldi	r30, 0x4E	; 78
-  fc:	fb e0       	ldi	r31, 0x0B	; 11
+  fa:	ea e8       	ldi	r30, 0x8A	; 138
+  fc:	fa e0       	ldi	r31, 0x0A	; 10
   fe:	00 e0       	ldi	r16, 0x00	; 0
  100:	0b bf       	out	0x3b, r16	; 59
  102:	02 c0       	rjmp	.+4      	; 0x108 <__do_copy_data+0x14>
  104:	07 90       	elpm	r0, Z+
  106:	0d 92       	st	X+, r0
- 108:	a0 36       	cpi	r26, 0x60	; 96
+ 108:	a0 37       	cpi	r26, 0x70	; 112
  10a:	b1 07       	cpc	r27, r17
  10c:	d9 f7       	brne	.-10     	; 0x104 <__do_copy_data+0x10>
 
 0000010e <__do_clear_bss>:
  10e:	23 e0       	ldi	r18, 0x03	; 3
- 110:	a0 e6       	ldi	r26, 0x60	; 96
+ 110:	a0 e7       	ldi	r26, 0x70	; 112
  112:	b3 e0       	ldi	r27, 0x03	; 3
  114:	01 c0       	rjmp	.+2      	; 0x118 <.do_clear_bss_start>
 
@@ -183,19 +183,19 @@ Disassembly of section .text:
  116:	1d 92       	st	X+, r1
 
 00000118 <.do_clear_bss_start>:
- 118:	aa 37       	cpi	r26, 0x7A	; 122
+ 118:	a1 38       	cpi	r26, 0x81	; 129
  11a:	b2 07       	cpc	r27, r18
  11c:	e1 f7       	brne	.-8      	; 0x116 <.do_clear_bss_loop>
- 11e:	48 d2       	rcall	.+1168   	; 0x5b0 <main>
- 120:	14 c5       	rjmp	.+2600   	; 0xb4a <_exit>
+ 11e:	99 d2       	rcall	.+1330   	; 0x652 <main>
+ 120:	b2 c4       	rjmp	.+2404   	; 0xa86 <_exit>
 
 00000122 <__bad_interrupt>:
  122:	6e cf       	rjmp	.-292    	; 0x0 <__vectors>
 
 00000124 <delay_piscaled>:
-char intruso_detectado = 0;
-char chamada = 0;
-long tempo_TA = 5; //tempo de delay com o led piscando ---- tem q mudar pra 25s
+	TCCR4B = 0x00; //desliga timer 4
+	TIMSK4 = 0x00;
+}*/
 
 
 void delay_piscaled(){
@@ -203,1991 +203,1905 @@ void delay_piscaled(){
  126:	df 92       	push	r13
  128:	ef 92       	push	r14
  12a:	ff 92       	push	r15
-	DDRB = 0xFF;
- 12c:	8f ef       	ldi	r24, 0xFF	; 255
- 12e:	84 b9       	out	0x04, r24	; 4
-	led2hz_int();
- 130:	04 d4       	rcall	.+2056   	; 0x93a <led2hz_int>
-	for(long i = 0; i<(tempo_TA); i++){
- 132:	c1 2c       	mov	r12, r1
- 134:	d1 2c       	mov	r13, r1
- 136:	76 01       	movw	r14, r12
-		delay_1s();
- 138:	06 c0       	rjmp	.+12     	; 0x146 <delay_piscaled+0x22>
- 13a:	31 d4       	rcall	.+2146   	; 0x99e <delay_1s>
+	for(long i = 0; i<(tempo_TA*4); i++){
+ 12c:	c1 2c       	mov	r12, r1
+ 12e:	d1 2c       	mov	r13, r1
+ 130:	76 01       	movw	r14, r12
+ 132:	11 c0       	rjmp	.+34     	; 0x156 <delay_piscaled+0x32>
+		if(alarme_ativo && intruso_detectado){
+ 134:	80 91 72 03 	lds	r24, 0x0372	; 0x800372 <alarme_ativo>
+ 138:	88 23       	and	r24, r24
+ 13a:	41 f0       	breq	.+16     	; 0x14c <delay_piscaled+0x28>
+ 13c:	80 91 71 03 	lds	r24, 0x0371	; 0x800371 <intruso_detectado>
+ 140:	88 23       	and	r24, r24
+ 142:	21 f0       	breq	.+8      	; 0x14c <delay_piscaled+0x28>
+			delay_250ms();
+ 144:	b9 d3       	rcall	.+1906   	; 0x8b8 <delay_250ms>
+			PORTB ^= (1 << 7); //bipa o led em 2hz
+ 146:	85 b1       	in	r24, 0x05	; 5
+ 148:	80 58       	subi	r24, 0x80	; 128
+ 14a:	85 b9       	out	0x05, r24	; 5
+	TIMSK4 = 0x00;
+}*/
 
 
 void delay_piscaled(){
-	DDRB = 0xFF;
-	led2hz_int();
-	for(long i = 0; i<(tempo_TA); i++){
- 13c:	8f ef       	ldi	r24, 0xFF	; 255
- 13e:	c8 1a       	sub	r12, r24
- 140:	d8 0a       	sbc	r13, r24
- 142:	e8 0a       	sbc	r14, r24
- 144:	f8 0a       	sbc	r15, r24
- 146:	80 91 00 02 	lds	r24, 0x0200	; 0x800200 <__DATA_REGION_ORIGIN__>
- 14a:	90 91 01 02 	lds	r25, 0x0201	; 0x800201 <__DATA_REGION_ORIGIN__+0x1>
- 14e:	a0 91 02 02 	lds	r26, 0x0202	; 0x800202 <__DATA_REGION_ORIGIN__+0x2>
- 152:	b0 91 03 02 	lds	r27, 0x0203	; 0x800203 <__DATA_REGION_ORIGIN__+0x3>
- 156:	c8 16       	cp	r12, r24
- 158:	d9 06       	cpc	r13, r25
- 15a:	ea 06       	cpc	r14, r26
- 15c:	fb 06       	cpc	r15, r27
- 15e:	6c f3       	brlt	.-38     	; 0x13a <delay_piscaled+0x16>
-		delay_1s();
+	for(long i = 0; i<(tempo_TA*4); i++){
+ 14c:	8f ef       	ldi	r24, 0xFF	; 255
+ 14e:	c8 1a       	sub	r12, r24
+ 150:	d8 0a       	sbc	r13, r24
+ 152:	e8 0a       	sbc	r14, r24
+ 154:	f8 0a       	sbc	r15, r24
+ 156:	80 91 00 02 	lds	r24, 0x0200	; 0x800200 <__DATA_REGION_ORIGIN__>
+ 15a:	90 91 01 02 	lds	r25, 0x0201	; 0x800201 <__DATA_REGION_ORIGIN__+0x1>
+ 15e:	a0 91 02 02 	lds	r26, 0x0202	; 0x800202 <__DATA_REGION_ORIGIN__+0x2>
+ 162:	b0 91 03 02 	lds	r27, 0x0203	; 0x800203 <__DATA_REGION_ORIGIN__+0x3>
+ 166:	88 0f       	add	r24, r24
+ 168:	99 1f       	adc	r25, r25
+ 16a:	aa 1f       	adc	r26, r26
+ 16c:	bb 1f       	adc	r27, r27
+ 16e:	88 0f       	add	r24, r24
+ 170:	99 1f       	adc	r25, r25
+ 172:	aa 1f       	adc	r26, r26
+ 174:	bb 1f       	adc	r27, r27
+ 176:	c8 16       	cp	r12, r24
+ 178:	d9 06       	cpc	r13, r25
+ 17a:	ea 06       	cpc	r14, r26
+ 17c:	fb 06       	cpc	r15, r27
+ 17e:	d4 f2       	brlt	.-76     	; 0x134 <delay_piscaled+0x10>
+		if(alarme_ativo && intruso_detectado){
+			delay_250ms();
+			PORTB ^= (1 << 7); //bipa o led em 2hz
+		}
 	}
-	led2hz = 0;
- 160:	10 92 6a 03 	sts	0x036A, r1	; 0x80036a <led2hz>
-	TCCR4B = 0x00; //desliga timer 4
- 164:	10 92 a1 00 	sts	0x00A1, r1	; 0x8000a1 <__TEXT_REGION_LENGTH__+0x7c00a1>
-	TIMSK4 = 0x00;
- 168:	10 92 72 00 	sts	0x0072, r1	; 0x800072 <__TEXT_REGION_LENGTH__+0x7c0072>
 }
- 16c:	ff 90       	pop	r15
- 16e:	ef 90       	pop	r14
- 170:	df 90       	pop	r13
- 172:	cf 90       	pop	r12
- 174:	08 95       	ret
+ 180:	ff 90       	pop	r15
+ 182:	ef 90       	pop	r14
+ 184:	df 90       	pop	r13
+ 186:	cf 90       	pop	r12
+ 188:	08 95       	ret
 
-00000176 <ativa_buzzer>:
+0000018a <ativa_buzzer>:
 
-void ativa_buzzer(){
+/*void ativa_buzzer(){
 	onda_400hzint();
- 176:	d2 d3       	rcall	.+1956   	; 0x91c <onda_400hzint>
 	buzzer = 1;
- 178:	81 e0       	ldi	r24, 0x01	; 1
- 17a:	80 93 69 03 	sts	0x0369, r24	; 0x800369 <buzzer>
- 17e:	08 95       	ret
-
-00000180 <desativa_buzzer>:
+}*/
+void ativa_buzzer(){
+ 18a:	cf 92       	push	r12
+ 18c:	df 92       	push	r13
+ 18e:	ef 92       	push	r14
+ 190:	ff 92       	push	r15
+	while(alarme_ativo && intruso_detectado){
+ 192:	3a c0       	rjmp	.+116    	; 0x208 <ativa_buzzer+0x7e>
+		for (long i = 0; i<400 ; i++){
+			if (alarme_ativo && intruso_detectado){
+ 194:	80 91 72 03 	lds	r24, 0x0372	; 0x800372 <alarme_ativo>
+ 198:	88 23       	and	r24, r24
+ 19a:	49 f0       	breq	.+18     	; 0x1ae <ativa_buzzer+0x24>
+ 19c:	80 91 71 03 	lds	r24, 0x0371	; 0x800371 <intruso_detectado>
+ 1a0:	88 23       	and	r24, r24
+ 1a2:	29 f0       	breq	.+10     	; 0x1ae <ativa_buzzer+0x24>
+				onda_400hz();
+ 1a4:	7a d3       	rcall	.+1780   	; 0x89a <onda_400hz>
+				PORTB ^= (1 << 6); //bipa o buzzer em 400hz por 1s
+ 1a6:	95 b1       	in	r25, 0x05	; 5
+ 1a8:	80 e4       	ldi	r24, 0x40	; 64
+ 1aa:	89 27       	eor	r24, r25
+ 1ac:	85 b9       	out	0x05, r24	; 5
+	onda_400hzint();
+	buzzer = 1;
+}*/
+void ativa_buzzer(){
+	while(alarme_ativo && intruso_detectado){
+		for (long i = 0; i<400 ; i++){
+ 1ae:	8f ef       	ldi	r24, 0xFF	; 255
+ 1b0:	c8 1a       	sub	r12, r24
+ 1b2:	d8 0a       	sbc	r13, r24
+ 1b4:	e8 0a       	sbc	r14, r24
+ 1b6:	f8 0a       	sbc	r15, r24
+ 1b8:	03 c0       	rjmp	.+6      	; 0x1c0 <ativa_buzzer+0x36>
+ 1ba:	c1 2c       	mov	r12, r1
+ 1bc:	d1 2c       	mov	r13, r1
+ 1be:	76 01       	movw	r14, r12
+ 1c0:	80 e9       	ldi	r24, 0x90	; 144
+ 1c2:	c8 16       	cp	r12, r24
+ 1c4:	81 e0       	ldi	r24, 0x01	; 1
+ 1c6:	d8 06       	cpc	r13, r24
+ 1c8:	e1 04       	cpc	r14, r1
+ 1ca:	f1 04       	cpc	r15, r1
+ 1cc:	1c f3       	brlt	.-58     	; 0x194 <ativa_buzzer+0xa>
+ 1ce:	c1 2c       	mov	r12, r1
+ 1d0:	d1 2c       	mov	r13, r1
+ 1d2:	76 01       	movw	r14, r12
+ 1d4:	12 c0       	rjmp	.+36     	; 0x1fa <ativa_buzzer+0x70>
+				PORTB ^= (1 << 6); //bipa o buzzer em 400hz por 1s
+			}
+			
+		}
+		for (long i = 0; i<800 ; i++){
+			if (alarme_ativo && intruso_detectado){
+ 1d6:	80 91 72 03 	lds	r24, 0x0372	; 0x800372 <alarme_ativo>
+ 1da:	88 23       	and	r24, r24
+ 1dc:	49 f0       	breq	.+18     	; 0x1f0 <ativa_buzzer+0x66>
+ 1de:	80 91 71 03 	lds	r24, 0x0371	; 0x800371 <intruso_detectado>
+ 1e2:	88 23       	and	r24, r24
+			onda_800hz();
+ 1e4:	29 f0       	breq	.+10     	; 0x1f0 <ativa_buzzer+0x66>
+ 1e6:	4a d3       	rcall	.+1684   	; 0x87c <onda_800hz>
+			PORTB ^= (1 << 6); //bipa o buzzer em 800hz por 1s
+ 1e8:	95 b1       	in	r25, 0x05	; 5
+ 1ea:	80 e4       	ldi	r24, 0x40	; 64
+ 1ec:	89 27       	eor	r24, r25
+ 1ee:	85 b9       	out	0x05, r24	; 5
+				onda_400hz();
+				PORTB ^= (1 << 6); //bipa o buzzer em 400hz por 1s
+			}
+			
+		}
+		for (long i = 0; i<800 ; i++){
+ 1f0:	8f ef       	ldi	r24, 0xFF	; 255
+ 1f2:	c8 1a       	sub	r12, r24
+ 1f4:	d8 0a       	sbc	r13, r24
+ 1f6:	e8 0a       	sbc	r14, r24
+ 1f8:	f8 0a       	sbc	r15, r24
+ 1fa:	80 e2       	ldi	r24, 0x20	; 32
+ 1fc:	c8 16       	cp	r12, r24
+ 1fe:	83 e0       	ldi	r24, 0x03	; 3
+ 200:	d8 06       	cpc	r13, r24
+ 202:	e1 04       	cpc	r14, r1
+ 204:	f1 04       	cpc	r15, r1
+ 206:	3c f3       	brlt	.-50     	; 0x1d6 <ativa_buzzer+0x4c>
+/*void ativa_buzzer(){
+	onda_400hzint();
+	buzzer = 1;
+}*/
+void ativa_buzzer(){
+	while(alarme_ativo && intruso_detectado){
+ 208:	80 91 72 03 	lds	r24, 0x0372	; 0x800372 <alarme_ativo>
+ 20c:	88 23       	and	r24, r24
+ 20e:	21 f0       	breq	.+8      	; 0x218 <ativa_buzzer+0x8e>
+ 210:	80 91 71 03 	lds	r24, 0x0371	; 0x800371 <intruso_detectado>
+ 214:	81 11       	cpse	r24, r1
+ 216:	d1 cf       	rjmp	.-94     	; 0x1ba <ativa_buzzer+0x30>
+			onda_800hz();
+			PORTB ^= (1 << 6); //bipa o buzzer em 800hz por 1s
+			}
+		}
+	}
 }
+ 218:	ff 90       	pop	r15
+ 21a:	ef 90       	pop	r14
+ 21c:	df 90       	pop	r13
+ 21e:	cf 90       	pop	r12
+ 220:	08 95       	ret
 
-void desativa_buzzer(){
-	buzzer = 0;
- 180:	10 92 69 03 	sts	0x0369, r1	; 0x800369 <buzzer>
-	TCCR4B = 0x00; //desliga timer 4
- 184:	10 92 a1 00 	sts	0x00A1, r1	; 0x8000a1 <__TEXT_REGION_LENGTH__+0x7c00a1>
-	TIMSK4 = 0x00;
- 188:	10 92 72 00 	sts	0x0072, r1	; 0x800072 <__TEXT_REGION_LENGTH__+0x7c0072>
- 18c:	08 95       	ret
-
-0000018e <tela1>:
+00000222 <tela1>:
 char sair = 1;
 char novaSenha[6]= {"11111"};
 	
 	void tela1()
 	{
 		limpa_reseta_cursor();
- 18e:	f0 d1       	rcall	.+992    	; 0x570 <limpa_reseta_cursor>
+ 222:	f7 d1       	rcall	.+1006   	; 0x612 <limpa_reseta_cursor>
 		send_string("* TROCAR SENHAS");
- 190:	8c e3       	ldi	r24, 0x3C	; 60
- 192:	92 e0       	ldi	r25, 0x02	; 2
+ 224:	8c e3       	ldi	r24, 0x3C	; 60
+ 226:	92 e0       	ldi	r25, 0x02	; 2
 		proxima_linha();
- 194:	e1 d1       	rcall	.+962    	; 0x558 <send_string>
+ 228:	e8 d1       	rcall	.+976    	; 0x5fa <send_string>
 		send_string("# MAIS OPCOES");
- 196:	06 d2       	rcall	.+1036   	; 0x5a4 <proxima_linha>
- 198:	8c e4       	ldi	r24, 0x4C	; 76
- 19a:	92 e0       	ldi	r25, 0x02	; 2
- 19c:	dd c1       	rjmp	.+954    	; 0x558 <send_string>
- 19e:	08 95       	ret
+ 22a:	0d d2       	rcall	.+1050   	; 0x646 <proxima_linha>
+ 22c:	8c e4       	ldi	r24, 0x4C	; 76
+ 22e:	92 e0       	ldi	r25, 0x02	; 2
+ 230:	e4 c1       	rjmp	.+968    	; 0x5fa <send_string>
+ 232:	08 95       	ret
 
-000001a0 <tela2>:
+00000234 <tela2>:
 	}
 	void tela2()
 	{
 		limpa_reseta_cursor();
- 1a0:	e7 d1       	rcall	.+974    	; 0x570 <limpa_reseta_cursor>
+ 234:	ee d1       	rcall	.+988    	; 0x612 <limpa_reseta_cursor>
 		send_string("* ESTADO USUARIO");
- 1a2:	8a e5       	ldi	r24, 0x5A	; 90
- 1a4:	92 e0       	ldi	r25, 0x02	; 2
+ 236:	8a e5       	ldi	r24, 0x5A	; 90
+ 238:	92 e0       	ldi	r25, 0x02	; 2
 		proxima_linha();
- 1a6:	d8 d1       	rcall	.+944    	; 0x558 <send_string>
+ 23a:	df d1       	rcall	.+958    	; 0x5fa <send_string>
 		send_string("# MAIS OPCOES");
- 1a8:	fd d1       	rcall	.+1018   	; 0x5a4 <proxima_linha>
- 1aa:	8c e4       	ldi	r24, 0x4C	; 76
- 1ac:	92 e0       	ldi	r25, 0x02	; 2
- 1ae:	d4 c1       	rjmp	.+936    	; 0x558 <send_string>
- 1b0:	08 95       	ret
+ 23c:	04 d2       	rcall	.+1032   	; 0x646 <proxima_linha>
+ 23e:	8c e4       	ldi	r24, 0x4C	; 76
+ 240:	92 e0       	ldi	r25, 0x02	; 2
+ 242:	db c1       	rjmp	.+950    	; 0x5fa <send_string>
+ 244:	08 95       	ret
 
-000001b2 <tela3>:
+00000246 <tela3>:
 		
 	}
 	void tela3()
 	{
 		limpa_reseta_cursor();
- 1b2:	de d1       	rcall	.+956    	; 0x570 <limpa_reseta_cursor>
+ 246:	e5 d1       	rcall	.+970    	; 0x612 <limpa_reseta_cursor>
 		send_string("* PEDIR HORAS");
- 1b4:	8b e6       	ldi	r24, 0x6B	; 107
- 1b6:	92 e0       	ldi	r25, 0x02	; 2
+ 248:	8b e6       	ldi	r24, 0x6B	; 107
+ 24a:	92 e0       	ldi	r25, 0x02	; 2
 		proxima_linha();
- 1b8:	cf d1       	rcall	.+926    	; 0x558 <send_string>
+ 24c:	d6 d1       	rcall	.+940    	; 0x5fa <send_string>
 		send_string("# MAIS OPCOES");
- 1ba:	f4 d1       	rcall	.+1000   	; 0x5a4 <proxima_linha>
- 1bc:	8c e4       	ldi	r24, 0x4C	; 76
- 1be:	92 e0       	ldi	r25, 0x02	; 2
- 1c0:	cb c1       	rjmp	.+918    	; 0x558 <send_string>
- 1c2:	08 95       	ret
+ 24e:	fb d1       	rcall	.+1014   	; 0x646 <proxima_linha>
+ 250:	8c e4       	ldi	r24, 0x4C	; 76
+ 252:	92 e0       	ldi	r25, 0x02	; 2
+ 254:	d2 c1       	rjmp	.+932    	; 0x5fa <send_string>
+ 256:	08 95       	ret
 
-000001c4 <tela4>:
+00000258 <tela4>:
 	}
 
 	void tela4()
 	{
 		limpa_reseta_cursor();
- 1c4:	d5 d1       	rcall	.+938    	; 0x570 <limpa_reseta_cursor>
+ 258:	dc d1       	rcall	.+952    	; 0x612 <limpa_reseta_cursor>
 		send_string("* ");
- 1c6:	89 e7       	ldi	r24, 0x79	; 121
- 1c8:	92 e0       	ldi	r25, 0x02	; 2
- 1ca:	c6 d1       	rcall	.+908    	; 0x558 <send_string>
+ 25a:	89 e7       	ldi	r24, 0x79	; 121
+ 25c:	92 e0       	ldi	r25, 0x02	; 2
+ 25e:	cd d1       	rcall	.+922    	; 0x5fa <send_string>
 		if(!modoNoturnoStatus)
- 1cc:	80 91 0b 02 	lds	r24, 0x020B	; 0x80020b <modoNoturnoStatus>
- 1d0:	81 11       	cpse	r24, r1
- 1d2:	04 c0       	rjmp	.+8      	; 0x1dc <tela4+0x18>
+ 260:	80 91 0b 02 	lds	r24, 0x020B	; 0x80020b <modoNoturnoStatus>
+ 264:	81 11       	cpse	r24, r1
+ 266:	04 c0       	rjmp	.+8      	; 0x270 <tela4+0x18>
 		{
 			send_string("HAB");
- 1d4:	8c e7       	ldi	r24, 0x7C	; 124
- 1d6:	92 e0       	ldi	r25, 0x02	; 2
- 1d8:	bf d1       	rcall	.+894    	; 0x558 <send_string>
- 1da:	03 c0       	rjmp	.+6      	; 0x1e2 <tela4+0x1e>
+ 268:	8c e7       	ldi	r24, 0x7C	; 124
+ 26a:	92 e0       	ldi	r25, 0x02	; 2
+ 26c:	c6 d1       	rcall	.+908    	; 0x5fa <send_string>
+ 26e:	03 c0       	rjmp	.+6      	; 0x276 <tela4+0x1e>
 		}else
 		{
 			send_string("DES");
- 1dc:	80 e8       	ldi	r24, 0x80	; 128
- 1de:	92 e0       	ldi	r25, 0x02	; 2
- 1e0:	bb d1       	rcall	.+886    	; 0x558 <send_string>
+ 270:	80 e8       	ldi	r24, 0x80	; 128
+ 272:	92 e0       	ldi	r25, 0x02	; 2
+ 274:	c2 d1       	rcall	.+900    	; 0x5fa <send_string>
 		}
 		send_string(" MODO NOT");
- 1e2:	84 e8       	ldi	r24, 0x84	; 132
- 1e4:	92 e0       	ldi	r25, 0x02	; 2
- 1e6:	b8 d1       	rcall	.+880    	; 0x558 <send_string>
+ 276:	84 e8       	ldi	r24, 0x84	; 132
+ 278:	92 e0       	ldi	r25, 0x02	; 2
+ 27a:	bf d1       	rcall	.+894    	; 0x5fa <send_string>
 		proxima_linha();
- 1e8:	dd d1       	rcall	.+954    	; 0x5a4 <proxima_linha>
- 1ea:	8e e8       	ldi	r24, 0x8E	; 142
+ 27c:	e4 d1       	rcall	.+968    	; 0x646 <proxima_linha>
+ 27e:	8e e8       	ldi	r24, 0x8E	; 142
 		send_string("# SAIR");
- 1ec:	92 e0       	ldi	r25, 0x02	; 2
- 1ee:	b4 c1       	rjmp	.+872    	; 0x558 <send_string>
- 1f0:	08 95       	ret
+ 280:	92 e0       	ldi	r25, 0x02	; 2
+ 282:	bb c1       	rjmp	.+886    	; 0x5fa <send_string>
+ 284:	08 95       	ret
 
-000001f2 <telaTrocaSenhas>:
- 1f2:	be d1       	rcall	.+892    	; 0x570 <limpa_reseta_cursor>
- 1f4:	85 e9       	ldi	r24, 0x95	; 149
+00000286 <telaTrocaSenhas>:
+ 286:	c5 d1       	rcall	.+906    	; 0x612 <limpa_reseta_cursor>
+ 288:	85 e9       	ldi	r24, 0x95	; 149
 	}
 
 	void telaTrocaSenhas()
 	{
 		limpa_reseta_cursor();
 		send_string("1/2 - USUARIO1/2");
- 1f6:	92 e0       	ldi	r25, 0x02	; 2
+ 28a:	92 e0       	ldi	r25, 0x02	; 2
 		proxima_linha();
- 1f8:	af d1       	rcall	.+862    	; 0x558 <send_string>
+ 28c:	b6 d1       	rcall	.+876    	; 0x5fa <send_string>
 		send_string("* - ADM");
- 1fa:	d4 d1       	rcall	.+936    	; 0x5a4 <proxima_linha>
- 1fc:	86 ea       	ldi	r24, 0xA6	; 166
- 1fe:	92 e0       	ldi	r25, 0x02	; 2
- 200:	ab c1       	rjmp	.+854    	; 0x558 <send_string>
- 202:	08 95       	ret
+ 28e:	db d1       	rcall	.+950    	; 0x646 <proxima_linha>
+ 290:	86 ea       	ldi	r24, 0xA6	; 166
+ 292:	92 e0       	ldi	r25, 0x02	; 2
+ 294:	b2 c1       	rjmp	.+868    	; 0x5fa <send_string>
+ 296:	08 95       	ret
 
-00000204 <telaDeStatusUsuario>:
+00000298 <telaDeStatusUsuario>:
 	}
 
 	void telaDeStatusUsuario()
 	{
 		limpa_reseta_cursor();
- 204:	b5 d1       	rcall	.+874    	; 0x570 <limpa_reseta_cursor>
+ 298:	bc d1       	rcall	.+888    	; 0x612 <limpa_reseta_cursor>
 		send_string("1 - ");
- 206:	8e ea       	ldi	r24, 0xAE	; 174
- 208:	92 e0       	ldi	r25, 0x02	; 2
- 20a:	a6 d1       	rcall	.+844    	; 0x558 <send_string>
+ 29a:	8e ea       	ldi	r24, 0xAE	; 174
+ 29c:	92 e0       	ldi	r25, 0x02	; 2
+ 29e:	ad d1       	rcall	.+858    	; 0x5fa <send_string>
 		if(!usuario1Status)
- 20c:	80 91 0d 02 	lds	r24, 0x020D	; 0x80020d <usuario1Status>
- 210:	81 11       	cpse	r24, r1
- 212:	04 c0       	rjmp	.+8      	; 0x21c <telaDeStatusUsuario+0x18>
+ 2a0:	80 91 0d 02 	lds	r24, 0x020D	; 0x80020d <usuario1Status>
+ 2a4:	81 11       	cpse	r24, r1
+ 2a6:	04 c0       	rjmp	.+8      	; 0x2b0 <telaDeStatusUsuario+0x18>
 		{
 			send_string("HAB");//TELA PARA HABILITAR USUARO 1
- 214:	8c e7       	ldi	r24, 0x7C	; 124
- 216:	92 e0       	ldi	r25, 0x02	; 2
- 218:	9f d1       	rcall	.+830    	; 0x558 <send_string>
- 21a:	03 c0       	rjmp	.+6      	; 0x222 <telaDeStatusUsuario+0x1e>
+ 2a8:	8c e7       	ldi	r24, 0x7C	; 124
+ 2aa:	92 e0       	ldi	r25, 0x02	; 2
+ 2ac:	a6 d1       	rcall	.+844    	; 0x5fa <send_string>
+ 2ae:	03 c0       	rjmp	.+6      	; 0x2b6 <telaDeStatusUsuario+0x1e>
 		}else
 		{
 			send_string("DES");//TELA PARA HABILITAR USUARO 1
- 21c:	80 e8       	ldi	r24, 0x80	; 128
- 21e:	92 e0       	ldi	r25, 0x02	; 2
- 220:	9b d1       	rcall	.+822    	; 0x558 <send_string>
+ 2b0:	80 e8       	ldi	r24, 0x80	; 128
+ 2b2:	92 e0       	ldi	r25, 0x02	; 2
+ 2b4:	a2 d1       	rcall	.+836    	; 0x5fa <send_string>
 		}
 		send_string(" USUARIO1");
- 222:	83 eb       	ldi	r24, 0xB3	; 179
- 224:	92 e0       	ldi	r25, 0x02	; 2
- 226:	98 d1       	rcall	.+816    	; 0x558 <send_string>
+ 2b6:	83 eb       	ldi	r24, 0xB3	; 179
+ 2b8:	92 e0       	ldi	r25, 0x02	; 2
+ 2ba:	9f d1       	rcall	.+830    	; 0x5fa <send_string>
 		proxima_linha();
- 228:	bd d1       	rcall	.+890    	; 0x5a4 <proxima_linha>
- 22a:	8d eb       	ldi	r24, 0xBD	; 189
+ 2bc:	c4 d1       	rcall	.+904    	; 0x646 <proxima_linha>
+ 2be:	8d eb       	ldi	r24, 0xBD	; 189
 		send_string("2 - ");
- 22c:	92 e0       	ldi	r25, 0x02	; 2
- 22e:	94 d1       	rcall	.+808    	; 0x558 <send_string>
- 230:	80 91 0c 02 	lds	r24, 0x020C	; 0x80020c <usuario2Status>
+ 2c0:	92 e0       	ldi	r25, 0x02	; 2
+ 2c2:	9b d1       	rcall	.+822    	; 0x5fa <send_string>
+ 2c4:	80 91 0c 02 	lds	r24, 0x020C	; 0x80020c <usuario2Status>
 		if(!usuario2Status)
- 234:	81 11       	cpse	r24, r1
- 236:	04 c0       	rjmp	.+8      	; 0x240 <telaDeStatusUsuario+0x3c>
+ 2c8:	81 11       	cpse	r24, r1
+ 2ca:	04 c0       	rjmp	.+8      	; 0x2d4 <telaDeStatusUsuario+0x3c>
 		{
 			send_string("HAB");//TELA PARA HABILITAR USUARO 2
- 238:	8c e7       	ldi	r24, 0x7C	; 124
- 23a:	92 e0       	ldi	r25, 0x02	; 2
- 23c:	8d d1       	rcall	.+794    	; 0x558 <send_string>
- 23e:	03 c0       	rjmp	.+6      	; 0x246 <telaDeStatusUsuario+0x42>
+ 2cc:	8c e7       	ldi	r24, 0x7C	; 124
+ 2ce:	92 e0       	ldi	r25, 0x02	; 2
+ 2d0:	94 d1       	rcall	.+808    	; 0x5fa <send_string>
+ 2d2:	03 c0       	rjmp	.+6      	; 0x2da <telaDeStatusUsuario+0x42>
 		}else
 		{
 			send_string("DES");//TELA PARA HABILITAR USUARO 2
- 240:	80 e8       	ldi	r24, 0x80	; 128
- 242:	92 e0       	ldi	r25, 0x02	; 2
- 244:	89 d1       	rcall	.+786    	; 0x558 <send_string>
- 246:	82 ec       	ldi	r24, 0xC2	; 194
+ 2d4:	80 e8       	ldi	r24, 0x80	; 128
+ 2d6:	92 e0       	ldi	r25, 0x02	; 2
+ 2d8:	90 d1       	rcall	.+800    	; 0x5fa <send_string>
+ 2da:	82 ec       	ldi	r24, 0xC2	; 194
 		}
 		send_string(" USUARIO2  ");
- 248:	92 e0       	ldi	r25, 0x02	; 2
- 24a:	86 c1       	rjmp	.+780    	; 0x558 <send_string>
- 24c:	08 95       	ret
+ 2dc:	92 e0       	ldi	r25, 0x02	; 2
+ 2de:	8d c1       	rjmp	.+794    	; 0x5fa <send_string>
+ 2e0:	08 95       	ret
 
-0000024e <subRotinaAdm>:
- 24e:	cf 93       	push	r28
- 250:	a6 d3       	rcall	.+1868   	; 0x99e <delay_1s>
+000002e2 <subRotinaAdm>:
+ 2e2:	cf 93       	push	r28
+ 2e4:	09 d3       	rcall	.+1554   	; 0x8f8 <delay_1s>
 
 void subRotinaAdm()
 {
 	
 	delay_1s();//espera para exibir a mensagem de senha correta
 	delay_1s();
- 252:	a5 d3       	rcall	.+1866   	; 0x99e <delay_1s>
+ 2e6:	08 d3       	rcall	.+1552   	; 0x8f8 <delay_1s>
 	
 	tela1();// troca senhas ou mais opcoes
- 254:	9c df       	rcall	.-200    	; 0x18e <tela1>
- 256:	10 92 0a 02 	sts	0x020A, r1	; 0x80020a <sair>
+ 2e8:	9c df       	rcall	.-200    	; 0x222 <tela1>
+ 2ea:	10 92 0a 02 	sts	0x020A, r1	; 0x80020a <sair>
 	sair = 0;
- 25a:	81 e0       	ldi	r24, 0x01	; 1
+ 2ee:	81 e0       	ldi	r24, 0x01	; 1
 	PCMSK2 = 0x01;
- 25c:	80 93 6d 00 	sts	0x006D, r24	; 0x80006d <__TEXT_REGION_LENGTH__+0x7c006d>
+ 2f0:	80 93 6d 00 	sts	0x006D, r24	; 0x80006d <__TEXT_REGION_LENGTH__+0x7c006d>
 	while(!sair)
- 260:	93 c0       	rjmp	.+294    	; 0x388 <subRotinaAdm+0x13a>
+ 2f4:	93 c0       	rjmp	.+294    	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
 	{
 		instrucaoDigitada = procuraTecla();
- 262:	19 d1       	rcall	.+562    	; 0x496 <procuraTecla>
- 264:	80 93 63 03 	sts	0x0363, r24	; 0x800363 <instrucaoDigitada>
+ 2f6:	0c d1       	rcall	.+536    	; 0x510 <procuraTecla>
+ 2f8:	80 93 73 03 	sts	0x0373, r24	; 0x800373 <instrucaoDigitada>
 		
 		if(instrucaoDigitada == '*')//opção trocar senha de usuários
- 268:	8a 32       	cpi	r24, 0x2A	; 42
- 26a:	09 f0       	breq	.+2      	; 0x26e <subRotinaAdm+0x20>
+ 2fc:	8a 32       	cpi	r24, 0x2A	; 42
+ 2fe:	09 f0       	breq	.+2      	; 0x302 <subRotinaAdm+0x20>
 		{
 			telaTrocaSenhas();
- 26c:	40 c0       	rjmp	.+128    	; 0x2ee <subRotinaAdm+0xa0>
- 26e:	c1 df       	rcall	.-126    	; 0x1f2 <telaTrocaSenhas>
+ 300:	40 c0       	rjmp	.+128    	; 0x382 <subRotinaAdm+0xa0>
+ 302:	c1 df       	rcall	.-126    	; 0x286 <telaTrocaSenhas>
 			instrucaoDigitada = '\0';
- 270:	10 92 63 03 	sts	0x0363, r1	; 0x800363 <instrucaoDigitada>
+ 304:	10 92 73 03 	sts	0x0373, r1	; 0x800373 <instrucaoDigitada>
 			while(1)
 			{
 				instrucaoDigitada = procuraTecla();
- 274:	10 d1       	rcall	.+544    	; 0x496 <procuraTecla>
- 276:	80 93 63 03 	sts	0x0363, r24	; 0x800363 <instrucaoDigitada>
- 27a:	9f ec       	ldi	r25, 0xCF	; 207
+ 308:	03 d1       	rcall	.+518    	; 0x510 <procuraTecla>
+ 30a:	80 93 73 03 	sts	0x0373, r24	; 0x800373 <instrucaoDigitada>
+ 30e:	9f ec       	ldi	r25, 0xCF	; 207
 				if(instrucaoDigitada == '1' || instrucaoDigitada == '2' || instrucaoDigitada == '*')
- 27c:	98 0f       	add	r25, r24
- 27e:	92 30       	cpi	r25, 0x02	; 2
- 280:	10 f0       	brcs	.+4      	; 0x286 <subRotinaAdm+0x38>
- 282:	8a 32       	cpi	r24, 0x2A	; 42
+ 310:	98 0f       	add	r25, r24
+ 312:	92 30       	cpi	r25, 0x02	; 2
+ 314:	10 f0       	brcs	.+4      	; 0x31a <subRotinaAdm+0x38>
+ 316:	8a 32       	cpi	r24, 0x2A	; 42
 				{
 					limpa_reseta_cursor();
- 284:	b9 f7       	brne	.-18     	; 0x274 <subRotinaAdm+0x26>
- 286:	74 d1       	rcall	.+744    	; 0x570 <limpa_reseta_cursor>
+ 318:	b9 f7       	brne	.-18     	; 0x308 <subRotinaAdm+0x26>
+ 31a:	7b d1       	rcall	.+758    	; 0x612 <limpa_reseta_cursor>
 					send_string("NOVA SENHA:");
- 288:	8e ec       	ldi	r24, 0xCE	; 206
- 28a:	92 e0       	ldi	r25, 0x02	; 2
- 28c:	65 d1       	rcall	.+714    	; 0x558 <send_string>
+ 31c:	8e ec       	ldi	r24, 0xCE	; 206
+ 31e:	92 e0       	ldi	r25, 0x02	; 2
+ 320:	6c d1       	rcall	.+728    	; 0x5fa <send_string>
 					proxima_linha();
- 28e:	8a d1       	rcall	.+788    	; 0x5a4 <proxima_linha>
- 290:	a9 d3       	rcall	.+1874   	; 0x9e4 <subRotinaTrocaSenha>
+ 322:	91 d1       	rcall	.+802    	; 0x646 <proxima_linha>
+ 324:	0c d3       	rcall	.+1560   	; 0x93e <subRotinaTrocaSenha>
 					
 					strcpy(novaSenha,subRotinaTrocaSenha());
- 292:	bc 01       	movw	r22, r24
- 294:	84 e0       	ldi	r24, 0x04	; 4
- 296:	92 e0       	ldi	r25, 0x02	; 2
- 298:	51 d4       	rcall	.+2210   	; 0xb3c <strcpy>
- 29a:	c0 91 63 03 	lds	r28, 0x0363	; 0x800363 <instrucaoDigitada>
+ 326:	bc 01       	movw	r22, r24
+ 328:	84 e0       	ldi	r24, 0x04	; 4
+ 32a:	92 e0       	ldi	r25, 0x02	; 2
+ 32c:	a5 d3       	rcall	.+1866   	; 0xa78 <strcpy>
+ 32e:	c0 91 73 03 	lds	r28, 0x0373	; 0x800373 <instrucaoDigitada>
 					
 					if(instrucaoDigitada == '1')//usuario 1
- 29e:	c1 33       	cpi	r28, 0x31	; 49
- 2a0:	29 f4       	brne	.+10     	; 0x2ac <subRotinaAdm+0x5e>
- 2a2:	64 e0       	ldi	r22, 0x04	; 4
- 2a4:	72 e0       	ldi	r23, 0x02	; 2
+ 332:	c1 33       	cpi	r28, 0x31	; 49
+ 334:	29 f4       	brne	.+10     	; 0x340 <subRotinaAdm+0x5e>
+ 336:	64 e0       	ldi	r22, 0x04	; 4
+ 338:	72 e0       	ldi	r23, 0x02	; 2
 					{
 						strcpy(senhas.usuario1, novaSenha);
- 2a6:	84 e2       	ldi	r24, 0x24	; 36
- 2a8:	92 e0       	ldi	r25, 0x02	; 2
- 2aa:	48 d4       	rcall	.+2192   	; 0xb3c <strcpy>
- 2ac:	c2 33       	cpi	r28, 0x32	; 50
- 2ae:	29 f4       	brne	.+10     	; 0x2ba <subRotinaAdm+0x6c>
+ 33a:	84 e2       	ldi	r24, 0x24	; 36
+ 33c:	92 e0       	ldi	r25, 0x02	; 2
+ 33e:	9c d3       	rcall	.+1848   	; 0xa78 <strcpy>
+ 340:	c2 33       	cpi	r28, 0x32	; 50
+ 342:	29 f4       	brne	.+10     	; 0x34e <subRotinaAdm+0x6c>
 					}
 					if(instrucaoDigitada == '2')//usuario 2
- 2b0:	64 e0       	ldi	r22, 0x04	; 4
+ 344:	64 e0       	ldi	r22, 0x04	; 4
 					{
 						strcpy(senhas.usuario2, novaSenha);
- 2b2:	72 e0       	ldi	r23, 0x02	; 2
- 2b4:	8a e2       	ldi	r24, 0x2A	; 42
- 2b6:	92 e0       	ldi	r25, 0x02	; 2
- 2b8:	41 d4       	rcall	.+2178   	; 0xb3c <strcpy>
- 2ba:	ca 32       	cpi	r28, 0x2A	; 42
- 2bc:	29 f4       	brne	.+10     	; 0x2c8 <subRotinaAdm+0x7a>
+ 346:	72 e0       	ldi	r23, 0x02	; 2
+ 348:	8a e2       	ldi	r24, 0x2A	; 42
+ 34a:	92 e0       	ldi	r25, 0x02	; 2
+ 34c:	95 d3       	rcall	.+1834   	; 0xa78 <strcpy>
+ 34e:	ca 32       	cpi	r28, 0x2A	; 42
+ 350:	29 f4       	brne	.+10     	; 0x35c <subRotinaAdm+0x7a>
 					}
 					if(instrucaoDigitada == '*')//usuario adm
- 2be:	64 e0       	ldi	r22, 0x04	; 4
- 2c0:	72 e0       	ldi	r23, 0x02	; 2
+ 352:	64 e0       	ldi	r22, 0x04	; 4
+ 354:	72 e0       	ldi	r23, 0x02	; 2
 					{
 						strcpy(senhas.adm, novaSenha);
- 2c2:	80 e3       	ldi	r24, 0x30	; 48
- 2c4:	92 e0       	ldi	r25, 0x02	; 2
- 2c6:	3a d4       	rcall	.+2164   	; 0xb3c <strcpy>
- 2c8:	80 e0       	ldi	r24, 0x00	; 0
- 2ca:	90 e0       	ldi	r25, 0x00	; 0
- 2cc:	05 c0       	rjmp	.+10     	; 0x2d8 <subRotinaAdm+0x8a>
+ 356:	80 e3       	ldi	r24, 0x30	; 48
+ 358:	92 e0       	ldi	r25, 0x02	; 2
+ 35a:	8e d3       	rcall	.+1820   	; 0xa78 <strcpy>
+ 35c:	80 e0       	ldi	r24, 0x00	; 0
+ 35e:	90 e0       	ldi	r25, 0x00	; 0
+ 360:	05 c0       	rjmp	.+10     	; 0x36c <subRotinaAdm+0x8a>
 		}
 		send_string(" USUARIO2  ");
 	}
 
 void subRotinaAdm()
 {
- 2ce:	fc 01       	movw	r30, r24
- 2d0:	e3 59       	subi	r30, 0x93	; 147
+ 362:	fc 01       	movw	r30, r24
+ 364:	ea 58       	subi	r30, 0x8A	; 138
 					if(instrucaoDigitada == '*')//usuario adm
 					{
 						strcpy(senhas.adm, novaSenha);
 					}
 					for (int i = 0; i < 5; i++) {
 						senha[i] = '\0';
- 2d2:	fc 4f       	sbci	r31, 0xFC	; 252
- 2d4:	10 82       	st	Z, r1
- 2d6:	01 96       	adiw	r24, 0x01	; 1
- 2d8:	85 30       	cpi	r24, 0x05	; 5
+ 366:	fc 4f       	sbci	r31, 0xFC	; 252
+ 368:	10 82       	st	Z, r1
+ 36a:	01 96       	adiw	r24, 0x01	; 1
+ 36c:	85 30       	cpi	r24, 0x05	; 5
 					}
 					if(instrucaoDigitada == '*')//usuario adm
 					{
 						strcpy(senhas.adm, novaSenha);
 					}
 					for (int i = 0; i < 5; i++) {
- 2da:	91 05       	cpc	r25, r1
- 2dc:	c4 f3       	brlt	.-16     	; 0x2ce <subRotinaAdm+0x80>
- 2de:	10 92 74 03 	sts	0x0374, r1	; 0x800374 <nr_digitados+0x1>
+ 36e:	91 05       	cpc	r25, r1
+ 370:	c4 f3       	brlt	.-16     	; 0x362 <subRotinaAdm+0x80>
+ 372:	10 92 7d 03 	sts	0x037D, r1	; 0x80037d <nr_digitados+0x1>
 						senha[i] = '\0';
 					}
 					nr_digitados = 0;
- 2e2:	10 92 73 03 	sts	0x0373, r1	; 0x800373 <nr_digitados>
+ 376:	10 92 7c 03 	sts	0x037C, r1	; 0x80037c <nr_digitados>
 					tela1();
- 2e6:	53 df       	rcall	.-346    	; 0x18e <tela1>
+ 37a:	53 df       	rcall	.-346    	; 0x222 <tela1>
 					instrucaoDigitada = '\0';
- 2e8:	10 92 63 03 	sts	0x0363, r1	; 0x800363 <instrucaoDigitada>
+ 37c:	10 92 73 03 	sts	0x0373, r1	; 0x800373 <instrucaoDigitada>
 					break;//sai desse while entre no while(!sair)
 				}
 							
 			}
 		}else if(instrucaoDigitada == '#')//mais opcoes
- 2ec:	4d c0       	rjmp	.+154    	; 0x388 <subRotinaAdm+0x13a>
- 2ee:	83 32       	cpi	r24, 0x23	; 35
- 2f0:	09 f0       	breq	.+2      	; 0x2f4 <subRotinaAdm+0xa6>
+ 380:	4d c0       	rjmp	.+154    	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
+ 382:	83 32       	cpi	r24, 0x23	; 35
+ 384:	09 f0       	breq	.+2      	; 0x388 <subRotinaAdm+0xa6>
 		{
 			tela2();//status usuario e mais opcoes
- 2f2:	4a c0       	rjmp	.+148    	; 0x388 <subRotinaAdm+0x13a>
- 2f4:	55 df       	rcall	.-342    	; 0x1a0 <tela2>
+ 386:	4a c0       	rjmp	.+148    	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
+ 388:	55 df       	rcall	.-342    	; 0x234 <tela2>
 			instrucaoDigitada = '\0';
- 2f6:	10 92 63 03 	sts	0x0363, r1	; 0x800363 <instrucaoDigitada>
+ 38a:	10 92 73 03 	sts	0x0373, r1	; 0x800373 <instrucaoDigitada>
 			while(1)
 			{
 				instrucaoDigitada = procuraTecla();
- 2fa:	cd d0       	rcall	.+410    	; 0x496 <procuraTecla>
- 2fc:	80 93 63 03 	sts	0x0363, r24	; 0x800363 <instrucaoDigitada>
- 300:	8a 32       	cpi	r24, 0x2A	; 42
+ 38e:	c0 d0       	rcall	.+384    	; 0x510 <procuraTecla>
+ 390:	80 93 73 03 	sts	0x0373, r24	; 0x800373 <instrucaoDigitada>
+ 394:	8a 32       	cpi	r24, 0x2A	; 42
 				if( instrucaoDigitada == '*')//opcao mudar status usuários
- 302:	e9 f4       	brne	.+58     	; 0x33e <subRotinaAdm+0xf0>
- 304:	7f df       	rcall	.-258    	; 0x204 <telaDeStatusUsuario>
+ 396:	e9 f4       	brne	.+58     	; 0x3d2 <subRotinaAdm+0xf0>
+ 398:	7f df       	rcall	.-258    	; 0x298 <telaDeStatusUsuario>
 				{
 					telaDeStatusUsuario();
- 306:	10 92 63 03 	sts	0x0363, r1	; 0x800363 <instrucaoDigitada>
+ 39a:	10 92 73 03 	sts	0x0373, r1	; 0x800373 <instrucaoDigitada>
 					instrucaoDigitada = '\0';
- 30a:	c5 d0       	rcall	.+394    	; 0x496 <procuraTecla>
- 30c:	80 93 63 03 	sts	0x0363, r24	; 0x800363 <instrucaoDigitada>
+ 39e:	b8 d0       	rcall	.+368    	; 0x510 <procuraTecla>
+ 3a0:	80 93 73 03 	sts	0x0373, r24	; 0x800373 <instrucaoDigitada>
 					while(1)
 					{
 						instrucaoDigitada = procuraTecla();
- 310:	81 33       	cpi	r24, 0x31	; 49
- 312:	41 f4       	brne	.+16     	; 0x324 <subRotinaAdm+0xd6>
- 314:	81 e0       	ldi	r24, 0x01	; 1
+ 3a4:	81 33       	cpi	r24, 0x31	; 49
+ 3a6:	41 f4       	brne	.+16     	; 0x3b8 <subRotinaAdm+0xd6>
+ 3a8:	81 e0       	ldi	r24, 0x01	; 1
 						if(instrucaoDigitada == '1')
- 316:	90 91 0d 02 	lds	r25, 0x020D	; 0x80020d <usuario1Status>
+ 3aa:	90 91 0d 02 	lds	r25, 0x020D	; 0x80020d <usuario1Status>
 						{
 							usuario1Status = !usuario1Status;
- 31a:	91 11       	cpse	r25, r1
- 31c:	80 e0       	ldi	r24, 0x00	; 0
- 31e:	80 93 0d 02 	sts	0x020D, r24	; 0x80020d <usuario1Status>
- 322:	09 c0       	rjmp	.+18     	; 0x336 <subRotinaAdm+0xe8>
+ 3ae:	91 11       	cpse	r25, r1
+ 3b0:	80 e0       	ldi	r24, 0x00	; 0
+ 3b2:	80 93 0d 02 	sts	0x020D, r24	; 0x80020d <usuario1Status>
+ 3b6:	09 c0       	rjmp	.+18     	; 0x3ca <subRotinaAdm+0xe8>
 							break; //sair desse while
 						}
 						if(instrucaoDigitada == '2')
- 324:	82 33       	cpi	r24, 0x32	; 50
- 326:	89 f7       	brne	.-30     	; 0x30a <subRotinaAdm+0xbc>
+ 3b8:	82 33       	cpi	r24, 0x32	; 50
+ 3ba:	89 f7       	brne	.-30     	; 0x39e <subRotinaAdm+0xbc>
 						{
 							usuario2Status = !usuario2Status;
- 328:	81 e0       	ldi	r24, 0x01	; 1
- 32a:	90 91 0c 02 	lds	r25, 0x020C	; 0x80020c <usuario2Status>
- 32e:	91 11       	cpse	r25, r1
- 330:	80 e0       	ldi	r24, 0x00	; 0
- 332:	80 93 0c 02 	sts	0x020C, r24	; 0x80020c <usuario2Status>
+ 3bc:	81 e0       	ldi	r24, 0x01	; 1
+ 3be:	90 91 0c 02 	lds	r25, 0x020C	; 0x80020c <usuario2Status>
+ 3c2:	91 11       	cpse	r25, r1
+ 3c4:	80 e0       	ldi	r24, 0x00	; 0
+ 3c6:	80 93 0c 02 	sts	0x020C, r24	; 0x80020c <usuario2Status>
 							break; //sair desse while
 						}
 					}
 					
 					tela1();
 					instrucaoDigitada = '\0';
- 336:	2b df       	rcall	.-426    	; 0x18e <tela1>
- 338:	10 92 63 03 	sts	0x0363, r1	; 0x800363 <instrucaoDigitada>
+ 3ca:	2b df       	rcall	.-426    	; 0x222 <tela1>
+ 3cc:	10 92 73 03 	sts	0x0373, r1	; 0x800373 <instrucaoDigitada>
 					break;//sai desse while entre no while(!sair)
 					
 				}else if(instrucaoDigitada == '#')//mais opcoes			
- 33c:	25 c0       	rjmp	.+74     	; 0x388 <subRotinaAdm+0x13a>
- 33e:	83 32       	cpi	r24, 0x23	; 35
+ 3d0:	25 c0       	rjmp	.+74     	; 0x41c <__LOCK_REGION_LENGTH__+0x1c>
+ 3d2:	83 32       	cpi	r24, 0x23	; 35
 				{
 					tela3();//pedir horário ou mais opcoes
- 340:	e1 f6       	brne	.-72     	; 0x2fa <subRotinaAdm+0xac>
- 342:	37 df       	rcall	.-402    	; 0x1b2 <tela3>
+ 3d4:	e1 f6       	brne	.-72     	; 0x38e <subRotinaAdm+0xac>
+ 3d6:	37 df       	rcall	.-402    	; 0x246 <tela3>
 					instrucaoDigitada = '\0';
- 344:	10 92 63 03 	sts	0x0363, r1	; 0x800363 <instrucaoDigitada>
+ 3d8:	10 92 73 03 	sts	0x0373, r1	; 0x800373 <instrucaoDigitada>
 					while(1)
 					{
 						instrucaoDigitada = procuraTecla();
- 348:	a6 d0       	rcall	.+332    	; 0x496 <procuraTecla>
- 34a:	80 93 63 03 	sts	0x0363, r24	; 0x800363 <instrucaoDigitada>
- 34e:	8a 32       	cpi	r24, 0x2A	; 42
+ 3dc:	99 d0       	rcall	.+306    	; 0x510 <procuraTecla>
+ 3de:	80 93 73 03 	sts	0x0373, r24	; 0x800373 <instrucaoDigitada>
+ 3e2:	8a 32       	cpi	r24, 0x2A	; 42
 						if(instrucaoDigitada == '*')
- 350:	c1 f0       	breq	.+48     	; 0x382 <subRotinaAdm+0x134>
- 352:	83 32       	cpi	r24, 0x23	; 35
+ 3e4:	c1 f0       	breq	.+48     	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
+ 3e6:	83 32       	cpi	r24, 0x23	; 35
 						{
 							//subrotina pedir horas
 							break;//sair desse while
 						}else if(instrucaoDigitada == '#')//mais opcoes
- 354:	c9 f7       	brne	.-14     	; 0x348 <subRotinaAdm+0xfa>
+ 3e8:	c9 f7       	brne	.-14     	; 0x3dc <subRotinaAdm+0xfa>
 						{ 
 							tela4();//habilitar ou desabilitar modo noturno ou mais opcoes
- 356:	36 df       	rcall	.-404    	; 0x1c4 <tela4>
+ 3ea:	36 df       	rcall	.-404    	; 0x258 <tela4>
 							instrucaoDigitada = '\0';
- 358:	10 92 63 03 	sts	0x0363, r1	; 0x800363 <instrucaoDigitada>
+ 3ec:	10 92 73 03 	sts	0x0373, r1	; 0x800373 <instrucaoDigitada>
 							while(1)
 							{
 								instrucaoDigitada = procuraTecla();
- 35c:	9c d0       	rcall	.+312    	; 0x496 <procuraTecla>
- 35e:	80 93 63 03 	sts	0x0363, r24	; 0x800363 <instrucaoDigitada>
- 362:	8a 32       	cpi	r24, 0x2A	; 42
+ 3f0:	8f d0       	rcall	.+286    	; 0x510 <procuraTecla>
+ 3f2:	80 93 73 03 	sts	0x0373, r24	; 0x800373 <instrucaoDigitada>
+ 3f6:	8a 32       	cpi	r24, 0x2A	; 42
 								if(instrucaoDigitada == '*')
- 364:	41 f4       	brne	.+16     	; 0x376 <subRotinaAdm+0x128>
- 366:	81 e0       	ldi	r24, 0x01	; 1
+ 3f8:	41 f4       	brne	.+16     	; 0x40a <__LOCK_REGION_LENGTH__+0xa>
+ 3fa:	81 e0       	ldi	r24, 0x01	; 1
 								{
 									modoNoturnoStatus = !modoNoturnoStatus;
- 368:	90 91 0b 02 	lds	r25, 0x020B	; 0x80020b <modoNoturnoStatus>
- 36c:	91 11       	cpse	r25, r1
- 36e:	80 e0       	ldi	r24, 0x00	; 0
- 370:	80 93 0b 02 	sts	0x020B, r24	; 0x80020b <modoNoturnoStatus>
- 374:	06 c0       	rjmp	.+12     	; 0x382 <subRotinaAdm+0x134>
+ 3fc:	90 91 0b 02 	lds	r25, 0x020B	; 0x80020b <modoNoturnoStatus>
+ 400:	91 11       	cpse	r25, r1
+ 402:	80 e0       	ldi	r24, 0x00	; 0
+ 404:	80 93 0b 02 	sts	0x020B, r24	; 0x80020b <modoNoturnoStatus>
+ 408:	06 c0       	rjmp	.+12     	; 0x416 <__LOCK_REGION_LENGTH__+0x16>
 									break;
- 376:	83 32       	cpi	r24, 0x23	; 35
+ 40a:	83 32       	cpi	r24, 0x23	; 35
 								}
 								if(instrucaoDigitada == '#')
- 378:	89 f7       	brne	.-30     	; 0x35c <subRotinaAdm+0x10e>
- 37a:	81 e0       	ldi	r24, 0x01	; 1
+ 40c:	89 f7       	brne	.-30     	; 0x3f0 <subRotinaAdm+0x10e>
+ 40e:	81 e0       	ldi	r24, 0x01	; 1
 								{
 									sair = 1;
- 37c:	80 93 0a 02 	sts	0x020A, r24	; 0x80020a <sair>
- 380:	f7 d0       	rcall	.+494    	; 0x570 <limpa_reseta_cursor>
+ 410:	80 93 0a 02 	sts	0x020A, r24	; 0x80020a <sair>
+ 414:	fe d0       	rcall	.+508    	; 0x612 <limpa_reseta_cursor>
 									limpa_reseta_cursor();
- 382:	05 df       	rcall	.-502    	; 0x18e <tela1>
- 384:	10 92 63 03 	sts	0x0363, r1	; 0x800363 <instrucaoDigitada>
+ 416:	05 df       	rcall	.-502    	; 0x222 <tela1>
+ 418:	10 92 73 03 	sts	0x0373, r1	; 0x800373 <instrucaoDigitada>
 									break;
 								}
 							}break;
 						}
 					}
 					tela1();
- 388:	80 91 0a 02 	lds	r24, 0x020A	; 0x80020a <sair>
+ 41c:	80 91 0a 02 	lds	r24, 0x020A	; 0x80020a <sair>
 					instrucaoDigitada = '\0';
- 38c:	88 23       	and	r24, r24
+ 420:	88 23       	and	r24, r24
 	delay_1s();
 	
 	tela1();// troca senhas ou mais opcoes
 	sair = 0;
 	PCMSK2 = 0x01;
 	while(!sair)
- 38e:	09 f4       	brne	.+2      	; 0x392 <subRotinaAdm+0x144>
- 390:	68 cf       	rjmp	.-304    	; 0x262 <subRotinaAdm+0x14>
- 392:	8f e0       	ldi	r24, 0x0F	; 15
- 394:	80 93 6d 00 	sts	0x006D, r24	; 0x80006d <__TEXT_REGION_LENGTH__+0x7c006d>
+ 422:	09 f4       	brne	.+2      	; 0x426 <__LOCK_REGION_LENGTH__+0x26>
+ 424:	68 cf       	rjmp	.-304    	; 0x2f6 <subRotinaAdm+0x14>
+ 426:	8f e0       	ldi	r24, 0x0F	; 15
+ 428:	80 93 6d 00 	sts	0x006D, r24	; 0x80006d <__TEXT_REGION_LENGTH__+0x7c006d>
 					break;//sai desse while entre no while(!sair)
 				}			
 			}	
 		}	
 	}
 	PCMSK2 = 0x0F; 
- 398:	cf 91       	pop	r28
- 39a:	08 95       	ret
+ 42c:	cf 91       	pop	r28
+ 42e:	08 95       	ret
 
-0000039c <ligaLinhas>:
+00000430 <ligaLinhas>:
 
 
 char ligaLinhas(int bitColuna, int indColuna)//coluna = numero correspondente da coluna
 {
 	
 	PORTK = 0b01111111;
- 39c:	9f e7       	ldi	r25, 0x7F	; 127
- 39e:	90 93 08 01 	sts	0x0108, r25	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
+ 430:	9f e7       	ldi	r25, 0x7F	; 127
+ 432:	90 93 08 01 	sts	0x0108, r25	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 	//delay_1ms();
 
 	if ((PINK & (1 << bitColuna)) == 0){
- 3a2:	20 91 06 01 	lds	r18, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
- 3a6:	30 e0       	ldi	r19, 0x00	; 0
- 3a8:	08 2e       	mov	r0, r24
- 3aa:	02 c0       	rjmp	.+4      	; 0x3b0 <ligaLinhas+0x14>
- 3ac:	35 95       	asr	r19
- 3ae:	27 95       	ror	r18
- 3b0:	0a 94       	dec	r0
- 3b2:	e2 f7       	brpl	.-8      	; 0x3ac <ligaLinhas+0x10>
- 3b4:	20 fd       	sbrc	r18, 0
- 3b6:	05 c0       	rjmp	.+10     	; 0x3c2 <ligaLinhas+0x26>
+ 436:	20 91 06 01 	lds	r18, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
+ 43a:	30 e0       	ldi	r19, 0x00	; 0
+ 43c:	08 2e       	mov	r0, r24
+ 43e:	02 c0       	rjmp	.+4      	; 0x444 <ligaLinhas+0x14>
+ 440:	35 95       	asr	r19
+ 442:	27 95       	ror	r18
+ 444:	0a 94       	dec	r0
+ 446:	e2 f7       	brpl	.-8      	; 0x440 <ligaLinhas+0x10>
+ 448:	20 fd       	sbrc	r18, 0
+ 44a:	05 c0       	rjmp	.+10     	; 0x456 <ligaLinhas+0x26>
 	return teclado[0][indColuna];}
- 3b8:	fb 01       	movw	r30, r22
- 3ba:	e2 5f       	subi	r30, 0xF2	; 242
- 3bc:	fd 4f       	sbci	r31, 0xFD	; 253
- 3be:	80 81       	ld	r24, Z
- 3c0:	08 95       	ret
+ 44c:	fb 01       	movw	r30, r22
+ 44e:	e2 5f       	subi	r30, 0xF2	; 242
+ 450:	fd 4f       	sbci	r31, 0xFD	; 253
+ 452:	80 81       	ld	r24, Z
+ 454:	08 95       	ret
 
 	PORTK = 0b10111111;
- 3c2:	9f eb       	ldi	r25, 0xBF	; 191
- 3c4:	90 93 08 01 	sts	0x0108, r25	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
+ 456:	9f eb       	ldi	r25, 0xBF	; 191
+ 458:	90 93 08 01 	sts	0x0108, r25	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 	//delay_1ms();
 
 	if ((PINK & (1 << bitColuna)) == 0){
- 3c8:	20 91 06 01 	lds	r18, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
- 3cc:	30 e0       	ldi	r19, 0x00	; 0
- 3ce:	08 2e       	mov	r0, r24
- 3d0:	02 c0       	rjmp	.+4      	; 0x3d6 <ligaLinhas+0x3a>
- 3d2:	35 95       	asr	r19
- 3d4:	27 95       	ror	r18
- 3d6:	0a 94       	dec	r0
- 3d8:	e2 f7       	brpl	.-8      	; 0x3d2 <ligaLinhas+0x36>
- 3da:	20 fd       	sbrc	r18, 0
- 3dc:	05 c0       	rjmp	.+10     	; 0x3e8 <ligaLinhas+0x4c>
+ 45c:	20 91 06 01 	lds	r18, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
+ 460:	30 e0       	ldi	r19, 0x00	; 0
+ 462:	08 2e       	mov	r0, r24
+ 464:	02 c0       	rjmp	.+4      	; 0x46a <ligaLinhas+0x3a>
+ 466:	35 95       	asr	r19
+ 468:	27 95       	ror	r18
+ 46a:	0a 94       	dec	r0
+ 46c:	e2 f7       	brpl	.-8      	; 0x466 <ligaLinhas+0x36>
+ 46e:	20 fd       	sbrc	r18, 0
+ 470:	05 c0       	rjmp	.+10     	; 0x47c <ligaLinhas+0x4c>
 		
 	return teclado[1][indColuna];}
- 3de:	fb 01       	movw	r30, r22
- 3e0:	e2 5f       	subi	r30, 0xF2	; 242
- 3e2:	fd 4f       	sbci	r31, 0xFD	; 253
- 3e4:	84 81       	ldd	r24, Z+4	; 0x04
- 3e6:	08 95       	ret
+ 472:	fb 01       	movw	r30, r22
+ 474:	e2 5f       	subi	r30, 0xF2	; 242
+ 476:	fd 4f       	sbci	r31, 0xFD	; 253
+ 478:	84 81       	ldd	r24, Z+4	; 0x04
+ 47a:	08 95       	ret
 
 	PORTK = 0b11011111;
- 3e8:	9f ed       	ldi	r25, 0xDF	; 223
- 3ea:	90 93 08 01 	sts	0x0108, r25	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
+ 47c:	9f ed       	ldi	r25, 0xDF	; 223
+ 47e:	90 93 08 01 	sts	0x0108, r25	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 	//delay_1ms();
 
 	if ((PINK & (1 << bitColuna)) == 0){
- 3ee:	20 91 06 01 	lds	r18, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
- 3f2:	30 e0       	ldi	r19, 0x00	; 0
- 3f4:	08 2e       	mov	r0, r24
- 3f6:	02 c0       	rjmp	.+4      	; 0x3fc <ligaLinhas+0x60>
- 3f8:	35 95       	asr	r19
- 3fa:	27 95       	ror	r18
- 3fc:	0a 94       	dec	r0
- 3fe:	e2 f7       	brpl	.-8      	; 0x3f8 <ligaLinhas+0x5c>
- 400:	20 fd       	sbrc	r18, 0
- 402:	05 c0       	rjmp	.+10     	; 0x40e <__LOCK_REGION_LENGTH__+0xe>
+ 482:	20 91 06 01 	lds	r18, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
+ 486:	30 e0       	ldi	r19, 0x00	; 0
+ 488:	08 2e       	mov	r0, r24
+ 48a:	02 c0       	rjmp	.+4      	; 0x490 <ligaLinhas+0x60>
+ 48c:	35 95       	asr	r19
+ 48e:	27 95       	ror	r18
+ 490:	0a 94       	dec	r0
+ 492:	e2 f7       	brpl	.-8      	; 0x48c <ligaLinhas+0x5c>
+ 494:	20 fd       	sbrc	r18, 0
+ 496:	05 c0       	rjmp	.+10     	; 0x4a2 <ligaLinhas+0x72>
 	return teclado[2][indColuna];}
- 404:	fb 01       	movw	r30, r22
- 406:	e2 5f       	subi	r30, 0xF2	; 242
- 408:	fd 4f       	sbci	r31, 0xFD	; 253
- 40a:	80 85       	ldd	r24, Z+8	; 0x08
- 40c:	08 95       	ret
+ 498:	fb 01       	movw	r30, r22
+ 49a:	e2 5f       	subi	r30, 0xF2	; 242
+ 49c:	fd 4f       	sbci	r31, 0xFD	; 253
+ 49e:	80 85       	ldd	r24, Z+8	; 0x08
+ 4a0:	08 95       	ret
 
 	PORTK = 0b11101111;
- 40e:	9f ee       	ldi	r25, 0xEF	; 239
- 410:	90 93 08 01 	sts	0x0108, r25	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
+ 4a2:	9f ee       	ldi	r25, 0xEF	; 239
+ 4a4:	90 93 08 01 	sts	0x0108, r25	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 	//delay_1ms();
 	
 	if ((PINK & (1 << bitColuna)) == 0){
- 414:	20 91 06 01 	lds	r18, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
- 418:	30 e0       	ldi	r19, 0x00	; 0
- 41a:	a9 01       	movw	r20, r18
- 41c:	02 c0       	rjmp	.+4      	; 0x422 <__LOCK_REGION_LENGTH__+0x22>
- 41e:	55 95       	asr	r21
- 420:	47 95       	ror	r20
- 422:	8a 95       	dec	r24
- 424:	e2 f7       	brpl	.-8      	; 0x41e <__LOCK_REGION_LENGTH__+0x1e>
- 426:	40 fd       	sbrc	r20, 0
- 428:	05 c0       	rjmp	.+10     	; 0x434 <__LOCK_REGION_LENGTH__+0x34>
+ 4a8:	20 91 06 01 	lds	r18, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
+ 4ac:	30 e0       	ldi	r19, 0x00	; 0
+ 4ae:	a9 01       	movw	r20, r18
+ 4b0:	02 c0       	rjmp	.+4      	; 0x4b6 <ligaLinhas+0x86>
+ 4b2:	55 95       	asr	r21
+ 4b4:	47 95       	ror	r20
+ 4b6:	8a 95       	dec	r24
+ 4b8:	e2 f7       	brpl	.-8      	; 0x4b2 <ligaLinhas+0x82>
+ 4ba:	40 fd       	sbrc	r20, 0
+ 4bc:	05 c0       	rjmp	.+10     	; 0x4c8 <ligaLinhas+0x98>
 	return teclado[3][indColuna];}
- 42a:	fb 01       	movw	r30, r22
- 42c:	e2 5f       	subi	r30, 0xF2	; 242
- 42e:	fd 4f       	sbci	r31, 0xFD	; 253
- 430:	84 85       	ldd	r24, Z+12	; 0x0c
- 432:	08 95       	ret
+ 4be:	fb 01       	movw	r30, r22
+ 4c0:	e2 5f       	subi	r30, 0xF2	; 242
+ 4c2:	fd 4f       	sbci	r31, 0xFD	; 253
+ 4c4:	84 85       	ldd	r24, Z+12	; 0x0c
+ 4c6:	08 95       	ret
 	
 	return '\0';
- 434:	80 e0       	ldi	r24, 0x00	; 0
+ 4c8:	80 e0       	ldi	r24, 0x00	; 0
 }
- 436:	08 95       	ret
+ 4ca:	08 95       	ret
 
-00000438 <procuraLinhas>:
+000004cc <procuraLinhas>:
 
 char procuraLinhas(uint8_t coluna)
 {
 	if(coluna == 0b00000111)//coluna 1
- 438:	87 30       	cpi	r24, 0x07	; 7
- 43a:	31 f4       	brne	.+12     	; 0x448 <procuraLinhas+0x10>
+ 4cc:	87 30       	cpi	r24, 0x07	; 7
+ 4ce:	31 f4       	brne	.+12     	; 0x4dc <procuraLinhas+0x10>
 	{
 		return ligaLinhas(3, 0);
- 43c:	60 e0       	ldi	r22, 0x00	; 0
- 43e:	70 e0       	ldi	r23, 0x00	; 0
- 440:	83 e0       	ldi	r24, 0x03	; 3
- 442:	90 e0       	ldi	r25, 0x00	; 0
- 444:	ab cf       	rjmp	.-170    	; 0x39c <ligaLinhas>
- 446:	08 95       	ret
+ 4d0:	60 e0       	ldi	r22, 0x00	; 0
+ 4d2:	70 e0       	ldi	r23, 0x00	; 0
+ 4d4:	83 e0       	ldi	r24, 0x03	; 3
+ 4d6:	90 e0       	ldi	r25, 0x00	; 0
+ 4d8:	ab cf       	rjmp	.-170    	; 0x430 <ligaLinhas>
+ 4da:	08 95       	ret
 	}
 	if(coluna == 0b00001011)//coluna 2
- 448:	8b 30       	cpi	r24, 0x0B	; 11
- 44a:	31 f4       	brne	.+12     	; 0x458 <procuraLinhas+0x20>
+ 4dc:	8b 30       	cpi	r24, 0x0B	; 11
+ 4de:	31 f4       	brne	.+12     	; 0x4ec <procuraLinhas+0x20>
 	{
 		return ligaLinhas(2, 1);
- 44c:	61 e0       	ldi	r22, 0x01	; 1
- 44e:	70 e0       	ldi	r23, 0x00	; 0
- 450:	82 e0       	ldi	r24, 0x02	; 2
- 452:	90 e0       	ldi	r25, 0x00	; 0
- 454:	a3 cf       	rjmp	.-186    	; 0x39c <ligaLinhas>
- 456:	08 95       	ret
+ 4e0:	61 e0       	ldi	r22, 0x01	; 1
+ 4e2:	70 e0       	ldi	r23, 0x00	; 0
+ 4e4:	82 e0       	ldi	r24, 0x02	; 2
+ 4e6:	90 e0       	ldi	r25, 0x00	; 0
+ 4e8:	a3 cf       	rjmp	.-186    	; 0x430 <ligaLinhas>
+ 4ea:	08 95       	ret
 	}
 	if(coluna == 0b00001101)//coluna 3
- 458:	8d 30       	cpi	r24, 0x0D	; 13
- 45a:	31 f4       	brne	.+12     	; 0x468 <procuraLinhas+0x30>
+ 4ec:	8d 30       	cpi	r24, 0x0D	; 13
+ 4ee:	31 f4       	brne	.+12     	; 0x4fc <procuraLinhas+0x30>
 	{
 		return ligaLinhas(1, 2);
- 45c:	62 e0       	ldi	r22, 0x02	; 2
- 45e:	70 e0       	ldi	r23, 0x00	; 0
- 460:	81 e0       	ldi	r24, 0x01	; 1
- 462:	90 e0       	ldi	r25, 0x00	; 0
- 464:	9b cf       	rjmp	.-202    	; 0x39c <ligaLinhas>
- 466:	08 95       	ret
+ 4f0:	62 e0       	ldi	r22, 0x02	; 2
+ 4f2:	70 e0       	ldi	r23, 0x00	; 0
+ 4f4:	81 e0       	ldi	r24, 0x01	; 1
+ 4f6:	90 e0       	ldi	r25, 0x00	; 0
+ 4f8:	9b cf       	rjmp	.-202    	; 0x430 <ligaLinhas>
+ 4fa:	08 95       	ret
 	}
 	if(coluna == 0b00001110)//coluna 4
- 468:	8e 30       	cpi	r24, 0x0E	; 14
- 46a:	31 f4       	brne	.+12     	; 0x478 <procuraLinhas+0x40>
+ 4fc:	8e 30       	cpi	r24, 0x0E	; 14
+ 4fe:	31 f4       	brne	.+12     	; 0x50c <procuraLinhas+0x40>
 	{
 		return ligaLinhas(0, 3);
- 46c:	63 e0       	ldi	r22, 0x03	; 3
- 46e:	70 e0       	ldi	r23, 0x00	; 0
- 470:	80 e0       	ldi	r24, 0x00	; 0
- 472:	90 e0       	ldi	r25, 0x00	; 0
- 474:	93 cf       	rjmp	.-218    	; 0x39c <ligaLinhas>
- 476:	08 95       	ret
+ 500:	63 e0       	ldi	r22, 0x03	; 3
+ 502:	70 e0       	ldi	r23, 0x00	; 0
+ 504:	80 e0       	ldi	r24, 0x00	; 0
+ 506:	90 e0       	ldi	r25, 0x00	; 0
+ 508:	93 cf       	rjmp	.-218    	; 0x430 <ligaLinhas>
+ 50a:	08 95       	ret
 	}
 	return '\0';
- 478:	80 e0       	ldi	r24, 0x00	; 0
+ 50c:	80 e0       	ldi	r24, 0x00	; 0
 }
- 47a:	08 95       	ret
+ 50e:	08 95       	ret
 
-0000047c <procuraTecla1x>:
+00000510 <procuraTecla>:
 
-char procuraTecla1x()
+char procuraTecla()
 {
+ 510:	cf 93       	push	r28
+ 512:	df 93       	push	r29
 	PORTK = 0b00001111;//pull up do input ativado
- 47c:	8f e0       	ldi	r24, 0x0F	; 15
- 47e:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
+ 514:	8f e0       	ldi	r24, 0x0F	; 15
+ 516:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 	//delay_1ms();
 	
 	while(PINK == 0b00001111);//0000 1011
- 482:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
- 486:	8f 30       	cpi	r24, 0x0F	; 15
- 488:	e1 f3       	breq	.-8      	; 0x482 <procuraTecla1x+0x6>
+ 51a:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
+ 51e:	8f 30       	cpi	r24, 0x0F	; 15
+ 520:	e1 f3       	breq	.-8      	; 0x51a <procuraTecla+0xa>
 	
 	binColuna = PINK;
- 48a:	80 91 06 01 	lds	r24, 0x0106	; 0x800106 <__TEXT_REGION_LENGTH__+0x7c0106>
- 48e:	80 93 77 03 	sts	0x0377, r24	; 0x800377 <binColuna>
-	/*possivelSenha = procuraLinhas(binColuna);
-	delay_1ms();
-	if(possivelSenha == procuraLinhas(binColuna)){
-		return possivelSenha;
-	}*/
-	return procuraLinhas(binColuna);
- 492:	d2 cf       	rjmp	.-92     	; 0x438 <procuraLinhas>
-}
- 494:	08 95       	ret
-
-00000496 <procuraTecla>:
-
-
-char procuraTecla(){
-	possivelTecla1 = procuraTecla1x();
- 496:	f2 df       	rcall	.-28     	; 0x47c <procuraTecla1x>
- 498:	80 93 78 03 	sts	0x0378, r24	; 0x800378 <possivelTecla1>
+ 522:	c6 e0       	ldi	r28, 0x06	; 6
+ 524:	d1 e0       	ldi	r29, 0x01	; 1
+ 526:	88 81       	ld	r24, Y
+ 528:	80 93 80 03 	sts	0x0380, r24	; 0x800380 <binColuna>
+	possivelTecla = procuraLinhas(binColuna);
+ 52c:	cf df       	rcall	.-98     	; 0x4cc <procuraLinhas>
+ 52e:	80 93 7e 03 	sts	0x037E, r24	; 0x80037e <possivelTecla>
 	delay_200ms();
- 49c:	70 d2       	rcall	.+1248   	; 0x97e <delay_200ms>
-	possivelTecla2 = procuraTecla1x();
- 49e:	ee df       	rcall	.-36     	; 0x47c <procuraTecla1x>
- 4a0:	98 2f       	mov	r25, r24
- 4a2:	80 93 79 03 	sts	0x0379, r24	; 0x800379 <possivelTecla2>
- 4a6:	80 91 78 03 	lds	r24, 0x0378	; 0x800378 <possivelTecla1>
-	if (possivelTecla1 == possivelTecla2){
- 4aa:	98 13       	cpse	r25, r24
- 4ac:	80 e0       	ldi	r24, 0x00	; 0
-		return possivelTecla1;		
+ 532:	d2 d1       	rcall	.+932    	; 0x8d8 <delay_200ms>
+ 534:	8f e0       	ldi	r24, 0x0F	; 15
+	PORTK = 0b00001111; //reseta a porta pra proxima leitura
+ 536:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
+ 53a:	88 81       	ld	r24, Y
+	binColuna = PINK;
+ 53c:	80 93 80 03 	sts	0x0380, r24	; 0x800380 <binColuna>
+	if(possivelTecla == procuraLinhas(binColuna)){
+ 540:	c5 df       	rcall	.-118    	; 0x4cc <procuraLinhas>
+ 542:	90 91 7e 03 	lds	r25, 0x037E	; 0x80037e <possivelTecla>
+ 546:	89 13       	cpse	r24, r25
+ 548:	90 e0       	ldi	r25, 0x00	; 0
+		return possivelTecla;
 	}else{
 		return '\0';
- 4ae:	08 95       	ret
+ 54a:	89 2f       	mov	r24, r25
+	}
+}
+ 54c:	df 91       	pop	r29
+ 54e:	cf 91       	pop	r28
+ 550:	08 95       	ret
 
-000004b0 <config_delay_timer0_CTC>:
+00000552 <config_delay_timer0_CTC>:
 	// Enable: PC6 
 	
 	void config_delay_timer0_CTC(char tempo){
 		
 		//Modo CTC
 		TCCR0A = 0x02;
- 4b0:	92 e0       	ldi	r25, 0x02	; 2
- 4b2:	94 bd       	out	0x24, r25	; 36
+ 552:	92 e0       	ldi	r25, 0x02	; 2
+ 554:	94 bd       	out	0x24, r25	; 36
 		
 		//numero de clocks desejado
 		OCR0A = tempo;
- 4b4:	87 bd       	out	0x27, r24	; 39
+ 556:	87 bd       	out	0x27, r24	; 39
 		
 		//flag de interrupção
 		TIFR0 = (1<<1); 
- 4b6:	95 bb       	out	0x15, r25	; 21
- 4b8:	08 95       	ret
+ 558:	95 bb       	out	0x15, r25	; 21
+ 55a:	08 95       	ret
 
-000004ba <delay_CTC>:
+0000055c <delay_CTC>:
 	}
 
 	void delay_CTC()
 	{
 		//Começa em 0
 		TCNT0 = 0;
- 4ba:	16 bc       	out	0x26, r1	; 38
+ 55c:	16 bc       	out	0x26, r1	; 38
 		
 		//limpa flag
 		TIFR0 = (1<<1);
- 4bc:	82 e0       	ldi	r24, 0x02	; 2
- 4be:	85 bb       	out	0x15, r24	; 21
+ 55e:	82 e0       	ldi	r24, 0x02	; 2
+ 560:	85 bb       	out	0x15, r24	; 21
 		
 		 //liga o timer
 		 TCCR0B = 0x01;
- 4c0:	81 e0       	ldi	r24, 0x01	; 1
- 4c2:	85 bd       	out	0x25, r24	; 37
+ 562:	81 e0       	ldi	r24, 0x01	; 1
+ 564:	85 bd       	out	0x25, r24	; 37
 		
 		while((TIFR0 & (1<<1)) == 0);
- 4c4:	a9 9b       	sbis	0x15, 1	; 21
- 4c6:	fe cf       	rjmp	.-4      	; 0x4c4 <delay_CTC+0xa>
+ 566:	a9 9b       	sbis	0x15, 1	; 21
+ 568:	fe cf       	rjmp	.-4      	; 0x566 <delay_CTC+0xa>
 		
 		//desliga timer
 		TCCR0B = 0x00;
- 4c8:	15 bc       	out	0x25, r1	; 37
- 4ca:	08 95       	ret
+ 56a:	15 bc       	out	0x25, r1	; 37
+ 56c:	08 95       	ret
 
-000004cc <config_porta_avr>:
+0000056e <config_porta_avr>:
 	}
 	
 	void config_porta_avr(){
 		
 		DDRA = 255; //Porta B irá funcionar como saída do AVR/entrada do Hitachi
- 4cc:	8f ef       	ldi	r24, 0xFF	; 255
- 4ce:	81 b9       	out	0x01, r24	; 1
+ 56e:	8f ef       	ldi	r24, 0xFF	; 255
+ 570:	81 b9       	out	0x01, r24	; 1
 		DDRC = 0b11100000;//PC0 e PC1 também serão saída do AVR/entrada do Hitachi
- 4d0:	80 ee       	ldi	r24, 0xE0	; 224
- 4d2:	87 b9       	out	0x07, r24	; 7
- 4d4:	08 95       	ret
+ 572:	80 ee       	ldi	r24, 0xE0	; 224
+ 574:	87 b9       	out	0x07, r24	; 7
+ 576:	08 95       	ret
 
-000004d6 <trigger_EN>:
+00000578 <trigger_EN>:
 		
 	}
 
 	void trigger_EN()
 	{
 		config_delay_timer0_CTC(255);
- 4d6:	8f ef       	ldi	r24, 0xFF	; 255
- 4d8:	eb df       	rcall	.-42     	; 0x4b0 <config_delay_timer0_CTC>
+ 578:	8f ef       	ldi	r24, 0xFF	; 255
+ 57a:	eb df       	rcall	.-42     	; 0x552 <config_delay_timer0_CTC>
 		
 		//coloca HIGH
 		PORTC |= (1<<6);
- 4da:	88 b1       	in	r24, 0x08	; 8
- 4dc:	80 64       	ori	r24, 0x40	; 64
+ 57c:	88 b1       	in	r24, 0x08	; 8
+ 57e:	80 64       	ori	r24, 0x40	; 64
 		delay_CTC();
- 4de:	88 b9       	out	0x08, r24	; 8
+ 580:	88 b9       	out	0x08, r24	; 8
 		delay_CTC();
- 4e0:	ec df       	rcall	.-40     	; 0x4ba <delay_CTC>
- 4e2:	eb df       	rcall	.-42     	; 0x4ba <delay_CTC>
+ 582:	ec df       	rcall	.-40     	; 0x55c <delay_CTC>
+ 584:	eb df       	rcall	.-42     	; 0x55c <delay_CTC>
 		delay_CTC();
- 4e4:	ea df       	rcall	.-44     	; 0x4ba <delay_CTC>
+ 586:	ea df       	rcall	.-44     	; 0x55c <delay_CTC>
 		//coloca LOW
 		PORTC &= ~(1<<6);
- 4e6:	88 b1       	in	r24, 0x08	; 8
+ 588:	88 b1       	in	r24, 0x08	; 8
 		delay_CTC();
- 4e8:	8f 7b       	andi	r24, 0xBF	; 191
- 4ea:	88 b9       	out	0x08, r24	; 8
+ 58a:	8f 7b       	andi	r24, 0xBF	; 191
+ 58c:	88 b9       	out	0x08, r24	; 8
 		delay_CTC();
- 4ec:	e6 df       	rcall	.-52     	; 0x4ba <delay_CTC>
- 4ee:	e5 df       	rcall	.-54     	; 0x4ba <delay_CTC>
+ 58e:	e6 df       	rcall	.-52     	; 0x55c <delay_CTC>
+ 590:	e5 df       	rcall	.-54     	; 0x55c <delay_CTC>
 		delay_CTC();
- 4f0:	e4 cf       	rjmp	.-56     	; 0x4ba <delay_CTC>
- 4f2:	08 95       	ret
+ 592:	e4 cf       	rjmp	.-56     	; 0x55c <delay_CTC>
+ 594:	08 95       	ret
 
-000004f4 <send_data>:
- 4f4:	cf 93       	push	r28
+00000596 <send_data>:
+ 596:	cf 93       	push	r28
 	}
 
 	void send_data(char _data_)
 	{
- 4f6:	c8 2f       	mov	r28, r24
+ 598:	c8 2f       	mov	r28, r24
 		config_delay_timer0_CTC(255);
- 4f8:	8f ef       	ldi	r24, 0xFF	; 255
- 4fa:	da df       	rcall	.-76     	; 0x4b0 <config_delay_timer0_CTC>
+ 59a:	8f ef       	ldi	r24, 0xFF	; 255
+ 59c:	da df       	rcall	.-76     	; 0x552 <config_delay_timer0_CTC>
 		
 		//RS = dados
 		PORTC |= (1<<7);
- 4fc:	88 b1       	in	r24, 0x08	; 8
- 4fe:	80 68       	ori	r24, 0x80	; 128
- 500:	88 b9       	out	0x08, r24	; 8
+ 59e:	88 b1       	in	r24, 0x08	; 8
+ 5a0:	80 68       	ori	r24, 0x80	; 128
+ 5a2:	88 b9       	out	0x08, r24	; 8
 		
 		PORTA = (_data_ & 0xF0);
- 502:	8c 2f       	mov	r24, r28
- 504:	80 7f       	andi	r24, 0xF0	; 240
+ 5a4:	8c 2f       	mov	r24, r28
+ 5a6:	80 7f       	andi	r24, 0xF0	; 240
 		trigger_EN();
- 506:	82 b9       	out	0x02, r24	; 2
+ 5a8:	82 b9       	out	0x02, r24	; 2
 		
 		delay_CTC();
- 508:	e6 df       	rcall	.-52     	; 0x4d6 <trigger_EN>
+ 5aa:	e6 df       	rcall	.-52     	; 0x578 <trigger_EN>
 		delay_CTC();
- 50a:	d7 df       	rcall	.-82     	; 0x4ba <delay_CTC>
- 50c:	d6 df       	rcall	.-84     	; 0x4ba <delay_CTC>
+ 5ac:	d7 df       	rcall	.-82     	; 0x55c <delay_CTC>
+ 5ae:	d6 df       	rcall	.-84     	; 0x55c <delay_CTC>
 		delay_CTC();
- 50e:	d5 df       	rcall	.-86     	; 0x4ba <delay_CTC>
- 510:	20 e1       	ldi	r18, 0x10	; 16
+ 5b0:	d5 df       	rcall	.-86     	; 0x55c <delay_CTC>
+ 5b2:	20 e1       	ldi	r18, 0x10	; 16
 		
 
 		PORTA = ((_data_<<4) & 0xF0);
- 512:	c2 9f       	mul	r28, r18
- 514:	c0 01       	movw	r24, r0
+ 5b4:	c2 9f       	mul	r28, r18
+ 5b6:	c0 01       	movw	r24, r0
 		trigger_EN();
- 516:	11 24       	eor	r1, r1
- 518:	82 b9       	out	0x02, r24	; 2
+ 5b8:	11 24       	eor	r1, r1
+ 5ba:	82 b9       	out	0x02, r24	; 2
 
 		delay_CTC();
- 51a:	dd df       	rcall	.-70     	; 0x4d6 <trigger_EN>
- 51c:	ce df       	rcall	.-100    	; 0x4ba <delay_CTC>
+ 5bc:	dd df       	rcall	.-70     	; 0x578 <trigger_EN>
+ 5be:	ce df       	rcall	.-100    	; 0x55c <delay_CTC>
 		delay_CTC();
- 51e:	cd df       	rcall	.-102    	; 0x4ba <delay_CTC>
- 520:	cc df       	rcall	.-104    	; 0x4ba <delay_CTC>
+ 5c0:	cd df       	rcall	.-102    	; 0x55c <delay_CTC>
+ 5c2:	cc df       	rcall	.-104    	; 0x55c <delay_CTC>
 		delay_CTC();
- 522:	cf 91       	pop	r28
- 524:	08 95       	ret
+ 5c4:	cf 91       	pop	r28
+ 5c6:	08 95       	ret
 
-00000526 <send_command>:
+000005c8 <send_command>:
 
 	}
- 526:	cf 93       	push	r28
- 528:	c8 2f       	mov	r28, r24
+ 5c8:	cf 93       	push	r28
+ 5ca:	c8 2f       	mov	r28, r24
 
 	void send_command(char command)
 	{
 		config_delay_timer0_CTC(255);
- 52a:	8f ef       	ldi	r24, 0xFF	; 255
- 52c:	c1 df       	rcall	.-126    	; 0x4b0 <config_delay_timer0_CTC>
+ 5cc:	8f ef       	ldi	r24, 0xFF	; 255
+ 5ce:	c1 df       	rcall	.-126    	; 0x552 <config_delay_timer0_CTC>
 		
 		//RS = comando
 		PORTC &= ~(1<<7);
- 52e:	88 b1       	in	r24, 0x08	; 8
- 530:	8f 77       	andi	r24, 0x7F	; 127
- 532:	88 b9       	out	0x08, r24	; 8
+ 5d0:	88 b1       	in	r24, 0x08	; 8
+ 5d2:	8f 77       	andi	r24, 0x7F	; 127
+ 5d4:	88 b9       	out	0x08, r24	; 8
 
 		PORTA = (command & 0xF0);
- 534:	8c 2f       	mov	r24, r28
- 536:	80 7f       	andi	r24, 0xF0	; 240
+ 5d6:	8c 2f       	mov	r24, r28
+ 5d8:	80 7f       	andi	r24, 0xF0	; 240
 		trigger_EN();
- 538:	82 b9       	out	0x02, r24	; 2
+ 5da:	82 b9       	out	0x02, r24	; 2
 		
 		delay_CTC();
- 53a:	cd df       	rcall	.-102    	; 0x4d6 <trigger_EN>
+ 5dc:	cd df       	rcall	.-102    	; 0x578 <trigger_EN>
 		delay_CTC();
- 53c:	be df       	rcall	.-132    	; 0x4ba <delay_CTC>
- 53e:	bd df       	rcall	.-134    	; 0x4ba <delay_CTC>
+ 5de:	be df       	rcall	.-132    	; 0x55c <delay_CTC>
+ 5e0:	bd df       	rcall	.-134    	; 0x55c <delay_CTC>
 		delay_CTC();
- 540:	bc df       	rcall	.-136    	; 0x4ba <delay_CTC>
- 542:	20 e1       	ldi	r18, 0x10	; 16
+ 5e2:	bc df       	rcall	.-136    	; 0x55c <delay_CTC>
+ 5e4:	20 e1       	ldi	r18, 0x10	; 16
 
 		PORTA = ((command<<4) & 0xF0);
- 544:	c2 9f       	mul	r28, r18
- 546:	c0 01       	movw	r24, r0
+ 5e6:	c2 9f       	mul	r28, r18
+ 5e8:	c0 01       	movw	r24, r0
 		trigger_EN();
- 548:	11 24       	eor	r1, r1
- 54a:	82 b9       	out	0x02, r24	; 2
+ 5ea:	11 24       	eor	r1, r1
+ 5ec:	82 b9       	out	0x02, r24	; 2
 
 		delay_CTC();
- 54c:	c4 df       	rcall	.-120    	; 0x4d6 <trigger_EN>
- 54e:	b5 df       	rcall	.-150    	; 0x4ba <delay_CTC>
+ 5ee:	c4 df       	rcall	.-120    	; 0x578 <trigger_EN>
+ 5f0:	b5 df       	rcall	.-150    	; 0x55c <delay_CTC>
 		delay_CTC();
- 550:	b4 df       	rcall	.-152    	; 0x4ba <delay_CTC>
- 552:	b3 df       	rcall	.-154    	; 0x4ba <delay_CTC>
+ 5f2:	b4 df       	rcall	.-152    	; 0x55c <delay_CTC>
+ 5f4:	b3 df       	rcall	.-154    	; 0x55c <delay_CTC>
 		delay_CTC();
- 554:	cf 91       	pop	r28
- 556:	08 95       	ret
+ 5f6:	cf 91       	pop	r28
+ 5f8:	08 95       	ret
 
-00000558 <send_string>:
+000005fa <send_string>:
 
 	}
- 558:	cf 93       	push	r28
- 55a:	df 93       	push	r29
+ 5fa:	cf 93       	push	r28
+ 5fc:	df 93       	push	r29
 
 	void send_string(char *string){
- 55c:	ec 01       	movw	r28, r24
+ 5fe:	ec 01       	movw	r28, r24
 		
 		while(*string != 0){
- 55e:	02 c0       	rjmp	.+4      	; 0x564 <send_string+0xc>
+ 600:	02 c0       	rjmp	.+4      	; 0x606 <send_string+0xc>
 			send_data(*string);
- 560:	c9 df       	rcall	.-110    	; 0x4f4 <send_data>
+ 602:	c9 df       	rcall	.-110    	; 0x596 <send_data>
 			string++;
- 562:	21 96       	adiw	r28, 0x01	; 1
+ 604:	21 96       	adiw	r28, 0x01	; 1
 
 	}
 
 	void send_string(char *string){
 		
 		while(*string != 0){
- 564:	88 81       	ld	r24, Y
- 566:	81 11       	cpse	r24, r1
- 568:	fb cf       	rjmp	.-10     	; 0x560 <send_string+0x8>
+ 606:	88 81       	ld	r24, Y
+ 608:	81 11       	cpse	r24, r1
+ 60a:	fb cf       	rjmp	.-10     	; 0x602 <send_string+0x8>
 			send_data(*string);
 			string++;
 		}
 	}
- 56a:	df 91       	pop	r29
- 56c:	cf 91       	pop	r28
- 56e:	08 95       	ret
+ 60c:	df 91       	pop	r29
+ 60e:	cf 91       	pop	r28
+ 610:	08 95       	ret
 
-00000570 <limpa_reseta_cursor>:
+00000612 <limpa_reseta_cursor>:
 	
 	
 	void limpa_reseta_cursor(){
 		//Limpa display e reseta posição do cursor
 		send_command(0x01);
- 570:	81 e0       	ldi	r24, 0x01	; 1
- 572:	d9 df       	rcall	.-78     	; 0x526 <send_command>
+ 612:	81 e0       	ldi	r24, 0x01	; 1
+ 614:	d9 df       	rcall	.-78     	; 0x5c8 <send_command>
 		delay_CTC();
- 574:	a2 df       	rcall	.-188    	; 0x4ba <delay_CTC>
+ 616:	a2 df       	rcall	.-188    	; 0x55c <delay_CTC>
 		delay_CTC();
- 576:	a1 df       	rcall	.-190    	; 0x4ba <delay_CTC>
+ 618:	a1 df       	rcall	.-190    	; 0x55c <delay_CTC>
 		delay_CTC();
- 578:	a0 df       	rcall	.-192    	; 0x4ba <delay_CTC>
- 57a:	11 c2       	rjmp	.+1058   	; 0x99e <delay_1s>
+ 61a:	a0 df       	rcall	.-192    	; 0x55c <delay_CTC>
+ 61c:	6d c1       	rjmp	.+730    	; 0x8f8 <delay_1s>
 		delay_1s();
- 57c:	08 95       	ret
+ 61e:	08 95       	ret
 
-0000057e <config_lcd_padrao>:
- 57e:	88 b1       	in	r24, 0x08	; 8
- 580:	8f 7d       	andi	r24, 0xDF	; 223
+00000620 <config_lcd_padrao>:
+ 620:	88 b1       	in	r24, 0x08	; 8
+ 622:	8f 7d       	andi	r24, 0xDF	; 223
 		
 		//FUNCTION SET:
 		//Interface 4 bits
 		//2 linhas
 		//Caracteres 5x10
 		PORTC &= ~(1<<5);
- 582:	88 b9       	out	0x08, r24	; 8
+ 624:	88 b9       	out	0x08, r24	; 8
 		PORTC &= ~(1<<7);
- 584:	88 b1       	in	r24, 0x08	; 8
- 586:	8f 77       	andi	r24, 0x7F	; 127
- 588:	88 b9       	out	0x08, r24	; 8
+ 626:	88 b1       	in	r24, 0x08	; 8
+ 628:	8f 77       	andi	r24, 0x7F	; 127
+ 62a:	88 b9       	out	0x08, r24	; 8
 		PORTA = 0x28;
- 58a:	88 e2       	ldi	r24, 0x28	; 40
- 58c:	82 b9       	out	0x02, r24	; 2
+ 62c:	88 e2       	ldi	r24, 0x28	; 40
+ 62e:	82 b9       	out	0x02, r24	; 2
 		trigger_EN();
- 58e:	a3 df       	rcall	.-186    	; 0x4d6 <trigger_EN>
+ 630:	a3 df       	rcall	.-186    	; 0x578 <trigger_EN>
 		delay_CTC();
- 590:	94 df       	rcall	.-216    	; 0x4ba <delay_CTC>
+ 632:	94 df       	rcall	.-216    	; 0x55c <delay_CTC>
 		delay_CTC();
- 592:	93 df       	rcall	.-218    	; 0x4ba <delay_CTC>
+ 634:	93 df       	rcall	.-218    	; 0x55c <delay_CTC>
 		delay_CTC();
- 594:	92 df       	rcall	.-220    	; 0x4ba <delay_CTC>
+ 636:	92 df       	rcall	.-220    	; 0x55c <delay_CTC>
 		
 		
 		//ENTRY MODE SET:
 		//Incrementa posição do cursor
 		send_command(0x06);
- 596:	86 e0       	ldi	r24, 0x06	; 6
- 598:	c6 df       	rcall	.-116    	; 0x526 <send_command>
+ 638:	86 e0       	ldi	r24, 0x06	; 6
+ 63a:	c6 df       	rcall	.-116    	; 0x5c8 <send_command>
 		
 		
 		//CURSOR/DISPLAY SHIFT:
 		//Cursor move
 		//Para direita
 		send_command(0x14);
- 59a:	84 e1       	ldi	r24, 0x14	; 20
- 59c:	c4 df       	rcall	.-120    	; 0x526 <send_command>
- 59e:	8e e0       	ldi	r24, 0x0E	; 14
+ 63c:	84 e1       	ldi	r24, 0x14	; 20
+ 63e:	c4 df       	rcall	.-120    	; 0x5c8 <send_command>
+ 640:	8e e0       	ldi	r24, 0x0E	; 14
 		
 		//DISPLAY CONTROL:
 		//Display ligado
 		//Cursor ligado
 		//Cursor não pisca
 		send_command(0x0E);
- 5a0:	c2 cf       	rjmp	.-124    	; 0x526 <send_command>
- 5a2:	08 95       	ret
+ 642:	c2 cf       	rjmp	.-124    	; 0x5c8 <send_command>
+ 644:	08 95       	ret
 
-000005a4 <proxima_linha>:
- 5a4:	80 ec       	ldi	r24, 0xC0	; 192
- 5a6:	bf df       	rcall	.-130    	; 0x526 <send_command>
+00000646 <proxima_linha>:
+ 646:	80 ec       	ldi	r24, 0xC0	; 192
+ 648:	bf df       	rcall	.-130    	; 0x5c8 <send_command>
 		
 	}
 	
 	void proxima_linha(){
 		send_command(0xC0);
 		delay_CTC();
- 5a8:	88 df       	rcall	.-240    	; 0x4ba <delay_CTC>
+ 64a:	88 df       	rcall	.-240    	; 0x55c <delay_CTC>
 		delay_CTC();
- 5aa:	87 df       	rcall	.-242    	; 0x4ba <delay_CTC>
- 5ac:	86 cf       	rjmp	.-244    	; 0x4ba <delay_CTC>
+ 64c:	87 df       	rcall	.-242    	; 0x55c <delay_CTC>
+ 64e:	86 cf       	rjmp	.-244    	; 0x55c <delay_CTC>
 		delay_CTC();
- 5ae:	08 95       	ret
+ 650:	08 95       	ret
 
-000005b0 <main>:
- 5b0:	8f ef       	ldi	r24, 0xFF	; 255
- 5b2:	84 b9       	out	0x04, r24	; 4
+00000652 <main>:
+ 652:	8f ef       	ldi	r24, 0xFF	; 255
+ 654:	84 b9       	out	0x04, r24	; 4
 
 int main(void)
 {
 	//------------- organizacao das interrupçoes do teclado:
 	DDRB = 0xFF;
 	PORTB = 0;
- 5b4:	15 b8       	out	0x05, r1	; 5
+ 656:	15 b8       	out	0x05, r1	; 5
 	DDRK = 0b11110000; //  (1) PORTK(0-3) output / (0) PORTK(4-7) input
- 5b6:	80 ef       	ldi	r24, 0xF0	; 240
- 5b8:	80 93 07 01 	sts	0x0107, r24	; 0x800107 <__TEXT_REGION_LENGTH__+0x7c0107>
+ 658:	80 ef       	ldi	r24, 0xF0	; 240
+ 65a:	80 93 07 01 	sts	0x0107, r24	; 0x800107 <__TEXT_REGION_LENGTH__+0x7c0107>
 	PORTK = 0b00001111; //pull up do input ativado
- 5bc:	8f e0       	ldi	r24, 0x0F	; 15
- 5be:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
+ 65e:	8f e0       	ldi	r24, 0x0F	; 15
+ 660:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 	PCICR |= 0b00000100; //ativa interrupção dos pinos PCINT16 ao PCINT23 = K0 ao K7
- 5c2:	e8 e6       	ldi	r30, 0x68	; 104
- 5c4:	f0 e0       	ldi	r31, 0x00	; 0
- 5c6:	80 81       	ld	r24, Z
- 5c8:	84 60       	ori	r24, 0x04	; 4
- 5ca:	80 83       	st	Z, r24
+ 664:	e8 e6       	ldi	r30, 0x68	; 104
+ 666:	f0 e0       	ldi	r31, 0x00	; 0
+ 668:	80 81       	ld	r24, Z
+ 66a:	84 60       	ori	r24, 0x04	; 4
+ 66c:	80 83       	st	Z, r24
 	PCMSK2 |= 0x0F; //ínterrupção nos pinos K0 até K7;
- 5cc:	ed e6       	ldi	r30, 0x6D	; 109
- 5ce:	f0 e0       	ldi	r31, 0x00	; 0
- 5d0:	80 81       	ld	r24, Z
- 5d2:	8f 60       	ori	r24, 0x0F	; 15
- 5d4:	80 83       	st	Z, r24
+ 66e:	ed e6       	ldi	r30, 0x6D	; 109
+ 670:	f0 e0       	ldi	r31, 0x00	; 0
+ 672:	80 81       	ld	r24, Z
+ 674:	8f 60       	ori	r24, 0x0F	; 15
+ 676:	80 83       	st	Z, r24
 	sei(); //set enable interrupts -- seta 1 no bit I do status register
- 5d6:	78 94       	sei
+ 678:	78 94       	sei
 	//-------------------------------
 	config_timer1();
- 5d8:	93 d1       	rcall	.+806    	; 0x900 <config_timer1>
+ 67a:	f4 d0       	rcall	.+488    	; 0x864 <config_timer1>
 	config_porta_avr();
- 5da:	78 df       	rcall	.-272    	; 0x4cc <config_porta_avr>
+ 67c:	78 df       	rcall	.-272    	; 0x56e <config_porta_avr>
 	config_lcd_padrao();
- 5dc:	d0 df       	rcall	.-96     	; 0x57e <config_lcd_padrao>
- 5de:	c8 df       	rcall	.-112    	; 0x570 <limpa_reseta_cursor>
+ 67e:	d0 df       	rcall	.-96     	; 0x620 <config_lcd_padrao>
+ 680:	c8 df       	rcall	.-112    	; 0x612 <limpa_reseta_cursor>
 	limpa_reseta_cursor();
- 5e0:	8a ed       	ldi	r24, 0xDA	; 218
+ 682:	8a ed       	ldi	r24, 0xDA	; 218
 	send_string("---ALARMICROS---");
- 5e2:	92 e0       	ldi	r25, 0x02	; 2
- 5e4:	b9 df       	rcall	.-142    	; 0x558 <send_string>
- 5e6:	de df       	rcall	.-68     	; 0x5a4 <proxima_linha>
+ 684:	92 e0       	ldi	r25, 0x02	; 2
+ 686:	b9 df       	rcall	.-142    	; 0x5fa <send_string>
+ 688:	de df       	rcall	.-68     	; 0x646 <proxima_linha>
 	proxima_linha();
- 5e8:	83 ed       	ldi	r24, 0xD3	; 211
- 5ea:	92 e0       	ldi	r25, 0x02	; 2
+ 68a:	83 ed       	ldi	r24, 0xD3	; 211
+ 68c:	92 e0       	ldi	r25, 0x02	; 2
 	send_string("SENHA:");
- 5ec:	b5 df       	rcall	.-150    	; 0x558 <send_string>
- 5ee:	80 91 62 03 	lds	r24, 0x0362	; 0x800362 <alarme_ativo>
- 5f2:	88 23       	and	r24, r24
+ 68e:	b5 df       	rcall	.-150    	; 0x5fa <send_string>
+ 690:	80 91 72 03 	lds	r24, 0x0372	; 0x800372 <alarme_ativo>
+ 694:	88 23       	and	r24, r24
     while (1){
 		if (alarme_ativo && intruso_detectado){
- 5f4:	39 f0       	breq	.+14     	; 0x604 <main+0x54>
- 5f6:	80 91 61 03 	lds	r24, 0x0361	; 0x800361 <intruso_detectado>
- 5fa:	88 23       	and	r24, r24
- 5fc:	19 f0       	breq	.+6      	; 0x604 <main+0x54>
+ 696:	e1 f3       	breq	.-8      	; 0x690 <main+0x3e>
+ 698:	80 91 71 03 	lds	r24, 0x0371	; 0x800371 <intruso_detectado>
+ 69c:	88 23       	and	r24, r24
+ 69e:	c1 f3       	breq	.-16     	; 0x690 <main+0x3e>
+ 6a0:	41 dd       	rcall	.-1406   	; 0x124 <delay_piscaled>
 			delay_piscaled();
- 5fe:	92 dd       	rcall	.-1244   	; 0x124 <delay_piscaled>
- 600:	ba dd       	rcall	.-1164   	; 0x176 <ativa_buzzer>
+ 6a2:	73 dd       	rcall	.-1306   	; 0x18a <ativa_buzzer>
+ 6a4:	15 b8       	out	0x05, r1	; 5
 			ativa_buzzer();
- 602:	f5 cf       	rjmp	.-22     	; 0x5ee <main+0x3e>
- 604:	bd dd       	rcall	.-1158   	; 0x180 <desativa_buzzer>
- 606:	10 92 73 00 	sts	0x0073, r1	; 0x800073 <__TEXT_REGION_LENGTH__+0x7c0073>
-		}else{
-			desativa_buzzer();
- 60a:	10 92 21 01 	sts	0x0121, r1	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
-			TIMSK5 = 0x00;
- 60e:	ef cf       	rjmp	.-34     	; 0x5ee <main+0x3e>
+ 6a6:	f4 cf       	rjmp	.-24     	; 0x690 <main+0x3e>
 
-00000610 <__vector_11>:
-			TCCR5B = 0x00;
- 610:	1f 92       	push	r1
- 612:	0f 92       	push	r0
- 614:	0f b6       	in	r0, 0x3f	; 63
+000006a8 <__vector_11>:
+ 6a8:	1f 92       	push	r1
+			PORTB = 0;
+ 6aa:	0f 92       	push	r0
+ 6ac:	0f b6       	in	r0, 0x3f	; 63
 		}
-		
 	}
 }
 	
 ISR(PCINT2_vect){ //pinos K0 até K4
- 616:	0f 92       	push	r0
- 618:	11 24       	eor	r1, r1
- 61a:	0b b6       	in	r0, 0x3b	; 59
- 61c:	0f 92       	push	r0
- 61e:	2f 93       	push	r18
- 620:	3f 93       	push	r19
- 622:	4f 93       	push	r20
- 624:	5f 93       	push	r21
- 626:	6f 93       	push	r22
- 628:	7f 93       	push	r23
- 62a:	8f 93       	push	r24
- 62c:	9f 93       	push	r25
- 62e:	af 93       	push	r26
- 630:	bf 93       	push	r27
- 632:	ef 93       	push	r30
- 634:	ff 93       	push	r31
+ 6ae:	0f 92       	push	r0
+ 6b0:	11 24       	eor	r1, r1
+ 6b2:	0b b6       	in	r0, 0x3b	; 59
+ 6b4:	0f 92       	push	r0
+ 6b6:	2f 93       	push	r18
+ 6b8:	3f 93       	push	r19
+ 6ba:	4f 93       	push	r20
+ 6bc:	5f 93       	push	r21
+ 6be:	6f 93       	push	r22
+ 6c0:	7f 93       	push	r23
+ 6c2:	8f 93       	push	r24
+ 6c4:	9f 93       	push	r25
+ 6c6:	af 93       	push	r26
+ 6c8:	bf 93       	push	r27
+ 6ca:	ef 93       	push	r30
+ 6cc:	ff 93       	push	r31
 	PORTB = 0; //so p nao dar bip no buzzer
- 636:	15 b8       	out	0x05, r1	; 5
+ 6ce:	15 b8       	out	0x05, r1	; 5
 	if(chamada == 0){
- 638:	80 91 60 03 	lds	r24, 0x0360	; 0x800360 <__data_end>
- 63c:	81 11       	cpse	r24, r1
- 63e:	68 c0       	rjmp	.+208    	; 0x710 <__vector_11+0x100>
+ 6d0:	80 91 70 03 	lds	r24, 0x0370	; 0x800370 <__data_end>
+ 6d4:	81 11       	cpse	r24, r1
+ 6d6:	67 c0       	rjmp	.+206    	; 0x7a6 <__vector_11+0xfe>
 		chamada = 1;
- 640:	81 e0       	ldi	r24, 0x01	; 1
- 642:	80 93 60 03 	sts	0x0360, r24	; 0x800360 <__data_end>
+ 6d8:	81 e0       	ldi	r24, 0x01	; 1
+ 6da:	80 93 70 03 	sts	0x0370, r24	; 0x800370 <__data_end>
 		tecla = procuraTecla();
- 646:	27 df       	rcall	.-434    	; 0x496 <procuraTecla>
- 648:	80 93 76 03 	sts	0x0376, r24	; 0x800376 <tecla>
-				intruso_detectado = 1;
-			}
-		}
-		*/
-		
+ 6de:	18 df       	rcall	.-464    	; 0x510 <procuraTecla>
+ 6e0:	80 93 7f 03 	sts	0x037F, r24	; 0x80037f <tecla>
 		if(alarme_ativo){
- 64c:	90 91 62 03 	lds	r25, 0x0362	; 0x800362 <alarme_ativo>
- 650:	99 23       	and	r25, r25
- 652:	09 f4       	brne	.+2      	; 0x656 <__vector_11+0x46>
- 654:	42 c0       	rjmp	.+132    	; 0x6da <__vector_11+0xca>
+ 6e4:	90 91 72 03 	lds	r25, 0x0372	; 0x800372 <alarme_ativo>
+ 6e8:	99 23       	and	r25, r25
+ 6ea:	09 f4       	brne	.+2      	; 0x6ee <__vector_11+0x46>
+ 6ec:	39 c0       	rjmp	.+114    	; 0x760 <__vector_11+0xb8>
 			if ((tecla == 'A') || (tecla == 'B') || (tecla == 'C') || (tecla == 'D')){
- 656:	81 54       	subi	r24, 0x41	; 65
- 658:	84 30       	cpi	r24, 0x04	; 4
+ 6ee:	81 54       	subi	r24, 0x41	; 65
+ 6f0:	84 30       	cpi	r24, 0x04	; 4
 				limpa_reseta_cursor();
- 65a:	58 f4       	brcc	.+22     	; 0x672 <__vector_11+0x62>
- 65c:	89 df       	rcall	.-238    	; 0x570 <limpa_reseta_cursor>
+ 6f2:	58 f4       	brcc	.+22     	; 0x70a <__vector_11+0x62>
+ 6f4:	8e df       	rcall	.-228    	; 0x612 <limpa_reseta_cursor>
 				send_string("INTRUSO");
- 65e:	8b ee       	ldi	r24, 0xEB	; 235
- 660:	92 e0       	ldi	r25, 0x02	; 2
+ 6f6:	8b ee       	ldi	r24, 0xEB	; 235
+ 6f8:	92 e0       	ldi	r25, 0x02	; 2
 				proxima_linha();
- 662:	7a df       	rcall	.-268    	; 0x558 <send_string>
+ 6fa:	7f df       	rcall	.-258    	; 0x5fa <send_string>
 				send_string("SENHA:");
- 664:	9f df       	rcall	.-194    	; 0x5a4 <proxima_linha>
- 666:	83 ed       	ldi	r24, 0xD3	; 211
- 668:	92 e0       	ldi	r25, 0x02	; 2
- 66a:	76 df       	rcall	.-276    	; 0x558 <send_string>
+ 6fc:	a4 df       	rcall	.-184    	; 0x646 <proxima_linha>
+ 6fe:	83 ed       	ldi	r24, 0xD3	; 211
+ 700:	92 e0       	ldi	r25, 0x02	; 2
+ 702:	7b df       	rcall	.-266    	; 0x5fa <send_string>
 				intruso_detectado = 1;
- 66c:	81 e0       	ldi	r24, 0x01	; 1
- 66e:	80 93 61 03 	sts	0x0361, r24	; 0x800361 <intruso_detectado>
+ 704:	81 e0       	ldi	r24, 0x01	; 1
+ 706:	80 93 71 03 	sts	0x0371, r24	; 0x800371 <intruso_detectado>
 			}
 			if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9') || (tecla == '0')){
- 672:	80 91 76 03 	lds	r24, 0x0376	; 0x800376 <tecla>
- 676:	90 ed       	ldi	r25, 0xD0	; 208
- 678:	98 0f       	add	r25, r24
- 67a:	9a 30       	cpi	r25, 0x0A	; 10
- 67c:	08 f0       	brcs	.+2      	; 0x680 <__vector_11+0x70>
- 67e:	46 c0       	rjmp	.+140    	; 0x70c <__vector_11+0xfc>
+ 70a:	80 91 7f 03 	lds	r24, 0x037F	; 0x80037f <tecla>
+ 70e:	90 ed       	ldi	r25, 0xD0	; 208
+ 710:	98 0f       	add	r25, r24
+ 712:	9a 30       	cpi	r25, 0x0A	; 10
+ 714:	08 f0       	brcs	.+2      	; 0x718 <__vector_11+0x70>
+ 716:	45 c0       	rjmp	.+138    	; 0x7a2 <__vector_11+0xfa>
 				if(nr_digitados < 5){
- 680:	20 91 73 03 	lds	r18, 0x0373	; 0x800373 <nr_digitados>
- 684:	30 91 74 03 	lds	r19, 0x0374	; 0x800374 <nr_digitados+0x1>
- 688:	25 30       	cpi	r18, 0x05	; 5
- 68a:	31 05       	cpc	r19, r1
+ 718:	20 91 7c 03 	lds	r18, 0x037C	; 0x80037c <nr_digitados>
+ 71c:	30 91 7d 03 	lds	r19, 0x037D	; 0x80037d <nr_digitados+0x1>
+ 720:	25 30       	cpi	r18, 0x05	; 5
+ 722:	31 05       	cpc	r19, r1
 					lendo_senha(tecla);
- 68c:	0c f4       	brge	.+2      	; 0x690 <__vector_11+0x80>
- 68e:	97 d1       	rcall	.+814    	; 0x9be <lendo_senha>
+ 724:	0c f4       	brge	.+2      	; 0x728 <__vector_11+0x80>
+ 726:	f8 d0       	rcall	.+496    	; 0x918 <lendo_senha>
+					//send_data(alarme_ativo);
 				}
 				if(nr_digitados == 5){
- 690:	80 91 73 03 	lds	r24, 0x0373	; 0x800373 <nr_digitados>
- 694:	90 91 74 03 	lds	r25, 0x0374	; 0x800374 <nr_digitados+0x1>
- 698:	05 97       	sbiw	r24, 0x05	; 5
- 69a:	09 f0       	breq	.+2      	; 0x69e <__vector_11+0x8e>
+ 728:	80 91 7c 03 	lds	r24, 0x037C	; 0x80037c <nr_digitados>
+ 72c:	90 91 7d 03 	lds	r25, 0x037D	; 0x80037d <nr_digitados+0x1>
+ 730:	05 97       	sbiw	r24, 0x05	; 5
+ 732:	09 f0       	breq	.+2      	; 0x736 <__vector_11+0x8e>
 					if (resultado_validacao() == 1){
- 69c:	37 c0       	rjmp	.+110    	; 0x70c <__vector_11+0xfc>
- 69e:	fd d1       	rcall	.+1018   	; 0xa9a <resultado_validacao>
- 6a0:	01 97       	sbiw	r24, 0x01	; 1
- 6a2:	a1 f5       	brne	.+104    	; 0x70c <__vector_11+0xfc>
+ 734:	36 c0       	rjmp	.+108    	; 0x7a2 <__vector_11+0xfa>
+ 736:	5d d1       	rcall	.+698    	; 0x9f2 <resultado_validacao>
+ 738:	01 97       	sbiw	r24, 0x01	; 1
 						alarme_ativo = 0;
- 6a4:	10 92 62 03 	sts	0x0362, r1	; 0x800362 <alarme_ativo>
+ 73a:	99 f5       	brne	.+102    	; 0x7a2 <__vector_11+0xfa>
 						intruso_detectado = 0;
- 6a8:	10 92 61 03 	sts	0x0361, r1	; 0x800361 <intruso_detectado>
-						TCCR1B = 0x00;
- 6ac:	10 92 81 00 	sts	0x0081, r1	; 0x800081 <__TEXT_REGION_LENGTH__+0x7c0081>
-						TIMSK1 = 0x00;
-						TIMSK4 = 0x00;
- 6b0:	10 92 6f 00 	sts	0x006F, r1	; 0x80006f <__TEXT_REGION_LENGTH__+0x7c006f>
-						TCCR4B = 0x00;
-						desativa_buzzer();
- 6b4:	10 92 72 00 	sts	0x0072, r1	; 0x800072 <__TEXT_REGION_LENGTH__+0x7c0072>
+ 73c:	10 92 72 03 	sts	0x0372, r1	; 0x800372 <alarme_ativo>
 						limpa_reseta_cursor();
- 6b8:	10 92 a1 00 	sts	0x00A1, r1	; 0x8000a1 <__TEXT_REGION_LENGTH__+0x7c00a1>
 						send_string("ALARME OFF");
- 6bc:	61 dd       	rcall	.-1342   	; 0x180 <desativa_buzzer>
- 6be:	58 df       	rcall	.-336    	; 0x570 <limpa_reseta_cursor>
+ 740:	10 92 71 03 	sts	0x0371, r1	; 0x800371 <intruso_detectado>
+ 744:	66 df       	rcall	.-308    	; 0x612 <limpa_reseta_cursor>
 						delay_1s();
- 6c0:	83 ef       	ldi	r24, 0xF3	; 243
- 6c2:	92 e0       	ldi	r25, 0x02	; 2
+ 746:	83 ef       	ldi	r24, 0xF3	; 243
+ 748:	92 e0       	ldi	r25, 0x02	; 2
 						limpa_reseta_cursor();
- 6c4:	49 df       	rcall	.-366    	; 0x558 <send_string>
- 6c6:	6b d1       	rcall	.+726    	; 0x99e <delay_1s>
+ 74a:	57 df       	rcall	.-338    	; 0x5fa <send_string>
+ 74c:	d5 d0       	rcall	.+426    	; 0x8f8 <delay_1s>
 						send_string("---ALARMICROS---");
- 6c8:	53 df       	rcall	.-346    	; 0x570 <limpa_reseta_cursor>
- 6ca:	8a ed       	ldi	r24, 0xDA	; 218
- 6cc:	92 e0       	ldi	r25, 0x02	; 2
- 6ce:	44 df       	rcall	.-376    	; 0x558 <send_string>
+ 74e:	61 df       	rcall	.-318    	; 0x612 <limpa_reseta_cursor>
+ 750:	8a ed       	ldi	r24, 0xDA	; 218
+ 752:	92 e0       	ldi	r25, 0x02	; 2
+ 754:	52 df       	rcall	.-348    	; 0x5fa <send_string>
 						proxima_linha();
- 6d0:	69 df       	rcall	.-302    	; 0x5a4 <proxima_linha>
- 6d2:	83 ed       	ldi	r24, 0xD3	; 211
+ 756:	77 df       	rcall	.-274    	; 0x646 <proxima_linha>
+ 758:	83 ed       	ldi	r24, 0xD3	; 211
 						send_string("SENHA:");
- 6d4:	92 e0       	ldi	r25, 0x02	; 2
- 6d6:	40 df       	rcall	.-384    	; 0x558 <send_string>
- 6d8:	19 c0       	rjmp	.+50     	; 0x70c <__vector_11+0xfc>
- 6da:	90 ed       	ldi	r25, 0xD0	; 208
+ 75a:	92 e0       	ldi	r25, 0x02	; 2
+ 75c:	4e df       	rcall	.-356    	; 0x5fa <send_string>
+ 75e:	21 c0       	rjmp	.+66     	; 0x7a2 <__vector_11+0xfa>
+ 760:	90 ed       	ldi	r25, 0xD0	; 208
 						}
 				}
 			}
-		
 		}else if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9') || (tecla == '0')){
- 6dc:	98 0f       	add	r25, r24
- 6de:	9a 30       	cpi	r25, 0x0A	; 10
- 6e0:	a8 f4       	brcc	.+42     	; 0x70c <__vector_11+0xfc>
+ 762:	98 0f       	add	r25, r24
+ 764:	9a 30       	cpi	r25, 0x0A	; 10
+ 766:	e8 f4       	brcc	.+58     	; 0x7a2 <__vector_11+0xfa>
+ 768:	20 91 7c 03 	lds	r18, 0x037C	; 0x80037c <nr_digitados>
 		if(nr_digitados < 5){
- 6e2:	20 91 73 03 	lds	r18, 0x0373	; 0x800373 <nr_digitados>
- 6e6:	30 91 74 03 	lds	r19, 0x0374	; 0x800374 <nr_digitados+0x1>
- 6ea:	25 30       	cpi	r18, 0x05	; 5
- 6ec:	31 05       	cpc	r19, r1
+ 76c:	30 91 7d 03 	lds	r19, 0x037D	; 0x80037d <nr_digitados+0x1>
+ 770:	25 30       	cpi	r18, 0x05	; 5
+ 772:	31 05       	cpc	r19, r1
+ 774:	0c f4       	brge	.+2      	; 0x778 <__vector_11+0xd0>
 			lendo_senha(tecla);
- 6ee:	0c f4       	brge	.+2      	; 0x6f2 <__vector_11+0xe2>
- 6f0:	66 d1       	rcall	.+716    	; 0x9be <lendo_senha>
+ 776:	d0 d0       	rcall	.+416    	; 0x918 <lendo_senha>
+ 778:	80 91 7c 03 	lds	r24, 0x037C	; 0x80037c <nr_digitados>
 		}
 		if(nr_digitados == 5){
- 6f2:	80 91 73 03 	lds	r24, 0x0373	; 0x800373 <nr_digitados>
- 6f6:	90 91 74 03 	lds	r25, 0x0374	; 0x800374 <nr_digitados+0x1>
- 6fa:	05 97       	sbiw	r24, 0x05	; 5
- 6fc:	39 f4       	brne	.+14     	; 0x70c <__vector_11+0xfc>
+ 77c:	90 91 7d 03 	lds	r25, 0x037D	; 0x80037d <nr_digitados+0x1>
+ 780:	05 97       	sbiw	r24, 0x05	; 5
+ 782:	79 f4       	brne	.+30     	; 0x7a2 <__vector_11+0xfa>
 			if (resultado_validacao() == 1){
- 6fe:	cd d1       	rcall	.+922    	; 0xa9a <resultado_validacao>
- 700:	01 97       	sbiw	r24, 0x01	; 1
- 702:	21 f4       	brne	.+8      	; 0x70c <__vector_11+0xfc>
- 704:	10 92 62 03 	sts	0x0362, r1	; 0x800362 <alarme_ativo>
-				alarme_ativo = 0; //o timer liga o alarme dps
- 708:	10 92 61 03 	sts	0x0361, r1	; 0x800361 <intruso_detectado>
+ 784:	36 d1       	rcall	.+620    	; 0x9f2 <resultado_validacao>
+ 786:	01 97       	sbiw	r24, 0x01	; 1
+ 788:	61 f4       	brne	.+24     	; 0x7a2 <__vector_11+0xfa>
 				intruso_detectado = 0;
- 70c:	28 d1       	rcall	.+592    	; 0x95e <delay_250ms>
+ 78a:	10 92 71 03 	sts	0x0371, r1	; 0x800371 <intruso_detectado>
+				TCCR1B = 0x05; //timer 1 pra dar o delay ate ativar o alarme //ativa o alarme na interrupção do timer 1
+ 78e:	85 e0       	ldi	r24, 0x05	; 5
+ 790:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__TEXT_REGION_LENGTH__+0x7c0081>
+				TIMSK1 = 1;
+ 794:	81 e0       	ldi	r24, 0x01	; 1
+ 796:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <__TEXT_REGION_LENGTH__+0x7c006f>
+				limpa_reseta_cursor();
+ 79a:	3b df       	rcall	.-394    	; 0x612 <limpa_reseta_cursor>
+ 79c:	8e ef       	ldi	r24, 0xFE	; 254
+				send_string("ATIVANDO SISTEMA");
+ 79e:	92 e0       	ldi	r25, 0x02	; 2
+ 7a0:	2c df       	rcall	.-424    	; 0x5fa <send_string>
+ 7a2:	9a d0       	rcall	.+308    	; 0x8d8 <delay_200ms>
+ 7a4:	05 c0       	rjmp	.+10     	; 0x7b0 <__vector_11+0x108>
 			}
 		}
 	}
-		delay_250ms();
- 70e:	05 c0       	rjmp	.+10     	; 0x71a <__vector_11+0x10a>
- 710:	10 92 60 03 	sts	0x0360, r1	; 0x800360 <__data_end>
+	delay_200ms();
+ 7a6:	10 92 70 03 	sts	0x0370, r1	; 0x800370 <__data_end>
+ 7aa:	8f e0       	ldi	r24, 0x0F	; 15
 	}else{
 		chamada = 0;
- 714:	8f e0       	ldi	r24, 0x0F	; 15
- 716:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
+ 7ac:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 		PORTK = 0b00001111; //reseta a porta pra proxima leitura
- 71a:	ff 91       	pop	r31
- 71c:	ef 91       	pop	r30
+ 7b0:	ff 91       	pop	r31
+ 7b2:	ef 91       	pop	r30
+ 7b4:	bf 91       	pop	r27
 	}
 }
- 71e:	bf 91       	pop	r27
- 720:	af 91       	pop	r26
- 722:	9f 91       	pop	r25
- 724:	8f 91       	pop	r24
- 726:	7f 91       	pop	r23
- 728:	6f 91       	pop	r22
- 72a:	5f 91       	pop	r21
- 72c:	4f 91       	pop	r20
- 72e:	3f 91       	pop	r19
- 730:	2f 91       	pop	r18
- 732:	0f 90       	pop	r0
- 734:	0b be       	out	0x3b, r0	; 59
- 736:	0f 90       	pop	r0
- 738:	0f be       	out	0x3f, r0	; 63
- 73a:	0f 90       	pop	r0
- 73c:	1f 90       	pop	r1
- 73e:	18 95       	reti
+ 7b6:	af 91       	pop	r26
+ 7b8:	9f 91       	pop	r25
+ 7ba:	8f 91       	pop	r24
+ 7bc:	7f 91       	pop	r23
+ 7be:	6f 91       	pop	r22
+ 7c0:	5f 91       	pop	r21
+ 7c2:	4f 91       	pop	r20
+ 7c4:	3f 91       	pop	r19
+ 7c6:	2f 91       	pop	r18
+ 7c8:	0f 90       	pop	r0
+ 7ca:	0b be       	out	0x3b, r0	; 59
+ 7cc:	0f 90       	pop	r0
+ 7ce:	0f be       	out	0x3f, r0	; 63
+ 7d0:	0f 90       	pop	r0
+ 7d2:	1f 90       	pop	r1
+ 7d4:	18 95       	reti
 
-00000740 <__vector_20>:
- 740:	1f 92       	push	r1
- 742:	0f 92       	push	r0
+000007d6 <__vector_20>:
+ 7d6:	1f 92       	push	r1
+ 7d8:	0f 92       	push	r0
+ 7da:	0f b6       	in	r0, 0x3f	; 63
 
 ISR(TIMER1_OVF_vect){
- 744:	0f b6       	in	r0, 0x3f	; 63
- 746:	0f 92       	push	r0
- 748:	11 24       	eor	r1, r1
- 74a:	0b b6       	in	r0, 0x3b	; 59
- 74c:	0f 92       	push	r0
- 74e:	2f 93       	push	r18
- 750:	3f 93       	push	r19
- 752:	4f 93       	push	r20
- 754:	5f 93       	push	r21
- 756:	6f 93       	push	r22
- 758:	7f 93       	push	r23
- 75a:	8f 93       	push	r24
- 75c:	9f 93       	push	r25
- 75e:	af 93       	push	r26
- 760:	bf 93       	push	r27
- 762:	ef 93       	push	r30
- 764:	ff 93       	push	r31
-	if(nr_ciclos_timer1 == 1){
- 766:	80 91 6b 03 	lds	r24, 0x036B	; 0x80036b <nr_ciclos_timer1>
- 76a:	90 91 6c 03 	lds	r25, 0x036C	; 0x80036c <nr_ciclos_timer1+0x1>
- 76e:	81 30       	cpi	r24, 0x01	; 1
- 770:	91 05       	cpc	r25, r1
- 772:	99 f4       	brne	.+38     	; 0x79a <__vector_20+0x5a>
-		
+ 7dc:	0f 92       	push	r0
+ 7de:	11 24       	eor	r1, r1
+ 7e0:	0b b6       	in	r0, 0x3b	; 59
+ 7e2:	0f 92       	push	r0
+ 7e4:	2f 93       	push	r18
+ 7e6:	3f 93       	push	r19
+ 7e8:	4f 93       	push	r20
+ 7ea:	5f 93       	push	r21
+ 7ec:	6f 93       	push	r22
+ 7ee:	7f 93       	push	r23
+ 7f0:	8f 93       	push	r24
+ 7f2:	9f 93       	push	r25
+ 7f4:	af 93       	push	r26
+ 7f6:	bf 93       	push	r27
+ 7f8:	ef 93       	push	r30
+ 7fa:	ff 93       	push	r31
+	if(nr_ciclos_timer1 == 19){
+ 7fc:	80 91 74 03 	lds	r24, 0x0374	; 0x800374 <nr_ciclos_timer1>
+ 800:	90 91 75 03 	lds	r25, 0x0375	; 0x800375 <nr_ciclos_timer1+0x1>
+ 804:	83 31       	cpi	r24, 0x13	; 19
+ 806:	91 05       	cpc	r25, r1
+ 808:	a9 f4       	brne	.+42     	; 0x834 <__vector_20+0x5e>
 		//ativa_alarme
 		limpa_reseta_cursor();
- 774:	fd de       	rcall	.-518    	; 0x570 <limpa_reseta_cursor>
+ 80a:	03 df       	rcall	.-506    	; 0x612 <limpa_reseta_cursor>
 		send_string("ALARME ATIVO");
- 776:	8e ef       	ldi	r24, 0xFE	; 254
- 778:	92 e0       	ldi	r25, 0x02	; 2
+ 80c:	8f e0       	ldi	r24, 0x0F	; 15
+ 80e:	93 e0       	ldi	r25, 0x03	; 3
 		proxima_linha();
- 77a:	ee de       	rcall	.-548    	; 0x558 <send_string>
+ 810:	f4 de       	rcall	.-536    	; 0x5fa <send_string>
 		send_string("SENHA:");
- 77c:	13 df       	rcall	.-474    	; 0x5a4 <proxima_linha>
- 77e:	83 ed       	ldi	r24, 0xD3	; 211
- 780:	92 e0       	ldi	r25, 0x02	; 2
- 782:	ea de       	rcall	.-556    	; 0x558 <send_string>
+ 812:	19 df       	rcall	.-462    	; 0x646 <proxima_linha>
+ 814:	83 ed       	ldi	r24, 0xD3	; 211
+ 816:	92 e0       	ldi	r25, 0x02	; 2
+ 818:	f0 de       	rcall	.-544    	; 0x5fa <send_string>
 		alarme_ativo = 1;
- 784:	81 e0       	ldi	r24, 0x01	; 1
- 786:	80 93 62 03 	sts	0x0362, r24	; 0x800362 <alarme_ativo>
+ 81a:	81 e0       	ldi	r24, 0x01	; 1
+ 81c:	80 93 72 03 	sts	0x0372, r24	; 0x800372 <alarme_ativo>
 		//desliga timer
 		TCCR1B = 0x00;
- 78a:	10 92 81 00 	sts	0x0081, r1	; 0x800081 <__TEXT_REGION_LENGTH__+0x7c0081>
+ 820:	10 92 81 00 	sts	0x0081, r1	; 0x800081 <__TEXT_REGION_LENGTH__+0x7c0081>
+		TIMSK1 = 0x00;
+ 824:	10 92 6f 00 	sts	0x006F, r1	; 0x80006f <__TEXT_REGION_LENGTH__+0x7c006f>
 		//limpa flag
 		TIFR1 = 1;
- 78e:	86 bb       	out	0x16, r24	; 22
-		
+ 828:	86 bb       	out	0x16, r24	; 22
 		nr_ciclos_timer1 = 0;
- 790:	10 92 6c 03 	sts	0x036C, r1	; 0x80036c <nr_ciclos_timer1+0x1>
- 794:	10 92 6b 03 	sts	0x036B, r1	; 0x80036b <nr_ciclos_timer1>
- 798:	05 c0       	rjmp	.+10     	; 0x7a4 <__vector_20+0x64>
+ 82a:	10 92 75 03 	sts	0x0375, r1	; 0x800375 <nr_ciclos_timer1+0x1>
+ 82e:	10 92 74 03 	sts	0x0374, r1	; 0x800374 <nr_ciclos_timer1>
+ 832:	05 c0       	rjmp	.+10     	; 0x83e <__vector_20+0x68>
 		}else{
 		nr_ciclos_timer1++;
- 79a:	01 96       	adiw	r24, 0x01	; 1
- 79c:	90 93 6c 03 	sts	0x036C, r25	; 0x80036c <nr_ciclos_timer1+0x1>
- 7a0:	80 93 6b 03 	sts	0x036B, r24	; 0x80036b <nr_ciclos_timer1>
-		
+ 834:	01 96       	adiw	r24, 0x01	; 1
+ 836:	90 93 75 03 	sts	0x0375, r25	; 0x800375 <nr_ciclos_timer1+0x1>
+ 83a:	80 93 74 03 	sts	0x0374, r24	; 0x800374 <nr_ciclos_timer1>
 	}
 }
- 7a4:	ff 91       	pop	r31
- 7a6:	ef 91       	pop	r30
- 7a8:	bf 91       	pop	r27
- 7aa:	af 91       	pop	r26
- 7ac:	9f 91       	pop	r25
- 7ae:	8f 91       	pop	r24
- 7b0:	7f 91       	pop	r23
- 7b2:	6f 91       	pop	r22
- 7b4:	5f 91       	pop	r21
- 7b6:	4f 91       	pop	r20
- 7b8:	3f 91       	pop	r19
- 7ba:	2f 91       	pop	r18
- 7bc:	0f 90       	pop	r0
- 7be:	0b be       	out	0x3b, r0	; 59
- 7c0:	0f 90       	pop	r0
- 7c2:	0f be       	out	0x3f, r0	; 63
- 7c4:	0f 90       	pop	r0
- 7c6:	1f 90       	pop	r1
- 7c8:	18 95       	reti
+ 83e:	ff 91       	pop	r31
+ 840:	ef 91       	pop	r30
+ 842:	bf 91       	pop	r27
+ 844:	af 91       	pop	r26
+ 846:	9f 91       	pop	r25
+ 848:	8f 91       	pop	r24
+ 84a:	7f 91       	pop	r23
+ 84c:	6f 91       	pop	r22
+ 84e:	5f 91       	pop	r21
+ 850:	4f 91       	pop	r20
+ 852:	3f 91       	pop	r19
+ 854:	2f 91       	pop	r18
+ 856:	0f 90       	pop	r0
+ 858:	0b be       	out	0x3b, r0	; 59
+ 85a:	0f 90       	pop	r0
+ 85c:	0f be       	out	0x3f, r0	; 63
+ 85e:	0f 90       	pop	r0
+ 860:	1f 90       	pop	r1
+ 862:	18 95       	reti
 
-000007ca <__vector_45>:
-	TCCR3A = 0; //modo normal
-	TCCR3B = 0x1; //sem prescaler
-	TCNT3 = 45536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 20000 contagens p bater meio periodo da onda de 400hz
-	TIFR3 = 1;
-}*/
-ISR(TIMER4_OVF_vect){
- 7ca:	1f 92       	push	r1
- 7cc:	0f 92       	push	r0
- 7ce:	0f b6       	in	r0, 0x3f	; 63
- 7d0:	0f 92       	push	r0
- 7d2:	11 24       	eor	r1, r1
- 7d4:	2f 93       	push	r18
- 7d6:	3f 93       	push	r19
- 7d8:	8f 93       	push	r24
- 7da:	9f 93       	push	r25
- 7dc:	af 93       	push	r26
- 7de:	bf 93       	push	r27
-	//timer p 1s
-	if(led2hz == 1){
- 7e0:	80 91 6a 03 	lds	r24, 0x036A	; 0x80036a <led2hz>
- 7e4:	81 30       	cpi	r24, 0x01	; 1
- 7e6:	81 f4       	brne	.+32     	; 0x808 <__vector_45+0x3e>
-		TCCR4A = 0; //modo normal
- 7e8:	10 92 a0 00 	sts	0x00A0, r1	; 0x8000a0 <__TEXT_REGION_LENGTH__+0x7c00a0>
-		TCCR4B = 0x3; //prescaler de 256
- 7ec:	83 e0       	ldi	r24, 0x03	; 3
- 7ee:	80 93 a1 00 	sts	0x00A1, r24	; 0x8000a1 <__TEXT_REGION_LENGTH__+0x7c00a1>
-		TCNT4 = 3036; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
- 7f2:	8c ed       	ldi	r24, 0xDC	; 220
- 7f4:	9b e0       	ldi	r25, 0x0B	; 11
- 7f6:	90 93 a5 00 	sts	0x00A5, r25	; 0x8000a5 <__TEXT_REGION_LENGTH__+0x7c00a5>
- 7fa:	80 93 a4 00 	sts	0x00A4, r24	; 0x8000a4 <__TEXT_REGION_LENGTH__+0x7c00a4>
-		TIFR4 = 1;
- 7fe:	81 e0       	ldi	r24, 0x01	; 1
- 800:	89 bb       	out	0x19, r24	; 25
-		PORTB ^= (1 << 7);
- 802:	85 b1       	in	r24, 0x05	; 5
- 804:	80 58       	subi	r24, 0x80	; 128
- 806:	85 b9       	out	0x05, r24	; 5
-	}
-	if(buzzer == 1){
- 808:	80 91 69 03 	lds	r24, 0x0369	; 0x800369 <buzzer>
- 80c:	81 30       	cpi	r24, 0x01	; 1
- 80e:	09 f0       	breq	.+2      	; 0x812 <__vector_45+0x48>
- 810:	6c c0       	rjmp	.+216    	; 0x8ea <__vector_45+0x120>
-		if(onda == 0){
- 812:	80 91 64 03 	lds	r24, 0x0364	; 0x800364 <onda>
- 816:	81 11       	cpse	r24, r1
- 818:	33 c0       	rjmp	.+102    	; 0x880 <__vector_45+0xb6>
-			TCCR4A = 0; //modo normal
- 81a:	10 92 a0 00 	sts	0x00A0, r1	; 0x8000a0 <__TEXT_REGION_LENGTH__+0x7c00a0>
-			TCCR4B = 0x1; //sem prescaler
- 81e:	81 e0       	ldi	r24, 0x01	; 1
- 820:	80 93 a1 00 	sts	0x00A1, r24	; 0x8000a1 <__TEXT_REGION_LENGTH__+0x7c00a1>
-			TCNT4 = 45536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 20000 contagens p bater meio periodo da onda de 400hz
- 824:	20 ee       	ldi	r18, 0xE0	; 224
- 826:	31 eb       	ldi	r19, 0xB1	; 177
- 828:	30 93 a5 00 	sts	0x00A5, r19	; 0x8000a5 <__TEXT_REGION_LENGTH__+0x7c00a5>
- 82c:	20 93 a4 00 	sts	0x00A4, r18	; 0x8000a4 <__TEXT_REGION_LENGTH__+0x7c00a4>
-			TIFR4 = 1;
- 830:	89 bb       	out	0x19, r24	; 25
-			PORTB ^= (1 << 6);
- 832:	95 b1       	in	r25, 0x05	; 5
- 834:	80 e4       	ldi	r24, 0x40	; 64
- 836:	89 27       	eor	r24, r25
- 838:	85 b9       	out	0x05, r24	; 5
-			ciclos_buzzer++;
- 83a:	80 91 65 03 	lds	r24, 0x0365	; 0x800365 <ciclos_buzzer>
- 83e:	90 91 66 03 	lds	r25, 0x0366	; 0x800366 <ciclos_buzzer+0x1>
- 842:	a0 91 67 03 	lds	r26, 0x0367	; 0x800367 <ciclos_buzzer+0x2>
- 846:	b0 91 68 03 	lds	r27, 0x0368	; 0x800368 <ciclos_buzzer+0x3>
- 84a:	01 96       	adiw	r24, 0x01	; 1
- 84c:	a1 1d       	adc	r26, r1
- 84e:	b1 1d       	adc	r27, r1
- 850:	80 93 65 03 	sts	0x0365, r24	; 0x800365 <ciclos_buzzer>
- 854:	90 93 66 03 	sts	0x0366, r25	; 0x800366 <ciclos_buzzer+0x1>
- 858:	a0 93 67 03 	sts	0x0367, r26	; 0x800367 <ciclos_buzzer+0x2>
- 85c:	b0 93 68 03 	sts	0x0368, r27	; 0x800368 <ciclos_buzzer+0x3>
-			if(ciclos_buzzer == 400){
- 860:	80 39       	cpi	r24, 0x90	; 144
- 862:	91 40       	sbci	r25, 0x01	; 1
- 864:	a1 05       	cpc	r26, r1
- 866:	b1 05       	cpc	r27, r1
- 868:	59 f4       	brne	.+22     	; 0x880 <__vector_45+0xb6>
-				ciclos_buzzer = 0;
- 86a:	10 92 65 03 	sts	0x0365, r1	; 0x800365 <ciclos_buzzer>
- 86e:	10 92 66 03 	sts	0x0366, r1	; 0x800366 <ciclos_buzzer+0x1>
- 872:	10 92 67 03 	sts	0x0367, r1	; 0x800367 <ciclos_buzzer+0x2>
- 876:	10 92 68 03 	sts	0x0368, r1	; 0x800368 <ciclos_buzzer+0x3>
-				onda = 1;
- 87a:	81 e0       	ldi	r24, 0x01	; 1
- 87c:	80 93 64 03 	sts	0x0364, r24	; 0x800364 <onda>
-			}
-		}
-		if(onda == 1){
- 880:	80 91 64 03 	lds	r24, 0x0364	; 0x800364 <onda>
- 884:	81 30       	cpi	r24, 0x01	; 1
- 886:	89 f5       	brne	.+98     	; 0x8ea <__vector_45+0x120>
-			TCCR4A = 0; //modo normal
- 888:	10 92 a0 00 	sts	0x00A0, r1	; 0x8000a0 <__TEXT_REGION_LENGTH__+0x7c00a0>
-			TCCR4B = 0x1; //sem prescaler
- 88c:	80 93 a1 00 	sts	0x00A1, r24	; 0x8000a1 <__TEXT_REGION_LENGTH__+0x7c00a1>
-			TCNT4 = 55536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 10000 contagens p bater meio periodo da onda de 800hz
- 890:	20 ef       	ldi	r18, 0xF0	; 240
- 892:	38 ed       	ldi	r19, 0xD8	; 216
- 894:	30 93 a5 00 	sts	0x00A5, r19	; 0x8000a5 <__TEXT_REGION_LENGTH__+0x7c00a5>
- 898:	20 93 a4 00 	sts	0x00A4, r18	; 0x8000a4 <__TEXT_REGION_LENGTH__+0x7c00a4>
-			TIFR4 = 1;
- 89c:	89 bb       	out	0x19, r24	; 25
-			PORTB ^= (1 << 6);
- 89e:	95 b1       	in	r25, 0x05	; 5
- 8a0:	80 e4       	ldi	r24, 0x40	; 64
- 8a2:	89 27       	eor	r24, r25
- 8a4:	85 b9       	out	0x05, r24	; 5
-			ciclos_buzzer++;
- 8a6:	80 91 65 03 	lds	r24, 0x0365	; 0x800365 <ciclos_buzzer>
- 8aa:	90 91 66 03 	lds	r25, 0x0366	; 0x800366 <ciclos_buzzer+0x1>
- 8ae:	a0 91 67 03 	lds	r26, 0x0367	; 0x800367 <ciclos_buzzer+0x2>
- 8b2:	b0 91 68 03 	lds	r27, 0x0368	; 0x800368 <ciclos_buzzer+0x3>
- 8b6:	01 96       	adiw	r24, 0x01	; 1
- 8b8:	a1 1d       	adc	r26, r1
- 8ba:	b1 1d       	adc	r27, r1
- 8bc:	80 93 65 03 	sts	0x0365, r24	; 0x800365 <ciclos_buzzer>
- 8c0:	90 93 66 03 	sts	0x0366, r25	; 0x800366 <ciclos_buzzer+0x1>
- 8c4:	a0 93 67 03 	sts	0x0367, r26	; 0x800367 <ciclos_buzzer+0x2>
- 8c8:	b0 93 68 03 	sts	0x0368, r27	; 0x800368 <ciclos_buzzer+0x3>
-			if(ciclos_buzzer == 800){
- 8cc:	80 32       	cpi	r24, 0x20	; 32
- 8ce:	93 40       	sbci	r25, 0x03	; 3
- 8d0:	a1 05       	cpc	r26, r1
- 8d2:	b1 05       	cpc	r27, r1
- 8d4:	51 f4       	brne	.+20     	; 0x8ea <__vector_45+0x120>
-				ciclos_buzzer = 0;
- 8d6:	10 92 65 03 	sts	0x0365, r1	; 0x800365 <ciclos_buzzer>
- 8da:	10 92 66 03 	sts	0x0366, r1	; 0x800366 <ciclos_buzzer+0x1>
- 8de:	10 92 67 03 	sts	0x0367, r1	; 0x800367 <ciclos_buzzer+0x2>
- 8e2:	10 92 68 03 	sts	0x0368, r1	; 0x800368 <ciclos_buzzer+0x3>
-				onda = 0;
- 8e6:	10 92 64 03 	sts	0x0364, r1	; 0x800364 <onda>
-			}
-		}
-		
-	}
- 8ea:	bf 91       	pop	r27
- 8ec:	af 91       	pop	r26
- 8ee:	9f 91       	pop	r25
- 8f0:	8f 91       	pop	r24
- 8f2:	3f 91       	pop	r19
- 8f4:	2f 91       	pop	r18
- 8f6:	0f 90       	pop	r0
- 8f8:	0f be       	out	0x3f, r0	; 63
- 8fa:	0f 90       	pop	r0
- 8fc:	1f 90       	pop	r1
- 8fe:	18 95       	reti
+00000864 <config_timer1>:
+	sei();
+	TCCR4A = 0; //modo normal
+	TCCR4B = 0x3; //prescaler de 64
+	TCNT4 = 3036; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
+	TIMSK4 = 1;
+	led2hz = 1;
+ 864:	78 94       	sei
+ 866:	10 92 80 00 	sts	0x0080, r1	; 0x800080 <__TEXT_REGION_LENGTH__+0x7c0080>
+ 86a:	10 92 85 00 	sts	0x0085, r1	; 0x800085 <__TEXT_REGION_LENGTH__+0x7c0085>
+ 86e:	10 92 84 00 	sts	0x0084, r1	; 0x800084 <__TEXT_REGION_LENGTH__+0x7c0084>
+ 872:	81 e0       	ldi	r24, 0x01	; 1
+ 874:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <__TEXT_REGION_LENGTH__+0x7c006f>
+ 878:	86 bb       	out	0x16, r24	; 22
+ 87a:	08 95       	ret
 
-00000900 <config_timer1>:
+0000087c <onda_800hz>:
+}
+
+
+//versão sem interrupção:
+void onda_800hz(){
 	TCCR5A = 0; //modo normal
+ 87c:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <__TEXT_REGION_LENGTH__+0x7c0120>
 	TCCR5B = 0x1; //sem prescaler
-	TCNT5 = 45536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 20000 contagens p bater meio periodo da onda de 400hz
+ 880:	81 e0       	ldi	r24, 0x01	; 1
+ 882:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
+	TCNT5 = 55536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 10000 contagens p bater meio periodo da onda de 800hz
+ 886:	20 ef       	ldi	r18, 0xF0	; 240
+ 888:	38 ed       	ldi	r19, 0xD8	; 216
+ 88a:	30 93 25 01 	sts	0x0125, r19	; 0x800125 <__TEXT_REGION_LENGTH__+0x7c0125>
+ 88e:	20 93 24 01 	sts	0x0124, r18	; 0x800124 <__TEXT_REGION_LENGTH__+0x7c0124>
 	TIFR5 = (1<<0); //limpa flag
+ 892:	8a bb       	out	0x1a, r24	; 26
 	while((TIFR5 & (1<<0)) == 0); //espera overflow
+ 894:	d0 9b       	sbis	0x1a, 0	; 26
+ 896:	fe cf       	rjmp	.-4      	; 0x894 <onda_800hz+0x18>
 }
- 900:	78 94       	sei
- 902:	10 92 80 00 	sts	0x0080, r1	; 0x800080 <__TEXT_REGION_LENGTH__+0x7c0080>
- 906:	87 e7       	ldi	r24, 0x77	; 119
- 908:	98 e6       	ldi	r25, 0x68	; 104
- 90a:	90 93 85 00 	sts	0x0085, r25	; 0x800085 <__TEXT_REGION_LENGTH__+0x7c0085>
- 90e:	80 93 84 00 	sts	0x0084, r24	; 0x800084 <__TEXT_REGION_LENGTH__+0x7c0084>
- 912:	81 e0       	ldi	r24, 0x01	; 1
- 914:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <__TEXT_REGION_LENGTH__+0x7c006f>
- 918:	86 bb       	out	0x16, r24	; 22
- 91a:	08 95       	ret
+ 898:	08 95       	ret
 
-0000091c <onda_400hzint>:
- 91c:	78 94       	sei
- 91e:	10 92 a0 00 	sts	0x00A0, r1	; 0x8000a0 <__TEXT_REGION_LENGTH__+0x7c00a0>
- 922:	81 e0       	ldi	r24, 0x01	; 1
- 924:	80 93 a1 00 	sts	0x00A1, r24	; 0x8000a1 <__TEXT_REGION_LENGTH__+0x7c00a1>
- 928:	20 ee       	ldi	r18, 0xE0	; 224
- 92a:	31 eb       	ldi	r19, 0xB1	; 177
- 92c:	30 93 a5 00 	sts	0x00A5, r19	; 0x8000a5 <__TEXT_REGION_LENGTH__+0x7c00a5>
- 930:	20 93 a4 00 	sts	0x00A4, r18	; 0x8000a4 <__TEXT_REGION_LENGTH__+0x7c00a4>
- 934:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <__TEXT_REGION_LENGTH__+0x7c0072>
- 938:	08 95       	ret
+0000089a <onda_400hz>:
+void onda_400hz(){
+	TCCR5A = 0; //modo normal
+ 89a:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <__TEXT_REGION_LENGTH__+0x7c0120>
+	TCCR5B = 0x1; //sem prescaler
+ 89e:	81 e0       	ldi	r24, 0x01	; 1
+ 8a0:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
+	TCNT5 = 45536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 20000 contagens p bater meio periodo da onda de 400hz
+ 8a4:	20 ee       	ldi	r18, 0xE0	; 224
+ 8a6:	31 eb       	ldi	r19, 0xB1	; 177
+ 8a8:	30 93 25 01 	sts	0x0125, r19	; 0x800125 <__TEXT_REGION_LENGTH__+0x7c0125>
+ 8ac:	20 93 24 01 	sts	0x0124, r18	; 0x800124 <__TEXT_REGION_LENGTH__+0x7c0124>
+	TIFR5 = (1<<0); //limpa flag
+ 8b0:	8a bb       	out	0x1a, r24	; 26
+	while((TIFR5 & (1<<0)) == 0); //espera overflow
+ 8b2:	d0 9b       	sbis	0x1a, 0	; 26
+ 8b4:	fe cf       	rjmp	.-4      	; 0x8b2 <onda_400hz+0x18>
+}
+ 8b6:	08 95       	ret
 
-0000093a <led2hz_int>:
- 93a:	78 94       	sei
- 93c:	10 92 a0 00 	sts	0x00A0, r1	; 0x8000a0 <__TEXT_REGION_LENGTH__+0x7c00a0>
- 940:	83 e0       	ldi	r24, 0x03	; 3
- 942:	80 93 a1 00 	sts	0x00A1, r24	; 0x8000a1 <__TEXT_REGION_LENGTH__+0x7c00a1>
- 946:	8c ed       	ldi	r24, 0xDC	; 220
- 948:	9b e0       	ldi	r25, 0x0B	; 11
- 94a:	90 93 a5 00 	sts	0x00A5, r25	; 0x8000a5 <__TEXT_REGION_LENGTH__+0x7c00a5>
- 94e:	80 93 a4 00 	sts	0x00A4, r24	; 0x8000a4 <__TEXT_REGION_LENGTH__+0x7c00a4>
- 952:	81 e0       	ldi	r24, 0x01	; 1
- 954:	80 93 72 00 	sts	0x0072, r24	; 0x800072 <__TEXT_REGION_LENGTH__+0x7c0072>
- 958:	80 93 6a 03 	sts	0x036A, r24	; 0x80036a <led2hz>
- 95c:	08 95       	ret
-
-0000095e <delay_250ms>:
+000008b8 <delay_250ms>:
 void delay_250ms(){
 	TCCR5A = 0; //modo normal
- 95e:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <__TEXT_REGION_LENGTH__+0x7c0120>
+ 8b8:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <__TEXT_REGION_LENGTH__+0x7c0120>
 	TCCR5B = 0x3; //prescaler de 64
- 962:	83 e0       	ldi	r24, 0x03	; 3
- 964:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
+ 8bc:	83 e0       	ldi	r24, 0x03	; 3
+ 8be:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
 	TCNT5 = 3036; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
- 968:	8c ed       	ldi	r24, 0xDC	; 220
- 96a:	9b e0       	ldi	r25, 0x0B	; 11
- 96c:	90 93 25 01 	sts	0x0125, r25	; 0x800125 <__TEXT_REGION_LENGTH__+0x7c0125>
- 970:	80 93 24 01 	sts	0x0124, r24	; 0x800124 <__TEXT_REGION_LENGTH__+0x7c0124>
+ 8c2:	8c ed       	ldi	r24, 0xDC	; 220
+ 8c4:	9b e0       	ldi	r25, 0x0B	; 11
+ 8c6:	90 93 25 01 	sts	0x0125, r25	; 0x800125 <__TEXT_REGION_LENGTH__+0x7c0125>
+ 8ca:	80 93 24 01 	sts	0x0124, r24	; 0x800124 <__TEXT_REGION_LENGTH__+0x7c0124>
 	TIFR5 = (1<<0); //limpa flag
- 974:	81 e0       	ldi	r24, 0x01	; 1
- 976:	8a bb       	out	0x1a, r24	; 26
+ 8ce:	81 e0       	ldi	r24, 0x01	; 1
+ 8d0:	8a bb       	out	0x1a, r24	; 26
 	while((TIFR5 & (1<<0)) == 0); //espera overflow
- 978:	d0 9b       	sbis	0x1a, 0	; 26
- 97a:	fe cf       	rjmp	.-4      	; 0x978 <delay_250ms+0x1a>
+ 8d2:	d0 9b       	sbis	0x1a, 0	; 26
+ 8d4:	fe cf       	rjmp	.-4      	; 0x8d2 <delay_250ms+0x1a>
 }
- 97c:	08 95       	ret
+ 8d6:	08 95       	ret
 
-0000097e <delay_200ms>:
+000008d8 <delay_200ms>:
 
 void delay_200ms(){
 	TCCR5A = 0; //modo normal
- 97e:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <__TEXT_REGION_LENGTH__+0x7c0120>
+ 8d8:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <__TEXT_REGION_LENGTH__+0x7c0120>
 	TCCR5B = 0x3; //prescaler de 64
- 982:	83 e0       	ldi	r24, 0x03	; 3
- 984:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
+ 8dc:	83 e0       	ldi	r24, 0x03	; 3
+ 8de:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
 	TCNT5 = 15536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 3200000/64=50000 contagens p bater o timer do delay de 200ms
- 988:	80 eb       	ldi	r24, 0xB0	; 176
- 98a:	9c e3       	ldi	r25, 0x3C	; 60
- 98c:	90 93 25 01 	sts	0x0125, r25	; 0x800125 <__TEXT_REGION_LENGTH__+0x7c0125>
- 990:	80 93 24 01 	sts	0x0124, r24	; 0x800124 <__TEXT_REGION_LENGTH__+0x7c0124>
+ 8e2:	80 eb       	ldi	r24, 0xB0	; 176
+ 8e4:	9c e3       	ldi	r25, 0x3C	; 60
+ 8e6:	90 93 25 01 	sts	0x0125, r25	; 0x800125 <__TEXT_REGION_LENGTH__+0x7c0125>
+ 8ea:	80 93 24 01 	sts	0x0124, r24	; 0x800124 <__TEXT_REGION_LENGTH__+0x7c0124>
 	TIFR5 = (1<<0); //limpa flag
- 994:	81 e0       	ldi	r24, 0x01	; 1
- 996:	8a bb       	out	0x1a, r24	; 26
+ 8ee:	81 e0       	ldi	r24, 0x01	; 1
+ 8f0:	8a bb       	out	0x1a, r24	; 26
 	while((TIFR5 & (1<<0)) == 0); //espera overflow
- 998:	d0 9b       	sbis	0x1a, 0	; 26
- 99a:	fe cf       	rjmp	.-4      	; 0x998 <delay_200ms+0x1a>
+ 8f2:	d0 9b       	sbis	0x1a, 0	; 26
+ 8f4:	fe cf       	rjmp	.-4      	; 0x8f2 <delay_200ms+0x1a>
 }
- 99c:	08 95       	ret
+ 8f6:	08 95       	ret
 
-0000099e <delay_1s>:
+000008f8 <delay_1s>:
 
 
 //esse delay acho q n vai precisar interrupção
 void delay_1s(){
 	TCCR5A = 0; //modo normal
- 99e:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <__TEXT_REGION_LENGTH__+0x7c0120>
+ 8f8:	10 92 20 01 	sts	0x0120, r1	; 0x800120 <__TEXT_REGION_LENGTH__+0x7c0120>
 	TCCR5B = 0x4; //prescaler de 256
- 9a2:	84 e0       	ldi	r24, 0x04	; 4
- 9a4:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
+ 8fc:	84 e0       	ldi	r24, 0x04	; 4
+ 8fe:	80 93 21 01 	sts	0x0121, r24	; 0x800121 <__TEXT_REGION_LENGTH__+0x7c0121>
 	TCNT5 = 3036; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
- 9a8:	8c ed       	ldi	r24, 0xDC	; 220
- 9aa:	9b e0       	ldi	r25, 0x0B	; 11
- 9ac:	90 93 25 01 	sts	0x0125, r25	; 0x800125 <__TEXT_REGION_LENGTH__+0x7c0125>
- 9b0:	80 93 24 01 	sts	0x0124, r24	; 0x800124 <__TEXT_REGION_LENGTH__+0x7c0124>
+ 902:	8c ed       	ldi	r24, 0xDC	; 220
+ 904:	9b e0       	ldi	r25, 0x0B	; 11
+ 906:	90 93 25 01 	sts	0x0125, r25	; 0x800125 <__TEXT_REGION_LENGTH__+0x7c0125>
+ 90a:	80 93 24 01 	sts	0x0124, r24	; 0x800124 <__TEXT_REGION_LENGTH__+0x7c0124>
 	TIFR5 = (1<<0); //limpa flag
- 9b4:	81 e0       	ldi	r24, 0x01	; 1
- 9b6:	8a bb       	out	0x1a, r24	; 26
+ 90e:	81 e0       	ldi	r24, 0x01	; 1
+ 910:	8a bb       	out	0x1a, r24	; 26
 	while((TIFR5 & (1<<0)) == 0); //espera overflow
- 9b8:	d0 9b       	sbis	0x1a, 0	; 26
- 9ba:	fe cf       	rjmp	.-4      	; 0x9b8 <delay_1s+0x1a>
+ 912:	d0 9b       	sbis	0x1a, 0	; 26
+ 914:	fe cf       	rjmp	.-4      	; 0x912 <delay_1s+0x1a>
 }
- 9bc:	08 95       	ret
+ 916:	08 95       	ret
 
-000009be <lendo_senha>:
+00000918 <lendo_senha>:
 // }
 
 
 void lendo_senha(char tecla){
 			
 	senha[nr_digitados] = tecla;
- 9be:	e0 91 73 03 	lds	r30, 0x0373	; 0x800373 <nr_digitados>
- 9c2:	f0 91 74 03 	lds	r31, 0x0374	; 0x800374 <nr_digitados+0x1>
- 9c6:	e3 59       	subi	r30, 0x93	; 147
- 9c8:	fc 4f       	sbci	r31, 0xFC	; 252
- 9ca:	80 83       	st	Z, r24
+ 918:	e0 91 7c 03 	lds	r30, 0x037C	; 0x80037c <nr_digitados>
+ 91c:	f0 91 7d 03 	lds	r31, 0x037D	; 0x80037d <nr_digitados+0x1>
+ 920:	ea 58       	subi	r30, 0x8A	; 138
+ 922:	fc 4f       	sbci	r31, 0xFC	; 252
+ 924:	80 83       	st	Z, r24
 			
 	//envia asterisco
 	send_data(0x2A);
- 9cc:	8a e2       	ldi	r24, 0x2A	; 42
- 9ce:	92 dd       	rcall	.-1244   	; 0x4f4 <send_data>
+ 926:	8a e2       	ldi	r24, 0x2A	; 42
+ 928:	36 de       	rcall	.-916    	; 0x596 <send_data>
 	nr_digitados++;
- 9d0:	80 91 73 03 	lds	r24, 0x0373	; 0x800373 <nr_digitados>
- 9d4:	90 91 74 03 	lds	r25, 0x0374	; 0x800374 <nr_digitados+0x1>
- 9d8:	01 96       	adiw	r24, 0x01	; 1
- 9da:	90 93 74 03 	sts	0x0374, r25	; 0x800374 <nr_digitados+0x1>
- 9de:	80 93 73 03 	sts	0x0373, r24	; 0x800373 <nr_digitados>
- 9e2:	08 95       	ret
+ 92a:	80 91 7c 03 	lds	r24, 0x037C	; 0x80037c <nr_digitados>
+ 92e:	90 91 7d 03 	lds	r25, 0x037D	; 0x80037d <nr_digitados+0x1>
+ 932:	01 96       	adiw	r24, 0x01	; 1
+ 934:	90 93 7d 03 	sts	0x037D, r25	; 0x80037d <nr_digitados+0x1>
+ 938:	80 93 7c 03 	sts	0x037C, r24	; 0x80037c <nr_digitados>
+ 93c:	08 95       	ret
 
-000009e4 <subRotinaTrocaSenha>:
+0000093e <subRotinaTrocaSenha>:
 	
 }
 
 const char* subRotinaTrocaSenha()
 {
 	for (int i = 0; i < 5; i++) {
- 9e4:	80 e0       	ldi	r24, 0x00	; 0
- 9e6:	90 e0       	ldi	r25, 0x00	; 0
- 9e8:	05 c0       	rjmp	.+10     	; 0x9f4 <subRotinaTrocaSenha+0x10>
+ 93e:	80 e0       	ldi	r24, 0x00	; 0
+ 940:	90 e0       	ldi	r25, 0x00	; 0
+ 942:	05 c0       	rjmp	.+10     	; 0x94e <subRotinaTrocaSenha+0x10>
 		senha[i] = '\0';
- 9ea:	fc 01       	movw	r30, r24
- 9ec:	e3 59       	subi	r30, 0x93	; 147
- 9ee:	fc 4f       	sbci	r31, 0xFC	; 252
- 9f0:	10 82       	st	Z, r1
+ 944:	fc 01       	movw	r30, r24
+ 946:	ea 58       	subi	r30, 0x8A	; 138
+ 948:	fc 4f       	sbci	r31, 0xFC	; 252
+ 94a:	10 82       	st	Z, r1
 	
 }
 
 const char* subRotinaTrocaSenha()
 {
 	for (int i = 0; i < 5; i++) {
- 9f2:	01 96       	adiw	r24, 0x01	; 1
- 9f4:	85 30       	cpi	r24, 0x05	; 5
- 9f6:	91 05       	cpc	r25, r1
- 9f8:	c4 f3       	brlt	.-16     	; 0x9ea <subRotinaTrocaSenha+0x6>
+ 94c:	01 96       	adiw	r24, 0x01	; 1
+ 94e:	85 30       	cpi	r24, 0x05	; 5
+ 950:	91 05       	cpc	r25, r1
+ 952:	c4 f3       	brlt	.-16     	; 0x944 <subRotinaTrocaSenha+0x6>
 		senha[i] = '\0';
 	}
 	nr_digitados = 0;
- 9fa:	10 92 74 03 	sts	0x0374, r1	; 0x800374 <nr_digitados+0x1>
- 9fe:	10 92 73 03 	sts	0x0373, r1	; 0x800373 <nr_digitados>
+ 954:	10 92 7d 03 	sts	0x037D, r1	; 0x80037d <nr_digitados+0x1>
+ 958:	10 92 7c 03 	sts	0x037C, r1	; 0x80037c <nr_digitados>
 
 	while(nr_digitados < 5)
- a02:	0c c0       	rjmp	.+24     	; 0xa1c <subRotinaTrocaSenha+0x38>
+ 95c:	0b c0       	rjmp	.+22     	; 0x974 <subRotinaTrocaSenha+0x36>
 	{
 		if(nr_digitados < 5){
- a04:	05 97       	sbiw	r24, 0x05	; 5
- a06:	54 f4       	brge	.+20     	; 0xa1c <subRotinaTrocaSenha+0x38>
+ 95e:	05 97       	sbiw	r24, 0x05	; 5
+ 960:	4c f4       	brge	.+18     	; 0x974 <subRotinaTrocaSenha+0x36>
 			tecla = procuraTecla();
- a08:	46 dd       	rcall	.-1396   	; 0x496 <procuraTecla>
- a0a:	80 93 76 03 	sts	0x0376, r24	; 0x800376 <tecla>
-			delay_250ms();
- a0e:	a7 df       	rcall	.-178    	; 0x95e <delay_250ms>
- a10:	8f e0       	ldi	r24, 0x0F	; 15
+ 962:	d6 dd       	rcall	.-1108   	; 0x510 <procuraTecla>
+ 964:	80 93 7f 03 	sts	0x037F, r24	; 0x80037f <tecla>
 			PORTK = 0b00001111;
- a12:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
- a16:	80 91 76 03 	lds	r24, 0x0376	; 0x800376 <tecla>
+ 968:	8f e0       	ldi	r24, 0x0F	; 15
+ 96a:	80 93 08 01 	sts	0x0108, r24	; 0x800108 <__TEXT_REGION_LENGTH__+0x7c0108>
 			lendo_senha(tecla);
- a1a:	d1 df       	rcall	.-94     	; 0x9be <lendo_senha>
- a1c:	80 91 73 03 	lds	r24, 0x0373	; 0x800373 <nr_digitados>
+ 96e:	80 91 7f 03 	lds	r24, 0x037F	; 0x80037f <tecla>
+ 972:	d2 df       	rcall	.-92     	; 0x918 <lendo_senha>
 	for (int i = 0; i < 5; i++) {
 		senha[i] = '\0';
 	}
 	nr_digitados = 0;
 
 	while(nr_digitados < 5)
- a20:	90 91 74 03 	lds	r25, 0x0374	; 0x800374 <nr_digitados+0x1>
- a24:	85 30       	cpi	r24, 0x05	; 5
- a26:	91 05       	cpc	r25, r1
- a28:	6c f3       	brlt	.-38     	; 0xa04 <subRotinaTrocaSenha+0x20>
- a2a:	8d e6       	ldi	r24, 0x6D	; 109
+ 974:	80 91 7c 03 	lds	r24, 0x037C	; 0x80037c <nr_digitados>
+ 978:	90 91 7d 03 	lds	r25, 0x037D	; 0x80037d <nr_digitados+0x1>
+ 97c:	85 30       	cpi	r24, 0x05	; 5
+ 97e:	91 05       	cpc	r25, r1
+ 980:	74 f3       	brlt	.-36     	; 0x95e <subRotinaTrocaSenha+0x20>
 			PORTK = 0b00001111;
 			lendo_senha(tecla);
 		}
 	}
 	return senha;
 }
- a2c:	93 e0       	ldi	r25, 0x03	; 3
- a2e:	08 95       	ret
+ 982:	86 e7       	ldi	r24, 0x76	; 118
+ 984:	93 e0       	ldi	r25, 0x03	; 3
+ 986:	08 95       	ret
 
-00000a30 <validar_senha>:
- a30:	64 e2       	ldi	r22, 0x24	; 36
+00000988 <validar_senha>:
 
 const char* validar_senha(){
 	if(!strcmp(senha,senhas.usuario1)){
- a32:	72 e0       	ldi	r23, 0x02	; 2
- a34:	8d e6       	ldi	r24, 0x6D	; 109
- a36:	93 e0       	ldi	r25, 0x03	; 3
- a38:	78 d0       	rcall	.+240    	; 0xb2a <strcmp>
- a3a:	89 2b       	or	r24, r25
- a3c:	f9 f0       	breq	.+62     	; 0xa7c <validar_senha+0x4c>
+ 988:	64 e2       	ldi	r22, 0x24	; 36
+ 98a:	72 e0       	ldi	r23, 0x02	; 2
+ 98c:	86 e7       	ldi	r24, 0x76	; 118
+ 98e:	93 e0       	ldi	r25, 0x03	; 3
+ 990:	6a d0       	rcall	.+212    	; 0xa66 <strcmp>
+ 992:	89 2b       	or	r24, r25
+ 994:	f9 f0       	breq	.+62     	; 0x9d4 <validar_senha+0x4c>
 		return "usuario1";
 	}else if(!strcmp(senha,senhas.usuario2)){
- a3e:	6a e2       	ldi	r22, 0x2A	; 42
- a40:	72 e0       	ldi	r23, 0x02	; 2
- a42:	8d e6       	ldi	r24, 0x6D	; 109
- a44:	93 e0       	ldi	r25, 0x03	; 3
- a46:	71 d0       	rcall	.+226    	; 0xb2a <strcmp>
- a48:	89 2b       	or	r24, r25
- a4a:	d9 f0       	breq	.+54     	; 0xa82 <validar_senha+0x52>
+ 996:	6a e2       	ldi	r22, 0x2A	; 42
+ 998:	72 e0       	ldi	r23, 0x02	; 2
+ 99a:	86 e7       	ldi	r24, 0x76	; 118
+ 99c:	93 e0       	ldi	r25, 0x03	; 3
+ 99e:	63 d0       	rcall	.+198    	; 0xa66 <strcmp>
+ 9a0:	89 2b       	or	r24, r25
+ 9a2:	d9 f0       	breq	.+54     	; 0x9da <validar_senha+0x52>
 		return "usuario2";
 	}else if(!strcmp(senha,senhas.adm)){
- a4c:	60 e3       	ldi	r22, 0x30	; 48
- a4e:	72 e0       	ldi	r23, 0x02	; 2
- a50:	8d e6       	ldi	r24, 0x6D	; 109
- a52:	93 e0       	ldi	r25, 0x03	; 3
- a54:	6a d0       	rcall	.+212    	; 0xb2a <strcmp>
- a56:	89 2b       	or	r24, r25
- a58:	b9 f0       	breq	.+46     	; 0xa88 <validar_senha+0x58>
+ 9a4:	60 e3       	ldi	r22, 0x30	; 48
+ 9a6:	72 e0       	ldi	r23, 0x02	; 2
+ 9a8:	86 e7       	ldi	r24, 0x76	; 118
+ 9aa:	93 e0       	ldi	r25, 0x03	; 3
+ 9ac:	5c d0       	rcall	.+184    	; 0xa66 <strcmp>
+ 9ae:	89 2b       	or	r24, r25
+ 9b0:	b9 f0       	breq	.+46     	; 0x9e0 <validar_senha+0x58>
 		return "adm";
 	}else if(!strcmp(senha,senhas.central)){
- a5a:	6e e1       	ldi	r22, 0x1E	; 30
- a5c:	72 e0       	ldi	r23, 0x02	; 2
- a5e:	8d e6       	ldi	r24, 0x6D	; 109
- a60:	93 e0       	ldi	r25, 0x03	; 3
- a62:	63 d0       	rcall	.+198    	; 0xb2a <strcmp>
- a64:	89 2b       	or	r24, r25
- a66:	99 f0       	breq	.+38     	; 0xa8e <validar_senha+0x5e>
+ 9b2:	6e e1       	ldi	r22, 0x1E	; 30
+ 9b4:	72 e0       	ldi	r23, 0x02	; 2
+ 9b6:	86 e7       	ldi	r24, 0x76	; 118
+ 9b8:	93 e0       	ldi	r25, 0x03	; 3
+ 9ba:	55 d0       	rcall	.+170    	; 0xa66 <strcmp>
+ 9bc:	89 2b       	or	r24, r25
+ 9be:	99 f0       	breq	.+38     	; 0x9e6 <validar_senha+0x5e>
 		return "central";
 	}else if(!strcmp(senha,senhas.intruso)){
- a68:	66 e3       	ldi	r22, 0x36	; 54
- a6a:	72 e0       	ldi	r23, 0x02	; 2
- a6c:	8d e6       	ldi	r24, 0x6D	; 109
- a6e:	93 e0       	ldi	r25, 0x03	; 3
- a70:	5c d0       	rcall	.+184    	; 0xb2a <strcmp>
- a72:	89 2b       	or	r24, r25
- a74:	79 f4       	brne	.+30     	; 0xa94 <validar_senha+0x64>
+ 9c0:	66 e3       	ldi	r22, 0x36	; 54
+ 9c2:	72 e0       	ldi	r23, 0x02	; 2
+ 9c4:	86 e7       	ldi	r24, 0x76	; 118
+ 9c6:	93 e0       	ldi	r25, 0x03	; 3
+ 9c8:	4e d0       	rcall	.+156    	; 0xa66 <strcmp>
+ 9ca:	89 2b       	or	r24, r25
+ 9cc:	79 f4       	brne	.+30     	; 0x9ec <validar_senha+0x64>
 		return "intruso";
- a76:	89 e2       	ldi	r24, 0x29	; 41
- a78:	93 e0       	ldi	r25, 0x03	; 3
- a7a:	08 95       	ret
+ 9ce:	8a e3       	ldi	r24, 0x3A	; 58
+ 9d0:	93 e0       	ldi	r25, 0x03	; 3
+ 9d2:	08 95       	ret
 	return senha;
 }
 
 const char* validar_senha(){
 	if(!strcmp(senha,senhas.usuario1)){
 		return "usuario1";
- a7c:	8b e0       	ldi	r24, 0x0B	; 11
- a7e:	93 e0       	ldi	r25, 0x03	; 3
- a80:	08 95       	ret
+ 9d4:	8c e1       	ldi	r24, 0x1C	; 28
+ 9d6:	93 e0       	ldi	r25, 0x03	; 3
+ 9d8:	08 95       	ret
 	}else if(!strcmp(senha,senhas.usuario2)){
 		return "usuario2";
- a82:	84 e1       	ldi	r24, 0x14	; 20
- a84:	93 e0       	ldi	r25, 0x03	; 3
- a86:	08 95       	ret
+ 9da:	85 e2       	ldi	r24, 0x25	; 37
+ 9dc:	93 e0       	ldi	r25, 0x03	; 3
+ 9de:	08 95       	ret
 	}else if(!strcmp(senha,senhas.adm)){
 		return "adm";
- a88:	8d e1       	ldi	r24, 0x1D	; 29
- a8a:	93 e0       	ldi	r25, 0x03	; 3
- a8c:	08 95       	ret
+ 9e0:	8e e2       	ldi	r24, 0x2E	; 46
+ 9e2:	93 e0       	ldi	r25, 0x03	; 3
+ 9e4:	08 95       	ret
 	}else if(!strcmp(senha,senhas.central)){
 		return "central";
- a8e:	81 e2       	ldi	r24, 0x21	; 33
- a90:	93 e0       	ldi	r25, 0x03	; 3
- a92:	08 95       	ret
+ 9e6:	82 e3       	ldi	r24, 0x32	; 50
+ 9e8:	93 e0       	ldi	r25, 0x03	; 3
+ 9ea:	08 95       	ret
 	}else if(!strcmp(senha,senhas.intruso)){
 		return "intruso";
 	}else{
 		return "senha incorreta";
- a94:	81 e3       	ldi	r24, 0x31	; 49
- a96:	93 e0       	ldi	r25, 0x03	; 3
+ 9ec:	82 e4       	ldi	r24, 0x42	; 66
+ 9ee:	93 e0       	ldi	r25, 0x03	; 3
 	}
 	
 }
- a98:	08 95       	ret
+ 9f0:	08 95       	ret
 
-00000a9a <resultado_validacao>:
+000009f2 <resultado_validacao>:
 
 int resultado_validacao(){
- a9a:	0f 93       	push	r16
- a9c:	1f 93       	push	r17
- a9e:	cf 93       	push	r28
- aa0:	df 93       	push	r29
+ 9f2:	0f 93       	push	r16
+ 9f4:	1f 93       	push	r17
+ 9f6:	cf 93       	push	r28
+ 9f8:	df 93       	push	r29
 	
 	const char* validacao;
 	
 	validacao = validar_senha();
- aa2:	c6 df       	rcall	.-116    	; 0xa30 <validar_senha>
- aa4:	8c 01       	movw	r16, r24
+ 9fa:	c6 df       	rcall	.-116    	; 0x988 <validar_senha>
+ 9fc:	8c 01       	movw	r16, r24
 	
 	if( !strcmp(validacao,"senha incorreta")){
- aa6:	61 e3       	ldi	r22, 0x31	; 49
- aa8:	73 e0       	ldi	r23, 0x03	; 3
- aaa:	3f d0       	rcall	.+126    	; 0xb2a <strcmp>
- aac:	ec 01       	movw	r28, r24
- aae:	89 2b       	or	r24, r25
+ 9fe:	62 e4       	ldi	r22, 0x42	; 66
+ a00:	73 e0       	ldi	r23, 0x03	; 3
+ a02:	31 d0       	rcall	.+98     	; 0xa66 <strcmp>
+ a04:	ec 01       	movw	r28, r24
+ a06:	89 2b       	or	r24, r25
 		limpa_reseta_cursor();
- ab0:	71 f4       	brne	.+28     	; 0xace <resultado_validacao+0x34>
- ab2:	5e dd       	rcall	.-1348   	; 0x570 <limpa_reseta_cursor>
+ a08:	69 f4       	brne	.+26     	; 0xa24 <resultado_validacao+0x32>
+ a0a:	03 de       	rcall	.-1018   	; 0x612 <limpa_reseta_cursor>
 		nr_digitados = 0;
- ab4:	10 92 74 03 	sts	0x0374, r1	; 0x800374 <nr_digitados+0x1>
- ab8:	10 92 73 03 	sts	0x0373, r1	; 0x800373 <nr_digitados>
+ a0c:	10 92 7d 03 	sts	0x037D, r1	; 0x80037d <nr_digitados+0x1>
+ a10:	10 92 7c 03 	sts	0x037C, r1	; 0x80037c <nr_digitados>
 		send_string("SENHA INCORRETA");
- abc:	81 e4       	ldi	r24, 0x41	; 65
- abe:	93 e0       	ldi	r25, 0x03	; 3
+ a14:	82 e5       	ldi	r24, 0x52	; 82
+ a16:	93 e0       	ldi	r25, 0x03	; 3
 		proxima_linha();
- ac0:	4b dd       	rcall	.-1386   	; 0x558 <send_string>
+ a18:	f0 dd       	rcall	.-1056   	; 0x5fa <send_string>
 		send_string("SENHA:");
- ac2:	70 dd       	rcall	.-1312   	; 0x5a4 <proxima_linha>
- ac4:	83 ed       	ldi	r24, 0xD3	; 211
- ac6:	92 e0       	ldi	r25, 0x02	; 2
-		delay_250ms();
- ac8:	47 dd       	rcall	.-1394   	; 0x558 <send_string>
- aca:	49 df       	rcall	.-366    	; 0x95e <delay_250ms>
+ a1a:	15 de       	rcall	.-982    	; 0x646 <proxima_linha>
+ a1c:	83 ed       	ldi	r24, 0xD3	; 211
+ a1e:	92 e0       	ldi	r25, 0x02	; 2
+ a20:	ec dd       	rcall	.-1064   	; 0x5fa <send_string>
 		return 0;
- acc:	28 c0       	rjmp	.+80     	; 0xb1e <resultado_validacao+0x84>
+ a22:	1b c0       	rjmp	.+54     	; 0xa5a <resultado_validacao+0x68>
 	}else{
 		limpa_reseta_cursor();
- ace:	50 dd       	rcall	.-1376   	; 0x570 <limpa_reseta_cursor>
+ a24:	f6 dd       	rcall	.-1044   	; 0x612 <limpa_reseta_cursor>
 		nr_digitados = 0;
- ad0:	10 92 74 03 	sts	0x0374, r1	; 0x800374 <nr_digitados+0x1>
- ad4:	10 92 73 03 	sts	0x0373, r1	; 0x800373 <nr_digitados>
+ a26:	10 92 7d 03 	sts	0x037D, r1	; 0x80037d <nr_digitados+0x1>
+ a2a:	10 92 7c 03 	sts	0x037C, r1	; 0x80037c <nr_digitados>
 		send_string("SENHA CORRETA");
- ad8:	81 e5       	ldi	r24, 0x51	; 81
+ a2e:	82 e6       	ldi	r24, 0x62	; 98
+ a30:	93 e0       	ldi	r25, 0x03	; 3
 		if (strcmp(validacao, "adm") == 0){
- ada:	93 e0       	ldi	r25, 0x03	; 3
- adc:	3d dd       	rcall	.-1414   	; 0x558 <send_string>
- ade:	6d e1       	ldi	r22, 0x1D	; 29
- ae0:	73 e0       	ldi	r23, 0x03	; 3
- ae2:	c8 01       	movw	r24, r16
- ae4:	22 d0       	rcall	.+68     	; 0xb2a <strcmp>
- ae6:	89 2b       	or	r24, r25
+ a32:	e3 dd       	rcall	.-1082   	; 0x5fa <send_string>
+ a34:	6e e2       	ldi	r22, 0x2E	; 46
+ a36:	73 e0       	ldi	r23, 0x03	; 3
+ a38:	c8 01       	movw	r24, r16
+ a3a:	15 d0       	rcall	.+42     	; 0xa66 <strcmp>
 			subRotinaAdm();
- ae8:	29 f4       	brne	.+10     	; 0xaf4 <resultado_validacao+0x5a>
- aea:	b1 db       	rcall	.-2206   	; 0x24e <subRotinaAdm>
+ a3c:	ec 01       	movw	r28, r24
+ a3e:	89 2b       	or	r24, r25
 			limpa_reseta_cursor();
- aec:	41 dd       	rcall	.-1406   	; 0x570 <limpa_reseta_cursor>
- aee:	c1 e0       	ldi	r28, 0x01	; 1
-			TCCR1B = 0x05;
-			TIMSK1 = 1;
-		}else if(alarme_ativo == 1){
-			desativa_buzzer();
+ a40:	51 f4       	brne	.+20     	; 0xa56 <resultado_validacao+0x64>
+ a42:	4f dc       	rcall	.-1890   	; 0x2e2 <subRotinaAdm>
+			send_string("---ALARMICROS---");
+ a44:	e6 dd       	rcall	.-1076   	; 0x612 <limpa_reseta_cursor>
+ a46:	8a ed       	ldi	r24, 0xDA	; 218
+ a48:	92 e0       	ldi	r25, 0x02	; 2
+ a4a:	d7 dd       	rcall	.-1106   	; 0x5fa <send_string>
+			proxima_linha();
+ a4c:	fc dd       	rcall	.-1032   	; 0x646 <proxima_linha>
+ a4e:	83 ed       	ldi	r24, 0xD3	; 211
+			send_string("SENHA:");
+ a50:	92 e0       	ldi	r25, 0x02	; 2
+ a52:	d3 dd       	rcall	.-1114   	; 0x5fa <send_string>
+ a54:	02 c0       	rjmp	.+4      	; 0xa5a <resultado_validacao+0x68>
+ a56:	c1 e0       	ldi	r28, 0x01	; 1
+			return 0; // p nao ativar o alarme quando for adm
+ a58:	d0 e0       	ldi	r29, 0x00	; 0
 		}
 		return 1;
- af0:	d0 e0       	ldi	r29, 0x00	; 0
- af2:	15 c0       	rjmp	.+42     	; 0xb1e <resultado_validacao+0x84>
- af4:	80 91 62 03 	lds	r24, 0x0362	; 0x800362 <alarme_ativo>
-		nr_digitados = 0;
-		send_string("SENHA CORRETA");
-		if (strcmp(validacao, "adm") == 0){
-			subRotinaAdm();
-			limpa_reseta_cursor();
-		}else if(alarme_ativo == 0){
- af8:	81 11       	cpse	r24, r1
- afa:	09 c0       	rjmp	.+18     	; 0xb0e <resultado_validacao+0x74>
-			TCCR1B = 0x05;
- afc:	85 e0       	ldi	r24, 0x05	; 5
- afe:	80 93 81 00 	sts	0x0081, r24	; 0x800081 <__TEXT_REGION_LENGTH__+0x7c0081>
-			TIMSK1 = 1;
- b02:	81 e0       	ldi	r24, 0x01	; 1
- b04:	80 93 6f 00 	sts	0x006F, r24	; 0x80006f <__TEXT_REGION_LENGTH__+0x7c006f>
-		}else if(alarme_ativo == 1){
-			desativa_buzzer();
-		}
-		return 1;
- b08:	c1 e0       	ldi	r28, 0x01	; 1
- b0a:	d0 e0       	ldi	r29, 0x00	; 0
- b0c:	08 c0       	rjmp	.+16     	; 0xb1e <resultado_validacao+0x84>
-			subRotinaAdm();
-			limpa_reseta_cursor();
-		}else if(alarme_ativo == 0){
-			TCCR1B = 0x05;
-			TIMSK1 = 1;
-		}else if(alarme_ativo == 1){
- b0e:	81 30       	cpi	r24, 0x01	; 1
- b10:	21 f4       	brne	.+8      	; 0xb1a <resultado_validacao+0x80>
-			desativa_buzzer();
- b12:	36 db       	rcall	.-2452   	; 0x180 <desativa_buzzer>
- b14:	c1 e0       	ldi	r28, 0x01	; 1
-		}
-		return 1;
- b16:	d0 e0       	ldi	r29, 0x00	; 0
- b18:	02 c0       	rjmp	.+4      	; 0xb1e <resultado_validacao+0x84>
- b1a:	c1 e0       	ldi	r28, 0x01	; 1
- b1c:	d0 e0       	ldi	r29, 0x00	; 0
- b1e:	ce 01       	movw	r24, r28
+ a5a:	ce 01       	movw	r24, r28
+ a5c:	df 91       	pop	r29
 	}	
- b20:	df 91       	pop	r29
- b22:	cf 91       	pop	r28
- b24:	1f 91       	pop	r17
- b26:	0f 91       	pop	r16
- b28:	08 95       	ret
+ a5e:	cf 91       	pop	r28
+ a60:	1f 91       	pop	r17
+ a62:	0f 91       	pop	r16
+ a64:	08 95       	ret
 
-00000b2a <strcmp>:
- b2a:	fb 01       	movw	r30, r22
- b2c:	dc 01       	movw	r26, r24
- b2e:	8d 91       	ld	r24, X+
- b30:	01 90       	ld	r0, Z+
- b32:	80 19       	sub	r24, r0
- b34:	01 10       	cpse	r0, r1
- b36:	d9 f3       	breq	.-10     	; 0xb2e <strcmp+0x4>
- b38:	99 0b       	sbc	r25, r25
- b3a:	08 95       	ret
+00000a66 <strcmp>:
+ a66:	fb 01       	movw	r30, r22
+ a68:	dc 01       	movw	r26, r24
+ a6a:	8d 91       	ld	r24, X+
+ a6c:	01 90       	ld	r0, Z+
+ a6e:	80 19       	sub	r24, r0
+ a70:	01 10       	cpse	r0, r1
+ a72:	d9 f3       	breq	.-10     	; 0xa6a <strcmp+0x4>
+ a74:	99 0b       	sbc	r25, r25
+ a76:	08 95       	ret
 
-00000b3c <strcpy>:
- b3c:	fb 01       	movw	r30, r22
- b3e:	dc 01       	movw	r26, r24
- b40:	01 90       	ld	r0, Z+
- b42:	0d 92       	st	X+, r0
- b44:	00 20       	and	r0, r0
- b46:	e1 f7       	brne	.-8      	; 0xb40 <strcpy+0x4>
- b48:	08 95       	ret
+00000a78 <strcpy>:
+ a78:	fb 01       	movw	r30, r22
+ a7a:	dc 01       	movw	r26, r24
+ a7c:	01 90       	ld	r0, Z+
+ a7e:	0d 92       	st	X+, r0
+ a80:	00 20       	and	r0, r0
+ a82:	e1 f7       	brne	.-8      	; 0xa7c <strcpy+0x4>
+ a84:	08 95       	ret
 
-00000b4a <_exit>:
- b4a:	f8 94       	cli
+00000a86 <_exit>:
+ a86:	f8 94       	cli
 
-00000b4c <__stop_program>:
- b4c:	ff cf       	rjmp	.-2      	; 0xb4c <__stop_program>
+00000a88 <__stop_program>:
+ a88:	ff cf       	rjmp	.-2      	; 0xa88 <__stop_program>

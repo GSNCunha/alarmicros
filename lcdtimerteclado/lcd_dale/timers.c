@@ -20,7 +20,7 @@ char onda = 0;
 void config_timer1(){
 	sei();
 	TCCR1A = 0; //modo normal
-	TCNT1 = 26743; //40 vezes esse ciclo dá 80 segundos
+	TCNT1 =  0;//26743 == isso 2x é 5s; //40 vezes esse ciclo dá 80 segundos
 	TIMSK1 = 1;
 	TIFR1 = 1;
 }

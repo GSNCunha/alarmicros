@@ -18,8 +18,7 @@ char tecla;
 
 uint8_t binColuna;
 
-char possivelTecla1;
-char possivelTecla2;
+char possivelTecla;
 
 
 char ligaLinhas(int bitColuna, int indColuna)//coluna = numero correspondente da coluna
@@ -74,7 +73,7 @@ char procuraLinhas(uint8_t coluna)
 	return '\0';
 }
 
-char procuraTecla1x()
+char procuraTecla()
 {
 	PORTK = 0b00001111;//pull up do input ativado
 	//delay_1ms();
@@ -82,15 +81,18 @@ char procuraTecla1x()
 	while(PINK == 0b00001111);//0000 1011
 	
 	binColuna = PINK;
-	/*possivelSenha = procuraLinhas(binColuna);
-	delay_1ms();
-	if(possivelSenha == procuraLinhas(binColuna)){
-		return possivelSenha;
-	}*/
-	return procuraLinhas(binColuna);
+	possivelTecla = procuraLinhas(binColuna);
+	delay_200ms();
+	PORTK = 0b00001111; //reseta a porta pra proxima leitura
+	binColuna = PINK;
+	if(possivelTecla == procuraLinhas(binColuna)){
+		return possivelTecla;
+	}else{
+		return '\0';
+	}
 }
 
-
+/*
 char procuraTecla(){
 	possivelTecla1 = procuraTecla1x();
 	delay_200ms();
@@ -100,4 +102,4 @@ char procuraTecla(){
 	}else{
 		return '\0';
 	}
-	};
+	};*/

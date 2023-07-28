@@ -29,13 +29,8 @@ int main(void)
 		if (alarme_ativo && intruso_detectado){
 			delay_piscaled();
 			ativa_buzzer();
-		}else{
-			desativa_buzzer();
-			TIMSK5 = 0x00;
-			TCCR5B = 0x00;
-			
+			PORTB = 0;
 		}
-		
 	}
 }
 	
@@ -44,60 +39,6 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 	if(chamada == 0){
 		chamada = 1;
 		tecla = procuraTecla();
-		/*if ((tecla == '1')){
-			//send_data(0b00110001);
-		}
-		if ((tecla == '2')){
-			//send_data(0b00110010);
-		}
-		if ((tecla == '3')){
-			//send_data(0b00110011);
-		}
-		if ((tecla == '4')){
-			//send_data(0b00110100);
-		}
-		if ((tecla == '5')){
-			//send_data(0b00110101);
-		}
-		if ((tecla == '6')){
-			//send_data(0b00110110);
-		}
-		if ((tecla == '7')){
-			//send_data(0b00110111);
-		}
-		if ((tecla == '8')){
-			//send_data(0b00111000);
-		}
-		if ((tecla == '9')){
-			//send_data(0b00111001);
-		}
-		if ((tecla == 'A')){
-			send_data(0b01000001);
-			if(alarme_ativo){
-				intruso_detectado = 1;
-			}
-		}
-		if ((tecla == 'B')){
-			send_data(0b01000010);
-			if(alarme_ativo){
-				intruso_detectado = 1;
-			}
-		}
-		if ((tecla == 'C')){
-			send_data(0b01000011);
-			intruso_detectado = 1;
-			if(alarme_ativo){
-				intruso_detectado = 1;
-			}
-		}
-		if ((tecla == 'D')){
-			send_data(0b01000100);
-			if(alarme_ativo){
-				intruso_detectado = 1;
-			}
-		}
-		*/
-		
 		if(alarme_ativo){
 			if ((tecla == 'A') || (tecla == 'B') || (tecla == 'C') || (tecla == 'D')){
 				limpa_reseta_cursor();
@@ -109,16 +50,12 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 			if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9') || (tecla == '0')){
 				if(nr_digitados < 5){
 					lendo_senha(tecla);
+					//send_data(alarme_ativo);
 				}
 				if(nr_digitados == 5){
 					if (resultado_validacao() == 1){
 						alarme_ativo = 0;
 						intruso_detectado = 0;
-						TCCR1B = 0x00;
-						TIMSK1 = 0x00;
-						TIMSK4 = 0x00;
-						TCCR4B = 0x00;
-						desativa_buzzer();
 						limpa_reseta_cursor();
 						send_string("ALARME OFF");
 						delay_1s();
@@ -129,19 +66,21 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 						}
 				}
 			}
-		
 		}else if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9') || (tecla == '0')){
 		if(nr_digitados < 5){
 			lendo_senha(tecla);
 		}
 		if(nr_digitados == 5){
 			if (resultado_validacao() == 1){
-				alarme_ativo = 0; //o timer liga o alarme dps
 				intruso_detectado = 0;
+				TCCR1B = 0x05; //timer 1 pra dar o delay ate ativar o alarme //ativa o alarme na interrupção do timer 1
+				TIMSK1 = 1;
+				limpa_reseta_cursor();
+				send_string("ATIVANDO SISTEMA");
 			}
 		}
 	}
-		delay_250ms();
+	delay_200ms();
 	}else{
 		chamada = 0;
 		PORTK = 0b00001111; //reseta a porta pra proxima leitura
@@ -149,8 +88,7 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 }
 
 ISR(TIMER1_OVF_vect){
-	if(nr_ciclos_timer1 == 1){
-		
+	if(nr_ciclos_timer1 == 19){
 		//ativa_alarme
 		limpa_reseta_cursor();
 		send_string("ALARME ATIVO");
@@ -159,21 +97,44 @@ ISR(TIMER1_OVF_vect){
 		alarme_ativo = 1;
 		//desliga timer
 		TCCR1B = 0x00;
+		TIMSK1 = 0x00;
 		//limpa flag
 		TIFR1 = 1;
-		
 		nr_ciclos_timer1 = 0;
 		}else{
 		nr_ciclos_timer1++;
-		
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 /*ISR(TIMER3_OVF_vect){
 	TCCR3A = 0; //modo normal
 	TCCR3B = 0x1; //sem prescaler
 	TCNT3 = 45536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 20000 contagens p bater meio periodo da onda de 400hz
 	TIFR3 = 1;
-}*/
+}*//*
 ISR(TIMER4_OVF_vect){
 	//timer p 1s
 	if(led2hz == 1){
@@ -210,4 +171,4 @@ ISR(TIMER4_OVF_vect){
 		}
 		
 	}
-}
+}*/
