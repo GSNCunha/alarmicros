@@ -34,14 +34,14 @@ void escreveNumero(uint8_t valor){
 	}
 }	
 
-void printa_horarioreal(){
+void printa_horarioreal(int diaAtual, int horaAtual, int minAtual){
 	limpa_reseta_cursor();
 	send_string("data: ");
-	escreveNumero(dia);
+	escreveNumero(diaAtual);
 	send_string(":");
-	escreveNumero(hora);
+	escreveNumero(horaAtual);
 	send_string(":");
-	escreveNumero(min);
+	escreveNumero(minAtual);
 }
 
 void tela1()
@@ -291,7 +291,7 @@ void subRotinaAdm()
 							pediHorario = 1;
 							serialEnviarString("AH");
 							delay_250ms();
-							printa_horarioreal();
+							printa_horarioreal(dia, hora, min);
 							delay_1s();
 							delay_1s();
 							break;//sair desse while
@@ -323,5 +323,6 @@ void subRotinaAdm()
 			}
 		}
 	}
+	nr_digitados = 0;
 	PCMSK2 = 0x0F; //volta a ter interrupção nos pinos
 }

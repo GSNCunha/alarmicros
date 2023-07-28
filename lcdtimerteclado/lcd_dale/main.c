@@ -14,6 +14,7 @@
 char alarme_ativo;
 char admLogin;
 char sensorAtivo;
+int horarioSensor[3];
 
 void modoNoturno(){
 	if ((modoNoturnoStatus == 1) && (hora >= 0) && (hora < 6)){
@@ -61,7 +62,7 @@ void enviaMotivo(){
 	send_string("CAUSA: SINAL ");
 	send_string(&sensorAtivo);
 	proxima_linha();
-	printa_horarioreal();
+	printa_horarioreal(horarioSensor[0], horarioSensor[1], horarioSensor[2]);
 	delay_1s();
 	delay_1s();
 	delay_1s();
@@ -107,9 +108,6 @@ void enviaMotivo(){
 	PCMSK2 = 0x0F;
 }
 
-
-
-
 int main(void)
 {
 	alarme_ativo = 0;
@@ -135,9 +133,11 @@ int main(void)
 	proxima_linha();
 	send_string("SENHA:");
     while (1){
-		//modoNoturno();
 			if (alarme_ativo && intruso_detectado){
 				sensorAtivo = tecla;
+				horarioSensor[0] = dia;
+				horarioSensor[1] = hora;
+				horarioSensor[2] = min;
 				delay_piscaled();
 				if(alarme_ativo && intruso_detectado)
 				{
@@ -159,15 +159,18 @@ int main(void)
 					}
 				}
 				if(alarme_ativo && intruso_detectado ){
+					serialDesativarInterrupt();
 					ativa_buzzer();
 					enviaMotivo();
+					serialAtivarInterrupt();
+					PORTK = 0b00001111;
 				}
 			}
 			
-			
-			
 			if (admLogin == 1){
 				subRotinaAdm();
+				PCMSK2 = 0x0F;
+				PORTK = 0b00001111;
 				admLogin = 0;
 				limpa_reseta_cursor();
 				send_string("---ALARMICROS---");
@@ -175,7 +178,6 @@ int main(void)
 				send_string("SENHA:");
 			}
 		}	
-	
 		 //fechamento do while
 }
 	

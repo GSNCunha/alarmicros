@@ -117,6 +117,10 @@ int resultado_validacao(){
 		{
 			serialEnviarString("AMV");
 		}
+		if(!strcmp(validacao,"intruso"))
+		{
+			serialEnviarString("AMI");
+		}
 		
 		if (strcmp(validacao, "adm") == 0){
 			send_string("BEM-VINDO ADM");
