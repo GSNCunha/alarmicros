@@ -20,6 +20,12 @@ typedef struct Senhas
 	char adm[6];
 	char intruso[6];
 	
+	char centralDefault[6];
+	char usuario1Default[6];
+	char usuario2Default[6];
+	char admDefault[6];
+	char intrusoDefault[6];
+	
 }Senhas;
 
 Senhas senhas;

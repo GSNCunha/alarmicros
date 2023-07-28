@@ -85,6 +85,23 @@ char novaSenha[6]= {"11111"};
 		}
 		send_string(" USUARIO2  ");
 	}
+	
+	void telaResetSenhas()
+	{
+		limpa_reseta_cursor();
+		send_string("* RESET SENHAS");
+		proxima_linha();
+		send_string("# MAIS OPCOES");
+		
+	}
+	
+	void telaResetarSenhas(){
+		limpa_reseta_cursor();
+		send_string("RESETAR SENHAS?");
+		proxima_linha();
+		send_string("* - SIM  # - NAO");
+	}
+	
 
 void subRotinaAdm()
 {
@@ -133,8 +150,7 @@ void subRotinaAdm()
 					tela1();
 					instrucaoDigitada = '\0';
 					break;//sai desse while entre no while(!sair)
-				}
-							
+				}			
 			}
 		}else if(instrucaoDigitada == '#')//mais opcoes
 		{
@@ -205,5 +221,5 @@ void subRotinaAdm()
 			}	
 		}	
 	}
-	PCMSK2 = 0x0F; 
+	PCMSK2 = 0x0F; //volta a ter interrupção nos pinos
 }

@@ -24,7 +24,7 @@ void tela3();
 void tela4();
 void telaTrocaSenhas();
 void telaDeStatusUsuario();
-
-
+void telaResetSenhas();
+void telaResetarSenhas();
 
 #endif /* SUBROTINAADM_H_ */

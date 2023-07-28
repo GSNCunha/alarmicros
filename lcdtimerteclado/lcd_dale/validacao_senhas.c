@@ -26,9 +26,15 @@ typedef struct Senhas
 	char adm[6];
 	char intruso[6];
 	
+	char centralDefault[6];
+	char usuario1Default[6];
+	char usuario2Default[6];
+	char admDefault[6];
+	char intrusoDefault[6];
+	
 }Senhas;
 
-Senhas senhas = {"89134", "12369","32190","01267","90171"};
+Senhas senhas = {"89134", "12369","32190","01267","90171", "89134", "12369","32190","01267","90171"};
 
 
 // void mudar_senha_usuario(char usuario){
