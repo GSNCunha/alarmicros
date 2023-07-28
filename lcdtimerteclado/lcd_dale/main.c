@@ -10,6 +10,8 @@
 #include "serial.h"
 #include "timerRelogio.h"
 
+char admLogin = 0;
+
 int main(void)
 {
 	//------------- organizacao das interrupçoes do teclado:
@@ -38,7 +40,14 @@ int main(void)
 			ativa_buzzer();
 			PORTB = 0;
 		}
-		subRotinaAdm();
+		if (admLogin == 1){
+			subRotinaAdm();
+			admLogin = 0;
+			limpa_reseta_cursor();
+			send_string("---ALARMICROS---");
+			proxima_linha();
+			send_string("SENHA:");
+		}
 	}
 }
 	
@@ -58,7 +67,6 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 			if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9') || (tecla == '0')){
 				if(nr_digitados < 5){
 					lendo_senha(tecla);
-					//send_data(alarme_ativo);
 				}
 				if(nr_digitados == 5){
 					if (resultado_validacao() == 1){
@@ -79,12 +87,16 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 			lendo_senha(tecla);
 		}
 		if(nr_digitados == 5){
-			if (resultado_validacao() == 1){
+			char result_val = resultado_validacao();
+			if (result_val == 1){
 				intruso_detectado = 0;
 				TCCR1B = 0x05; //timer 1 pra dar o delay ate ativar o alarme //ativa o alarme na interrupção do timer 1
 				TIMSK1 = 1;
 				limpa_reseta_cursor();
 				send_string("ATIVANDO SISTEMA");
+			}
+			if (result_val == 2){
+				admLogin = 1;
 			}
 		}
 	}

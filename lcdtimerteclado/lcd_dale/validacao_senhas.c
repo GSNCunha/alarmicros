@@ -109,13 +109,12 @@ int resultado_validacao(){
 		limpa_reseta_cursor();
 		nr_digitados = 0;
 		send_string("SENHA CORRETA");
+		proxima_linha();
 		if (strcmp(validacao, "adm") == 0){
-			//subRotinaAdm();
-			limpa_reseta_cursor();
-			send_string("---ALARMICROS---");
-			proxima_linha();
-			send_string("SENHA:");
-			return 0; // p nao ativar o alarme quando for adm
+			send_string("BEM-VINDO ADM");
+			delay_1s();
+			// chama rotina do adm no main
+			return 2; // p nao ativar o alarme quando for adm
 		}
 		return 1;
 	}	

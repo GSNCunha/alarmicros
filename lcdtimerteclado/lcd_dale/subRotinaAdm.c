@@ -155,9 +155,6 @@ void telaConfirmaSenha(){
 void subRotinaAdm()
 {
 	
-	delay_1s();//espera para exibir a mensagem de senha correta
-	delay_1s();
-	
 	tela1();// troca senhas ou mais opcoes
 	sair = 0;
 	PCMSK2 = 0x01;
@@ -285,8 +282,6 @@ void subRotinaAdm()
 					
 				}else if(instrucaoDigitada == '#')//mais opcoes
 				{
-					pediHorario = 1;
-					serialEnviarString("AH");
 					tela3();//pedir horário ou mais opcoes
 					instrucaoDigitada = '\0';
 					while(1)
@@ -295,7 +290,7 @@ void subRotinaAdm()
 						if(instrucaoDigitada == '*')
 						{
 							pediHorario = 1;
-							//serialEnviarString("AH");
+							serialEnviarString("AH");
 							delay_250ms();
 							printa_horarioreal();
 							delay_1s();
