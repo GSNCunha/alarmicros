@@ -4,6 +4,8 @@
 
 deteccao_intruso.c
 
+serial.c
+
 subRotinaAdm.c
 
 teclado.c
@@ -11,6 +13,8 @@ teclado.c
 lcdio.c
 
 main.c
+
+timerRelogio.c
 
 timers.c
 

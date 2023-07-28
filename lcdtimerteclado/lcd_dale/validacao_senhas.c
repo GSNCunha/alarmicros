@@ -66,6 +66,8 @@ const char* subRotinaTrocaSenha()
 	{
 		if(nr_digitados < 5){
 			tecla = procuraTecla();
+			delay_200ms(); //nao tirar
+			delay_200ms();
 			PORTK = 0b00001111;
 			lendo_senha(tecla);
 		}

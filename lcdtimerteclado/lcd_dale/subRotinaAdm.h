@@ -26,5 +26,6 @@ void telaTrocaSenhas();
 void telaDeStatusUsuario();
 void telaResetSenhas();
 void telaResetarSenhas();
+void telaConfirmaSenha();
 
 #endif /* SUBROTINAADM_H_ */

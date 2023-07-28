@@ -12,96 +12,117 @@ char instrucaoDigitada = '\0';
 char usuario1Status = 1;
 char usuario2Status = 1;
 char modoNoturnoStatus = 1;
+char senhaConferida = 0;
 char sair = 1;
 char novaSenha[6]= {"11111"};
-	
-	void tela1()
-	{
-		limpa_reseta_cursor();
-		send_string("* TROCAR SENHAS");
-		proxima_linha();
-		send_string("# MAIS OPCOES");
-	}
-	void tela2()
-	{
-		limpa_reseta_cursor();
-		send_string("* ESTADO USUARIO");
-		proxima_linha();
-		send_string("# MAIS OPCOES");
-		
-	}
-	void tela3()
-	{
-		limpa_reseta_cursor();
-		send_string("* PEDIR HORAS");
-		proxima_linha();
-		send_string("# MAIS OPCOES");
-	}
+char confereNovaSenha[6]= {"11111"};
 
-	void tela4()
-	{
-		limpa_reseta_cursor();
-		send_string("* ");
-		if(!modoNoturnoStatus)
-		{
-			send_string("HAB");
-		}else
-		{
-			send_string("DES");
-		}
-		send_string(" MODO NOT");
-		proxima_linha();
-		send_string("# SAIR");
-	}
+void tela1()
+{
+	limpa_reseta_cursor();
+	send_string("* SENHAS");
+	proxima_linha();
+	send_string("# MAIS OPCOES");
+}
+void tela2()
+{
+	limpa_reseta_cursor();
+	send_string("* ESTADO USUARIO");
+	proxima_linha();
+	send_string("# MAIS OPCOES");
+	
+}
+void tela3()
+{
+	limpa_reseta_cursor();
+	send_string("* PEDIR HORAS");
+	proxima_linha();
+	send_string("# MAIS OPCOES");
+}
 
-	void telaTrocaSenhas()
+void tela4()
+{
+	limpa_reseta_cursor();
+	send_string("* ");
+	if(!modoNoturnoStatus)
 	{
-		limpa_reseta_cursor();
-		send_string("1/2 - USUARIO1/2");
-		proxima_linha();
-		send_string("* - ADM");
+		send_string("HAB");
+	}else
+	{
+		send_string("DES");
 	}
+	send_string(" MODO NOT");
+	proxima_linha();
+	send_string("# SAIR");
+}
 
-	void telaDeStatusUsuario()
+void telaTrocaSenhas()
+{
+	limpa_reseta_cursor();
+	send_string("1/2 - USUARIO1/2");
+	proxima_linha();
+	send_string("* - ADM");
+}
+
+void telaDeStatusUsuario()
+{
+	limpa_reseta_cursor();
+	send_string("1 - ");
+	if(!usuario1Status)
 	{
-		limpa_reseta_cursor();
-		send_string("1 - ");
-		if(!usuario1Status)
-		{
-			send_string("HAB");//TELA PARA HABILITAR USUARO 1
-		}else
-		{
-			send_string("DES");//TELA PARA HABILITAR USUARO 1
-		}
-		send_string(" USUARIO1");
-		proxima_linha();
-		send_string("2 - ");
-		if(!usuario2Status)
-		{
-			send_string("HAB");//TELA PARA HABILITAR USUARO 2
-		}else
-		{
-			send_string("DES");//TELA PARA HABILITAR USUARO 2
-		}
-		send_string(" USUARIO2  ");
-	}
-	
-	void telaResetSenhas()
+		send_string("HAB");//TELA PARA HABILITAR USUARO 1
+	}else
 	{
-		limpa_reseta_cursor();
-		send_string("* RESET SENHAS");
-		proxima_linha();
-		send_string("# MAIS OPCOES");
-		
+		send_string("DES");//TELA PARA HABILITAR USUARO 1
 	}
-	
-	void telaResetarSenhas(){
-		limpa_reseta_cursor();
-		send_string("RESETAR SENHAS?");
-		proxima_linha();
-		send_string("* - SIM  # - NAO");
+	send_string(" USUARIO1");
+	proxima_linha();
+	send_string("2 - ");
+	if(!usuario2Status)
+	{
+		send_string("HAB");//TELA PARA HABILITAR USUARO 2
+	}else
+	{
+		send_string("DES");//TELA PARA HABILITAR USUARO 2
 	}
+	send_string(" USUARIO2  ");
+}
+
+void telaResetSenhas()
+{
+	limpa_reseta_cursor();
+	send_string("* RESET SENHAS");
+	proxima_linha();
+	send_string("# TROCAR SENHAS");
 	
+}
+
+void telaResetarSenhas(){
+	limpa_reseta_cursor();
+	send_string("RESETAR SENHAS?");
+	proxima_linha();
+	send_string("* - SIM  # - NAO");
+}
+
+void telaSenhasDivergentes(){
+	limpa_reseta_cursor();
+	send_string("     SENHAS     ");
+	proxima_linha();
+	send_string("  DIVERGENTES   ");
+}
+
+void telaNovaSenha(){
+	limpa_reseta_cursor();
+	send_string("NOVA SENHA:");
+	proxima_linha();
+}
+
+void telaConfirmaSenha(){
+	limpa_reseta_cursor();
+	send_string("REPITA A SENHA:");
+	proxima_linha();
+}
+
 
 void subRotinaAdm()
 {
@@ -116,41 +137,92 @@ void subRotinaAdm()
 	{
 		instrucaoDigitada = procuraTecla();
 		
-		if(instrucaoDigitada == '*')//opção trocar senha de usuários
+		if(instrucaoDigitada == '*')//opção trocar ou resetar senha de usuários
 		{
-			telaTrocaSenhas();
+			telaResetSenhas();
 			instrucaoDigitada = '\0';
 			while(1)
 			{
 				instrucaoDigitada = procuraTecla();
-				if(instrucaoDigitada == '1' || instrucaoDigitada == '2' || instrucaoDigitada == '*')
+				if(instrucaoDigitada == '*')
 				{
-					limpa_reseta_cursor();
-					send_string("NOVA SENHA:");
-					proxima_linha();
-					
-					strcpy(novaSenha,subRotinaTrocaSenha());
-					
-					if(instrucaoDigitada == '1')//usuario 1
+					telaResetarSenhas();
+					instrucaoDigitada = '\0';
+					while(1)
 					{
-						strcpy(senhas.usuario1, novaSenha);
+						instrucaoDigitada = procuraTecla();
+						if (instrucaoDigitada == '*')
+						{
+							strcpy(senhas.usuario1, senhas.usuario1Default);
+							strcpy(senhas.usuario2, senhas.usuario2Default);
+							strcpy(senhas.adm, senhas.admDefault);
+							break;
+						}
+						if (instrucaoDigitada == '#')
+						{
+							break;
+						}
 					}
-					if(instrucaoDigitada == '2')//usuario 2
-					{
-						strcpy(senhas.usuario2, novaSenha);
-					}
-					if(instrucaoDigitada == '*')//usuario adm
-					{
-						strcpy(senhas.adm, novaSenha);
-					}
-					for (int i = 0; i < 5; i++) {
-						senha[i] = '\0';
-					}
-					nr_digitados = 0;
 					tela1();
 					instrucaoDigitada = '\0';
 					break;//sai desse while entre no while(!sair)
-				}			
+					
+				}else if(instrucaoDigitada == '#')
+				{
+					telaTrocaSenhas();
+					instrucaoDigitada = '\0';
+					while(1)
+					{
+						instrucaoDigitada = procuraTecla();
+						if(instrucaoDigitada == '1' || instrucaoDigitada == '2' || instrucaoDigitada == '*')
+						{
+							senhaConferida = 0;
+							while(!senhaConferida)
+							{
+								
+								telaNovaSenha();
+								
+								strcpy(novaSenha,subRotinaTrocaSenha());
+								
+								telaConfirmaSenha();
+								
+								strcpy(confereNovaSenha,subRotinaTrocaSenha());
+								
+								if(!strcmp(novaSenha,confereNovaSenha))
+								{
+									senhaConferida = 1;
+									}else{
+									
+									telaSenhasDivergentes();
+									delay_1s();
+								}
+							}
+							
+							
+							if(instrucaoDigitada == '1')//usuario 1
+							{
+								strcpy(senhas.usuario1, novaSenha);
+							}
+							if(instrucaoDigitada == '2')//usuario 2
+							{
+								strcpy(senhas.usuario2, novaSenha);
+							}
+							if(instrucaoDigitada == '*')//usuario adm
+							{
+								strcpy(senhas.adm, novaSenha);
+							}
+							for (int i = 0; i < 5; i++) {
+								senha[i] = '\0';
+							}
+							nr_digitados = 0;
+							break;
+						}
+					}
+					tela1();
+					instrucaoDigitada = '\0';
+					break;//sai desse while entre no while(!sair)
+				}
+				
 			}
 		}else if(instrucaoDigitada == '#')//mais opcoes
 		{
@@ -182,7 +254,7 @@ void subRotinaAdm()
 					instrucaoDigitada = '\0';
 					break;//sai desse while entre no while(!sair)
 					
-				}else if(instrucaoDigitada == '#')//mais opcoes			
+				}else if(instrucaoDigitada == '#')//mais opcoes
 				{
 					tela3();//pedir horário ou mais opcoes
 					instrucaoDigitada = '\0';
@@ -194,7 +266,7 @@ void subRotinaAdm()
 							//subrotina pedir horas
 							break;//sair desse while
 						}else if(instrucaoDigitada == '#')//mais opcoes
-						{ 
+						{
 							tela4();//habilitar ou desabilitar modo noturno ou mais opcoes
 							instrucaoDigitada = '\0';
 							while(1)
@@ -217,9 +289,9 @@ void subRotinaAdm()
 					tela1();
 					instrucaoDigitada = '\0';
 					break;//sai desse while entre no while(!sair)
-				}			
-			}	
-		}	
+				}
+			}
+		}
 	}
 	PCMSK2 = 0x0F; //volta a ter interrupção nos pinos
 }

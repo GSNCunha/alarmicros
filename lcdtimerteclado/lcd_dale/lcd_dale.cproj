@@ -138,6 +138,12 @@
     <Compile Include="deteccao_intruso.h">
       <SubType>compile</SubType>
     </Compile>
+    <Compile Include="serial.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="serial.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="subRotinaAdm.c">
       <SubType>compile</SubType>
     </Compile>
@@ -157,6 +163,9 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="teclado.h">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="timerRelogio.c">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="timers.c">

@@ -1,11 +1,13 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include <ctype.h>
 #include "lcdio.h"
 #include "timers.h"
 #include "teclado.h"
 #include "validacao_senhas.h"
 #include "deteccao_intruso.h"
 #include "subRotinaAdm.h"
+#include "serial.h"
 
 int main(void)
 {
@@ -18,6 +20,10 @@ int main(void)
 	PCMSK2 |= 0x0F; //ínterrupção nos pinos K0 até K7;
 	sei(); //set enable interrupts -- seta 1 no bit I do status register
 	//-------------------------------
+	serialInicializar();
+	serialAtivarInterrupt();
+	
+	
 	config_timer1();
 	config_porta_avr();
 	config_lcd_padrao();
@@ -106,8 +112,59 @@ ISR(TIMER1_OVF_vect){
 	}
 }
 
+ISR(TIMER3_OVF_vect){
+	if(nr_ciclos_timer1 == 19){
+		//ativa_alarme
+		limpa_reseta_cursor();
+		send_string("ALARME ATIVO");
+		proxima_linha();
+		send_string("SENHA:");
+		alarme_ativo = 1;
+		//desliga timer
+		TCCR1B = 0x00;
+		TIMSK1 = 0x00;
+		//limpa flag
+		TIFR1 = 1;
+		nr_ciclos_timer1 = 0;
+		}else{
+		nr_ciclos_timer1++;
+	}
+}
 
 
+
+
+ISR(USART0_RX_vect)//usamos
+{
+	// Recebe e interpreta uma mensagem do m dulo externo.
+	// Recebe bytes at  encontrar um que n o   o identificador
+	// de mensagem do m dulo externo ('M'). Durante opera  o normal, o primeiro
+	// byte sempre ser  'M', e o segundo ser  outro caractere.
+	// Para mensagens com respostas longas/vari veis, desativa interrupts
+	// para que o c digo principal lide com os dados.
+	uint8_t c;
+	while ((c = serialReceberByte()) == 'S');
+	if (c == 'H') {
+		// Sincroniza  o de hor rio.
+		c = serialReceberByte(); // Dia.
+		uint8_t c2 = serialReceberByte(); // Hora.
+		uint8_t c3 = serialReceberByte(); // Minuto.
+		
+		limpa_reseta_cursor();
+		send_data(c);
+		send_data(c2);
+		send_data(c3);
+		
+		
+		//relogioSincronizar(c, c2, c3);
+		
+		// Resposta de confirma  o.
+		serialEnviarString("AH");
+	}
+	else if (c == 'S' || c == 'M') {
+		// confirmacao de mensagem recebida
+	}
+}
 
 
 
