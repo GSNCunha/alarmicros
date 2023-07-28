@@ -17,7 +17,6 @@ char modoNoturnoStatus;
 char sair;
 char novaSenha[6];
 
-
 void printa_horarioreal();
 void subRotinaAdm();
 void tela1();
@@ -30,6 +29,9 @@ void telaResetSenhas();
 void telaResetarSenhas();
 void telaConfirmaSenha();
 void escreveNumero(uint8_t valor);
+void modoNoturno();
+
+
 
 
 #endif /* SUBROTINAADM_H_ */

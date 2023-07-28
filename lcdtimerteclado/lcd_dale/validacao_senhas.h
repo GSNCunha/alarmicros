@@ -38,7 +38,7 @@ int resultado_validacao();
 
 const char* subRotinaTrocaSenha();
 
-
+const char* validacao;
 
 
 #endif /* VALIDACAO_SENHAS_H_ */

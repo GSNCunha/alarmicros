@@ -82,6 +82,7 @@ void serialEnviarString(const char *str) {//usamos
 	uint8_t i = 0;
 	while (str[i] != '\0') {
 		serialEnviarByte(str[i]);
+		//send_data(str[i]);
 		i++;
 	}
 //	return i;

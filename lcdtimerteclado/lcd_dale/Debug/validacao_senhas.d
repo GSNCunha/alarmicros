@@ -17,7 +17,7 @@ validacao_senhas.d validacao_senhas.o: .././validacao_senhas.c \
  d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\stdlib.h \
  d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h \
  .././teclado.h .././lcdio.h .././timers.h .././deteccao_intruso.h \
- .././subRotinaAdm.h
+ .././subRotinaAdm.h .././serial.h
 
 d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -62,3 +62,5 @@ d:\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\string.h:
 .././deteccao_intruso.h:
 
 .././subRotinaAdm.h:
+
+.././serial.h:

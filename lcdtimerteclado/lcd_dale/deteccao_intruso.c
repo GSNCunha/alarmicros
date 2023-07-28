@@ -10,7 +10,7 @@
 char alarme_ativo = 0;
 char intruso_detectado = 0;
 char chamada = 0;
-long tempo_TA = 25; //tempo de delay com o led piscando ---- tem q mudar pra 25s
+long tempo_TA = 5; //tempo de delay com o led piscando ---- tem q mudar pra 25s
 
 
 /*void delay_piscaled(){
@@ -46,15 +46,15 @@ void ativa_buzzer(){
 				onda_400hz();
 				PORTB ^= (1 << 6); //bipa o buzzer em 400hz por 1s
 			}
-			
 		}
 		for (long i = 0; i<800 ; i++){
 			if (alarme_ativo && intruso_detectado){
-			onda_800hz();
-			PORTB ^= (1 << 6); //bipa o buzzer em 800hz por 1s
+				onda_800hz();
+				PORTB ^= (1 << 6); //bipa o buzzer em 800hz por 1s
 			}
 		}
 	}
+	PORTB = 0;
 }
 
 

@@ -14,9 +14,13 @@
 #include "timers.h"
 #include "deteccao_intruso.h"
 #include "subRotinaAdm.h"
+#include "serial.h"
 
 int nr_digitados = 0;
 char senha[6] = {'\0', '\0', '\0', '\0', '\0', '\0'};
+const char* validacao;	
+	
+	
 
 typedef struct Senhas 
 {
@@ -94,8 +98,6 @@ const char* validar_senha(){
 
 int resultado_validacao(){
 	
-	const char* validacao;
-	
 	validacao = validar_senha();
 	
 	if(!strcmp(validacao,"senha incorreta")){
@@ -110,6 +112,12 @@ int resultado_validacao(){
 		nr_digitados = 0;
 		send_string("SENHA CORRETA");
 		proxima_linha();
+		
+		if(!strcmp(validacao,"central"))
+		{
+			serialEnviarString("AMV");
+		}
+		
 		if (strcmp(validacao, "adm") == 0){
 			send_string("BEM-VINDO ADM");
 			delay_1s();

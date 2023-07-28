@@ -13,13 +13,12 @@
 char instrucaoDigitada = '\0';
 char usuario1Status = 1;
 char usuario2Status = 1;
-char modoNoturnoStatus = 1;
+char modoNoturnoStatus = 0;
 char senhaConferida = 0;
 char sair = 1;
 char novaSenha[6]= {"11111"};
 char confereNovaSenha[6]= {"11111"};
 	
-
 
 void escreveNumero(uint8_t valor){
 	if(valor>9)

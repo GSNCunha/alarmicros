@@ -1,6 +1,7 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <ctype.h>
+#include <string.h>
 #include "lcdio.h"
 #include "timers.h"
 #include "teclado.h"
@@ -10,17 +11,101 @@
 #include "serial.h"
 #include "timerRelogio.h"
 
-char admLogin = 0;
+char alarme_ativo;
+char admLogin;
+char sensorAtivo;
+
+void modoNoturno(){
+	if ((modoNoturnoStatus == 1) && (hora > 0) && (hora < 6)){
+		alarme_ativo = 1;
+	}
+}
+
+void telaLcd()
+{
+	limpa_reseta_cursor();
+	send_string("* - ALARME FALSO");
+	proxima_linha();
+	send_string("# - MAIS OPCOES");
+}
+void telaLcd2()
+{
+	limpa_reseta_cursor();
+	send_string("* Intruso local");
+	proxima_linha();
+	send_string("# Invadido");
+}
+void telaLcd3()
+{
+	limpa_reseta_cursor();
+	send_string("MOTIVO DO ALARME");
+}
+
+
+void enviaMotivo(){
+	send_string("CAUSA: SINAL ");
+	send_string(&sensorAtivo);
+	proxima_linha();
+	printa_horarioreal();
+	delay_1s();
+	delay_1s();
+	delay_1s();
+	telaLcd3();
+	delay_1s();
+	delay_1s();
+	instrucaoDigitada = '\0';
+	PCMSK2 = 0x01;
+		telaLcd();
+		while(1)
+		{
+			instrucaoDigitada = procuraTecla();
+			if(instrucaoDigitada == '*')
+			{
+				serialEnviarString("AMA");
+				break;
+			}
+			if(instrucaoDigitada == '#')
+			{
+				instrucaoDigitada = '\0';
+				telaLcd2();
+				while(1)
+				{
+					instrucaoDigitada = procuraTecla();
+					if(instrucaoDigitada == '*')
+					{
+						serialEnviarString("AMI");
+						break;
+					}
+					if(instrucaoDigitada == '#')
+					{
+						serialEnviarString("AMC");
+						break;
+					}
+				}
+			break;
+		}
+	}
+	limpa_reseta_cursor();
+	send_string("---ALARMICROS---");
+	proxima_linha();
+	send_string("SENHA:");
+	PCMSK2 = 0x0F;
+}
+
+
+
 
 int main(void)
 {
+	alarme_ativo = 0;
+	admLogin = 0;
 	//------------- organizacao das interrupçoes do teclado:
 	DDRB = 0xFF;
 	PORTB = 0;
 	DDRK = 0b11110000; //  (1) PORTK(0-3) output / (0) PORTK(4-7) input
 	PORTK = 0b00001111; //pull up do input ativado
 	PCICR |= 0b00000100; //ativa interrupção dos pinos PCINT16 ao PCINT23 = K0 ao K7
-	PCMSK2 |= 0x0F; //ínterrupção nos pinos K0 até K7;
+	PCMSK2 = 0x0F; //ínterrupção nos pinos K0 até K7;
 	sei(); //set enable interrupts -- seta 1 no bit I do status register
 	//-------------------------------
 	serialInicializar();
@@ -35,20 +120,47 @@ int main(void)
 	proxima_linha();
 	send_string("SENHA:");
     while (1){
-		if (alarme_ativo && intruso_detectado){
-			delay_piscaled();
-			ativa_buzzer();
-			PORTB = 0;
-		}
-		if (admLogin == 1){
-			subRotinaAdm();
-			admLogin = 0;
-			limpa_reseta_cursor();
-			send_string("---ALARMICROS---");
-			proxima_linha();
-			send_string("SENHA:");
-		}
-	}
+			if (alarme_ativo && intruso_detectado){
+				sensorAtivo = tecla;
+				delay_piscaled();
+				if(alarme_ativo && intruso_detectado)
+				{
+					if(sensorAtivo == 'A'){
+						serialEnviarString("AS");
+						serialEnviarByte(0b1);
+					}
+					if(sensorAtivo == 'B'){
+						serialEnviarString("AS");
+						serialEnviarByte(0b10);
+					} 
+					if(sensorAtivo =='C'){
+						serialEnviarString("AS");
+						serialEnviarByte(0b100);
+					}
+					if(sensorAtivo =='D'){
+						serialEnviarString("AS");
+						serialEnviarByte(0b1000);
+					}
+				}
+				if(alarme_ativo && intruso_detectado ){
+					ativa_buzzer();
+					enviaMotivo();
+				}
+			}
+			
+			
+			
+			if (admLogin == 1){
+				subRotinaAdm();
+				admLogin = 0;
+				limpa_reseta_cursor();
+				send_string("---ALARMICROS---");
+				proxima_linha();
+				send_string("SENHA:");
+			}
+		}	
+	
+		 //fechamento do while
 }
 	
 ISR(PCINT2_vect){ //pinos K0 até K4
@@ -75,10 +187,10 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 						limpa_reseta_cursor();
 						send_string("ALARME OFF");
 						delay_1s();
-						limpa_reseta_cursor();
+						/*limpa_reseta_cursor();
 						send_string("---ALARMICROS---");
 						proxima_linha();
-						send_string("SENHA:");
+						send_string("SENHA:");*/
 						}
 				}
 			}
@@ -108,7 +220,7 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 }
 
 ISR(TIMER1_OVF_vect){
-	if(nr_ciclos_timer1 == 19){
+	if(nr_ciclos_timer1 == 4){ //mudar p 19 dps
 		//ativa_alarme
 		limpa_reseta_cursor();
 		send_string("ALARME ATIVO");
@@ -180,12 +292,6 @@ ISR(TIMER4_OVF_vect){
 		nr_ciclos_ok++;
 	}
 }
-
-
-
-
-
-
 
 
 /*ISR(TIMER3_OVF_vect){
