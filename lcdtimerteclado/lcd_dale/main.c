@@ -16,8 +16,23 @@ char admLogin;
 char sensorAtivo;
 
 void modoNoturno(){
-	if ((modoNoturnoStatus == 1) && (hora > 0) && (hora < 6)){
-		alarme_ativo = 1;
+	if ((modoNoturnoStatus == 1) && (hora >= 0) && (hora < 6)){
+		if((hora == 0) && (min == 0)){
+			alarme_ativo = 1;
+			limpa_reseta_cursor();
+			send_string("MODO NOTURNO ON");
+			proxima_linha();
+			send_string("senha:");
+		}
+	}
+	if ((modoNoturnoStatus == 1) && (hora >= 6) && (hora < 24)){
+		if((hora == 6) && (min == 0)){
+			alarme_ativo = 0;
+			limpa_reseta_cursor();
+			send_string("MODO NOTURNO OFF");
+			proxima_linha();
+			send_string("senha:");
+		}
 	}
 }
 
@@ -120,6 +135,7 @@ int main(void)
 	proxima_linha();
 	send_string("SENHA:");
     while (1){
+		//modoNoturno();
 			if (alarme_ativo && intruso_detectado){
 				sensorAtivo = tecla;
 				delay_piscaled();
@@ -186,11 +202,9 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 						intruso_detectado = 0;
 						limpa_reseta_cursor();
 						send_string("ALARME OFF");
-						delay_1s();
-						/*limpa_reseta_cursor();
-						send_string("---ALARMICROS---");
 						proxima_linha();
-						send_string("SENHA:");*/
+						send_string("SENHA: ");
+						delay_1s();
 						}
 				}
 			}

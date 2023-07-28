@@ -43,4 +43,5 @@ void conversaoMinHr(){
 		hora = 0;
 		min = 0;
 	}
+	modoNoturno();
 }
