@@ -7,130 +7,138 @@
 #include "lcdio.h"
 #include "validacao_senhas.h"
 #include "timers.h"
+#include "serial.h"
+#include "timerRelogio.h"
 
 char instrucaoDigitada = '\0';
 char usuario1Status = 1;
 char usuario2Status = 1;
-char modoNoturnoStatus = 1;
+char modoNoturnoStatus = 0;
+char senhaConferida = 0;
 char sair = 1;
 char novaSenha[6]= {"11111"};
+char confereNovaSenha[6]= {"11111"};
 	
-	void tela1()
-	{
-		limpa_reseta_cursor();
-		send_string("* TROCAR SENHAS");
-		proxima_linha();
-		send_string("# MAIS OPCOES");
-	}
-	void tela2()
-	{
-		limpa_reseta_cursor();
-		send_string("* ESTADO USUARIO");
-		proxima_linha();
-		send_string("# MAIS OPCOES");
-		
-	}
-	void tela3()
-	{
-		limpa_reseta_cursor();
-		send_string("* PEDIR HORAS");
-		proxima_linha();
-		send_string("# MAIS OPCOES");
-	}
 
-	void tela4()
+void escreveNumero(uint8_t valor){
+	if(valor>9)
 	{
-		limpa_reseta_cursor();
-		send_string("* ");
-		if(!modoNoturnoStatus)
-		{
-			send_string("HAB");
-		}else
-		{
-			send_string("DES");
-		}
-		send_string(" MODO NOT");
-		proxima_linha();
-		send_string("# SAIR");
+		int segundoNum;
+		int primeiroNum = valor/10;
+		send_data(primeiroNum+0b110000);
+		segundoNum = valor-primeiroNum*10;
+		send_data(segundoNum+0b110000);
+	}else{
+		send_data(0b110000);
+		send_data(valor+0b110000);
 	}
+}	
 
-	void telaTrocaSenhas()
-	{
-		limpa_reseta_cursor();
-		send_string("1/2 - USUARIO1/2");
-		proxima_linha();
-		send_string("* - ADM");
-	}
-
-	void telaDeStatusUsuario()
-	{
-		limpa_reseta_cursor();
-		send_string("1 - ");
-		if(!usuario1Status)
-		{
-			send_string("HAB");//TELA PARA HABILITAR USUARO 1
-		}else
-		{
-			send_string("DES");//TELA PARA HABILITAR USUARO 1
-		}
-		send_string(" USUARIO1");
-		proxima_linha();
-		send_string("2 - ");
-		if(!usuario2Status)
-		{
-			send_string("HAB");//TELA PARA HABILITAR USUARO 2
-		}else
-		{
-			send_string("DES");//TELA PARA HABILITAR USUARO 2
-		}
-		send_string(" USUARIO2  ");
-	}
 
 void subRotinaAdm()
 {
 	
-	delay_1s();//espera para exibir a mensagem de senha correta
-	delay_1s();
-	
 	tela1();// troca senhas ou mais opcoes
 	sair = 0;
 	PCMSK2 = 0x01;
+	
 	while(!sair)
 	{
 		instrucaoDigitada = procuraTecla();
 		
-		if(instrucaoDigitada == '*')//opção trocar senha de usuários
+		if(instrucaoDigitada == '*')//opção trocar ou resetar senha de usuários
 		{
-			telaTrocaSenhas();
+			telaResetSenhas();
 			instrucaoDigitada = '\0';
 			while(1)
 			{
 				instrucaoDigitada = procuraTecla();
-				if(instrucaoDigitada == '1' || instrucaoDigitada == '2' || instrucaoDigitada == '*')
+				if(instrucaoDigitada == '*')
 				{
-					limpa_reseta_cursor();
-					send_string("NOVA SENHA:");
-					proxima_linha();
-					
-					strcpy(novaSenha,subRotinaTrocaSenha());
-					
-					if(instrucaoDigitada == '1')//usuario 1
+					telaResetarSenhas();
+					instrucaoDigitada = '\0';
+					while(1)
 					{
-						strcpy(senhas.usuario1, novaSenha);
+						instrucaoDigitada = procuraTecla();
+						if (instrucaoDigitada == '*')
+						{
+							strcpy(senhas.usuario1, senhas.usuario1Default);
+							strcpy(senhas.usuario2, senhas.usuario2Default);
+							strcpy(senhas.adm, senhas.admDefault);
+							break;
+						}
+						if (instrucaoDigitada == '#')
+						{
+							break;
+						}
 					}
-					if(instrucaoDigitada == '2')//usuario 2
+					tela1();
+					instrucaoDigitada = '\0';
+					break;//sai desse while entre no while(!sair)
+					
+				}else if(instrucaoDigitada == '#')
+				{
+					telaTrocaSenhas();
+					instrucaoDigitada = '\0';
+					while(1)
 					{
-						strcpy(senhas.usuario2, novaSenha);
-					}
-					if(instrucaoDigitada == '*')//usuario adm
-					{
-						strcpy(senhas.adm, novaSenha);
+						instrucaoDigitada = procuraTecla();
+						if(instrucaoDigitada == '1' || instrucaoDigitada == '2' || instrucaoDigitada == '*')
+						{
+							senhaConferida = 0;
+							while(!senhaConferida)
+							{
+								
+								telaNovaSenha();
+								
+								strcpy(novaSenha,subRotinaTrocaSenha());
+								
+								if(strcmp(novaSenha,"INVAL"))
+								{
+									telaConfirmaSenha();
+									
+									strcpy(confereNovaSenha,subRotinaTrocaSenha());
+									
+									if(!strcmp(novaSenha,confereNovaSenha))
+									{
+										senhaConferida = 1;
+										}else{
+										
+										telaSenhasDivergentes();
+										delay_1s();
+									}
+								}else{
+									telaSenhaInvalida();
+									delay_1s();
+								}
+								
+							}
+							
+							
+							if(instrucaoDigitada == '1')//usuario 1
+							{
+								strcpy(senhas.usuario1, novaSenha);
+							}
+							if(instrucaoDigitada == '2')//usuario 2
+							{
+								strcpy(senhas.usuario2, novaSenha);
+							}
+							if(instrucaoDigitada == '*')//usuario adm
+							{
+								strcpy(senhas.adm, novaSenha);
+							}
+							for (int i = 0; i < 5; i++) {
+								senha[i] = '\0';
+							}
+							nr_digitados = 0;
+							break;
+						}
 					}
 					tela1();
 					instrucaoDigitada = '\0';
 					break;//sai desse while entre no while(!sair)
 				}
-							
+				
 			}
 		}else if(instrucaoDigitada == '#')//mais opcoes
 		{
@@ -162,7 +170,7 @@ void subRotinaAdm()
 					instrucaoDigitada = '\0';
 					break;//sai desse while entre no while(!sair)
 					
-				}else if(instrucaoDigitada == '#')//mais opcoes			
+				}else if(instrucaoDigitada == '#')//mais opcoes
 				{
 					tela3();//pedir horário ou mais opcoes
 					instrucaoDigitada = '\0';
@@ -171,10 +179,15 @@ void subRotinaAdm()
 						instrucaoDigitada = procuraTecla();
 						if(instrucaoDigitada == '*')
 						{
-							//subrotina pedir horas
+							pediHorario = 1;
+							serialEnviarString("AH");
+							delay_250ms();
+							printa_horarioreal(dia, hora, min);
+							delay_1s();
+							delay_1s();
 							break;//sair desse while
 						}else if(instrucaoDigitada == '#')//mais opcoes
-						{ 
+						{
 							tela4();//habilitar ou desabilitar modo noturno ou mais opcoes
 							instrucaoDigitada = '\0';
 							while(1)
@@ -197,8 +210,10 @@ void subRotinaAdm()
 					tela1();
 					instrucaoDigitada = '\0';
 					break;//sai desse while entre no while(!sair)
-				}			
-			}	
-		}	
+				}
+			}
+		}
 	}
+	nr_digitados = 0;
+	PCMSK2 = 0x0F; //volta a ter interrupção nos pinos
 }

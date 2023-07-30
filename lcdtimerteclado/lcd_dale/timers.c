@@ -3,35 +3,50 @@
 #include <avr/io.h>
 #include <avr/interrupt.h>
 
-/*
-1 = onda 800hz
-2 = onda 400hz
-3 = onda 2hz
-*/
 //OBS.: TIMERS SEM INTERRUPÇAO NO TIMER 5
 
 //versão com interrupção:
 
-void onda_800hzint(){
+int nr_ciclos_timer1 = 0;
+int nr_ciclos_ok = 0;
+
+char led2hz = 0;
+
+char buzzer = 0;
+long ciclos_buzzer = 0;
+
+// onda = 0 = 400hz, onda = 1 = 800hz
+char onda = 0;
+
+void config_timer1(){
 	sei();
 	TCCR1A = 0; //modo normal
-	TCCR1B = 0x1; //sem prescaler
-	TCNT1 = 55536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 10000 contagens p bater meio periodo da onda de 800hz
+	TCNT1 =  0;
 	TIMSK1 = 1;
+	TIFR1 = 1;
+}
+
+void onda_800hzint(){
+	sei();
+	TCCR4A = 0; //modo normal
+	TCCR4B = 0x1; //sem prescaler
+	TCNT4 = 55536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 10000 contagens p bater meio periodo da onda de 800hz
+	TIMSK4 = 1;
 }
 void onda_400hzint(){
 	sei();
-	TCCR3A = 0; //modo normal
-	TCCR3B = 0x1; //sem prescaler
-	TCNT3 = 45536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 20000 contagens p bater meio periodo da onda de 400hz
-	TIMSK3 = 1;
+	TCCR4A = 0; //modo normal
+	TCCR4B = 0x1; //sem prescaler
+	TCNT4 = 45536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 20000 contagens p bater meio periodo da onda de 400hz
+	TIMSK4 = 1;
 }
-void onda_2hzint(){
+void led2hz_int(){
 	sei();
 	TCCR4A = 0; //modo normal
 	TCCR4B = 0x3; //prescaler de 64
 	TCNT4 = 3036; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
 	TIMSK4 = 1;
+	led2hz = 1;
 }
 
 //versão sem interrupção:
@@ -49,13 +64,22 @@ void onda_400hz(){
 	TIFR5 = (1<<0); //limpa flag
 	while((TIFR5 & (1<<0)) == 0); //espera overflow
 }
-void onda_2hz(){
+void delay_250ms(){
 	TCCR5A = 0; //modo normal
 	TCCR5B = 0x3; //prescaler de 64
 	TCNT5 = 3036; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
 	TIFR5 = (1<<0); //limpa flag
 	while((TIFR5 & (1<<0)) == 0); //espera overflow
 }
+
+void delay_200ms(){
+	TCCR5A = 0; //modo normal
+	TCCR5B = 0x3; //prescaler de 64
+	TCNT5 = 15536; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 3200000/64=50000 contagens p bater o timer do delay de 200ms
+	TIFR5 = (1<<0); //limpa flag
+	while((TIFR5 & (1<<0)) == 0); //espera overflow
+}
+
 
 //esse delay acho q n vai precisar interrupção
 void delay_1s(){
@@ -72,4 +96,12 @@ void delay_1ms() {
 	TCNT5 = 65024;
 	TIFR5 = (1<<0); //limpa flag
 	while((TIFR5 & (1<<0)) == 0); //espera overflow
+}
+
+void config_timer_ok(){
+	sei();
+	TCCR4A = 0; //modo normal
+	TCCR4B = 0x5; //prescaler de 1024
+	TCNT4 = 0; //como o processador tem 16Mhz e o timer tem 16bits, precisamos de 4000000 contagens p bater meio periodo da onda de 2hz. 4000000/64 = 62500
+	TIMSK4 = 1;
 }

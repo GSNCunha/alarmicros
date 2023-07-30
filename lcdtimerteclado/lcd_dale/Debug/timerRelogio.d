@@ -1,4 +1,4 @@
-lcdio.d lcdio.o: .././lcdio.c .././lcdio.h .././timers.h \
+timerRelogio.d timerRelogio.o: .././timerRelogio.c \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\sfr_defs.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\inttypes.h \
@@ -11,11 +11,9 @@ lcdio.d lcdio.o: .././lcdio.c .././lcdio.h .././timers.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\fuse.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\lock.h \
  c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h \
- .././subRotinaAdm.h
-
-.././lcdio.h:
-
-.././timers.h:
+ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\ctype.h \
+ .././lcdio.h .././timers.h .././teclado.h .././validacao_senhas.h \
+ .././deteccao_intruso.h .././subRotinaAdm.h .././serial.h
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\io.h:
 
@@ -41,4 +39,18 @@ c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\
 
 c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\avr\interrupt.h:
 
+c:\program\ files\ (x86)\atmel\studio\7.0\toolchain\avr8\avr8-gnu-toolchain\avr\include\ctype.h:
+
+.././lcdio.h:
+
+.././timers.h:
+
+.././teclado.h:
+
+.././validacao_senhas.h:
+
+.././deteccao_intruso.h:
+
 .././subRotinaAdm.h:
+
+.././serial.h:

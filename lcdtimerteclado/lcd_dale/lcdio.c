@@ -2,6 +2,7 @@
 #include "timers.h"
 #include <avr/io.h>
 #include <avr/interrupt.h>
+#include "subRotinaAdm.h"
 
 	//Utiliza PORTA A como saída para o lcd.
 	//Formato:
@@ -171,3 +172,151 @@
 		delay_CTC();
 		delay_CTC();
 		}
+		
+		
+		///TELAS///
+		
+	void telaLcd()
+	{
+		limpa_reseta_cursor();
+		send_string("* - ALARME FALSO");
+		proxima_linha();
+		send_string("# - MAIS OPCOES");
+	}
+	
+	void telaLcd2()
+	{
+		limpa_reseta_cursor();
+		send_string("* Intruso local");
+		proxima_linha();
+		send_string("# Invadido");
+	}
+	
+	void telaLcd3()
+	{
+		limpa_reseta_cursor();
+		send_string("MOTIVO DO ALARME");
+	}
+	
+	void printa_horarioreal(int diaAtual, int horaAtual, int minAtual){
+		limpa_reseta_cursor();
+		send_string("data: ");
+		escreveNumero(diaAtual);
+		send_string(":");
+		escreveNumero(horaAtual);
+		send_string(":");
+		escreveNumero(minAtual);
+	}
+
+	void tela1()
+	{
+		limpa_reseta_cursor();
+		send_string("* SENHAS");
+		proxima_linha();
+		send_string("# MAIS OPCOES");
+	}
+	
+	void tela2()
+	{
+		limpa_reseta_cursor();
+		send_string("* ESTADO USUARIO");
+		proxima_linha();
+		send_string("# MAIS OPCOES");
+		
+	}
+	void tela3()
+	{
+		limpa_reseta_cursor();
+		send_string("* PEDIR HORAS");
+		proxima_linha();
+		send_string("# MAIS OPCOES");
+	}
+
+	void tela4()
+	{
+		limpa_reseta_cursor();
+		send_string("* ");
+		if(!modoNoturnoStatus)
+		{
+			send_string("HAB");
+		}else
+		{
+			send_string("DES");
+		}
+		send_string(" MODO NOT");
+		proxima_linha();
+		send_string("# SAIR");
+	}
+
+	void telaSenhaInvalida()
+	{
+		limpa_reseta_cursor();
+		send_string("SENHA INVALIDA");
+	}
+
+	void telaTrocaSenhas()
+	{
+		limpa_reseta_cursor();
+		send_string("1/2 - USUARIO1/2");
+		proxima_linha();
+		send_string("* - ADM");
+	}
+
+	void telaDeStatusUsuario()
+	{
+		limpa_reseta_cursor();
+		send_string("1 - ");
+		if(!usuario1Status)
+		{
+			send_string("HAB");//TELA PARA HABILITAR USUARO 1
+		}else
+		{
+			send_string("DES");//TELA PARA HABILITAR USUARO 1
+		}
+		send_string(" USUARIO1");
+		proxima_linha();
+		send_string("2 - ");
+		if(!usuario2Status)
+		{
+			send_string("HAB");//TELA PARA HABILITAR USUARO 2
+		}else
+		{
+			send_string("DES");//TELA PARA HABILITAR USUARO 2
+		}
+		send_string(" USUARIO2  ");
+	}
+
+	void telaResetSenhas()
+	{
+		limpa_reseta_cursor();
+		send_string("* RESET SENHAS");
+		proxima_linha();
+		send_string("# TROCAR SENHAS");
+		
+	}
+
+	void telaResetarSenhas(){
+		limpa_reseta_cursor();
+		send_string("RESETAR SENHAS?");
+		proxima_linha();
+		send_string("* - SIM  # - NAO");
+	}
+
+	void telaSenhasDivergentes(){
+		limpa_reseta_cursor();
+		send_string("     SENHAS     ");
+		proxima_linha();
+		send_string("  DIVERGENTES   ");
+	}
+
+	void telaNovaSenha(){
+		limpa_reseta_cursor();
+		send_string("NOVA SENHA:");
+		proxima_linha();
+	}
+
+	void telaConfirmaSenha(){
+		limpa_reseta_cursor();
+		send_string("REPITA A SENHA:");
+		proxima_linha();
+	}

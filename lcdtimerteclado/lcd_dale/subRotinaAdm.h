@@ -17,13 +17,11 @@ char modoNoturnoStatus;
 char sair;
 char novaSenha[6];
 
+void printa_horarioreal(int diaAtual, int horaAtual, int minAtual);
 void subRotinaAdm();
-void tela1();
-void tela2();
-void tela3();
-void tela4();
-void telaTrocaSenhas();
-void telaDeStatusUsuario();
+void escreveNumero(uint8_t valor);
+void modoNoturno();
+
 
 
 

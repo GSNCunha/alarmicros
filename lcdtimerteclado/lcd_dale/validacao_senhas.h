@@ -20,6 +20,12 @@ typedef struct Senhas
 	char adm[6];
 	char intruso[6];
 	
+	char centralDefault[6];
+	char usuario1Default[6];
+	char usuario2Default[6];
+	char admDefault[6];
+	char intrusoDefault[6];
+	
 }Senhas;
 
 Senhas senhas;
@@ -29,8 +35,10 @@ void lendo_senha(char tecla);
 const char* validar_senha();
 
 int resultado_validacao();
+
 const char* subRotinaTrocaSenha();
 
+const char* validacao;
 
 
 #endif /* VALIDACAO_SENHAS_H_ */

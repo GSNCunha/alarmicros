@@ -22,4 +22,36 @@ void config_lcd_padrao();
 
 void proxima_linha();
 
+void telaLcd();
+
+void telaLcd2();
+
+void telaLcd3();
+
+void tela1();
+
+void tela2();
+
+void tela3();
+
+void tela4();
+
+void telaTrocaSenhas();
+
+void telaDeStatusUsuario();
+
+void telaResetSenhas();
+
+void telaResetarSenhas();
+
+void telaConfirmaSenha();
+
+void telaSenhaInvalida();
+
+void telaSenhasDivergentes();
+
+void telaNovaSenha();
+
+void printa_horarioreal(int diaAtual, int horaAtual, int minAtual);
+
 #endif

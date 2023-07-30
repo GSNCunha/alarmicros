@@ -1,4 +1,4 @@
-/*
+ /*
  * validacao_senhas.c
  *
  * Created: 21/07/2023 14:41:58
@@ -12,10 +12,15 @@
 #include "teclado.h"
 #include "lcdio.h"
 #include "timers.h"
+#include "deteccao_intruso.h"
 #include "subRotinaAdm.h"
+#include "serial.h"
 
 int nr_digitados = 0;
 char senha[6] = {'\0', '\0', '\0', '\0', '\0', '\0'};
+const char* validacao;	
+	
+	
 
 typedef struct Senhas 
 {
@@ -25,17 +30,15 @@ typedef struct Senhas
 	char adm[6];
 	char intruso[6];
 	
+	char centralDefault[6];
+	char usuario1Default[6];
+	char usuario2Default[6];
+	char admDefault[6];
+	char intrusoDefault[6];
+	
 }Senhas;
 
-Senhas senhas = {"89134", "12369","32190","01267","90171"};
-
-
-// void mudar_senha_usuario(char usuario){
-// 	
-// 	validar_senha("adm");
-// 	
-// 	
-// }
+Senhas senhas = {"89134", "12369","32190","01267","90171", "89134", "12369","32190","01267","90171"};
 
 
 void lendo_senha(char tecla){
@@ -49,7 +52,7 @@ void lendo_senha(char tecla){
 }
 
 const char* subRotinaTrocaSenha()
-{	
+{
 	for (int i = 0; i < 5; i++) {
 		senha[i] = '\0';
 	}
@@ -57,21 +60,25 @@ const char* subRotinaTrocaSenha()
 
 	while(nr_digitados < 5)
 	{
-			if(nr_digitados < 5){
-				tecla = procuraTecla();
-				delay_1s();
-				PORTK = 0b00001111;
-				lendo_senha(tecla);
-			}
+		if(nr_digitados < 5){
+			tecla = procuraTecla();
+			delay_200ms(); //nao tirar
+			delay_200ms();
+			PORTK = 0b00001111;
+			lendo_senha(tecla);
+		}
 	}
-	return senha;
+
+	if(strcmp(senha,senhas.adm) && strcmp(senha,senhas.central) && strcmp(senha,senhas.intruso) && strcmp(senha,senhas.usuario1) && strcmp(senha,senhas.usuario2))
+		return senha;
+
+	return "INVAL";
 }
 
-
 const char* validar_senha(){
-	if(!strcmp(senha,senhas.usuario1)){
+	if((!strcmp(senha,senhas.usuario1)) && usuario1Status){
 		return "usuario1";
-	}else if(!strcmp(senha,senhas.usuario2)){
+	}else if((!strcmp(senha,senhas.usuario2)) && usuario2Status){
 		return "usuario2";
 	}else if(!strcmp(senha,senhas.adm)){
 		return "adm";
@@ -87,24 +94,36 @@ const char* validar_senha(){
 
 int resultado_validacao(){
 	
-	const char* validacao;
-	
 	validacao = validar_senha();
 	
-	if( !strcmp(validacao,"senha incorreta")){
+	if(!strcmp(validacao,"senha incorreta")){
 		limpa_reseta_cursor();
 		nr_digitados = 0;
-		send_string("senha incorreta ");
+		send_string("SENHA INCORRETA");
+		proxima_linha();
+		send_string("SENHA:");
 		return 0;
 	}else{
 		limpa_reseta_cursor();
 		nr_digitados = 0;
-		send_string("senha correta");
-		if(!strcmp(validacao,"adm"))
+		send_string("SENHA CORRETA");
+		proxima_linha();
+		
+		if(!strcmp(validacao,"central"))
 		{
-			subRotinaAdm();
+			serialEnviarString("AMV");
+		}
+		if(!strcmp(validacao,"intruso"))
+		{
+			serialEnviarString("AMI");
 		}
 		
+		if (strcmp(validacao, "adm") == 0){
+			send_string("BEM-VINDO ADM");
+			delay_1s();
+			// chama rotina do adm no main
+			return 2; // p nao ativar o alarme quando for adm
+		}
 		return 1;
 	}	
 }
