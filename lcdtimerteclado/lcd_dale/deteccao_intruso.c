@@ -1,9 +1,3 @@
-/*
- * deteccao_intruso.c
- *
- * Created: 22/07/2023 16:47:34
- *  Author: vitor
- */ 
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <ctype.h>
@@ -20,7 +14,7 @@
 char alarme_ativo = 0;
 char intruso_detectado = 0;
 char chamada = 0;
-long tempo_TA = 25; //tempo delay com o led piscando ---- tem q mudar pra 25s
+long tempo_TA = 25; //tempo delay com o led piscando
 char sensorAtivo;
 int horarioSensor[3];
 
@@ -35,10 +29,7 @@ void delay_piscaled(){
 }
 
 
-/*void ativa_buzzer(){
-	onda_400hzint();
-	buzzer = 1;
-}*/
+
 void ativa_buzzer(){
 	while(alarme_ativo && intruso_detectado){
 		for (long i = 0; i<400 ; i++){

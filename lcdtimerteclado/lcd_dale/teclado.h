@@ -1,11 +1,3 @@
-/*
- * teclado.h
- *
- * Created: 20/07/2023 20:36:04
- *  Author: vitor
- */ 
-
-
 #ifndef TECLADO_H_
 #define TECLADO_H_
 

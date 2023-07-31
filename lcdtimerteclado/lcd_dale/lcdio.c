@@ -65,7 +65,7 @@
 		delay_CTC();
 	}
 
-	void send_data(char _data_)
+	void send_data(char _data_) //Enviar dados
 	{
 		config_delay_timer0_CTC(255);
 		
@@ -89,7 +89,7 @@
 
 	}
 
-	void send_command(char command)
+	void send_command(char command) //enviar comando para o Hitachi
 	{
 		config_delay_timer0_CTC(255);
 		
@@ -112,7 +112,7 @@
 
 	}
 
-	void send_string(char *string){
+	void send_string(char *string){//Envia uma string de qualquer tamanho
 		
 		while(*string != 0){
 			send_data(*string);

@@ -1,11 +1,3 @@
-/*
- * subRotinaAdm.h
- *
- * Created: 7/22/2023 4:51:57 PM
- *  Author: Gabri
- */ 
-
-
 #ifndef SUBROTINAADM_H_
 #define SUBROTINAADM_H_
 

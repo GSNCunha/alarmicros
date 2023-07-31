@@ -1,9 +1,3 @@
-/*
- * GccApplication2.c
- *
- * Created: 7/18/2023 11:21:35 PM
- * Author : Gabri
- */ 
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include "timers.h"

@@ -1,9 +1,3 @@
-/*
- * timerRelogio.h
- *
- * Created: 28/07/2023 00:32:01
- *  Author: vitor
- */
 #ifndef TIMERRELOGIO_H_
 #define TIMERRELOGIO_H_
 

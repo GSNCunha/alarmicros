@@ -1,11 +1,3 @@
-/*
- * deteccao_intruso.h
- *
- * Created: 22/07/2023 16:47:49
- *  Author: vitor
- */ 
-
-
 #ifndef DETECCAO_INTRUSO_H_
 #define DETECCAO_INTRUSO_H_
 

@@ -1,11 +1,3 @@
-/*
- * serial.h
- *
- * Created: 27/07/2023 22:53:20
- *  Author: vitor
- */ 
-
-
 #ifndef SERIAL_H_
 #define SERIAL_H_
 

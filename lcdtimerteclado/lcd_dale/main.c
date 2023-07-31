@@ -1,3 +1,12 @@
+
+/*
+*	Trabalho de alarme ALARMICROS da cadeira de Microprocessadores
+*							Grupo A
+*	Membros: Vitor Simon, Gabriel Cunha, Vinícius Zortéa
+*
+*
+*/
+
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <ctype.h>

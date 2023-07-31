@@ -1,9 +1,3 @@
- /*
- * validacao_senhas.c
- *
- * Created: 21/07/2023 14:41:58
- *  Author: Vini
- */ 
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <stdio.h>

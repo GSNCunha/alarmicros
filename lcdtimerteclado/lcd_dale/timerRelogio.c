@@ -1,9 +1,3 @@
-/*
- * timerRelogio.c
- *
- * Created: 27/07/2023 23:45:48
- *  Author: vitor
- */ 
 #include <avr/io.h>
 #include <avr/interrupt.h>
 #include <ctype.h>
