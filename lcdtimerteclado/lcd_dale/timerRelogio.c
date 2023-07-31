@@ -29,7 +29,7 @@ void configRelogio(){
 }
 
 void conversaoMinHr(){
-	if (min == 60){
+	if (min == 60){//incremeta dia, hora e minuto de acordo com a contagem dos minutos
 		hora++;
 		min = 0;
 	}
@@ -38,7 +38,7 @@ void conversaoMinHr(){
 		hora = 0;
 		min = 0;
 	}
-	if (dia == 31){
+	if (dia == 32){//no caso desse mes tem 31 dias, ogo botamos 32
 		dia = 0;
 		hora = 0;
 		min = 0;

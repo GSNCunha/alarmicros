@@ -14,14 +14,14 @@
 #define F_CPU ;
 #define SERIAL_TIMEOUT ;
 
-void serialAtivarInterrupt();
-void serialDesativarInterrupt();
-void serialInicializar();
-uint8_t serialByteDisponivelEnvio();
-uint8_t serialByteRecebido();
-void serialEnviarByte(uint8_t ch);
-uint8_t serialReceberByte(void);
-void serialEnviarString(const char *str);
+void ativarSerialInterrupt();
+void desativarSerialInterrupt();
+void inicializarSerial();
+uint8_t byteDisponivelEnvio();
+uint8_t byteRecebidoSerial();
+void enviarByteSerial(uint8_t ch);
+uint8_t receberByteSerial(void);
+void enviarStringSerial(const char *str);
 int pediHorario;
 
 

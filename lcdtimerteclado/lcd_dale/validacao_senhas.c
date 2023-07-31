@@ -19,18 +19,19 @@
 int nr_digitados = 0;
 char senha[6] = {'\0', '\0', '\0', '\0', '\0', '\0'};
 const char* validacao;	
+char admLogin;
 	
 	
 
 typedef struct Senhas 
 {
-	char central[6];
+	char central[6]; //senha usuários 
 	char usuario1[6];
 	char usuario2[6];
 	char adm[6];
 	char intruso[6];
 	
-	char centralDefault[6];
+	char centralDefault[6];//senhas "de fábrica" para resetar caso solicitado
 	char usuario1Default[6];
 	char usuario2Default[6];
 	char admDefault[6];
@@ -53,29 +54,33 @@ void lendo_senha(char tecla){
 
 const char* subRotinaTrocaSenha()
 {
-	for (int i = 0; i < 5; i++) {
+	PCMSK2 = 0x01;
+	for (int i = 0; i < 5; i++) {//reseta a variável senha
 		senha[i] = '\0';
 	}
 	nr_digitados = 0;
 
-	while(nr_digitados < 5)
+	while(nr_digitados < 5)//le 5 digitos escritos pelo usuário
 	{
 		if(nr_digitados < 5){
 			tecla = procuraTecla();
-			delay_200ms(); //nao tirar
+			delay_200ms();
 			delay_200ms();
 			PORTK = 0b00001111;
-			lendo_senha(tecla);
+			if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9') || (tecla == '0'))// não permite digitos invalidos para a senha
+			{
+				lendo_senha(tecla);
+			}
 		}
 	}
 
 	if(strcmp(senha,senhas.adm) && strcmp(senha,senhas.central) && strcmp(senha,senhas.intruso) && strcmp(senha,senhas.usuario1) && strcmp(senha,senhas.usuario2))
 		return senha;
 
-	return "INVAL";
+	return "INVAL";//caso a senha seja uma ja usada pelo sistemas, retornamos INVAL de invalida
 }
 
-const char* validar_senha(){
+const char* validar_senha(){ //compara senha digitada com senhas guardadas no sistema
 	if((!strcmp(senha,senhas.usuario1)) && usuario1Status){
 		return "usuario1";
 	}else if((!strcmp(senha,senhas.usuario2)) && usuario2Status){
@@ -87,7 +92,7 @@ const char* validar_senha(){
 	}else if(!strcmp(senha,senhas.intruso)){
 		return "intruso";
 	}else{
-		return "senha incorreta";
+		return "senha incorreta";// se não for nenhuma das anteriores, é uma senha invalida
 	}
 	
 }
@@ -99,28 +104,27 @@ int resultado_validacao(){
 	if(!strcmp(validacao,"senha incorreta")){
 		limpa_reseta_cursor();
 		nr_digitados = 0;
-		send_string("SENHA INCORRETA");
-		proxima_linha();
-		send_string("SENHA:");
-		return 0;
+		telaSenhaIncorreta();
+		return 0;//caso incorreta, o sistema não permite ações de usuário e pede novamente uma senha
 	}else{
 		limpa_reseta_cursor();
 		nr_digitados = 0;
-		send_string("SENHA CORRETA");
-		proxima_linha();
+		telaSenhaCorreta();
+		delay_1s();
 		
-		if(!strcmp(validacao,"central"))
+		if(!strcmp(validacao,"central"))//caso a senha seja da central, automaticamente vamos enviar que o segurança esta no local para a central
 		{
-			serialEnviarString("AMV");
+			enviarStringSerial("AMV");
 		}
-		if(!strcmp(validacao,"intruso"))
+		if(!strcmp(validacao,"intruso"))//caso a senha seja do intruso, automaticamente vamos enviar que o intruso esta no local
 		{
-			serialEnviarString("AMI");
+			enviarStringSerial("AMI");
 		}
 		
 		if (strcmp(validacao, "adm") == 0){
-			send_string("BEM-VINDO ADM");
+			telaBemVindoAdm();
 			delay_1s();
+			admLogin = 1;
 			// chama rotina do adm no main
 			return 2; // p nao ativar o alarme quando for adm
 		}

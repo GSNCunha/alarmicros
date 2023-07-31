@@ -12,25 +12,19 @@
 #include "timerRelogio.h"
 
 char alarme_ativo;
-char admLogin;
+char esperaAlarme = 1;
 
 void modoNoturno(){
-	if ((modoNoturnoStatus == 1) && (hora >= 0) && (hora < 6)){
+	if ((modoNoturnoStatus == 1) && (hora >= 0) && (hora < 6)){//se hora esta dentro dos limites do modo noturno, o alarme é ativado automaticamente, modonoturnostatus é alterado na subRotinaAdm
 		if((hora == 0) && (min == 0)){
 			alarme_ativo = 1;
-			limpa_reseta_cursor();
-			send_string("MODO NOTURNO ON");
-			proxima_linha();
-			send_string("senha:");
+			telaModoNoturnoOn();
 		}
 	}
-	if ((modoNoturnoStatus == 1) && (hora >= 6) && (hora < 24)){
+	if ((modoNoturnoStatus == 1) && (hora >= 6) && (hora < 24)){//caso esteja fora do horário para o modo noturno, o alarme do modo noturno é desligado
 		if((hora == 6) && (min == 0)){
 			alarme_ativo = 0;
-			limpa_reseta_cursor();
-			send_string("MODO NOTURNO OFF");
-			proxima_linha();
-			send_string("senha:");
+			telaModoNoturnoOff();
 		}
 	}
 }
@@ -48,110 +42,110 @@ int main(void)
 	PCMSK2 = 0x0F; //ínterrupção nos pinos K0 até K7;
 	sei(); //set enable interrupts -- seta 1 no bit I do status register
 	//-------------------------------
-	serialInicializar();
-	serialAtivarInterrupt();
+	inicializarSerial();
+	ativarSerialInterrupt();
 	
 	config_timer_ok();
 	config_timer1();
 	config_porta_avr();
 	config_lcd_padrao();
-	limpa_reseta_cursor();
-	send_string("---ALARMICROS---");
-	proxima_linha();
-	send_string("SENHA:");
+	telaInicio();
     while (1){
-			if (alarme_ativo && intruso_detectado){
+			if (alarme_ativo && intruso_detectado){//caso um sensor seja ativado e o alarme esteja ativo
 				sensorAtivo = tecla;
-				horarioSensor[0] = dia;
+				horarioSensor[0] = dia;//guarda o horário que a o sensor foi ativado
 				horarioSensor[1] = hora;
 				horarioSensor[2] = min;
-				delay_piscaled();
-				if(alarme_ativo && intruso_detectado)
+				delay_piscaled();//pisca os leds durante 25 segundos antes de ativar o alarm
+				if(alarme_ativo && intruso_detectado)//caso nenhum usuário tenha desligado o alarme durante o tempo de 25seg
 				{
-					if(sensorAtivo == 'A'){
-						serialEnviarString("AS");
-						serialEnviarByte(0b1);
+					esperaAlarme=0; // tempo sem som de alarme acabou
+					
+					if(sensorAtivo == 'A'){//enviamos para a central o aviso de que sensor foi ativado 
+						enviarStringSerial("AS");
+						enviarByteSerial(0b1);
 					}
 					if(sensorAtivo == 'B'){
-						serialEnviarString("AS");
-						serialEnviarByte(0b10);
+						enviarStringSerial("AS");
+						enviarByteSerial(0b10);
 					} 
 					if(sensorAtivo =='C'){
-						serialEnviarString("AS");
-						serialEnviarByte(0b100);
+						enviarStringSerial("AS");
+						enviarByteSerial(0b100);
 					}
 					if(sensorAtivo =='D'){
-						serialEnviarString("AS");
-						serialEnviarByte(0b1000);
+						enviarStringSerial("AS");
+						enviarByteSerial(0b1000);
 					}
 				}
 				if(alarme_ativo && intruso_detectado ){
-					serialDesativarInterrupt();
+					desativarSerialInterrupt();//desligamos o interrupt para não afetar o funcionamento do som do alarme
 					ativa_buzzer();
-					enviaMotivo();
+					if(strcmp(senha,senhas.intruso))//caso a senha seja do intruso, não mandamos  mais motivos para a central
+					{
+						enviaMotivo();
+					}else
+					{
+						telaInicio();
+					}
 					UCSR0B &= ~(1 << RXEN0);
 					UCSR0B |= (1 << RXEN0);
-					serialAtivarInterrupt();
+					ativarSerialInterrupt();
 					PORTK = 0b00001111;
 				}
+				esperaAlarme = 1;
 			}
 			
-			if (admLogin == 1){
+			if (admLogin == 1){//caso o estado da variavel admLogin for 1, entramos na subrotina do administrador, essa variaável é mutada em validacao_senhas
 				subRotinaAdm();
 				PCMSK2 = 0x0F;
 				PORTK = 0b00001111;
 				admLogin = 0;
-				limpa_reseta_cursor();
-				send_string("---ALARMICROS---");
-				proxima_linha();
-				send_string("SENHA:");
+				telaInicio();
 			}
 		}	
 		 //fechamento do while
 }
 	
 ISR(PCINT2_vect){ //pinos K0 até K4
-	PORTB = 0; //so p nao dar bip no buzzer
-	if(chamada == 0){
+	PORTB = 0; 
+	if(chamada == 0){//caso a senha seja para desligar o alarme
 		chamada = 1;
 		tecla = procuraTecla();
 		if(alarme_ativo){
-			if ((tecla == 'A') || (tecla == 'B') || (tecla == 'C') || (tecla == 'D')){
-				limpa_reseta_cursor();
-				send_string("INTRUSO");
-				proxima_linha();
-				send_string("SENHA:");
+			if ((tecla == 'A') || (tecla == 'B') || (tecla == 'C') || (tecla == 'D')){//nesses digitos, o significado é que um sensor foi ativado 
+				telaSensorAtivado();
 				intruso_detectado = 1;
 			}
 			if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9') || (tecla == '0')){
-				if(nr_digitados < 5){
+				if(nr_digitados < 5){//digitos numericos somam para resultar em uma senha
 					lendo_senha(tecla);
 				}
-				if(nr_digitados == 5){
+				if(nr_digitados == 5){//caso a senha tenha sido digitada por inteiro, vamos conferir seu resultado
 					if (resultado_validacao() == 1){
 						alarme_ativo = 0;
 						intruso_detectado = 0;
-						limpa_reseta_cursor();
-						send_string("ALARME OFF");
+						telaAlarmeOff();
 						delay_1s();
+						if(esperaAlarme)//só preciso ir para a tela inicial aqui se eu ainda não tiver ligado meu buzzer 
+							telaInicio();
 						}
 				}
 			}
 		}else if ((tecla == '1') || (tecla == '2') || (tecla == '3') || (tecla == '4') || (tecla == '5') || (tecla == '6') || (tecla == '7') || (tecla == '8') || (tecla == '9') || (tecla == '0')){
-		if(nr_digitados < 5){
+		if(nr_digitados < 5){//caso a senha seja para desligar o alarme// digitos numericos somam para resultar em uma senha
 			lendo_senha(tecla);
 		}
-		if(nr_digitados == 5){
+		if(nr_digitados == 5){//caso a senha tenha sido digitada por inteiro, vamos conferir seu resultado
 			char result_val = resultado_validacao();
-			if (result_val == 1){
+			if (result_val == 1 && strcmp(validacao,"central")){// o vigilante apenas avisa que chegou, nao dispara um alarme 
 				intruso_detectado = 0;
 				TCCR1B = 0x05; //timer 1 pra dar o delay ate ativar o alarme //ativa o alarme na interrupção do timer 1
 				TIMSK1 = 1;
-				limpa_reseta_cursor();
-				send_string("ATIVANDO SISTEMA");
-			}
-			if (result_val == 2){
-				admLogin = 1;
+				telaATivandoOSistema();
+			}else if(!strcmp(validacao,"central"))
+			{
+				telaInicio();
 			}
 		}
 	}
@@ -163,12 +157,9 @@ ISR(PCINT2_vect){ //pinos K0 até K4
 }
 
 ISR(TIMER1_OVF_vect){
-	if(nr_ciclos_timer1 == 5){ //mudar p 19 dps
+	if(nr_ciclos_timer1 == 5){ //mudar para 19 para o tempo de espera ficar em 1:20min, o numero esta menor para facilitar testes
 		//ativa_alarme
-		limpa_reseta_cursor();
-		send_string("ALARME ATIVO");
-		proxima_linha();
-		send_string("SENHA:");
+		telaAlarmeAtivo();
 		alarme_ativo = 1;
 		//desliga timer
 		TCCR1B = 0x00;
@@ -185,44 +176,35 @@ ISR(TIMER3_OVF_vect){
 	if (nr_ciclos_relogio == 13){//14-1
 		nr_ciclos_relogio=0;
 		min++;
-		conversaoMinHr();
+		conversaoMinHr();//convertemos a soma de minutos em horas e dias
 	}else{
 		nr_ciclos_relogio++;
 	}
 }
 
-ISR(USART0_RX_vect)//usamos
+ISR(USART0_RX_vect)//recepção serial 
 {
-	// Recebe e interpreta uma mensagem do m dulo externo.
-	// Recebe bytes at  encontrar um que n o   o identificador
-	// de mensagem do m dulo externo ('M'). Durante opera  o normal, o primeiro
-	// byte sempre ser  'M', e o segundo ser  outro caractere.
-	// Para mensagens com respostas longas/vari veis, desativa interrupts
-	// para que o c digo principal lide com os dados.
 	uint8_t c;
-	while ((c = serialReceberByte()) == 'S');
-	if (c == 'H') {
+	while ((c = receberByteSerial()) == 'S');//a variável c sai do while com o segundo digito da mensagem mandada pelo professor 
+	if (c == 'H') {//caso 'H', estamos recebendo horário
 		// Sincroniza  o de hor rio.
-		c = serialReceberByte(); // Dia.
-		uint8_t c2 = serialReceberByte(); // Hora.
-		uint8_t c3 = serialReceberByte(); // Minuto.
+		c = receberByteSerial(); // Dia.
+		uint8_t c2 = receberByteSerial(); // Hora.
+		uint8_t c3 = receberByteSerial(); // Minuto.
 		configRelogio();
 		//send_data(c2);
 		dia = c;
 		hora = c2;
 		min = c3;
 		
-		
-		//relogioSincronizar(c, c2, c3);
-		
 		// Resposta de confirma  o.
 		if(!pediHorario){
-			serialEnviarString("AH");
+			enviarStringSerial("AH");//menagem confirmação recebimento
 		}
 		pediHorario = 0;
 		
 	}
-	else if (c == 'S' || c == 'M') {
+	else if (c == 'S' || c == 'M') {//caso de confirmação da central que as mensgens do alarme foram recebidas 
 		// confirmacao de mensagem recebida
 	}
 }
@@ -230,7 +212,7 @@ ISR(USART0_RX_vect)//usamos
 ISR(TIMER4_OVF_vect){
 	if (nr_ciclos_ok == 3){
 		nr_ciclos_ok=0;
-		serialEnviarString("AO"); //envia OK
+		enviarStringSerial("AO"); //envia OK periodicamente 
 		}else{
 		nr_ciclos_ok++;
 	}

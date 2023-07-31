@@ -18,9 +18,10 @@ char senhaConferida = 0;
 char sair = 1;
 char novaSenha[6]= {"11111"};
 char confereNovaSenha[6]= {"11111"};
+int pediHorario = 0;
 	
 
-void escreveNumero(uint8_t valor){
+void escreveNumero(uint8_t valor){//converte numeros inteiros em seus respectivos códigos compatíveis com o LCD para printa-los na tela
 	if(valor>9)
 	{
 		int segundoNum;
@@ -38,9 +39,9 @@ void escreveNumero(uint8_t valor){
 void subRotinaAdm()
 {
 	
-	tela1();// troca senhas ou mais opcoes
+	telaSenhasOuMais();// tela troca senhas ou mais opcoes
 	sair = 0;
-	PCMSK2 = 0x01;
+	PCMSK2 = 0x01;//desliga interrupção dos pinos 
 	
 	while(!sair)
 	{
@@ -53,7 +54,7 @@ void subRotinaAdm()
 			while(1)
 			{
 				instrucaoDigitada = procuraTecla();
-				if(instrucaoDigitada == '*')
+				if(instrucaoDigitada == '*')// resetar as senhas para o padrao de fabrica
 				{
 					telaResetarSenhas();
 					instrucaoDigitada = '\0';
@@ -72,11 +73,11 @@ void subRotinaAdm()
 							break;
 						}
 					}
-					tela1();
+					telaSenhasOuMais();//após ação, printa novamente a primeira tela para voltar para as opções de ações do ADM
 					instrucaoDigitada = '\0';
 					break;//sai desse while entre no while(!sair)
 					
-				}else if(instrucaoDigitada == '#')
+				}else if(instrucaoDigitada == '#')//opção troca das senhas
 				{
 					telaTrocaSenhas();
 					instrucaoDigitada = '\0';
@@ -93,13 +94,13 @@ void subRotinaAdm()
 								
 								strcpy(novaSenha,subRotinaTrocaSenha());
 								
-								if(strcmp(novaSenha,"INVAL"))
+								if(strcmp(novaSenha,"INVAL"))// se senha == INVAL, a senha digitada ja é usada no sistema, então fazemos o usuário repetir  ação
 								{
 									telaConfirmaSenha();
 									
 									strcpy(confereNovaSenha,subRotinaTrocaSenha());
 									
-									if(!strcmp(novaSenha,confereNovaSenha))
+									if(!strcmp(novaSenha,confereNovaSenha))// se a primeira senha é valida, pedimos para o usuário a confirme, se não ele tera que repetir tudo novamente.
 									{
 										senhaConferida = 1;
 										}else{
@@ -134,7 +135,7 @@ void subRotinaAdm()
 							break;
 						}
 					}
-					tela1();
+					telaSenhasOuMais();//após ação, printa novamente a primeira tela para voltar para as opções de ações do ADM
 					instrucaoDigitada = '\0';
 					break;//sai desse while entre no while(!sair)
 				}
@@ -142,7 +143,7 @@ void subRotinaAdm()
 			}
 		}else if(instrucaoDigitada == '#')//mais opcoes
 		{
-			tela2();//status usuario e mais opcoes
+			telaEstadosOuMais();//status usuario e mais opcoes
 			instrucaoDigitada = '\0';
 			while(1)
 			{
@@ -154,60 +155,60 @@ void subRotinaAdm()
 					while(1)
 					{
 						instrucaoDigitada = procuraTecla();
-						if(instrucaoDigitada == '1')
+						if(instrucaoDigitada == '1')//habilitar/desabilitar usuário 1
 						{
 							usuario1Status = !usuario1Status;
 							break; //sair desse while
 						}
-						if(instrucaoDigitada == '2')
+						if(instrucaoDigitada == '2')//habilitar/desabilitar usuário 2
 						{
 							usuario2Status = !usuario2Status;
 							break; //sair desse while
 						}
 					}
 					
-					tela1();
+					telaSenhasOuMais();//após ação, printa novamente a primeira tela para voltar para as opções de ações do ADM
 					instrucaoDigitada = '\0';
 					break;//sai desse while entre no while(!sair)
 					
 				}else if(instrucaoDigitada == '#')//mais opcoes
 				{
-					tela3();//pedir horário ou mais opcoes
+					telaHorasOuMais();//pedir horário ou mais opcoes
 					instrucaoDigitada = '\0';
 					while(1)
 					{
 						instrucaoDigitada = procuraTecla();
-						if(instrucaoDigitada == '*')
+						if(instrucaoDigitada == '*')//opção pedir horário
 						{
 							pediHorario = 1;
-							serialEnviarString("AH");
+							enviarStringSerial("AH");
 							delay_250ms();
-							printa_horarioreal(dia, hora, min);
+							printa_horarioreal(dia, hora, min);//mostra o horario por um curto tempo
 							delay_1s();
 							delay_1s();
 							break;//sair desse while
 						}else if(instrucaoDigitada == '#')//mais opcoes
 						{
-							tela4();//habilitar ou desabilitar modo noturno ou mais opcoes
+							telaModNotOuSair();//habilitar ou desabilitar modo noturno ou mais opcoes
 							instrucaoDigitada = '\0';
 							while(1)
 							{
 								instrucaoDigitada = procuraTecla();
-								if(instrucaoDigitada == '*')
+								if(instrucaoDigitada == '*')// muda estado do modo noturno
 								{
 									modoNoturnoStatus = !modoNoturnoStatus;
 									break;
 								}
 								if(instrucaoDigitada == '#')
 								{
-									sair = 1;
+									sair = 1;//sai da subrotina para o programa principal
 									limpa_reseta_cursor();
 									break;
 								}
 							}break;
 						}
 					}
-					tela1();
+					telaSenhasOuMais();//após ação, printa novamente a primeira tela para voltar para as opções de ações do ADM
 					instrucaoDigitada = '\0';
 					break;//sai desse while entre no while(!sair)
 				}

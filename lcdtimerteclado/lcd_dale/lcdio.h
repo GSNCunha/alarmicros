@@ -22,19 +22,19 @@ void config_lcd_padrao();
 
 void proxima_linha();
 
-void telaLcd();
+void telaSelecionarMotivoAlarme();
 
-void telaLcd2();
+void telaOpcaoIntrusoOuInvadido();
 
-void telaLcd3();
+void telaMotivoAlarme();
 
-void tela1();
+void telaSenhasOuMais();
 
-void tela2();
+void telaEstadosOuMais();
 
-void tela3();
+void telaHorasOuMais();
 
-void tela4();
+void telaModNotOuSair();
 
 void telaTrocaSenhas();
 
@@ -53,5 +53,27 @@ void telaSenhasDivergentes();
 void telaNovaSenha();
 
 void printa_horarioreal(int diaAtual, int horaAtual, int minAtual);
+
+void telaConfirmaSenha();
+
+void telaModoNoturnoOn();
+
+void telaModoNoturnoOff();
+
+void telaInicio();
+
+void telaSensorAtivado();
+
+void telaAlarmeOff();
+
+void telaATivandoOSistema();
+
+void telaSenhaIncorreta();
+
+void telaSenhaCorreta();
+
+void telaBemVindoAdm();
+
+void telaAlarmeAtivo();
 
 #endif

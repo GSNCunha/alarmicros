@@ -16,6 +16,7 @@ char usuario2Status;
 char modoNoturnoStatus;
 char sair;
 char novaSenha[6];
+int pediHorario;
 
 void printa_horarioreal(int diaAtual, int horaAtual, int minAtual);
 void subRotinaAdm();

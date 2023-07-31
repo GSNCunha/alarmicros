@@ -24,27 +24,23 @@ char possivelTecla;
 char ligaLinhas(int bitColuna, int indColuna)//coluna = numero correspondente da coluna
 {
 	
-	PORTK = 0b01111111;
-	//delay_1ms();
+	PORTK = 0b01111111;//ligamos cada linha individualmete para testar se é a linha pressionada 
 
 	if ((PINK & (1 << bitColuna)) == 0){
 	return teclado[0][indColuna];}
 
 	PORTK = 0b10111111;
-	//delay_1ms();
 
 	if ((PINK & (1 << bitColuna)) == 0){
 		
 	return teclado[1][indColuna];}
 
 	PORTK = 0b11011111;
-	//delay_1ms();
 
 	if ((PINK & (1 << bitColuna)) == 0){
 	return teclado[2][indColuna];}
 
 	PORTK = 0b11101111;
-	//delay_1ms();
 	
 	if ((PINK & (1 << bitColuna)) == 0){
 	return teclado[3][indColuna];}
@@ -76,11 +72,10 @@ char procuraLinhas(uint8_t coluna)
 char procuraTecla()
 {
 	PORTK = 0b00001111;//pull up do input ativado
-	//delay_1ms();
 	
-	while(PINK == 0b00001111);//0000 1011
+	while(PINK == 0b00001111);//espera qualquer tecla ser pressionada
 	
-	binColuna = PINK;
+	binColuna = PINK;//guarda estado que ja nos revela a coluna do botão pressionado
 	possivelTecla = procuraLinhas(binColuna);
 	delay_200ms();
 	PORTK = 0b00001111; //reseta a porta pra proxima leitura
@@ -91,15 +86,3 @@ char procuraTecla()
 		return '\0';
 	}
 }
-
-/*
-char procuraTecla(){
-	possivelTecla1 = procuraTecla1x();
-	delay_200ms();
-	possivelTecla2 = procuraTecla1x();
-	if (possivelTecla1 == possivelTecla2){
-		return possivelTecla1;		
-	}else{
-		return '\0';
-	}
-	};*/

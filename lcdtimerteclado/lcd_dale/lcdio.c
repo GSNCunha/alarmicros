@@ -176,7 +176,7 @@
 		
 		///TELAS///
 		
-	void telaLcd()
+	void telaSelecionarMotivoAlarme()
 	{
 		limpa_reseta_cursor();
 		send_string("* - ALARME FALSO");
@@ -184,7 +184,7 @@
 		send_string("# - MAIS OPCOES");
 	}
 	
-	void telaLcd2()
+	void telaOpcaoIntrusoOuInvadido()
 	{
 		limpa_reseta_cursor();
 		send_string("* Intruso local");
@@ -192,7 +192,7 @@
 		send_string("# Invadido");
 	}
 	
-	void telaLcd3()
+	void telaMotivoAlarme()
 	{
 		limpa_reseta_cursor();
 		send_string("MOTIVO DO ALARME");
@@ -208,7 +208,7 @@
 		escreveNumero(minAtual);
 	}
 
-	void tela1()
+	void telaSenhasOuMais()
 	{
 		limpa_reseta_cursor();
 		send_string("* SENHAS");
@@ -216,7 +216,7 @@
 		send_string("# MAIS OPCOES");
 	}
 	
-	void tela2()
+	void telaEstadosOuMais()
 	{
 		limpa_reseta_cursor();
 		send_string("* ESTADO USUARIO");
@@ -224,7 +224,7 @@
 		send_string("# MAIS OPCOES");
 		
 	}
-	void tela3()
+	void telaHorasOuMais()
 	{
 		limpa_reseta_cursor();
 		send_string("* PEDIR HORAS");
@@ -232,7 +232,7 @@
 		send_string("# MAIS OPCOES");
 	}
 
-	void tela4()
+	void telaModNotOuSair()
 	{
 		limpa_reseta_cursor();
 		send_string("* ");
@@ -319,4 +319,66 @@
 		limpa_reseta_cursor();
 		send_string("REPITA A SENHA:");
 		proxima_linha();
+	}
+	
+	void telaModoNoturnoOn(){
+		limpa_reseta_cursor();
+		send_string("MODO NOTURNO ON");
+		proxima_linha();
+		send_string("senha:");
+	}
+	
+	void telaModoNoturnoOff(){
+		limpa_reseta_cursor();
+		send_string("MODO NOTURNO OFF");
+		proxima_linha();
+		send_string("senha:");
+	}
+	
+	void telaInicio(){
+		limpa_reseta_cursor();
+		send_string("---ALARMICROS---");
+		proxima_linha();
+		send_string("SENHA:");
+	}
+	
+	void telaSensorAtivado(){
+		limpa_reseta_cursor();
+		send_string("INTRUSO");
+		proxima_linha();
+		send_string("SENHA:");
+	}
+	
+	void telaAlarmeOff(){
+		limpa_reseta_cursor();
+		send_string("ALARME OFF");
+	}
+	
+	void telaATivandoOSistema(){
+		limpa_reseta_cursor();
+		send_string("ATIVANDO SISTEMA");
+	}
+	
+	void telaSenhaIncorreta(){
+		limpa_reseta_cursor();
+		send_string("SENHA INCORRETA");
+		proxima_linha();
+		send_string("SENHA:");
+	}
+	
+	void telaSenhaCorreta(){
+		limpa_reseta_cursor();
+		send_string("SENHA CORRETA");
+	}
+	
+	void telaBemVindoAdm(){
+		proxima_linha();
+		send_string("BEM-VINDO ADM");
+	}
+	
+	void telaAlarmeAtivo(){
+		limpa_reseta_cursor();
+		send_string("ALARME ATIVO");
+		proxima_linha();
+		send_string("SENHA:");
 	}

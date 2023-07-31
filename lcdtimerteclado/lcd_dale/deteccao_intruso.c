@@ -20,21 +20,9 @@
 char alarme_ativo = 0;
 char intruso_detectado = 0;
 char chamada = 0;
-long tempo_TA = 25; //tempo de delay com o led piscando ---- tem q mudar pra 25s
+long tempo_TA = 25; //tempo delay com o led piscando ---- tem q mudar pra 25s
 char sensorAtivo;
 int horarioSensor[3];
-
-
-/*void delay_piscaled(){
-	DDRB = 0xFF;
-	led2hz_int();
-	for(long i = 0; i<(tempo_TA); i++){
-		delay_1s();
-	}
-	led2hz = 0;
-	TCCR4B = 0x00; //desliga timer 4
-	TIMSK4 = 0x00;
-}*/
 
 
 void delay_piscaled(){
@@ -78,53 +66,50 @@ void desativa_buzzer(){
 }
 
 void enviaMotivo(){
-	send_string("CAUSA: SINAL ");
+	send_string("CAUSA: SINAL ");// mostra o motivo do sinal
 	send_string(&sensorAtivo);
 	proxima_linha();
-	printa_horarioreal(horarioSensor[0], horarioSensor[1], horarioSensor[2]);
+	printa_horarioreal(horarioSensor[0], horarioSensor[1], horarioSensor[2]);//mostra o horário em que o sensor foi ativado
 	delay_1s();
 	delay_1s();
 	delay_1s();
-	telaLcd3();
+	telaMotivoAlarme();
 	delay_1s();
 	delay_1s();
 	instrucaoDigitada = '\0';
-	PCMSK2 = 0x01;
-	telaLcd();
+	PCMSK2 = 0x01;//desligar interrupção das teclas dos números 
+	telaSelecionarMotivoAlarme();
 	while(1)
 	{
 		instrucaoDigitada = procuraTecla();
-		if(instrucaoDigitada == '*')
+		if(instrucaoDigitada == '*')//opção alarme falso
 		{
-			serialEnviarString("AMA");
-			serialEnviarString("AS");
-			serialEnviarByte(0b0);
+			enviarStringSerial("AMA");//enviar alarme falso e que os sensores não foram ativados 
+			enviarStringSerial("AS");
+			enviarByteSerial(0b0);
 			break;
 		}
-		if(instrucaoDigitada == '#')
+		if(instrucaoDigitada == '#')//mais opções
 		{
 			instrucaoDigitada = '\0';
-			telaLcd2();
+			telaOpcaoIntrusoOuInvadido();
 			while(1)
 			{
 				instrucaoDigitada = procuraTecla();
-				if(instrucaoDigitada == '*')
+				if(instrucaoDigitada == '*')//opção intruso no local
 				{
-					serialEnviarString("AMI");
+					enviarStringSerial("AMI");
 					break;
 				}
-				if(instrucaoDigitada == '#')
+				if(instrucaoDigitada == '#')//opçao constatação de invasão
 				{
-					serialEnviarString("AMC");
+					enviarStringSerial("AMC");
 					break;
 				}
 			}
 			break;
 		}
 	}
-	limpa_reseta_cursor();
-	send_string("---ALARMICROS---");
-	proxima_linha();
-	send_string("SENHA:");
-	PCMSK2 = 0x0F;
+		telaInicio();
+	PCMSK2 = 0x0F;//ligar interrupção de todas as teclas
 }

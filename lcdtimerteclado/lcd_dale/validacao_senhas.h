@@ -40,5 +40,6 @@ const char* subRotinaTrocaSenha();
 
 const char* validacao;
 
+char admLogin;
 
 #endif /* VALIDACAO_SENHAS_H_ */
